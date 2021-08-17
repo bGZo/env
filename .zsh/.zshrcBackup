@@ -1,0 +1,80 @@
+#            _
+#    _______| |__  _ __ ___
+#   |_  / __| '_ \| '__/ __|
+#  _ / /\__ \ | | | | | (__
+# (_)___|___/_| |_|_|  \___|
+# --------------------------
+# Written refer to:
+  # https://github.com/ohmyzsh/ohmyzsh
+  # https://zsh.sourceforge.io/Doc/Release
+  # https://thevaluable.dev/zsh-completion-guide-examples/
+    # https://github.com/Phantas0s/.dotfiles/blob/master/zsh
+
+# +--------------------+
+# | General Environment|
+# +--------------------+
+
+export ZSHDIR=~/.nix/.zsh
+source $ZSHDIR/zshenv
+
+# Should be called before compinit
+zmodload zsh/complist
+
+# Prompt
+autoload -Uz prompt_purification_setup && prompt_purification_setup
+
+# Use modern auto completion system
+autoload -U compinit; compinit # -Uz??
+autoload -U compaudit
+
+# Choose theme adami. Config with 'promptinit; prompt -p'
+
+# +-----+
+# |Color|
+# +-----+
+# eval "$(dircolors -b $fpath/dircolors)"
+source $ZSHDIR/colors.zsh
+
+#+-------+
+#|Bindkey|
+#+-------+
+
+source $ZSHDIR/bindkeys.zsh
+ 
+# +-------+
+# |History|
+# +-------+
+
+source $ZSHDIR/histories.zsh
+
+# +---------+
+# | Options |
+# +---------+-----------------------------------------------+
+# |more: https://zsh.sourceforge.io/Doc/Release/Options.html|
+# +---------------------------------------------------------+
+
+# +---------+
+# | zstyles | -> autocompinit color.
+# +---------+
+
+source $ZSHDIR/zstyles.zsh
+
+# +-----+
+# |alias|
+# +-----+
+
+source $ZSHDIR/aliases
+
+# +-------+
+# |Plugins|
+# +-------+
+
+source $ZSHDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSHDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# +-----------------+
+# |Personal Function|
+# +-----------------+
+
+source $ZSHDIR/personalFunctions.zsh
+
