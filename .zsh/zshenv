@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# zsh
+
+# Pip3
+export PATH=$PATH:$HOME/.local/bin
+
