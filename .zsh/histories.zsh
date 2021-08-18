@@ -2,7 +2,11 @@
 
 SAVEHIST=$HISTSIZE
 HISTFILE=~/.zsh_history
+
 HISTORY_IGNORE='pwd:exit:fg:bg:top:clear:history:ls:uptime:df'
+#**FIXME**: use regex here???
+#.search, -H, "i, "-i, "restart, "-D, "D, "re,"restart, .search, "start
+
 HISTCONTROL=ignorespace
 
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
