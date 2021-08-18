@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 HISTFILE=~/.zsh_history
 HISTORY_IGNORE='pwd:exit:fg:bg:top:clear:history:ls:uptime:df'

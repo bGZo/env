@@ -1,7 +1,21 @@
 #!/bin/zsh
 
+# Enable 256 color to make auto-suggestions look nice
+export TERM="xterm-256color"
+
 # zsh
 
 # Pip3
 export PATH=$PATH:$HOME/.local/bin
+
+# Java Env use Apt alright okey.
+#export JAVA_HOME=/usr/lib/java/jdk-11.0.7
+#export JRE_HOME=${JAVA_HOME}/jre
+#export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+#export PATH=${JAVA_HOME}/bin:$PATH
+
+# Go
+
+# Android
+
 
