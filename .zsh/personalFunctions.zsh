@@ -38,7 +38,7 @@ gitCommit(){
     git add .
     git status
     echo "[bGZoCg] Input something:"
-    read git_tmp_ver
+    read git_tmp_ver # ah,zsh do not support readline(arrow key, -e in bash)
     git commit -m $git_tmp_ver
 }
 
