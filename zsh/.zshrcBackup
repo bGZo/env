@@ -14,18 +14,30 @@
 # | General Environment|
 # +--------------------+
 
-export ZSHDIR=~/.nix/.zsh
+export DOTFILES=.nix
+export ZSHDIR=$HOME/$DOTFILES/zsh
 source $ZSHDIR/zshenv
 
 # Should be called before compinit
 zmodload zsh/complist
 
-# Prompt
+#. Prompt
+fpath=($ZSHDIR $fpath)
 autoload -Uz prompt_purification_setup && prompt_purification_setup
 
 # Use modern auto completion system
 autoload -U compinit; compinit # -Uz??
 autoload -U compaudit
+
+# setup for deer(I think its big, not well in wsl...)
+#autoload -U deer
+#zle -N deer
+
+# Setup dir stack
+DIRSTACKSIZE=10
+
+#Setup command history output allsize. Others(in file) is Save Size
+HISTSIZE=10000
 
 # Choose theme adami. Config with 'promptinit; prompt -p'
 
@@ -53,6 +65,8 @@ source $ZSHDIR/histories.zsh
 # |more: https://zsh.sourceforge.io/Doc/Release/Options.html|
 # +---------------------------------------------------------+
 
+source $ZSHDIR/options.zsh
+
 # +---------+
 # | zstyles | -> autocompinit color.
 # +---------+
@@ -70,6 +84,7 @@ source $ZSHDIR/aliases
 # +-------+
 
 source $ZSHDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 source $ZSHDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # +-----------------+
