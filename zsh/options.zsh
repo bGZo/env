@@ -13,6 +13,6 @@ DISABLE_CORRECTION="true"
 
 # setopt prompt_subst(I use others' file of prompt)
 
-
-
+# don't like zsh output '%' when no newline for a command
+unsetopt prompt_cr prompt_sp 
 
