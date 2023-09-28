@@ -1,0 +1,27 @@
+Hoppscotch Browser Extension|amknoiejhlmhancpahfcfcfhllgkpbld
+JSON Formatter|bcjindcccaagfpapjjmafapmmgkkhgoa
+微信读书笔记助手|cmlenojlebcodibpdhmklglnbaghpdcg
+Vimium|dbepggeogbaibhgnhhndojpepiihcmeb
+Notifier for Gmail™|dcjichoefijpinlfnjghokpkojhlhkgl
+Tampermonkey|dhdgffkkebhmkfjojejmpbldmpobfkfo
+Copy All Urls|djdmadneanknadilpjiknlnanaolmbfk
+Reader View|ecabifbgmdmgdllomnfinbmaellmclnh
+Notepal|fdiajgjolaldofnimijejnjocmpceakl
+I don't care about cookies|fihnjjcciajhdojfnbdddfaoknhalnja
+New Bing Anywhere (Bing Chat GPT-4)|hceobhjokpdbogjkplmfjeomkeckkngi
+Search Everywhere with Google Bard|hnadleianomnjcoeplifgbkiejchjmah
+Language Reactor|hoombieeljmmljlkjmnheibnpciblicm
+RSS Finder|ijdgeedipkpmcliidjhbemmlgibfnaff
+Imagus|immpkjjlgappgfkkfieppnmlhakdmaab
+Open in Firefox|lmeddoobegbaiopohmpmmobpnpjifpii
+Podcasts - A player, downloader, transcriber|lmpfkgigdbnbdopkpeippmadlchmkphi
+Online Dictionary Helper|lppjdajkacanlmpbbcdkccjkdbpllajb
+SingleFile|mpiodijhokgodhhofbcjdecpffjipkle
+Similar Sites - Discover Related Websites|necpbmbhhdiplmfhmjicabdeighkndkn
+Video Speed Controller|nffaoalbilbmmfgbnbgppjihopabppdk
+ShareX|nlkoigbdolhchiicbonbihbphgamnaoc
+Bitwarden - Free Password Manager|nngceckbapebfimnlniiiahkandclblb
+Chromium Web Store|ocaahdebbfolfmndjeplogmgcagdmblk|https://raw.githubusercontent.com/NeverDecaf/chromium-web-store/master/updates.xml
+SingleFileZ|offkdfbbigofcgdokjemgjpdockaafjg
+MarkDownload - Markdown Web Clipper|pcmpcfapbekmbjjkdalcgopdkipoggdi
+History Trends Unlimited|pnmchffiealhkdloeffcdnbgdnedheme
