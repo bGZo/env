@@ -5,8 +5,7 @@ on:
   push:
     branches: [ dev_githubaction ]
   release:
-    types:
-      - published
+    types: [ created ]
 
 jobs:
   sync:
