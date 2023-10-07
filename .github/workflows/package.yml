@@ -1,9 +1,6 @@
 name: Package-then-upload
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ dev_githubaction ]
   release:
     types: [ created ]
 
