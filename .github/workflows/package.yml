@@ -39,6 +39,15 @@ jobs:
           AUTH_HEADER="Authorization: token $TOKEN"
           CONTENT_TYPE="Content-Type: application/zip"
 
-
           # Upload with curl
-          curl -X POST -H $AUTH_HEADER -H "$CONTENT_TYPE" --data-binary @$PACKAGE "$ADDRESS"
+          curl \
+            -f \
+            -sSL \
+            -XPOST \
+            -H "$AUTH_HEADER" \
+            -H "$CONTENT_TYPE" \
+            --upload-file "$PACKAGE" \
+            "$ADDRESS"
+
+#           -H "${CONTENT_LENGTH_HEADER}" 
+#          curl -X POST -H  -H "$" --data-binary @ 
