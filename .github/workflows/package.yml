@@ -1,6 +1,7 @@
 name: Package-then-upload
 
 on:
+  workflow_dispatch:
   release:
     types: [ created ]
 
