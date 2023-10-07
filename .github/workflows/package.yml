@@ -17,12 +17,27 @@ jobs:
         run: |
           zip -r tampermonkey-backup-github.zip tampermonkey/
 
+      # fix: Unrecognized named-value: 'VERSION'
+      #- name: Set version variable
+      #  run: |
+      #    VERSION="v0.0.1"
+      #    echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
       - name: Upload the package with curl
         run: |
+          # Token
           TOKEN="${{ secrets.GTOKEN }}"
+          
+          # Meta Info
           PACKAGE="tampermonkey-backup-github.zip"
           VERSION="v0.0.1"
-          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${{ VERSION }}/assets?name=${{ PACKAGE }}"
+
+          # Upload
+          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${VERSION}/assets?name=${PACKAGE}"
+
+          # Prepare Authorization
           AUTH_HEADER="Authorization: token ${{ TOKEN }}"
           CONTENT_TYPE="Content-Type: application/zip"
+
+          # Upload with curl
           curl -X POST -H $AUTH_HEADER -H $CONTENT_TYPE --data-binary @${PACKAGE} "${ADDRESS}"
