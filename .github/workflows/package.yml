@@ -1,0 +1,37 @@
+name: Package-then-upload
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ dev_githubaction ]
+
+jobs:
+  sync:
+    name: Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Zip on shell
+        run: |
+          zip -r tampermonkey-backup-github.zip tampermonkey/
+
+      - name: Upload the package with curl
+        run: |
+          # Token
+          TOKEN="${{ secrets.GTOKEN }}"
+          
+          # Meta Info
+          PACKAGE="tampermonkey-backup-github.zip"
+          VERSION="v0.0.1"
+
+          # Upload
+          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${{ VERSION }}/assets?name=${{ PACKAGE }}"
+
+          # Prepare Authorization
+          AUTH_HEADER="Authorization: token ${{ TOKEN }}"
+          CONTENT_TYPE="Content-Type: application/zip"
+
+          # Upload with curl
+          curl -X POST -H $AUTH_HEADER -H $CONTENT_TYPE --data-binary @${PACKAGE} "${ADDRESS}"
