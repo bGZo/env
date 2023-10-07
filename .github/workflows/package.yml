@@ -30,10 +30,17 @@ jobs:
           
           # Meta Info
           PACKAGE="tampermonkey-backup-github.zip"
-          VERSION="v0.0.1"
+
+          # Build the Upload URL from the various pieces
+          VERSION=$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)
+          if [[ -z "${VERSION}" ]]; then
+            echo "There was no release ID in the GitHub event. Are you using the release event type?"
+            exit 1
+          fi
 
           # Upload
           ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/$VERSION/assets?name=$PACKAGE"
+          echo "$ADDRESS"
 
           # Prepare Authorization
           AUTH_HEADER="Authorization: token $TOKEN"
