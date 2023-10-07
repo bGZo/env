@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches: [ dev_githubaction ]
+  release:
+    types:
+      - created
 
 jobs:
   sync:
@@ -37,9 +40,10 @@ jobs:
             echo "There was no release ID in the GitHub event. Are you using the release event type?"
             exit 1
           fi
+          echo "${VERSION}"
 
           # Upload
-          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/$VERSION/assets?name=$PACKAGE"
+          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${VERSION}/assets?name=$PACKAGE"
           echo "$ADDRESS"
 
           # Prepare Authorization
