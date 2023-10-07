@@ -21,13 +21,13 @@ jobs:
         run: |
           # Token
           TOKEN="${{ secrets.GTOKEN }}"
-          
+
           # Meta Info
           PACKAGE="tampermonkey-backup-github.zip"
-          VERSION="v0.0.1"
+          RELEASED_ID="v0.0.1"
 
           # Upload
-          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${{ VERSION }}/assets?name=${{ PACKAGE }}"
+          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${{ RELEASED_ID }}/assets?name=${{ PACKAGE }}"
 
           # Prepare Authorization
           AUTH_HEADER="Authorization: token ${{ TOKEN }}"
