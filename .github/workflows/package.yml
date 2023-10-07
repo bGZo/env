@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   push:
     branches: [ dev_githubaction ]
+    tags:
+      - 'v*'
+  registry_package:
+    types: [published]
 
 jobs:
   sync:
@@ -17,21 +21,21 @@ jobs:
         run: |
           zip -r tampermonkey-backup-github.zip tampermonkey/
 
-      - name: Upload the package with curl
-        run: |
-          # Token
-          TOKEN="${{ secrets.GTOKEN }}"
-          
-          # Meta Info
-          PACKAGE="tampermonkey-backup-github.zip"
-          VERSION="v0.0.1"
+      - name: Create a Github release
+        uses: actions/create-release@v1
+        id: create-new-release
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
+        with: 
+          tag_name: ${{github.run_number}}
+          release_name: Release ${{github.run_number}}
 
-          # Upload
-          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${{ VERSION }}/assets?name=${{ PACKAGE }}"
-
-          # Prepare Authorization
-          AUTH_HEADER="Authorization: token ${{ TOKEN }}"
-          CONTENT_TYPE="Content-Type: application/zip"
-
-          # Upload with curl
-          curl -X POST -H $AUTH_HEADER -H $CONTENT_TYPE --data-binary @${PACKAGE} "${ADDRESS}"
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+          asset_path: ./tampermonkey-backup-github.zip
+          asset_name: tampermonkey-backup-github-v${{ github.run_number }}.zip
+          asset_content_type: application/zip
