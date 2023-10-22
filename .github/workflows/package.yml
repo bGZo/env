@@ -6,7 +6,8 @@ on:
     branches: [ dev_githubaction ]
     tags:
       - 'v*'
-
+  registry_package:
+    types: [published]
 
 jobs:
   sync:
