@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [ dev_githubaction ]
-  tags:
-    - 'v*'
+    tags:
+      - 'v*'
 
 
 jobs:
