@@ -1,0 +1,64 @@
+name: Package-then-upload
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ dev_githubaction ]
+  release:
+    types: [ published ]
+
+jobs:
+  sync:
+    name: Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Zip on shell
+        run: |
+          zip -r tampermonkey-backup-github.zip tampermonkey/
+
+      # fix: Unrecognized named-value: 'VERSION'
+      #- name: Set version variable
+      #  run: |
+      #    VERSION="v0.0.1"
+      #    echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Upload the package with curl
+        run: |
+          # Token
+          TOKEN="${{ secrets.GTOKEN }}"
+          
+          # Meta Info
+          PACKAGE="tampermonkey-backup-github.zip"
+
+          # Build the Upload URL from the various pieces
+          VERSION=$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)
+          if [[ -z "${VERSION}" ]]; then
+            echo "There was no release ID in the GitHub event. Are you using the release event type?"
+            exit 1
+          fi
+          cat $GITHUB_EVENT_PATH
+          echo "${VERSION}"
+
+          # Upload
+          ADDRESS="https://uploads.github.com/repos/${{ github.repository }}/releases/${VERSION}/assets?name=$PACKAGE"
+          echo "$ADDRESS"
+
+          # Prepare Authorization
+          AUTH_HEADER="Authorization: token $TOKEN"
+          CONTENT_TYPE="Content-Type: application/zip"
+
+          # Upload with curl
+          curl \
+            -f \
+            -sSL \
+            -XPOST \
+            -H "$AUTH_HEADER" \
+            -H "$CONTENT_TYPE" \
+            --upload-file "$PACKAGE" \
+            "$ADDRESS"
+
+#           -H "${CONTENT_LENGTH_HEADER}" 
+#          curl -X POST -H  -H "$" --data-binary @ 
