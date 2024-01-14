@@ -1,0 +1,116 @@
+ssh -vT git@github.com
+ssh -T git@github.com
+bash
+ brew search logseq
+ brew install logseq
+mkdir workspace
+brew install smartmontools
+smartctl
+smartctl -a disk0
+git config â€ƒ³global user.name â€ƒ¸bgzoâ€ƒ¹
+mkdir test
+cd test
+git init
+git config â€ƒ³global user.name 'bgzo'
+git config â€ƒ³-global user.name 'bgzo'
+git config --global user.name "bGZo"
+git config --global user.email "im@bgzo.cc"
+ssh-keygen -t rsa -C "im@bgzo.cc"
+cat ~/.ssh/id_rsa.pub
+ssh -T github.com
+git clone git@github.com:bGZo/wiki.git
+cd wiki
+cd journals
+git clone git@github.com:bGZo/journals.git
+la -a
+ls -a
+cat .zprofile
+brew search clipy
+brew install clipy
+brew uninstall clipy
+reboot
+sudoreboot
+sudo reboot
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/bgzo/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew search spotify
+brew install spotify
+brew search vscode
+brew search git
+brew install git
+git help
+brew search zsh
+brew install zsh
+chsh -s /bin/zsh
+zsh
+brew help
+brew list
+export heep_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+brew install maccy
+brew search utm
+brew install utm
+brew search telegram
+brew install telegram
+brew install stats
+brew search ntfs
+brew install --cask macfuse
+brew install gromgit/fuse/ntfs-3g-mac
+brew install --cask mounty
+sudo spctl --master-disable
+cd workspace
+git clone git@github.com:bGZo/dotfiles.git
+cd dotfiles
+git pull
+cp zsh/.zshrcBackup ~/.zshrc
+vim ~/.zshrc
+git submodule init
+export all_proxy=http://127.0.0.1:7890
+git submodule update
+code .
+source ~/.zshrc
+cd ..
+cd /
+ls
+ll
+exit
+vim workspace/dotfiles/zsh/zstyles.zsh
+openProxy
+brew install coreutils
+vim ~/.zshrc
+source ~/.zshrc
+openProxy
+brew search spacedrive
+brew install spacedrive
+brew search baidu
+brew install baidunetdisk
+brew install aliyun
+brew search aliyun
+brew search idea
+brew install intellij-idea
+brew search jdk
+brew install openjdk
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+echo 'export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"' >> ~/.zshrc
+java -c
+java -v
+java -version
+brew search discord
+brew install discord
+brew search svp
+brew search 7z
+brew install sevenzip
+7zip
+7z
+7
+ls
+ll
+/opt/homebrew/Cellar/sevenzip/23.01/bin/7zz -help
+/opt/homebrew/Cellar/sevenzip/23.01/bin/7zz --help
+brew search dell
+brew search ddpm
+brew install ddpm
+history 0
+cp ~/.zsh_history workspace/dotfiles/zsh/.zsh_history_macOS
