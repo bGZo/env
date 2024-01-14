@@ -14,8 +14,9 @@
 # | General Environment|
 # +--------------------+
 
-export DOTFILES=.nix
+export DOTFILES=workspace/dotfiles
 export ZSHDIR=$HOME/$DOTFILES/zsh
+export LC_ALL="en_US.UTF-8"
 source $ZSHDIR/zshenv
 
 # Should be called before compinit
