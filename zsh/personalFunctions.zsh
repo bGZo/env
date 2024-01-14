@@ -132,3 +132,15 @@ openClash() {
 #     export LIBGL_ALWAYS_INDIRECT=1
 #     sudo /etc/init.d/dbus start &> /dev/null
 # }
+
+
+# +-------------------------------------------------------------------------+
+# Switch (Nuphy) Keyboard to FN Mode(Temporary Method)                      |
+# Via: https://www.reddit.com/r/MechanicalKeyboards/comments/tgjvp2/nuphy_air75_on_linux_issues_with_fn
+#      https://www.hashbangcode.com/article/turning-or-fn-mode-ubuntu-linux |
+# +-------------------------------------------------------------------------+
+switchFnMode(){
+    echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
+}
+
+# todo: gsettings set org.gnome.desktop.interface cursor-size 24
