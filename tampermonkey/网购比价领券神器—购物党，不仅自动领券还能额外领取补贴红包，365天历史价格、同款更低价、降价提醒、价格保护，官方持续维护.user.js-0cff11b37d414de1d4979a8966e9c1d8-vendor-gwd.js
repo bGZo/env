@@ -2329,15 +2329,15 @@ module.exports = function ($data) {
     var $$out = '', $escape = $imports.$escape, hidemod = $data.hidemod, detailW = $data.detailW, f_url = $data.f_url, settingUrl = $data.settingUrl;
     $$out += '<div id="bjd_bottom_detail" class="';
     $$out += $escape(hidemod);
-    $$out += '">\n  <a  id="bjd_logo" >\n    <span class="gwd_bg"></span>\n  </a>\n  <div class="left-compare close-module ';
+    $$out += ' gwdang-main">\n  <a  id="bjd_logo" >\n    <span class="gwd_bg"></span>\n  </a>\n  <div class="left-compare close-module ';
     $$out += $escape(hidemod);
     $$out += '">\n    <span class="com-lowpri">\n      <em class="gwd_bg"></em>\n    </span>\n    <span class="com-zdm">\n      <em class="gwd_bg"></em>\n    </span>\n    <span class="com-hym">\n      <em class="gwd_bg"></em>\n    </span>\n  </div>\n  <div class="nbt-adinfo close-module ';
     $$out += $escape(hidemod);
     $$out += '"></div>\n  <div class="main-compare close-module ';
     $$out += $escape(hidemod);
-    $$out += '">\n    <span class="gwd_bg mbar-turnpage tleft"></span>\n    <div class="compare-box">\n      <ul class="compare-list">\n        \n      </ul>\n    </div>\n    <span class="gwd_bg mbar-turnpage tright"></span>\n  </div>\n  <div class="right-info close-module ';
+    $$out += '">\n    <span class="gwd_bg mbar-turnpage tleft"></span>\n    <div class="compare-box">\n      <ul class="compare-list">\n\n      </ul>\n    </div>\n    <span class="gwd_bg mbar-turnpage tright"></span>\n  </div>\n  <div class="right-info close-module ';
     $$out += $escape(hidemod);
-    $$out += '" style="display: flex">\n    <div class="price-trend-btn btm-tab" id="gwdang-trend">\n      <div class="trend-box-dev">\n        <em class="gwd_bg"></em>\n        <span></span>\n      </div>\n      \n      <div id="gwdang-trend-detail" class="gwd-trend-detail gwd-btn-detail" style="width:';
+    $$out += '" style="display: flex">\n    <div class="price-trend-btn btm-tab" id="gwdang-trend">\n      <div class="trend-box-dev">\n        <em class="gwd_bg"></em>\n        <span></span>\n      </div>\n\n      <div id="gwdang-trend-detail" class="gwd-trend-detail gwd-btn-detail" style="width:';
     $$out += $escape(detailW);
     $$out += 'px;" >\n        <div class="panel-wrap">\n          <div class="chart" id="gwdang-pri-trend-chart">\n            <div id="big_tooltip_top" class="big_tooltip_box"></div>\n            <div id="bar_trend_legend_btn" class="legend-btn-box">\n              <span class="price-trend-sp pt-sp1 " data-id="days180">\n                <em></em>\n                <span>到手价(单件)</span>\n              </span>\n              <span class="review-trend-sp" data-id="plotSpecial">\n                <em></em>\n                <span>到手价(多件)</span>\n              </span>\n            </div>\n          </div>\n        </div>\n        <div class="gwd-collection-trend-content"></div>\n      </div>\n    </div>\n    <div class="search-mod"></div>\n    <div class="bjd-history-btn rinfo-btn" id="gwd_history">\n      <span class="gwd_bg"></span>\n    </div>\n    <div class="bjd-favor-btn rinfo-btn" id="gwdang-favor">\n      <span class="gwd_bg"></span>\n    </div>\n    <a href="';
     $$out += $escape(f_url);
@@ -2349,7 +2349,7 @@ module.exports = function ($data) {
     }
     $$out += ' title="功能设置" class="bjd-setting-btn rinfo-btn" id="gwdang-setting">\n      <span class="gwd_bg"></span>\n    </a>\n  </div>\n  <div class="nbt-close-btn ';
     $$out += $escape(hidemod);
-    $$out += '">\n    <span class="gwd_bg"></span>\n  </div>\n  <div ></div>\n</div>\n<style>\n  .right-info.b-hidden {\n    display: none!important;\n  }\n</style>';
+    $$out += '">\n    <span class="gwd_bg"></span>\n  </div>\n  <div ></div>\n</div>\n<style>\n  .right-info.b-hidden {\n    display: none!important;\n  }\n</style>\n';
     return $$out;
 };
 
@@ -16159,6 +16159,13 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAAp
 
 /***/ }),
 
+/***/ "42f765e5b484dc62b4e5":
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAwCAYAAABnjuimAAAAAXNSR0IArs4c6QAABKNJREFUaEPtWFty2lgQPX0lZqZqwIYVjLOCwArCYxz4G7KC4BWYrMB4BcErsLOC4K+IOLbYgZ0VmFmBMbgqrkFST65AQhJ6EmqqUoM/8aXvuadPn+6G8JP80U+CEzug287UjtEdo9tmYNvxNtJoVX8o/gJUFVOtMtE+iA8kMGJMwPjbVIyRAO60Wmm8LcCZgLb0hypYPQFQTQlgBKILrZb/kPJ85LFUQA/1h7LC6vsMAAMX0tik+ZurWuluU8CJQJv60zEx98MuYPAEoDEx3TG4SIQig8sEKoYCIvS0WuF0E7CxQFv67ASMnjewBEdMZ7Aw0g4Lo7BLDz8/lYXCHSL+CyBbv+4f04XWyB9lBRsJNAwkMc6+CaM3qpUmaS6SRfebpXZBkLr+IbChQIPpliyyhaPPf+4N0gAMnpEMK6r10csus/Vu2NgPlVTYHWtAW/rDAbN6S4CrM5OMyo8Ugrw4NK5BlavX+VQFtg70y/QCgt46r2Kmd8NGPvXL4xhvXc2qUKB7zoy0eqGWJks+oPLVYPXe/eLCAzMLP+7i5vWsT4Rj94yJWlRReuP4gDavH/tEYhWEjBfe7mIXB9RjMlFixehv0nlkjF9ZvXekRWydfWrsd5NY9TN683QPLNrhd3NfS0vLJwsaa/X8i9hUy05miSqENdJqJdfKvIQwMBnWC6XUQEPS3gm2vtbN9N5buc9klKKsKmhvEhAxDSDmp5aplIWgjw64NMXqMrrs467Qw77cvH7sEgnZSkMZdy5ee3SALmYMiNB2P2Y+0hp7F3GsroBeTzsgOncOa/VCqMe+/jJtC0LxWZiDSDZ9EuLlBBXoUL4GYJ1qjX1fBwyC9gB97IGE20GigCZpqRV4MJYFuTT9LrCyvhWjGYAG0oqNgXrZZJxqjYKPqYWX8rlvBuAMQINMxBVKFKv+GDwGmbUwCwtqOE07dVO/nDlv44xYeqBdRRFDScvLJtGaazixg3cxRHtY//0yVTElGbG0G2Z0pVEzcCdnUEvML/8BRhJ4kE2tvhfpsVE6TgVUHmrdzKQ92WuG14hb+vQcTJ2YQKOF5pbNIobNxT2rxiIfPawXKklF6rMg23o8Riy1AyH++L60Jba41UU8zsZmtES84H1Ag+lfe+WyimXlkkCbCS/X9qgYNu1ZgXO3qzYdXXCRPur8I2hTzudyuv/UKKwxa1ewpVQB8YqBr3EjYVOfvfdlJ8S+oiQQ2n28Wg3qNUlLkda1tn/FSySRUVvs9lyq6L7VQVY6GW+yjna2nCz13Nvb7QWRzEqWWJHLnb1Jqqx7VxJ7AiL0AeND0iXO7OpYmsOQBGmRWcu62iSsy+vMejQ7sASNCPOvAOzBwwSKClCGlXvFxG3vI1dA5WONTGzK7yb+ALGUQS90mNhUsKDxM80radfuVEAdLItuIvfzmHEtFDiPmUSf2JKTk/tjRFqjdzOYlZTl9NNh0EuSaY4AR0yXbGHgLG5hBYoUU9PGQL24ZMHk5rkDhdgeVkymyTw3H0elNFigaRe7TKnPynzUedmmSdAJAROQcZTkHlthdFvg08RJrPo0Qf6LMzug22Z5x+j/ltF/AeqzY0+6fa+wAAAAAElFTkSuQmCC"
+
+/***/ }),
+
 /***/ "4310ff0d1d73bb2c547a":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -18606,6 +18613,13 @@ module.exports = function ($data) {
     $$out += '">点击验证</a>\n  <style type="text/css">\n    #gwdang-trend {\n      width: 105px;\n    }\n    #gwdang-trend, #gwdang-trend span {\n      cursor: default;\n    }\n    #gwdang-trend span {\n      float: left;\n      width: 105px;\n      text-align: center;\n      line-height: 36px;\n      color: #666;\n      font-size: 14px;\n    }\n    #gwdang-trend .trend-error-info {\n      position: absolute;\n      top: 36px;\n      left: -1px;\n      width: 100%;\n      background: #fff;\n      z-index: 99999999;\n      height: 268px;\n      display: none;\n      box-shadow: 0 5px 10px 0 rgba(22,24,26,.15);\n      border: 1px solid #edf1f2!important;\n    }\n    #gwdang-trend .error-p {\n      width: 100%;\n      float: left;\n      text-align: center;\n      margin-top: 45px;\n      font-size: 14px;\n      color: #666;\n    }\n    #gwdang-trend .error-sp {\n      width: 95px;\n      margin: 110px auto;\n      height: 20px;\n      line-height: 20px;\n      text-align: center;\n      color: #000!important;\n      border: 1px solid #333;\n      border-radius: 5px;\n      display: block;\n      text-decoration: none!important;\n    }\n    #gwdang-trend:hover .trend-error-info {\n      display: block;\n    }\n  </style>\n</div>';
     return $$out;
 };
+
+/***/ }),
+
+/***/ "6829388e20ef26e0e1f8":
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Imljb24vYmFjay9uYXYvbm9ybWFsIj4KPHBhdGggaWQ9IlZlY3RvciIgZD0iTTE0LjY2MjggMTIuNjY2OEw5Ljk5NjA5IDguMDAwMTZMMTQuNjYyOCAzLjMzMzUiIHN0cm9rZT0iIzQwNDU0NyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjwvZz4KPC9zdmc+Cg=="
 
 /***/ }),
 
@@ -22662,6 +22676,26 @@ module.exports = function ($data) {
 
 /***/ }),
 
+/***/ "a12b5e85e3088629fa8c":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $imports = __webpack_require__("9f47c636f849c23a0c20");
+module.exports = function ($data) {
+    'use strict';
+    $data = $data || {};
+    var $$out = '', $escape = $imports.$escape, str = $data.str, s_server = $data.s_server;
+    $$out += '<div id="cptklbox" class="';
+    $$out += $escape(str);
+    $$out += '">\n  <div class="cptkl-btn">\n    <em></em>\n    <span>生成淘口令</span>\n  </div>\n  <span class="cptkl-tle">一鍵分享到微信或QQ</span>\n  <span class="cptkl-remind-err">抱歉\uFF0C當前商品暫時無法生成淘口令~</span>\n  <style type="text/css">\n    #cptklbox {\n      float: left;\n      width: 254px;\n      height: 52px;\n    }\n    #cptklbox.is_tm_site {\n      margin-left: 40px;\n    }\n    #cptklbox.is_tb_site {\n      margin-top: 15px;\n    }\n    #cptklbox * {\n      float: left;\n      font-family: "Microsoft YaHei";\n    }\n    .cptkl-btn {\n      width: 122px;\n      height: 26px;\n      border-radius: 2px;\n      border: 1px solid #ff9851;\n      background-color: #FFF3ED;\n      cursor: pointer;\n    }\n    .cptkl-remind-err {\n      color: #B66A6A;\n      font-size: 12px;\n      display: none;\n      line-height: 16px;\n      margin-top: 8px;\n    }\n    .cptkl-btn em {\n      width: 16px;\n      height: 16px;\n      background: url(\'';
+    $$out += $escape(s_server);
+    $$out += '/images/extensions/commonpng/cptkl.png\') 0px 0px no-repeat;\n      margin: 5px 6px 5px 20px;\n    }\n    .cptkl-btn.cpsuccess em {\n      margin-left: 27px;\n      margin-top: 6px;\n      background: url(\'';
+    $$out += $escape(s_server);
+    $$out += '/images/extensions/commonpng/cptkl-success.png\') 0px 0px no-repeat;\n    }\n    .cptkl-btn.cpready em {\n      margin-left: 9px;\n    }\n    .cptkl-btn span {\n      line-height: 26px;\n      font-size: 12px;\n      color: #EF6701;\n    }\n    .cptkl-tle {\n      margin-left: 10px;\n      font-size: 12px;\n      line-height: 26px;\n      color: #7d7e80;\n    }\n    .tb-gallery p.tm-action {\n      padding-bottom: 15px;\n    }\n\n    #tttgbgbs {\n      height: 1px;\n      width: 1px;\n      overflow: hidden;\n      float: left;\n      position: fixed;\n      bottom: -9px;\n      left: -9px;\n    }\n    #box_btn {\n      height: 1px;\n      width: 1px;\n      overflow: hidden;\n      float: left;\n      position: fixed;\n      bottom: 0px;\n    }\n    .gggbox-input {\n      height: 1px;\n      width: 1px;\n      overflow: hidden;\n      float: left;\n      position: fixed;\n      bottom: 0px;\n      left:-999px;\n    }\n  </style>\n</div>\n<div id="tttgbgbs">\n  <a id="box_btn" class="box-btn"  contenteditable="1">456</a>\n  <input type="" name="" value="456" class="gggbox-input">\n</div>\n';
+    return $$out;
+};
+
+/***/ }),
+
 /***/ "a152c7c5032ac533e0b1":
 /***/ (function(module, exports) {
 
@@ -22860,7 +22894,7 @@ function getTaobaoListInfo() {
         if (!pid) {
             pid = product.querySelector('[class*="ShopInfo--wwWrap"]').getAttribute("data-item").trim();
         }
-        var price = product.querySelector("[class*=Price--priceInt]").textContent + document.querySelector("[class|=Price--priceFloat]").textContent;
+        var price = product.querySelector("[class*=Price--priceInt]").textContent + product.querySelector("[class*=Price--priceFloat]").textContent;
         if (!price.match(/[\d\.]+/)) {
             continue;
         }
@@ -22888,7 +22922,8 @@ function getTaobaoListInfo() {
             "shopId": shopId,
             "taobao": !isTmall,
             "img": img,
-            "sale_num": saleNumber
+            "sale_num": saleNumber,
+            "version": "2023-10-24"
         });
     }
     return items;
@@ -24279,6 +24314,13 @@ module.exports = function ($data) {
     $$out += '<div class="gwd-minibar-bg">\n  <div id="gwd_minibar" class="" style="display: flex;">\n    <a class="ht_website" title="购物党" id="gwd_website_icon" target="_blank" href="https://www.gwdang.com">\n      <em class="ht-bg website_icon"></em>\n    </a>\n    <div id="mini_price_history" class="minibar-tab">\n      <div class="trend-detail ht-com-detail" id="ht_minitrend_detail">\n        <div class="ht-trend-otinfo">\n          <div class="ht-trend-minmax">\n            <span class="ht-mm-sp1">最高:</span>\n            <span class="ht-mm-sp2 ht-mm-max prifontf"></span>\n            <span class="ht-mm-sp3">最低:</span>\n            <span class="ht-mm-sp4 ht-mm-min prifontf"></span>\n          </div>\n          <span class="ht-favor-btn" id="ht_favor">降价提醒</span>\n        </div>\n        <div id="big_tooltip" class="big_tooltip_box"></div>\n        <div id="mini_ht_detail_chart"></div>\n      </div>\n    </div>\n    <div id="amazon_global_box" class="minibar-tab"></div>\n    <div id="yj_haitao" class="minibar-tab">\n\n    </div>\n    <div style="flex: 1" id="gwd_mini_remind" class="minibar-tab">\n      <div class="minibar-btn-box">\n<!--        <em class="setting-bg collect_mailout_icon"></em>-->\n<!--        <span>降价提醒</span>-->\n      </div>\n      <div class="gwd-collection-mini">\n        <div class="gwd-collection-mini-content"></div>\n      </div>\n    </div>\n  </div>\n  <style type="text/css">\n  .gwd-minibar-bg {\n    /*float: left;*/\n    width: 100%;\n    margin: 10px 0;\n  }\n  .gwd-minibar-bg::after {\n      clear: none!important;\n  }\n  .gwd_6pm .gwd-minibar-bg {\n    max-width: 445px;\n    margin-left: 118px;\n  }\n  .minibar-tab:hover .ht-com-detail {\n    display: block;\n  }\n  #ht_minitrend_detail {\n    height: 250px;\n    left: -1px;\n  }\n  .ht-trend-otinfo {\n    float: left;\n    height: 56px;\n    width: 100%;\n  }\n  .ht-trend-minmax span {\n    float: left;\n    margin-top: 15px;\n    line-height: 16px;\n    font-size: 12px;\n  }\n  .ht-com-detail .ht-mm-sp1 {\n    margin-left: 18px;\n  }\n  .ht-com-detail .ht-mm-sp1, .ht-com-detail .ht-mm-sp2 {\n    color:  #E4393C;\n    font-weight: bold;\n  }\n  .ht-com-detail .ht-mm-sp2, .ht-com-detail .ht-mm-sp4 {\n    line-height: 18px;\n    margin-left: 3px;\n  }\n  .ht-com-detail .ht-mm-sp3 {\n    margin-left: 10px;\n  }\n  .ht-com-detail .ht-mm-sp3, .ht-com-detail .ht-mm-sp4 {\n    color: #35BD67;\n    font-weight: bold;\n  }\n  .ht-com-detail .ht-favor-btn {\n    width: 74px;\n    height: 26px;\n    border: 1px solid #F07960;\n    border-radius: 2px;\n    color: #F07860;\n    float: right;\n    margin-right: 22px;\n    margin-top: 11px;\n    line-height: 26px;\n    font-size: 12px;\n    cursor: pointer;\n    text-align: center;\n  }\n  .ht-com-detail .ht-favor-btn.collected {\n    background: #F07860;\n    color: #fff;\n  }\n  #mini_ht_detail_chart {\n    width: 402px;\n    height: 172px;\n    margin-left: 18px;\n    position: relative;\n    float: left;\n  }\n    div#gwd_minibar,div#gwd_minibar .ht_website, div#gwd_minibar .minibar-tab {\n      height: 40px;\n    }\n    .ht_website {\n      width: 44px;\n      height: 40px;\n      float: left;\n    }\n    #gwd_minibar .minibar-tab {\n      line-height: 40px;\n    }\n    #gwd_minibar .minibar-tab:hover {\n      background: #EDF1F2;\n     }\n    .ht_website em{\n      background-position: -7px -8px;\n      height: 20px;\n      width: 22px;\n      float: left;\n      margin-left: 14px;\n      margin-top: 10px;\n    }\n    .hasglobal .ht_website em {\n      margin-left: 11px;\n    }\n    #mini_price_history em.ht-bg {\n      width: 20px;\n      height: 13px;\n      margin-top: 14px;\n      margin-right: 6px;\n    }\n    #mini_price_history em.pri-t1 {\n      background-position: -58px -13px;\n    }\n    #mini_price_history em.pri-t0 {\n      background-position: -82px -13px;\n    }\n    #mini_price_history em.pri-t-1 {\n      background-position: -35px -13px;\n    }\n    #mini_price_history em.pri-t-2 {\n      background-position: -107px -13px;\n    }\n    div#gwd_minibar .ht_website {\n      width: 50px;\n    }\n    div#gwd_minibar.hasglobal .ht_website {\n      width: 44px;\n    }\n    div#gwd_minibar {\n      width: 460px;\n    }\n    #yj_haitao {\n      text-align: center;\n      width: 209px;\n    }\n    .hasglobal #yj_haitao {\n      width: 151px;\n    }\n    .minibar-tab {\n      width: auto;\n    }\n\n\n    .ht-bg {\n      background: url(\'https://cdn.gwdang.com/images/extensions/xbt/haitao_mini1.png\') 0px 0px no-repeat;\n    }\n    .ht-com-detail {\n      position: absolute;\n      top: 40px;\n      left: -1px;\n      background: #FFFFFF;\n      border: 1px solid #E6E9EB;\n      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.11);\n      height: 220px;\n      width: 440px;\n      z-index: 999;\n      display: none;\n    }\n    .global-content {\n      height: 180px;\n      width: 100%;\n    }\n    .gl-left {\n      width: 153px;\n      height: 100%;\n      float: left;\n    }\n    .global-model .gl-left {\n      width: 153px;\n    }\n    .yjht-model .gl-left {\n      width: 160px;\n    }\n    .gl-left .gl-l-item{\n      border-bottom: 1px solid #F9F9F9;\n      border-right: 1px solid #F9F9F9;\n    }\n    .gl-l-item {\n      height: 44px;\n      width: 100%;\n      float: left;\n      position: relative;\n    }\n    .gl-left .gl-l-item:last-child {\n      border-bottom: none;\n    }\n    .gl-l-item em {\n      float: left;\n      width: 20px;\n      height: 20px;\n      margin-left: 26px;\n      margin-top: 12px;\n      margin-right: 10px;\n    }\n    .ziying em{\n      background-position: -4px -36px;\n    }\n    .sanfang em {\n      background-position: -28px -36px;\n    }\n    .zhiyou em {\n      background-position: -124px -36px;\n    }\n    .samestyle em {\n      background-position: -148px -36px;\n    }\n    .vipfee em {\n      background-position: -172px -36px;\n    }\n    .gl-l-item span {\n      color: #404547;\n      font-size: 12px;\n      line-height: 44px;\n      text-align: left;\n      float: left;\n      margin-left: 10px;\n    }\n    .global-foot {\n      height: 40px;\n    }\n    .global-content .prifontf {\n      line-height: 46px;\n    }\n    .global-foot span {\n      float: left;\n      width: 285px;\n      height: 40px;\n      background-color: #EDF1F2;\n      line-height: 40px;\n      text-align: center;\n      font-size: 12px;\n      color: #969899;\n    }\n    .global-foot a {\n      width: 155px;\n      height: 40px;\n      background: #646FB0;\n      font-weight: 400;\n      line-height: 40px;\n      color: #fff;\n      font-size: 13px;\n      text-align: center;\n      float: left;\n    }\n    .gl-right a {\n      float: left;\n      width: 285px;\n      height: 180px;\n    }\n    .gl-img-box {\n      height: 100px;\n      width: 100%;\n      margin-top: 14px;\n      float: left;\n      text-align:center;\n      font-size:0;\n    }\n    .gl-right a img {\n      height: auto;\n      width: auto;\n      max-width: 100px;\n      max-height: 100px;\n      vertical-align:middle;\n      display:inline-block;\n      font-size:16px;\n    }\n    .gl-img-box:after {\n      content:\'\';\n      width:0;\n      height:100%;\n      display:inline-block;\n      vertical-align:middle;\n    }\n    .gl-right p {\n      float: left;\n      width: 240px;\n      height: auto;\n      margin-left: 22px;\n      margin-top: 14px;\n      line-height: 17px;\n      max-height: 34px;\n      overflow: hidden;\n      font-size: 12px;\n      color: #5C6266;\n    }\n\n    div.gwd_haitao .ht_getprice {\n      width: 160px;\n      font-size: 14px;\n      overflow: hidden;\n    }\n    div.gwd_haitao .ht_getprice span {\n      font-size: 16px;\n    }\n    #amazon_global_box {\n      width: 155px;\n      text-align: center;\n    }\n    #amazon_global {\n      float: none;\n      height: 40px;\n      line-height: 40px;\n      text-align: center;\n      width: auto;\n      color: #404547;\n      font-size: 14px;\n      overflow: hidden;\n      margin: 0 auto;\n      display: inline-block;\n    }\n    .hasglobal #mini_price_history {\n      width: 97px;\n    }\n    #mini_price_history {\n      width: 179px;\n    }\n    #amazon_global span, .yjhtbtn span {\n      font-size: 13px;\n      color: #404547;\n      float: left;\n      cursor: default;\n    }\n    #amazon_global:hover {\n      text-decoration: none;\n      color: #454a4d;\n    }\n\n    .ht_getprice_num, .yjht-tle-pri {\n      font-size: 12px;\n      color: #E4393C!important;\n      margin-left: 2px;\n      line-height: 42px!important;\n    }\n    #gwd_minibar .minibar-btn-box>span {\n      font-size: 13px;\n      cursor: default;\n    }\n\n  .gwd-collection-mini {\n    display: none;\n    /*display: flex;*/\n    width: 462px;\n    height: 278px;\n    background: white;\n    border-radius: 2px;\n    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.1);\n    border: 1px solid #e6e9eb;\n    position: absolute;\n    top: 36px;\n    left: -1px;\n    z-index: 1001;\n    box-sizing: border-box;\n    cursor: default;\n    overflow: visible;\n  }\n\n  #gwd_mini_remind:hover .gwd-collection-mini {\n    display: flex;\n  }\n  </style>\n</div>\n';
     return $$out;
 };
+
+/***/ }),
+
+/***/ "a83ce54edb753f513731":
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
 
 /***/ }),
 
@@ -26178,6 +26220,13 @@ var hexSliceLookupTable = (function () {
 
 /***/ }),
 
+/***/ "b1fd938df0d982e1069b":
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9IiYjMjI5OyYjMTU1OyYjMTkwOyYjMjMwOyYjMTYwOyYjMTM1Oy8mIzIyOTsmIzEzMzsmIzE3OTsmIzIzMzsmIzE1MTsmIzE3MzsiIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8xMzA5XzI2NDEpIj4KPHBhdGggaWQ9IlZlY3RvciIgZD0iTTEyLjAwMTcgMjMuMTEwOUMxOC4xMzgyIDIzLjExMDkgMjMuMTEyOCAxOC4xMzYzIDIzLjExMjggMTEuOTk5OEMyMy4xMTI4IDUuODYzMjggMTguMTM4MiAwLjg4ODY3MiAxMi4wMDE3IDAuODg4NjcyQzUuODY1MjQgMC44ODg2NzIgMC44OTA2MjUgNS44NjMyOCAwLjg5MDYyNSAxMS45OTk4QzAuODkwNjI1IDE4LjEzNjMgNS44NjUyNCAyMy4xMTA5IDEyLjAwMTcgMjMuMTEwOVoiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGlkPSJWZWN0b3JfMiIgZD0iTTE2IDhMOCAxNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBpZD0iVmVjdG9yXzMiIGQ9Ik04IDhMMTYgMTYiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8xMzA5XzI2NDEiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg=="
+
+/***/ }),
+
 /***/ "b2919de4a905a42b0310":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26875,6 +26924,13 @@ module.exports = function inflate_fast(strm, start) {
   return;
 };
 
+
+/***/ }),
+
+/***/ "be01f895645aa39c265b":
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAAAkCAMAAADo18WhAAAAAXNSR0IArs4c6QAAAQhQTFRFAAAAAP//QL/vPMPwSLf3SL/vRsHwRbr0Rb/vRLv1RMHvR73wSbrzSLvzSL/vR7zzR8DvR771RrzyRr/vRb3ySb70SLzySL/0SL3ySL/vSL/0R73ySL7zR7z0R7/0R73xR730R7/0Sb30SL3xSL3zSL/zSLvzSL3xSL3zSL/zR730R7/zSb3xSb3zSb/zR73xR73zSbzzSb3xSb3zRr7xSb30Sb70SL3ySL30SL/ySL/0SLzySL7xSL7yR7zyRr/zSb3zR73yR73zSb3zSL7ySL/zSL7zSL70R77zR73zR77zR770SL7ySL7ySL70SL7ySL70R77yR77zR77yR77zSL7zSL7zSL7z6L2p4AAAAFd0Uk5TAAEQESAgITAwMTEyP0BAQUFPUFBRXl9fYGBgYW5vb3BwcHB/f3+AgICAj4+Pj4+QkJCQkJGenp+fn5+goKChrq6vr6+wvr+/zc7Pz93e3t/f7u7v7/3+4imx9gAABW1JREFUWMPtmXt32zQUwGV1WkKpTZcy4lKWtKzB4dl1pcVbGxgpNSwjtVmM9f2/CffqEUu2nMRLD+dwDvePxbVs6f50n/II+V/+u8KiKHIOHBweBvoanungb0i3WSqMIl9f04BZYzRYKfZEvqlzwDl3LpdwnuhrzouQkFHO39jP0MNVYqtIPJhxue4+5/fmIKrRLJk9U2TqvDmAN4GfofXM41WrInMjwKecv/1XAXDpnZTz96w9AI2kZDCjuOgLHX6tAqRuWTwYAPmEV/ZtM4DaU3fEmxrW0GqovWFxdFBRd2uAXC7nveCLcQWg8J1ve2sAMl58yZRQG+Ca89dbAlCcFgBmanaSqv2iY0raAzhcyGK6sgBCuPo9VtL7MAAzol4rgCutTfew0xLAEcRHjQDd3ByKHgggEauwg0GcWplIAoRxVYZrALzrqpYaAPVfJFLyVQDLZD0q/wgaASDksiQ3d8wA8G64w8lNAC+1o5t4OS/6mqp4UgIMcJFM+hJolrJGAJeUofMIZAYei79y2w1ZXG4NAB5UsKWrdTUAxh1KPpT68x75QAAjCzHziXQ66D2qBXHdhb6qACRWYp+jM92RHnYWu8ijAWiKmz6GyzhAlvGKLOSqGBfONKo9Jx50ap1QqyAuBfqIoo+Gi9AWd2Ud8PkFrDFWlj7eKI02igaYpdOLs6XJSbA9gAfeOcdaVoQYzd8ZhUwsEsgQT7oPAUCFGzLlqbh59/06ALOlBuAlhh/e70wwhDF8QyxofbMS0+C8DJjZgG0JQEd5YrSjBCson7MqgKWfdOpVAIQM5yr/7OqdEQCD85nynnFnIjmyOHACZBsB5LluJ1Jl6a9hwWOyNYBypMJnvcnbshd6IbVPxIsslAjHdXXPNgGgajMkwI2MNewA5sQJsCh7x2JdEEuAXLtlmYVyvohD2uPZubBy52IGqbEOAGUpTyryxC7Fg0TbUmaeITTSoG9WBnMV4KpsEjYD2LESgIyBAHM0y4T/y1CDXqwOkDhqQFghtNSXUex7ZW5uBVCpY2oTwP35S1c7TXzp/9mINnh8vg5gyE33WTbUr7hK2g8CAGcytKoDAFvSpCysNQAKY7eRKVUAHzb/IrMAIG6Qe862AyiE/A2zeD9y04fKblQVGjZZsAYAfNauPlUAEvv2gUYexmr6t4sB4MBbnresZsYKSwDYt9n5AV6ypqR5VisDNYDqiUydqv4SWYM6Ad6oInbiBDiJDqgEOElulxPmpQk0QKhrWBw0Zn3bNzYDEG2uPNB7Scxa1wEouEwA4D+otPcz2DMql1ieBwZTlb95ftunLoAujA3bAQTvpGK+yt/3fkuAfdFhCwsMVUWB3X+6U5rADGKobjpqqAPg2o739QCBVG+hUtCuEXsa4Mbqav+sAmDX8FQBoNJUGAByEeh2T11ZiHREJUocFmC85kErAUbSovMehHExAmXOjGK8YTd6JF6RAPB+8dzDUD8lSMO/cQKIXiLpOwDQAP0WAFNd0eCbimgiM9UWtfiskqEBdBbyizt/FxSfU1lx5BEbAW5jp7yzADDKU9ICgOW6IOOHOR5/a3YTTgAP5WMY+UyvWRTzMo2SPQ/1L/Z0lyf66U0/LbK8bioHwCiJ0QV/E8sPdN78KHce6qv6v5rJLwrlCPupH+zvnygm7/NcOpCY4b0k2BRgWu1m3AAqG1dd7ahazZwWGJoNg6Y6k7f2ZJ1f6i+WKn6QAC8jpyQmAJ3wGVkPIE/yaf0MnOpqtgLgsWoaTs2bPXHvD3E9Lopn5ci4+AWTO1it4T8fwiSJjT+PHY/ByxU1kLznmrDjm3fp5eVlpxYD38Pdy+d7dgOG975Q755aY88o+QeoMwyTJnu6xAAAAABJRU5ErkJggg=="
 
 /***/ }),
 
@@ -38925,16 +38981,16 @@ function listToStyles (parentId, list) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(G, regeneratorRuntime, $) {
+/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, $) {
 
 var _this = this;
 
-var request = __webpack_require__("91f250ebeb8d5987491c");
+var md5 = __webpack_require__("15199e08e6193aeacfa0");
 
 var sendData = function sendData(data) {
   var toSend = __webpack_require__("61191ae0f0390d21295c").gZip(data);
   toSend = String.fromCharCode.apply(null, toSend);
-  request.post(G.server + '/extension?ac=sendSkuInfo', btoa(toSend));
+  window.gwd_ext.post(gwd_G.server + '/extension?ac=sendSkuInfo&from=externalJS', btoa(toSend));
 };
 
 var getMdskip = function getMdskip() {
@@ -39083,121 +39139,318 @@ function extract_taobao_sku_map() {
   return attrs_list;
 }
 
-var init = function init() {
-  var res, data, r, id, exParams, payload, toRequest, _res, s;
-
-  return regeneratorRuntime.async(function init$(context$1$0) {
+function ajaxGetRequest(u) {
+  return regeneratorRuntime.async(function ajaxGetRequest$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
-        context$1$0.next = 2;
-        return regeneratorRuntime.awrap(request.get(G.s_server + '/js/configs/common.json'));
+        return context$1$0.abrupt('return', new Promise(function (resolve, reject) {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+              if (xhr.status == 200) {
+                resolve(xhr.responseText);
+                // console.log(xhr.responseText)
+              } else {
+                  reject(xhr.status);
+                }
+            }
+          };
+          xhr.open("GET", u, true);
+          xhr.withCredentials = true;
+          xhr.send();
+        }));
 
-      case 2:
-        res = context$1$0.sent;
+      case 1:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, this);
+}
 
-        if (res.sku) {
-          context$1$0.next = 5;
+function tmallDetail(pid) {
+  var spm, longText, r, token, jsonpTs, jsonString, appKey, text, sign, jsv, t, api, v, type, dataType, callback, u, resText, json, data, result;
+  return regeneratorRuntime.async(function tmallDetail$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        if (pid) {
+          context$1$0.next = 2;
           break;
         }
 
         return context$1$0.abrupt('return');
 
-      case 5:
+      case 2:
+        spm = "";
 
-        if (G.site === 'taobao') {
-          data = {
-            url: location.href,
-            fp: localStorage.getItem('gwdang-fp'),
-            dfp: localStorage.getItem('gwdang-dfp'),
-            data: {
-              dynStock: window.g_config.dynStock,
-              originalPrice: window.g_config.originalPrice,
-              promoData: window.g_config.promotion.promoData,
-              price: window.g_config.price,
-              //promotion: window.g_config.promotion,
-              soldQuantity: window.g_config.soldQuantity,
-              couponActivity: window.g_config.couponActivity,
-              sku: window.Hub.config.get('sku'),
-              attrs_list: extract_taobao_sku_map()
-            },
-            userLogin: !$('#J_SiteNavLogin').text().includes('请登录')
-          };
-
-          sendData(data);
+        if (document.URL.match(/&spm=(.*?)(?:&|$)/)) {
+          spm = document.URL.match(/&spm=(.*?)(?:&|$)/)[1];
         }
+        longText = '{"abbucket":"1","id":"' + pid + '","ns":"1","spm":"' + spm + '","sku_properties":"","detail_v":"3.5.0","appReqFrom":"detail","container_type":"xdetail","dinamic_v3":"true","supportV7":"true","ultron2":"true","itemNumId":"' + pid + '","pageCode":"miniAppDetail","_from_":"miniapp","openFrom":"pagedetail","pageSource":"1"}';
+        r = { "id": pid, "detail_v": "3.5.0", "exParams": longText };
+        token = document.cookie.match(/_m_h5_tk=([^;]+)/)[1].split("_")[0];
+        jsonpTs = new Date().getTime();
+        jsonString = JSON.stringify(r);
+        appKey = "12574478";
+        text = token + '&' + jsonpTs + '&' + appKey + '&' + jsonString;
+        sign = md5(text);
+        jsv = "2.7.0";
+        t = jsonpTs;
+        api = "mtop.taobao.detail.data.get";
+        v = "1.0";
+        type = "jsonp";
+        dataType = "jsonp";
+        callback = "mtopjsonp1";
+        u = 'https://h5api.m.tmall.com/h5/mtop.taobao.detail.data.get/1.0/?jsv=' + jsv + '&appKey=' + appKey + '&t=' + t + '&sign=' + sign + '&api=' + api + '&v=' + v + '&ttid=201200%40taobao_h5_10.2.10&isSec=0&ecode=0&AntiFlood=true&AntiCreep=true&H5Request=true&type=' + type + '&dataType=' + dataType + '&safariGoLogin=true&mainDomain=tmall.com&subDomain=m&prefix=h5api&getJSONP=true&token=' + token + '&callback=' + callback + '&data=' + encodeURIComponent(jsonString);
+        context$1$0.next = 22;
+        return regeneratorRuntime.awrap(ajaxGetRequest(u));
 
-        if (!(G.site === 'tmall')) {
-          context$1$0.next = 30;
+      case 22:
+        resText = context$1$0.sent;
+        json = resText.match(/mtopjsonp1\((.*)\)$/)[1];
+        context$1$0.prev = 24;
+        data = JSON.parse(json).data;
+        result = JSON.parse(data.apiStack[0]["value"])["global"]["data"];
+
+        result.seller = data.seller;
+        return context$1$0.abrupt('return', result);
+
+      case 31:
+        context$1$0.prev = 31;
+        context$1$0.t0 = context$1$0['catch'](24);
+        return context$1$0.abrupt('return', {});
+
+      case 34:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, this, [[24, 31]]);
+}
+
+function taobaoDetail(pid) {
+  var longText, r, token, jsonpTs, jsonString, appKey, text, sign, t, u, resText, json;
+  return regeneratorRuntime.async(function taobaoDetail$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        if (pid) {
+          context$1$0.next = 2;
           break;
         }
 
-        r = {};
+        return context$1$0.abrupt('return');
 
-        if (!$('[class^=Item--content]').length) {
+      case 2:
+        longText = '{"id":"' + pid + '","ali_refid":"","ali_trackid":"","spm":"","detail_v":"3.5.0","appReqFrom":"detail","container_type":"xdetail","dinamic_v3":"true","supportV7":"true","ultron2":"true","itemNumId":"' + pid + '","pageCode":"miniAppDetail","_from_":"miniapp","openFrom":"pagedetail","pageSource":"1"}';
+        r = { "id": pid, "detail_v": "3.5.0", "exParams": longText };
+        token = document.cookie.match(/_m_h5_tk=([^;]+)/)[1].split("_")[0];
+        jsonpTs = new Date().getTime();
+        jsonString = JSON.stringify(r);
+        appKey = "12574478";
+        text = token + '&' + jsonpTs + '&' + appKey + '&' + jsonString;
+        sign = md5(text);
+        t = jsonpTs;
+        u = 'https://h5api.m.taobao.com/h5/mtop.taobao.detail.data.get/1.0/?jsv=2.7.0&appKey=12574478&t=' + t + '&sign=' + sign + '&api=mtop.taobao.detail.data.get&v=1.0&ttid=201200%40taobao_h5_10.2.10&isSec=0&ecode=0&AntiFlood=true&AntiCreep=true&H5Request=true&type=jsonp&dataType=jsonp&safariGoLogin=true&mainDomain=taobao.com&subDomain=m&prefix=h5api&getJSONP=true&token=' + token + '&callback=mtopjsonp1&data=' + encodeURIComponent(jsonString);
+        context$1$0.next = 14;
+        return regeneratorRuntime.awrap(ajaxGetRequest(u));
+
+      case 14:
+        resText = context$1$0.sent;
+        json = resText.match(/mtopjsonp1\((.*)\)$/)[1];
+        context$1$0.prev = 16;
+        return context$1$0.abrupt('return', JSON.parse(JSON.parse(json).data.apiStack[0]["value"])["global"]["data"]);
+
+      case 20:
+        context$1$0.prev = 20;
+        context$1$0.t0 = context$1$0['catch'](16);
+        return context$1$0.abrupt('return', {});
+
+      case 23:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, this, [[16, 20]]);
+}
+
+function deleteFootprint(pid, timestamp) {
+  var days = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+  var api, v, type, appKey, token, jsonpTs, jsonString, text, sign, host, url, res;
+  return regeneratorRuntime.async(function deleteFootprint$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        api = 'mtop.taobao.cmin.deletepath';
+        v = '1.0';
+        type = 'jsonp';
+        appKey = '12574478';
+        token = document.cookie.match(/_m_h5_tk=([^;]+)/)[1].split("_")[0];
+        jsonpTs = new Date().getTime();
+        jsonString = days ? JSON.stringify({
+          ids: '',
+          days: days
+        }) : JSON.stringify({
+          ids: timestamp + '_' + pid,
+          days: ''
+        });
+        text = token + '&' + jsonpTs + '&' + appKey + '&' + jsonString;
+        sign = md5(text);
+        host = 'taobao';
+
+        if (location.host.includes('tmall')) {
+          host = 'tmall';
+        }
+        url = 'https://h5api.m.' + host + '.com/h5/' + api + '/' + v + '/?jsv=2.7.0&appKey=' + appKey + '&t=' + jsonpTs + '&sign=' + sign + '&api=' + api + '&v=' + v + '&preventFallback=true&type=' + type + '&dataType=jsonp&callback=mtopjsonp1&data=' + encodeURIComponent(jsonString);
+        context$1$0.next = 14;
+        return regeneratorRuntime.awrap(ajaxGetRequest(url));
+
+      case 14:
+        res = context$1$0.sent;
+
+        if (!res.includes('SUCCESS')) {
           context$1$0.next = 20;
           break;
         }
 
-        id = __webpack_require__("3e983ecbff4e1a29654c").getParameterByName('id');
-        exParams = {
-          id: id,
-          queryParams: 'id=' + id
-        };
-        payload = {
-          id: id,
-          detail_v: '3.3.2',
-          exParams: JSON.stringify(exParams)
-        };
-        toRequest = {
-          AntiCreep: true,
-          AntiFlood: true,
-          api: 'mtop.taobao.pcdetail.data.get',
-          data: JSON.stringify(payload),
-          dataType: 'jsonp',
-          ecode: '0',
-          isSec: '0',
-          preventFallback: true,
-          timeout: 10000,
-          ttid: '2022@taobao_litepc_9.17.0',
-          type: 'get',
-          v: '1.0'
-        };
+        __webpack_require__("f989ace58db4e6b034d9").remove(timestamp + '_' + pid);
+        return context$1$0.abrupt('return', 'SUCCESS');
+
+      case 20:
+        __webpack_require__("f989ace58db4e6b034d9").add(timestamp + '_' + pid);
+
+        if (!res.includes('过期')) {
+          context$1$0.next = 23;
+          break;
+        }
+
+        return context$1$0.abrupt('return', 'EXPIRED');
+
+      case 23:
+        return context$1$0.abrupt('return', 'FAIL');
+
+      case 24:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, this);
+}
+
+function couponInfo(id, promotionFloatingData) {
+  var token, jsonpTs, appKey, jsonString, text, sign, t, u, resText, json, result;
+  return regeneratorRuntime.async(function couponInfo$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        if (!(!promotionFloatingData || !id)) {
+          context$1$0.next = 2;
+          break;
+        }
+
+        return context$1$0.abrupt('return');
+
+      case 2:
+        token = document.cookie.match(/_m_h5_tk=([^;]+)/)[1].split("_")[0];
+        jsonpTs = new Date().getTime();
+        appKey = "12574478";
+        jsonString = JSON.stringify({
+          itemId: id,
+          promotionFloatingData: JSON.stringify(promotionFloatingData)
+        });
+        text = token + '&' + jsonpTs + '&' + appKey + '&' + jsonString;
+        sign = md5(text);
+        t = jsonpTs;
+        u = 'https://h5api.m.taobao.com/h5/mtop.tmall.detail.couponpage.newcouponpage/1.0/?jsv=2.7.0&appKey=12574478&t=' + t + '&sign=' + sign + '&api=mtop.tmall.detail.couponpage.newcouponpage&v=1.0&ttid=201200%40taobao_h5_10.2.10&isSec=0&ecode=0&AntiFlood=true&AntiCreep=true&H5Request=true&type=jsonp&dataType=jsonp&safariGoLogin=true&mainDomain=taobao.com&subDomain=m&prefix=h5api&getJSONP=true&token=' + token + '&callback=mtopjsonp1&data=' + encodeURIComponent(jsonString);
+        context$1$0.next = 12;
+        return regeneratorRuntime.awrap(ajaxGetRequest(u));
+
+      case 12:
+        resText = context$1$0.sent;
+        json = resText.match(/mtopjsonp1\((.*)\)$/)[1];
+        context$1$0.prev = 14;
+        result = JSON.parse(json).data.couponFloatLayer2VO;
+        return context$1$0.abrupt('return', result);
+
+      case 19:
+        context$1$0.prev = 19;
+        context$1$0.t0 = context$1$0['catch'](14);
+        return context$1$0.abrupt('return', {});
+
+      case 22:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, this, [[14, 19]]);
+}
+
+function mountResult(id, result) {
+  if (!window.gwd_G.aliSkuResults) {
+    window.gwd_G.aliSkuResults = {};
+  }
+  window.gwd_G.aliSkuResults[id] = result;
+}
+
+var init = function init() {
+  var id, s, r, data, couponInfoData;
+  return regeneratorRuntime.async(function init$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        if (!window.gwd_G.mtopRequested) {
+          context$1$0.next = 2;
+          break;
+        }
+
+        return context$1$0.abrupt('return');
+
+      case 2:
+        id = undefined;
+
+        if (gwd_G.site === 'taobao') {
+          id = document.URL.match(/(?:\?|&)id=(\d+)/)[1];
+        } else {
+          id = __webpack_require__("3e983ecbff4e1a29654c").getParameterByName('id');
+        }
+
+        window.gwd_G.mtopRequested = true;
+
+        s = undefined;
+
+        if (!(gwd_G.site === "taobao")) {
+          context$1$0.next = 12;
+          break;
+        }
+
+        context$1$0.next = 9;
+        return regeneratorRuntime.awrap(taobaoDetail(id));
+
+      case 9:
+        s = context$1$0.sent;
+        context$1$0.next = 19;
+        break;
+
+      case 12:
+        if (!(gwd_G.site === "tmall")) {
+          context$1$0.next = 18;
+          break;
+        }
+
         context$1$0.next = 15;
-        return regeneratorRuntime.awrap(window.lib.mtop.request(toRequest));
+        return regeneratorRuntime.awrap(tmallDetail(id));
 
       case 15:
-        _res = context$1$0.sent;
-        s = _res.data;
+        s = context$1$0.sent;
+        context$1$0.next = 19;
+        break;
 
+      case 18:
+        return context$1$0.abrupt('return');
+
+      case 19:
         r = {
           skuBase: s.skuBase,
           skuCore: s.skuCore,
           item: s.item,
+          props: s.props,
+          rate: s.rate,
           componentsVO: s.componentsVO,
-          seller: s.seller
+          seller: s.seller,
+          priceSectionData: s.priceSectionData,
+          version: "h5"
         };
-        context$1$0.next = 28;
-        break;
-
-      case 20:
-        context$1$0.next = 22;
-        return regeneratorRuntime.awrap(getMdskip());
-
-      case 22:
-        context$1$0.t0 = context$1$0.sent;
-        context$1$0.next = 25;
-        return regeneratorRuntime.awrap(getValItemInfo());
-
-      case 25:
-        context$1$0.t1 = context$1$0.sent;
-        context$1$0.t2 = extract_tmall_sku_map();
-        r = {
-          mdskip: context$1$0.t0,
-          valItemInfo: context$1$0.t1,
-          attrs_list: context$1$0.t2
-        };
-
-      case 28:
         data = {
           url: location.href,
           fp: localStorage.getItem('gwdang-fp'),
@@ -39207,8 +39460,24 @@ var init = function init() {
         };
 
         sendData(data);
+        context$1$0.next = 24;
+        return regeneratorRuntime.awrap(couponInfo(id, s.promotionFloatingData));
 
-      case 30:
+      case 24:
+        couponInfoData = context$1$0.sent;
+
+        if (couponInfoData.commonPromotions) {
+          mountResult(id, {
+            couponInfo: {
+              limit: couponInfoData.commonPromotions[0].titles[0].match(/满(\d+)使用/)[1],
+              discount: couponInfoData.commonPromotions[0].priceText
+            }
+          });
+        } else {
+          mountResult(id, 'no-coupon');
+        }
+
+      case 26:
       case 'end':
         return context$1$0.stop();
     }
@@ -39217,9 +39486,16 @@ var init = function init() {
 
 module.exports = {
   init: init,
-  getValItemInfo: getValItemInfo
+  getValItemInfo: getValItemInfo,
+  tmallDetail: tmallDetail,
+  taobaoDetail: taobaoDetail,
+  deleteFootprint: deleteFootprint
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("e081b2491b5c9b12b9da")))
+
+// console.log('deleteing', pid, timestamp)
+
+// console.log('delete request', url)
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("e081b2491b5c9b12b9da")))
 
 /***/ }),
 
@@ -40734,6 +41010,117 @@ module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGlu
 
 /***/ }),
 
+/***/ "f989ace58db4e6b034d9":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(regeneratorRuntime) {
+
+var _this = this;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+
+var bgClient = __webpack_require__("660610db8f6e89357da9");
+
+var getList = function getList() {
+  var res;
+  return regeneratorRuntime.async(function getList$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.next = 2;
+        return regeneratorRuntime.awrap(bgClient.get('/getStorage', { key: 'aliSkuHistory' }));
+
+      case 2:
+        res = context$1$0.sent;
+
+        if (res) {
+          context$1$0.next = 5;
+          break;
+        }
+
+        return context$1$0.abrupt('return', []);
+
+      case 5:
+        return context$1$0.abrupt('return', res);
+
+      case 6:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, _this);
+};
+
+var setList = function setList(list) {
+  return regeneratorRuntime.async(function setList$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.next = 2;
+        return regeneratorRuntime.awrap(bgClient.get('/setStorage', { 'aliSkuHistory': list }));
+
+      case 2:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, _this);
+};
+
+var add = function add(item) {
+  var list;
+  return regeneratorRuntime.async(function add$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.next = 2;
+        return regeneratorRuntime.awrap(getList());
+
+      case 2:
+        list = context$1$0.sent;
+
+        list.push(item);
+        list = [].concat(_toConsumableArray(new Set(list)));
+        context$1$0.next = 7;
+        return regeneratorRuntime.awrap(setList(list));
+
+      case 7:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, _this);
+};
+
+var remove = function remove(item) {
+  var list;
+  return regeneratorRuntime.async(function remove$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.next = 2;
+        return regeneratorRuntime.awrap(getList());
+
+      case 2:
+        list = context$1$0.sent;
+
+        list = list.filter(function (i) {
+          return i !== item;
+        });
+        context$1$0.next = 6;
+        return regeneratorRuntime.awrap(setList(list));
+
+      case 6:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, _this);
+};
+
+module.exports = {
+  getList: getList,
+  setList: setList,
+  add: add,
+  remove: remove
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b")))
+
+/***/ }),
+
 /***/ "ff50e367dd130fa205e3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40814,7 +41201,7 @@ var UNDEFINED,
 	NORMAL_STATE = '',
 	HOVER_STATE = 'hover',
 	SELECT_STATE = 'select',
-	
+
 	// Object for extending Axis
 	AxisPlotLineOrBandExtension,
 
@@ -40862,13 +41249,13 @@ function extend(a, b) {
 	}
 	return a;
 }
-	
+
 /**
  * Deep merge two or more objects and return a third object. If the first argument is
  * true, the contents of the second object is copied into the first object.
  * Previously this function redirected to jQuery.extend(true), but this had two limitations.
  * First, it deep merged arrays, which lead to workarounds in Highcharts. Second,
- * it copied properties from extended prototypes. 
+ * it copied properties from extended prototypes.
  */
 function merge() {
 	var i,
@@ -40891,7 +41278,7 @@ function merge() {
 					if (value && typeof value === 'object' && Object.prototype.toString.call(value) !== '[object Array]'
 							&& key !== 'renderTo' && typeof value.nodeType !== 'number') {
 						copy[key] = doCopy(copy[key] || {}, value);
-				
+
 					// Primitives and arrays are copied over directly
 					} else {
 						copy[key] = original[key];
@@ -41116,7 +41503,7 @@ function numberFormat(number, decimals, decPoint, thousandsSep) {
 		i = String(pInt(n = mathAbs(n).toFixed(c))),
 		j = i.length > 3 ? i.length % 3 : 0;
 
-	return externalFn !== numberFormat ? 
+	return externalFn !== numberFormat ?
 		externalFn(number, decimals, decPoint, thousandsSep) :
 		(s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) +
 			(c ? d + mathAbs(n - i).toFixed(c).slice(2) : ""));
@@ -41134,11 +41521,11 @@ function pad(number, length) {
 
 /**
  * Wrap a method with extended functionality, preserving the original function
- * @param {Object} obj The context object that the method belongs to 
+ * @param {Object} obj The context object that the method belongs to
  * @param {String} method The name of the method to extend
  * @param {Function} func A wrapper function callback. This function is called with the same arguments
- * as the original function, except that the original function is unshifted and passed as the first 
- * argument. 
+ * as the original function, except that the original function is unshifted and passed as the first
+ * argument.
  */
 function wrap(obj, method, func) {
 	var proceed = obj[method];
@@ -41172,7 +41559,7 @@ dateFormat = function (format, timestamp, capitalize) {
 		lang = defaultOptions.lang,
 		langWeekdays = lang.weekdays,
 
-		// List all format keys. Custom formats can be added from the outside. 
+		// List all format keys. Custom formats can be added from the outside.
 		replacements = extend({
 
 			// Day
@@ -41216,7 +41603,7 @@ dateFormat = function (format, timestamp, capitalize) {
 	return capitalize ? format.substr(0, 1).toUpperCase() + format.substr(1) : format;
 };
 
-/** 
+/**
  * Format a single variable. Similar to sprintf, without the % prefix.
  */
 function formatSingle(format, val) {
@@ -41256,12 +41643,12 @@ function format(str, ctx) {
 		ret = [],
 		val,
 		index;
-	
+
 	while ((index = str.indexOf(splitter)) !== -1) {
-		
+
 		segment = str.slice(0, index);
 		if (isInside) { // we're on the closing bracket looking back
-			
+
 			valueAndFormat = segment.split(':');
 			path = valueAndFormat.shift().split('.'); // get first and leave format
 			len = path.length;
@@ -41279,10 +41666,10 @@ function format(str, ctx) {
 
 			// Push the result and advance the cursor
 			ret.push(val);
-			
+
 		} else {
 			ret.push(segment);
-			
+
 		}
 		str = str.slice(index + 1); // the rest
 		isInside = !isInside; // toggle
@@ -41441,7 +41828,7 @@ function discardElement(element) {
 }
 
 /**
- * Provide error messages for debugging, with links to online explanation 
+ * Provide error messages for debugging, with links to online explanation
  */
 error = function (code, stop) {
 	var msg = 'Highcharts error #' + code + ': www.highcharts.com/errors/' + code;
@@ -41588,15 +41975,15 @@ pathAnim = {
 	 * The default HighchartsAdapter for jQuery
 	 */
 	win.HighchartsAdapter = win.HighchartsAdapter || ($ && {
-		
+
 		/**
 		 * Initialize the adapter by applying some extensions to jQuery
 		 */
 		init: function (pathAnim) {
-			
+
 			// extend the animate function to allow SVG animations
 			var Fx = $.fx;
-			
+
 			/*jslint unparam: true*//* allow unused param x in this function */
 			$.extend($.easing, {
 				easeOutQuad: function (x, t, b, c, d) {
@@ -41604,30 +41991,30 @@ pathAnim = {
 				}
 			});
 			/*jslint unparam: false*/
-		
+
 			// extend some methods to check for elem.attr, which means it is a Highcharts SVG object
 			$.each(['cur', '_default', 'width', 'height', 'opacity'], function (i, fn) {
 				var obj = Fx.step,
 					base;
-					
+
 				// Handle different parent objects
 				if (fn === 'cur') {
 					obj = Fx.prototype; // 'cur', the getter, relates to Fx.prototype
-				
+
 				} else if (fn === '_default' && $.Tween) { // jQuery 1.8 model
 					obj = $.Tween.propHooks[fn];
 					fn = 'set';
 				}
-		
+
 				// Overwrite the method
 				base = obj[fn];
 				if (base) { // step.width and step.height don't exist in jQuery < 1.7
-		
+
 					// create the extended function replacement
 					obj[fn] = function (fx) {
 
 						var elem;
-						
+
 						// Fx.prototype.cur does not use fx argument
 						fx = i ? fx : this;
 
@@ -41635,10 +42022,10 @@ pathAnim = {
 						if (fx.prop === 'align') {
 							return;
 						}
-		
+
 						// shortcut
 						elem = fx.elem;
-		
+
 						// Fx.prototype.cur returns the current value. The other ones are setters
 						// and returning a value has no effect.
 						return elem.attr ? // is SVG element wrapper
@@ -41652,12 +42039,12 @@ pathAnim = {
 			wrap($.cssHooks.opacity, 'get', function (proceed, elem, computed) {
 				return elem.attr ? (elem.opacity || 0) : proceed.call(this, elem, computed);
 			});
-			
+
 			// Define the setter function for d (path definitions)
 			this.addAnimSetter('d', function (fx) {
 				var elem = fx.elem,
 					ends;
-		
+
 				// Normally start and end should be set in state == 0, but sometimes,
 				// for reasons unknown, this doesn't happen. Perhaps state == 0 is skipped
 				// in these cases
@@ -41667,11 +42054,11 @@ pathAnim = {
 					fx.end = ends[1];
 					fx.started = true;
 				}
-		
+
 				// Interpolate each value of the path
 				elem.attr('d', pathAnim.step(fx.start, fx.end, fx.pos, elem.toD));
 			});
-			
+
 			/**
 			 * Utility for iterating over an array. Parameters are reversed compared to jQuery.
 			 * @param {Array} arr
@@ -41680,10 +42067,10 @@ pathAnim = {
 			this.each = Array.prototype.forEach ?
 				function (arr, fn) { // modern browsers
 					return Array.prototype.forEach.call(arr, fn);
-					
-				} : 
+
+				} :
 				function (arr, fn) { // legacy
-					var i, 
+					var i,
 						len = arr.length;
 					for (i = 0; i < len; i++) {
 						if (fn.call(arr[i], arr[i], i, arr) === false) {
@@ -41691,7 +42078,7 @@ pathAnim = {
 						}
 					}
 				};
-			
+
 			/**
 			 * Register Highcharts as a plugin in the respective framework
 			 */
@@ -41706,7 +42093,7 @@ pathAnim = {
 
 					if (isString(args[0])) {
 						constr = args[0];
-						args = Array.prototype.slice.call(args, 1); 
+						args = Array.prototype.slice.call(args, 1);
 					}
 					options = args[0];
 
@@ -41725,7 +42112,7 @@ pathAnim = {
 						ret = charts[attr(this[0], 'data-highcharts-chart')];
 					}
 				}
-				
+
 				return ret;
 			};
 
@@ -41745,19 +42132,19 @@ pathAnim = {
 				$.fx.step[prop] = setter;
 			}
 		},
-		
+
 		/**
 		 * Downloads a script and executes a callback when done.
 		 * @param {String} scriptLocation
 		 * @param {Function} callback
 		 */
 		getScript: $.getScript,
-		
+
 		/**
 		 * Return the index of an item in an array, or -1 if not found
 		 */
 		inArray: $.inArray,
-		
+
 		/**
 		 * A direct link to jQuery methods. MooTools and Prototype adapters must be implemented for each case of method.
 		 * @param {Object} elem The HTML element
@@ -41766,12 +42153,12 @@ pathAnim = {
 		adapterRun: function (elem, method) {
 			return $(elem)[method]();
 		},
-	
+
 		/**
 		 * Filter an array
 		 */
 		grep: $.grep,
-	
+
 		/**
 		 * Map an array
 		 * @param {Array} arr
@@ -41786,16 +42173,16 @@ pathAnim = {
 				results[i] = fn.call(arr[i], arr[i], i, arr);
 			}
 			return results;
-	
+
 		},
-	
+
 		/**
 		 * Get the position of an element relative to the top left of the page
 		 */
 		offset: function (el) {
 			return $(el).offset();
 		},
-	
+
 		/**
 		 * Add an event listener
 		 * @param {Object} el A HTML element or custom object
@@ -41805,7 +42192,7 @@ pathAnim = {
 		addEvent: function (el, event, fn) {
 			$(el).bind(event, fn);
 		},
-	
+
 		/**
 		 * Remove event added with addEvent
 		 * @param {Object} el The object
@@ -41819,10 +42206,10 @@ pathAnim = {
 			if (doc[func] && el && !el[func]) {
 				el[func] = function () {};
 			}
-	
+
 			$(el).unbind(eventType, handler);
 		},
-	
+
 		/**
 		 * Fire an event on a custom object
 		 * @param {Object} el
@@ -41834,7 +42221,7 @@ pathAnim = {
 			var event = $.Event(type),
 				detachedType = 'detached' + type,
 				defaultPrevented;
-	
+
 			// Remove warnings in Chrome when accessing returnValue (#2790), layerX and layerY. Although Highcharts
 			// never uses these properties, Chrome includes them in the default click event and
 			// raises the warning when they are copied over in the extend statement below.
@@ -41846,9 +42233,9 @@ pathAnim = {
 				delete eventArguments.layerY;
 				delete eventArguments.returnValue;
 			}
-	
+
 			extend(event, eventArguments);
-	
+
 			// Prevent jQuery from triggering the object method that is named the
 			// same as the event. For example, if the event is 'select', jQuery
 			// attempts calling el.select and it goes into a loop.
@@ -41856,7 +42243,7 @@ pathAnim = {
 				el[detachedType] = el[type];
 				el[type] = null;
 			}
-	
+
 			// Wrap preventDefault and stopPropagation in try/catch blocks in
 			// order to prevent JS errors when cancelling events on non-DOM
 			// objects. #615.
@@ -41874,36 +42261,36 @@ pathAnim = {
 				};
 			});
 			/*jslint unparam: false*/
-	
+
 			// trigger it
 			$(el).trigger(event);
-	
+
 			// attach the method
 			if (el[detachedType]) {
 				el[type] = el[detachedType];
 				el[detachedType] = null;
 			}
-	
+
 			if (defaultFunction && !event.isDefaultPrevented() && !defaultPrevented) {
 				defaultFunction(event);
 			}
 		},
-		
+
 		/**
 		 * Extension method needed for MooTools
 		 */
 		washMouseEvent: function (e) {
 			var ret = e.originalEvent || e;
-			
+
 			// computed by jQuery, needed by IE8
 			if (ret.pageX === UNDEFINED) { // #1236
 				ret.pageX = e.pageX;
 				ret.pageY = e.pageY;
 			}
-			
+
 			return ret;
 		},
-	
+
 		/**
 		 * Animate a HTML element or SVG element wrapper
 		 * @param {Object} el
@@ -41919,14 +42306,14 @@ pathAnim = {
 				el.toD = params.d; // keep the array form for paths, used in $.fx.step.d
 				params.d = 1; // because in jQuery, animating to an array has a different meaning
 			}
-	
+
 			$el.stop();
 			if (params.opacity !== UNDEFINED && el.attr) {
 				params.opacity += 'px'; // force jQuery to use same logic as width and height (#2161)
 			}
 			el.hasAnim = 1; // #3342
 			$el.animate(params, options);
-	
+
 		},
 		/**
 		 * Stop running animation
@@ -41943,7 +42330,7 @@ pathAnim = {
 // check for a custom HighchartsAdapter defined prior to this file
 var globalAdapter = win.HighchartsAdapter,
 	adapter = globalAdapter || {};
-	
+
 // Initialize the adapter
 if (globalAdapter) {
 	globalAdapter.init.call(globalAdapter, pathAnim);
@@ -41991,7 +42378,7 @@ defaultLabelOptions = {
 };
 
 defaultOptions = {
-	colors: ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', 
+	colors: ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c',
 		    '#8085e9', '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'],
 	symbols: ['circle', 'diamond', 'square', 'triangle', 'triangle-down'],
 	lang: {
@@ -42009,7 +42396,6 @@ defaultOptions = {
 	global: {
 		useUTC: true,
 		//timezoneOffset: 0,
-		canvasToolsURL: 'http://code.highcharts.com/4.0.4/modules/canvas-tools.js',
 		VMLRadialGradientURL: 'http://code.highcharts.com/4.0.4/gfx/vml-radial-gradient.png'
 	},
 	chart: {
@@ -42169,7 +42555,7 @@ defaultOptions = {
 				//valueDecimals: null,
 				//xDateFormat: '%A, %b %e, %Y',
 				//valuePrefix: '',
-				//ySuffix: ''				
+				//ySuffix: ''
 			//}
 			turboThreshold: 1000
 			// zIndex: null
@@ -42208,7 +42594,7 @@ defaultOptions = {
 		/*style: {
 			padding: '5px'
 		},*/
-		itemStyle: {			
+		itemStyle: {
 			color: '#333333',
 			fontSize: '12px',
 			fontWeight: 'bold'
@@ -42238,7 +42624,7 @@ defaultOptions = {
 			style: {
 				fontWeight: 'bold'
 			}
-		}			
+		}
 	},
 
 	loading: {
@@ -42264,7 +42650,7 @@ defaultOptions = {
 		backgroundColor: 'rgba(249, 249, 249, .85)',
 		borderWidth: 1,
 		borderRadius: 3,
-		dateTimeLabelFormats: { 
+		dateTimeLabelFormats: {
 			millisecond: '%A, %b %e, %H:%M:%S.%L',
 			second: '%A, %b %e, %H:%M:%S',
 			minute: '%A, %b %e, %H:%M',
@@ -42365,10 +42751,10 @@ function setTimeMethods() {
  * @param {Object} options The new custom options
  */
 function setOptions(options) {
-	
+
 	// Copy in the default options
 	defaultOptions = merge(true, defaultOptions, options);
-	
+
 	// Apply UTC
 	setTimeMethods();
 
@@ -42414,7 +42800,7 @@ var Color = function (input) {
 			result = rgbaRegEx.exec(input);
 			if (result) {
 				rgba = [pInt(result[1]), pInt(result[2]), pInt(result[3]), parseFloat(result[4], 10)];
-			} else { 
+			} else {
 				// hex
 				result = hexRegEx.exec(input);
 				if (result) {
@@ -42427,7 +42813,7 @@ var Color = function (input) {
 					}
 				}
 			}
-		}		
+		}
 
 	}
 	/**
@@ -42468,7 +42854,7 @@ var Color = function (input) {
 			each(stops, function (stop) {
 				stop.brighten(alpha);
 			});
-		
+
 		} else if (isNumber(alpha) && alpha !== 0) {
 			var i;
 			for (i = 0; i < 3; i++) {
@@ -42512,13 +42898,13 @@ var Color = function (input) {
 function SVGElement() {}
 
 SVGElement.prototype = {
-	
+
 	// Default base for animation
 	opacity: 1,
 	// For labels, these CSS properties are applied to the <text> node directly
-	textProps: ['fontSize', 'fontWeight', 'fontFamily', 'color', 
+	textProps: ['fontSize', 'fontWeight', 'fontFamily', 'color',
 		'lineHeight', 'width', 'textDecoration', 'textShadow', 'HcTextStroke'],
-	
+
 	/**
 	 * Initialize the SVG renderer
 	 * @param {Object} renderer
@@ -42531,7 +42917,7 @@ SVGElement.prototype = {
 			doc.createElementNS(SVG_NS, nodeName);
 		wrapper.renderer = renderer;
 	},
-	
+
 	/**
 	 * Animate a given attribute
 	 * @param {Object} params
@@ -42657,7 +43043,7 @@ SVGElement.prototype = {
 
 			// Set the reference to the gradient object
 			elem.setAttribute(prop, 'url(' + renderer.url + '#' + id + ')');
-		} 
+		}
 	},
 
 	/**
@@ -42683,7 +43069,7 @@ SVGElement.prototype = {
 		// used as a getter: first argument is a string, second is undefined
 		if (typeof hash === 'string') {
 			ret = (this[hash + 'Getter'] || this._defaultGetter).call(this, hash, element);
-		
+
 		// setter
 		} else {
 
@@ -42704,7 +43090,7 @@ SVGElement.prototype = {
 				if (this.rotation && (key === 'x' || key === 'y')) {
 					this.doTransform = true;
 				}
-				
+
 				if (!skipAttr) {
 					(this[key + 'Setter'] || this._defaultSetter).call(this, value, key, element);
 				}
@@ -42867,7 +43253,7 @@ SVGElement.prototype = {
 					oldStyles,
 					newStyles
 				);
-			}		
+			}
 
 			// store object
 			elemWrapper.styles = styles;
@@ -42907,19 +43293,19 @@ SVGElement.prototype = {
 	on: function (eventType, handler) {
 		var svgElement = this,
 			element = svgElement.element;
-		
+
 		// touch
 		if (hasTouch && eventType === 'click') {
-			element.ontouchstart = function (e) {			
-				svgElement.touchEventFired = Date.now();				
+			element.ontouchstart = function (e) {
+				svgElement.touchEventFired = Date.now();
 				e.preventDefault();
 				handler.call(element, e);
 			};
-			element.onclick = function (e) {												
+			element.onclick = function (e) {
 				if (userAgent.indexOf('Android') === -1 || Date.now() - (svgElement.touchEventFired || 0) > 1100) { // #2269
 					handler.call(element, e);
 				}
-			};			
+			};
 		} else {
 			// simplest possible event model for internal use
 			element['on' + eventType] = handler;
@@ -43099,13 +43485,13 @@ SVGElement.prototype = {
 			cacheKey;
 
 		// Since numbers are monospaced, and numerical labels appear a lot in a chart,
-		// we assume that a label of n characters has the same bounding box as others 
+		// we assume that a label of n characters has the same bounding box as others
 		// of the same length.
 		if (textStr === '' || numRegex.test(textStr)) {
 			cacheKey = 'num.' + textStr.toString().length + (styles ? ('|' + styles.fontSize + '|' + styles.fontFamily) : '');
 
 		} //else { // This code block made demo/waterfall fail, related to buildText
-			// Caching all strings reduces rendering time by 4-5%. 
+			// Caching all strings reduces rendering time by 4-5%.
 			// TODO: Check how this affects places where bBox is found on the element
 			//cacheKey = textStr + (styles ? ('|' + styles.fontSize + '|' + styles.fontFamily) : '');
 		//}
@@ -43406,7 +43792,7 @@ SVGElement.prototype = {
 		return this._defaultGetter(key);
 	},
 
-	/** 
+	/**
 	 * Get the current value of an attribute or pseudo attribute, used mainly
 	 * for animation.
 	 */
@@ -43474,7 +43860,7 @@ SVGElement.prototype = {
 		if (value !== this.textStr) {
 			// Delete bBox memo when the text changes
 			delete this.bBox;
-		
+
 			this.textStr = value;
 			if (this.added) {
 				this.renderer.buildText(this);
@@ -43499,14 +43885,14 @@ SVGElement.prototype = {
 
 // Some shared setters and getters
 SVGElement.prototype.yGetter = SVGElement.prototype.xGetter;
-SVGElement.prototype.translateXSetter = SVGElement.prototype.translateYSetter = 
-		SVGElement.prototype.rotationSetter = SVGElement.prototype.verticalAlignSetter = 
+SVGElement.prototype.translateXSetter = SVGElement.prototype.translateYSetter =
+		SVGElement.prototype.rotationSetter = SVGElement.prototype.verticalAlignSetter =
 		SVGElement.prototype.scaleXSetter = SVGElement.prototype.scaleYSetter = function (value, key) {
 	this[key] = value;
 	this.doTransform = true;
 };
 
-// WebKit and Batik have problems with a stroke-width of zero, so in this case we remove the 
+// WebKit and Batik have problems with a stroke-width of zero, so in this case we remove the
 // stroke attribute altogether. #1270, #1369, #3065, #3072.
 SVGElement.prototype['stroke-widthSetter'] = SVGElement.prototype.strokeSetter = function (value, key, element) {
 	this[key] = value;
@@ -43695,7 +44081,7 @@ SVGRenderer.prototype = {
 			textStroke = textStyles && textStyles.HcTextStroke,
 			i = childNodes.length,
 			getLineHeight = function (tspan) {
-				return textLineHeight ? 
+				return textLineHeight ?
 					pInt(textLineHeight) :
 					renderer.fontMetrics(
 						/(px|em)$/.test(tspan && tspan.style.fontSize) ?
@@ -43710,7 +44096,7 @@ SVGRenderer.prototype = {
 			textNode.removeChild(childNodes[i]);
 		}
 
-		// Skip tspans, add text directly to text node. The forceTSpan is a hook 
+		// Skip tspans, add text directly to text node. The forceTSpan is a hook
 		// used in text outline hack.
 		if (!hasMarkup && !textStroke && textStr.indexOf(' ') === -1) {
 			textNode.appendChild(doc.createTextNode(textStr));
@@ -43744,7 +44130,7 @@ SVGRenderer.prototype = {
 				lines.pop();
 			}
 
-			
+
 			// build the lines
 			each(lines, function (line, lineNo) {
 				var spans, spanNo = 0;
@@ -44118,7 +44504,7 @@ SVGRenderer.prototype = {
 				ry: value
 			});
 		};
-		
+
 		return wrapper.attr(attribs);
 	},
 
@@ -44399,7 +44785,7 @@ SVGRenderer.prototype = {
 			x += normalizer;
 			y += normalizer;
 			path = [
-				'M', x + r, y, 
+				'M', x + r, y,
 				'L', x + w - r, y, // top side
 				'C', x + w, y, x + w, y, x + w, y + r, // top-right corner
 				'L', x + w, y + h - r, // right side
@@ -44409,17 +44795,17 @@ SVGRenderer.prototype = {
 				'L', x, y + r, // left side
 				'C', x, y, x, y, x + r, y // top-right corner
 			];
-			
+
 			if (anchorX && anchorX > w && anchorY > y + safeDistance && anchorY < y + h - safeDistance) { // replace right side
 				path.splice(13, 3,
-					'L', x + w, anchorY - halfDistance, 
+					'L', x + w, anchorY - halfDistance,
 					x + w + arrowLength, anchorY,
 					x + w, anchorY + halfDistance,
 					x + w, y + h - r
 				);
 			} else if (anchorX && anchorX < 0 && anchorY > y + safeDistance && anchorY < y + h - safeDistance) { // replace left side
-				path.splice(33, 3, 
-					'L', x, anchorY + halfDistance, 
+				path.splice(33, 3,
+					'L', x, anchorY + halfDistance,
 					x - arrowLength, anchorY,
 					x, anchorY - halfDistance,
 					x, y + r
@@ -44467,7 +44853,7 @@ SVGRenderer.prototype = {
 	},
 
 
-	
+
 
 
 	/**
@@ -44523,7 +44909,7 @@ SVGRenderer.prototype = {
 				element.setAttribute(key, value);
 			};
 		}
-		
+
 		return wrapper;
 	},
 
@@ -44597,7 +44983,7 @@ SVGRenderer.prototype = {
 				boxY,
 				style = text.element.style;
 
-			bBox = (width === undefined || height === undefined || wrapper.styles.textAlign) && text.textStr && 
+			bBox = (width === undefined || height === undefined || wrapper.styles.textAlign) && text.textStr &&
 				text.getBBox();
 			wrapper.width = (width || bBox.width || 0) + 2 * padding + paddingLeft;
 			wrapper.height = (height || bBox.height || 0) + 2 * padding;
@@ -44605,7 +44991,7 @@ SVGRenderer.prototype = {
 			// update the label-scoped y offset
 			baselineOffset = padding + renderer.fontMetrics(style && style.fontSize, text).b;
 
-			
+
 			if (needsBox) {
 
 				// create the border box if it is not already present
@@ -45242,7 +45628,7 @@ VMLElement = {
 		var rotation = this.rotation,
 			costheta = mathCos(rotation * deg2rad),
 			sintheta = mathSin(rotation * deg2rad);
-					
+
 		css(this.element, {
 			filter: rotation ? ['progid:DXImageTransform.Microsoft.Matrix(M11=', costheta,
 				', M12=', -sintheta, ', M21=', sintheta, ', M22=', costheta,
@@ -45251,7 +45637,7 @@ VMLElement = {
 	},
 
 	/**
-	 * Get the positioning correction for the span after rotating. 
+	 * Get the positioning correction for the span after rotating.
 	 */
 	getSpanCorrection: function (width, baseline, alignCorrection, rotation, align) {
 
@@ -45303,7 +45689,7 @@ VMLElement = {
 				path[i] = value[i];
 
 				// When the start X and end X coordinates of an arc are too close,
-				// they are rounded to the same value above. In this case, substract or 
+				// they are rounded to the same value above. In this case, substract or
 				// add 1 from the end X and Y positions. #186, #760, #1371, #1410.
 				if (value.isArc && (value[i] === 'wa' || value[i] === 'at')) {
 					// Start and end X
@@ -45318,7 +45704,7 @@ VMLElement = {
 			}
 		}
 
-		
+
 		// Loop up again to handle path shortcuts (#2132)
 		/*while (i++ < path.length) {
 			if (path[i] === 'H') { // horizontal line to
@@ -45568,7 +45954,7 @@ VMLElement = {
 		if (value === 'inherit') {
 			value = VISIBLE;
 		}
-		
+
 		// Let the shadow follow the main element
 		if (this.shadows) {
 			each(this.shadows, function (shadow) {
@@ -45619,8 +46005,8 @@ Highcharts.VMLElement = VMLElement = extendClass(SVGElement, VMLElement);
 
 // Some shared setters
 VMLElement.prototype.ySetter =
-	VMLElement.prototype.widthSetter = 
-	VMLElement.prototype.heightSetter = 
+	VMLElement.prototype.widthSetter =
+	VMLElement.prototype.heightSetter =
 	VMLElement.prototype.xSetter;
 
 
@@ -46045,7 +46431,7 @@ var VMLRendererExtension = { // inherit SVGRenderer
 	 * For rectangles, VML uses a shape for rect to overcome bugs and rotation problems
 	 */
 	createElement: function (nodeName) {
-		return nodeName === 'rect' ? this.symbol(nodeName) : SVGRenderer.prototype.createElement.call(this, nodeName);	
+		return nodeName === 'rect' ? this.symbol(nodeName) : SVGRenderer.prototype.createElement.call(this, nodeName);
 	},
 
 	/**
@@ -46221,7 +46607,7 @@ if (useCanVG) {
 	};
 
 	/**
-	 * Start with an empty symbols object. This is needed when exporting is used (exporting.src.js will add a few symbols), but 
+	 * Start with an empty symbols object. This is needed when exporting is used (exporting.src.js will add a few symbols), but
 	 * the implementation from SvgRenderer will not be merged in until first render.
 	 */
 	CanVGRenderer.prototype.symbols = {};
@@ -46337,7 +46723,7 @@ Tick.prototype = {
 
 		// prepare CSS
 		css = width && { width: mathMax(1, mathRound(width - 2 * (labelOptions.padding || 10))) + PX };
-		
+
 		// first call
 		if (!defined(label)) {
 			attr = {
@@ -46713,7 +47099,7 @@ Highcharts.PlotLineOrBand = function (axis, options) {
 };
 
 Highcharts.PlotLineOrBand.prototype = {
-	
+
 	/**
 	 * Render the plot line or plot band. If it is already existing,
 	 * move it.
@@ -46764,11 +47150,11 @@ Highcharts.PlotLineOrBand.prototype = {
 				attribs.dashstyle = dashStyle;
 			}
 		} else if (isBand) { // plot band
-			
+
 			// keep within plot area
 			from = mathMax(from, axis.min - halfPointRange);
 			to = mathMin(to, axis.max + halfPointRange);
-			
+
 			path = axis.getPlotBandPath(from, to, options);
 			if (color) {
 				attribs.fill = color;
@@ -46877,7 +47263,7 @@ Highcharts.PlotLineOrBand.prototype = {
 	destroy: function () {
 		// remove it from the lookup
 		erase(this.axis.plotLinesAndBands, this);
-		
+
 		delete this.axis;
 		destroyObjectProperties(this);
 	}
@@ -46891,7 +47277,7 @@ AxisPlotLineOrBandExtension = {
 
 	/**
 	 * Create the path for a plot band
-	 */ 
+	 */
 	getPlotBandPath: function (from, to) {
 		var toPath = this.getPlotLinePath(to),
 			path = this.getPlotLinePath(from);
@@ -46906,14 +47292,14 @@ AxisPlotLineOrBandExtension = {
 		} else { // outside the axis area
 			path = null;
 		}
-		
+
 		return path;
 	},
 
 	addPlotBand: function (options) {
 		return this.addPlotBandOrLine(options, 'plotBands');
 	},
-	
+
 	addPlotLine: function (options) {
 		return this.addPlotBandOrLine(options, 'plotLines');
 	},
@@ -46931,11 +47317,11 @@ AxisPlotLineOrBandExtension = {
 			// Add it to the user options for exporting and Axis.update
 			if (coll) {
 				userOptions[coll] = userOptions[coll] || [];
-				userOptions[coll].push(options); 
+				userOptions[coll].push(options);
 			}
-			this.plotLinesAndBands.push(obj); 
+			this.plotLinesAndBands.push(obj);
 		}
-		
+
 		return obj;
 	},
 
@@ -47215,7 +47601,7 @@ Axis.prototype = {
 		//axis.tickInterval = UNDEFINED;
 		//axis.minorTickInterval = UNDEFINED;
 
-		axis.tickmarkOffset = (axis.categories && options.tickmarkPlacement === 'between' && 
+		axis.tickmarkOffset = (axis.categories && options.tickmarkPlacement === 'between' &&
 			pick(options.tickInterval, 1) === 1) ? 0.5 : 0; // #3202
 
 		// Major ticks
@@ -47255,7 +47641,7 @@ Axis.prototype = {
 		// Dictionary for stacks
 		axis.stacks = {};
 		axis.oldStacks = {};
-		
+
 		// Min and max in the data
 		//axis.dataMin = UNDEFINED,
 		//axis.dataMax = UNDEFINED,
@@ -47386,7 +47772,7 @@ Axis.prototype = {
 
 		// Reset properties in case we're redrawing (#3353)
 		axis.dataMin = axis.dataMax = axis.ignoreMinPadding = axis.ignoreMaxPadding = null;
-		
+
 		if (axis.buildStacks) {
 			axis.buildStacks();
 		}
@@ -47948,9 +48334,9 @@ Axis.prototype = {
 		if (!isDatetimeAxis && !isLog) { // linear
 			if (!tickIntervalOption) {
 				axis.tickInterval = normalizeTickInterval(
-					axis.tickInterval, 
-					null, 
-					getMagnitude(axis.tickInterval), 
+					axis.tickInterval,
+					null,
+					getMagnitude(axis.tickInterval),
 					// If the tick interval is between 1 and 5 and the axis max is in the order of
 					// thousands, chances are we are dealing with years. Don't allow decimals. #3363.
 					pick(options.allowDecimals, !(axis.tickInterval > 1 && axis.tickInterval < 5 && axis.max > 1000 && axis.max < 9999))
@@ -48016,7 +48402,7 @@ Axis.prototype = {
 				tickPositions.pop();
 			}
 
-			// If no tick are left, set one tick in the middle (#3195) 
+			// If no tick are left, set one tick in the middle (#3195)
 			if (tickPositions.length === 0 && defined(roundedMin)) {
 				tickPositions.push((roundedMax + roundedMin) / 2);
 			}
@@ -48590,7 +48976,7 @@ Axis.prototype = {
 			isLinked = axis.isLinked,
 			tickPositions = axis.tickPositions,
 			sortedPositions,
-			axisTitle = axis.axisTitle,			
+			axisTitle = axis.axisTitle,
 			ticks = axis.ticks,
 			minorTicks = axis.minorTicks,
 			alternateBands = axis.alternateBands,
@@ -48792,7 +49178,7 @@ Axis.prototype = {
 	 * Redraw the axis to reflect changes in the data or axis extremes
 	 */
 	redraw: function () {
-		
+
 		// render the axis
 		this.render();
 
@@ -48944,41 +49330,41 @@ Axis.prototype.getTimeTicks = function (normalizedInterval, min, max, startOfWee
 			minDate.setSeconds(interval >= timeUnits.minute ? 0 :
 				count * mathFloor(minDate.getSeconds() / count));
 		}
-	
+
 		if (interval >= timeUnits.minute) { // minute
 			minDate[setMinutes](interval >= timeUnits.hour ? 0 :
 				count * mathFloor(minDate[getMinutes]() / count));
 		}
-	
+
 		if (interval >= timeUnits.hour) { // hour
 			minDate[setHours](interval >= timeUnits.day ? 0 :
 				count * mathFloor(minDate[getHours]() / count));
 		}
-	
+
 		if (interval >= timeUnits.day) { // day
 			minDate[setDate](interval >= timeUnits.month ? 1 :
 				count * mathFloor(minDate[getDate]() / count));
 		}
-	
+
 		if (interval >= timeUnits.month) { // month
 			minDate[setMonth](interval >= timeUnits.year ? 0 :
 				count * mathFloor(minDate[getMonth]() / count));
 			minYear = minDate[getFullYear]();
 		}
-	
+
 		if (interval >= timeUnits.year) { // year
 			minYear -= minYear % count;
 			minDate[setFullYear](minYear);
 		}
-	
+
 		// week is a special case that runs outside the hierarchy
 		if (interval === timeUnits.week) {
 			// get start of current week, independent of count
 			minDate[setDate](minDate[getDate]() - minDate[getDay]() +
 				pick(startOfWeek, 1));
 		}
-	
-	
+
+
 		// get tick positions
 		i = 1;
 		if (timezoneOffset) {
@@ -48988,36 +49374,36 @@ Axis.prototype.getTimeTicks = function (normalizedInterval, min, max, startOfWee
 		var time = minDate.getTime(),
 			minMonth = minDate[getMonth](),
 			minDateDate = minDate[getDate](),
-			localTimezoneOffset = (timeUnits.day + 
+			localTimezoneOffset = (timeUnits.day +
 					(useUTC ? timezoneOffset : minDate.getTimezoneOffset() * 60 * 1000)
 				) % timeUnits.day; // #950, #3359
-	
+
 		// iterate and add tick positions at appropriate values
 		while (time < max) {
 			tickPositions.push(time);
-	
+
 			// if the interval is years, use Date.UTC to increase years
 			if (interval === timeUnits.year) {
 				time = makeTime(minYear + i * count, 0);
-	
+
 			// if the interval is months, use Date.UTC to increase months
 			} else if (interval === timeUnits.month) {
 				time = makeTime(minYear, minMonth + i * count);
-	
+
 			// if we're using global time, the interval is not fixed as it jumps
 			// one hour at the DST crossover
 			} else if (!useUTC && (interval === timeUnits.day || interval === timeUnits.week)) {
 				time = makeTime(minYear, minMonth, minDateDate +
 					i * count * (interval === timeUnits.day ? 1 : 7));
-	
+
 			// else, the interval is fixed and we use simple addition
 			} else {
 				time += interval * count;
 			}
-	
+
 			i++;
 		}
-	
+
 		// push the last time
 		tickPositions.push(time);
 
@@ -49042,10 +49428,10 @@ Axis.prototype.getTimeTicks = function (normalizedInterval, min, max, startOfWee
 
 /**
  * Get a normalized tick interval for dates. Returns a configuration object with
- * unit range (interval), count and name. Used to prepare data for getTimeTicks. 
+ * unit range (interval), count and name. Used to prepare data for getTimeTicks.
  * Previously this logic was part of getTimeTicks, but as getTimeTicks now runs
- * of segments in stock charts, the normalizing logic was extracted in order to 
- * prevent it for running over again for each segment having the same interval. 
+ * of segments in stock charts, the normalizing logic was extracted in order to
+ * prevent it for running over again for each segment having the same interval.
  * #662, #697.
  */
 Axis.prototype.normalizeTimeTickInterval = function (tickInterval, unitsOption) {
@@ -49079,7 +49465,7 @@ Axis.prototype.normalizeTimeTickInterval = function (tickInterval, unitsOption) 
 		multiples = unit[1],
 		count,
 		i;
-		
+
 	// loop through the units to find the one that best fits the tickInterval
 	for (i = 0; i < units.length; i++) {
 		unit = units[i];
@@ -49106,11 +49492,11 @@ Axis.prototype.normalizeTimeTickInterval = function (tickInterval, unitsOption) 
 
 	// get the count
 	count = normalizeTickInterval(
-		tickInterval / interval, 
+		tickInterval / interval,
 		multiples,
 		unit[0] === 'year' ? mathMax(getMagnitude(tickInterval / interval), 1) : 1 // #1913, #2360
 	);
-	
+
 	return {
 		unitRange: interval,
 		count: count,
@@ -49129,20 +49515,20 @@ Axis.prototype.getLogTickPositions = function (interval, min, max, minor) {
 		axisLength = axis.len,
 		// Since we use this method for both major and minor ticks,
 		// use a local variable and return the result
-		positions = []; 
-	
+		positions = [];
+
 	// Reset
 	if (!minor) {
 		axis._minorAutoInterval = null;
 	}
-	
+
 	// First case: All ticks fall on whole logarithms: 1, 10, 100 etc.
 	if (interval >= 0.5) {
 		interval = mathRound(interval);
 		positions = axis.getLinearTickPositions(interval, min, max);
-		
-	// Second case: We need intermediary ticks. For example 
-	// 1, 2, 4, 6, 8, 10, 20, 40 etc. 
+
+	// Second case: We need intermediary ticks. For example
+	// 1, 2, 4, 6, 8, 10, 20, 40 etc.
 	} else if (interval >= 0.08) {
 		var roundedMin = mathFloor(min),
 			intermediate,
@@ -49152,7 +49538,7 @@ Axis.prototype.getLogTickPositions = function (interval, min, max, minor) {
 			pos,
 			lastPos,
 			break2;
-			
+
 		if (interval > 0.3) {
 			intermediate = [1, 2, 4];
 		} else if (interval > 0.15) { // 0.2 equals five minor ticks per 1, 10, 100 etc
@@ -49160,7 +49546,7 @@ Axis.prototype.getLogTickPositions = function (interval, min, max, minor) {
 		} else { // 0.1 equals ten minor ticks per 1, 10, 100 etc
 			intermediate = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 		}
-		
+
 		for (i = roundedMin; i < max + 1 && !break2; i++) {
 			len = intermediate.length;
 			for (j = 0; j < len && !break2; j++) {
@@ -49168,14 +49554,14 @@ Axis.prototype.getLogTickPositions = function (interval, min, max, minor) {
 				if (pos > min && (!minor || lastPos <= max) && lastPos !== UNDEFINED) { // #1670, lastPos is #3113
 					positions.push(lastPos);
 				}
-				
+
 				if (lastPos > max) {
 					break2 = true;
 				}
 				lastPos = pos;
 			}
 		}
-		
+
 	// Third case: We are so deep in between whole logarithmic values that
 	// we might as well handle the tick positions like a linear axis. For
 	// example 1.01, 1.02, 1.03, 1.04.
@@ -49186,31 +49572,31 @@ Axis.prototype.getLogTickPositions = function (interval, min, max, minor) {
 			filteredTickIntervalOption = tickIntervalOption === 'auto' ? null : tickIntervalOption,
 			tickPixelIntervalOption = options.tickPixelInterval / (minor ? 5 : 1),
 			totalPixelLength = minor ? axisLength / axis.tickPositions.length : axisLength;
-		
+
 		interval = pick(
 			filteredTickIntervalOption,
 			axis._minorAutoInterval,
 			(realMax - realMin) * tickPixelIntervalOption / (totalPixelLength || 1)
 		);
-		
+
 		interval = normalizeTickInterval(
-			interval, 
-			null, 
+			interval,
+			null,
 			getMagnitude(interval)
 		);
-		
+
 		positions = map(axis.getLinearTickPositions(
-			interval, 
+			interval,
 			realMin,
-			realMax	
+			realMax
 		), log2lin);
-		
+
 		if (!minor) {
 			axis._minorAutoInterval = interval / 5;
 		}
 	}
-	
-	// Set the axis-level tickInterval variable 
+
+	// Set the axis-level tickInterval variable
 	if (!minor) {
 		axis.tickInterval = interval;
 	}
@@ -49295,7 +49681,7 @@ Tooltip.prototype = {
 	move: function (x, y, anchorX, anchorY) {
 		var tooltip = this,
 			now = tooltip.now,
-			animate = tooltip.options.animation !== false && !tooltip.isHidden && 
+			animate = tooltip.options.animation !== false && !tooltip.isHidden &&
 				// When we get close to the target position, abort animation and land on the right place (#3056)
 				(mathAbs(x - now.x) > 1 || mathAbs(y - now.y) > 1),
 			skipAnchor = tooltip.followPointer || tooltip.len > 1;
@@ -49311,13 +49697,13 @@ Tooltip.prototype = {
 		// Move to the intermediate value
 		tooltip.label.attr(now);
 
-		
+
 		// Run on next tick of the mouse tracker
 		if (animate) {
-		
+
 			// Never allow two timeouts
 			clearTimeout(this.tooltipTimeout);
-			
+
 			// Set the fixed interval ticking for the smooth tooltip
 			this.tooltipTimeout = setTimeout(function () {
 				// The interval function may still be running during destroy, so check that the chart is really there before calling.
@@ -49325,7 +49711,7 @@ Tooltip.prototype = {
 					tooltip.move(x, y, anchorX, anchorY);
 				}
 			}, 32);
-			
+
 		}
 	},
 
@@ -49335,7 +49721,7 @@ Tooltip.prototype = {
 	hide: function (delay) {
 		var tooltip = this,
 			hoverPoints;
-		
+
 		clearTimeout(this.hideTimer); // disallow duplicate timers (#1728, #1766)
 		if (!this.isHidden) {
 			hoverPoints = this.chart.hoverPoints;
@@ -49355,8 +49741,8 @@ Tooltip.prototype = {
 			this.chart.hoverPoints = null;
 		}
 	},
-	
-	/** 
+
+	/**
 	 * Extendable method to get the anchor position of the tooltip
 	 * from a point or set of points
 	 */
@@ -49368,12 +49754,12 @@ Tooltip.prototype = {
 			plotX = 0,
 			plotY = 0,
 			yAxis;
-		
+
 		points = splat(points);
-		
+
 		// Pie uses a special tooltipPos
 		ret = points[0].tooltipPos;
-		
+
 		// When tooltip follows mouse, relate the position to the mouse
 		if (this.followPointer && mouseEvent) {
 			if (mouseEvent.chartX === UNDEFINED) {
@@ -49392,13 +49778,13 @@ Tooltip.prototype = {
 				plotY += (point.plotLow ? (point.plotLow + point.plotHigh) / 2 : point.plotY) +
 					(!inverted && yAxis ? yAxis.top - plotTop : 0); // #1151
 			});
-			
+
 			plotX /= points.length;
 			plotY /= points.length;
-			
+
 			ret = [
 				inverted ? chart.plotWidth - plotY : plotX,
-				this.shared && !inverted && points.length > 1 && mouseEvent ? 
+				this.shared && !inverted && points.length > 1 && mouseEvent ?
 					mouseEvent.chartY - plotTop : // place shared tooltip next to the mouse (#424)
 					inverted ? chart.plotHeight - plotX : plotY
 			];
@@ -49406,13 +49792,13 @@ Tooltip.prototype = {
 
 		return map(ret, mathRound);
 	},
-	
+
 	/**
 	 * Place the tooltip in a chart without spilling over
 	 * and not covering the point it self.
 	 */
 	getPosition: function (boxWidth, boxHeight, point) {
-		
+
 		var chart = this.chart,
 			distance = this.distance,
 			ret = {},
@@ -49453,7 +49839,7 @@ Tooltip.prototype = {
 				// Too close to the edge, return false and swap dimensions
 				if (point < distance || point > outerSize - distance) {
 					return false;
-				
+
 				// Align left/top
 				} else if (point < innerSize / 2) {
 					ret[dim] = 1;
@@ -49466,7 +49852,7 @@ Tooltip.prototype = {
 				}
 			},
 			/**
-			 * Swap the dimensions 
+			 * Swap the dimensions
 			 */
 			swap = function (count) {
 				var temp = first;
@@ -49495,7 +49881,7 @@ Tooltip.prototype = {
 		run();
 
 		return ret;
-	
+
 	},
 
 	/**
@@ -49543,9 +49929,9 @@ Tooltip.prototype = {
 			borderColor,
 			shared = tooltip.shared,
 			currentSeries;
-			
+
 		clearTimeout(this.hideTimer);
-		
+
 		// get the reference point coordinates (pie charts use tooltipPos)
 		tooltip.followPointer = splat(point)[0].series.tooltipOptions.followPointer;
 		anchor = tooltip.getAnchor(point, mouseEvent);
@@ -49554,9 +49940,9 @@ Tooltip.prototype = {
 
 		// shared tooltip, array is sent over
 		if (shared && !(point.series && point.series.noSharedTooltip)) {
-			
+
 			// hide previous hoverPoints and set new
-			
+
 			chart.hoverPoints = point;
 			if (hoverPoints) {
 				each(hoverPoints, function (point) {
@@ -49609,9 +49995,9 @@ Tooltip.prototype = {
 			label.attr({
 				stroke: borderColor
 			});
-			
+
 			tooltip.updatePosition({ plotX: x, plotY: y, negative: point.negative, ttBelow: point.ttBelow });
-		
+
 			this.isHidden = false;
 		}
 		fireEvent(chart, 'tooltipRefresh', {
@@ -49621,13 +50007,13 @@ Tooltip.prototype = {
 				borderColor: borderColor
 			});
 	},
-	
+
 	/**
 	 * Find the new position and perform the move
 	 */
 	updatePosition: function (point) {
 		var chart = this.chart,
-			label = this.label, 
+			label = this.label,
 			pos = (this.options.positioner || this.getPosition).call(
 				this,
 				label.width,
@@ -49637,9 +50023,9 @@ Tooltip.prototype = {
 
 		// do the move
 		this.move(
-			mathRound(pos.x), 
-			mathRound(pos.y), 
-			point.plotX + chart.plotLeft, 
+			mathRound(pos.x),
+			mathRound(pos.y),
+			point.plotX + chart.plotLeft,
 			point.plotY + chart.plotTop
 		);
 	},
@@ -49663,9 +50049,9 @@ Tooltip.prototype = {
 		if (isDateTime && !xDateFormat) {
 			if (closestPointRange) {
 				for (n in timeUnits) {
-					if (timeUnits[n] >= closestPointRange || 
+					if (timeUnits[n] >= closestPointRange ||
 							// If the point is placed every day at 23:59, we need to show
-							// the minutes as well. This logic only works for time units less than 
+							// the minutes as well. This logic only works for time units less than
 							// a day, since all higher time units are dividable by those. #2637.
 							(timeUnits[n] <= timeUnits.day && point.key % timeUnits[n] > 0)) {
 						xDateFormat = dateTimeLabelFormats[n];
@@ -49698,7 +50084,7 @@ var hoverChartIndex;
 hasTouch = doc.documentElement.ontouchstart !== UNDEFINED;
 
 /**
- * The mouse tracker object. All methods starting with "on" are primary DOM event handlers. 
+ * The mouse tracker object. All methods starting with "on" are primary DOM event handlers.
  * Subsequent methods should be named differently from what they are doing.
  * @param {Object} chart The Chart instance
  * @param {Object} options The root options object
@@ -49712,7 +50098,7 @@ Pointer.prototype = {
 	 * Initialize Pointer
 	 */
 	init: function (chart, options) {
-		
+
 		var chartOptions = options.chart,
 			chartEvents = chartOptions.events,
 			zoomType = useCanVG ? '' : chartOptions.zoomType,
@@ -49723,7 +50109,7 @@ Pointer.prototype = {
 		// Store references
 		this.options = options;
 		this.chart = chart;
-		
+
 		// Zoom status
 		this.zoomX = zoomX = /x/.test(zoomType);
 		this.zoomY = zoomY = /y/.test(zoomType);
@@ -49743,7 +50129,7 @@ Pointer.prototype = {
 		}
 
 		this.setDOMEvents();
-	}, 
+	},
 
 	/**
 	 * Add crossbrowser support for chartX and chartY
@@ -49764,7 +50150,7 @@ Pointer.prototype = {
 		if (!e.target) {
 			e.target = e.srcElement;
 		}
-		
+
 		// iOS (#2757)
 		ePos = e.touches ?  (e.touches.length ? e.touches.item(0) : e.changedTouches[0]) : e;
 
@@ -49775,7 +50161,7 @@ Pointer.prototype = {
 
 		// chartX and chartY
 		if (ePos.pageX === UNDEFINED) { // IE < 9. #886.
-			chartX = mathMax(e.x, e.clientX - chartPosition.left); // #2005, #2129: the second case is 
+			chartX = mathMax(e.x, e.clientX - chartPosition.left); // #2005, #2129: the second case is
 				// for IE10 quirks mode within framesets
 			chartY = e.y;
 		} else {
@@ -49808,15 +50194,15 @@ Pointer.prototype = {
 		});
 		return coordinates;
 	},
-	
+
 	/**
-	 * Return the index in the tooltipPoints array, corresponding to pixel position in 
+	 * Return the index in the tooltipPoints array, corresponding to pixel position in
 	 * the plot area.
 	 */
 	getIndex: function (e) {
 		var chart = this.chart;
-		return chart.inverted ? 
-			chart.plotHeight + chart.plotTop - e.chartY : 
+		return chart.inverted ?
+			chart.plotHeight + chart.plotTop - e.chartY :
 			e.chartX - chart.plotLeft;
 	},
 
@@ -49886,13 +50272,13 @@ Pointer.prototype = {
 				point.onMouseOver(e);
 
 			}
-			
+
 		} else if (tooltip && followPointer && !tooltip.isHidden) {
 			anchor = tooltip.getAnchor([{}], e);
 			tooltip.updatePosition({ plotX: anchor[0], plotY: anchor[1] });
 		}
 
-		// Start the event listener to pick up the tooltip 
+		// Start the event listener to pick up the tooltip
 		if (tooltip && !pointer._onDocumentMouseMove) {
 			pointer._onDocumentMouseMove = function (e) {
 				if (charts[hoverChartIndex]) {
@@ -49912,7 +50298,7 @@ Pointer.prototype = {
 
 	/**
 	 * Reset the tracking by hiding the tooltip, the hover series state and the hover point
-	 * 
+	 *
 	 * @param allowMove {Boolean} Instead of destroying the tooltip altogether, allow moving it if possible
 	 */
 	reset: function (allowMove, delay) {
@@ -49922,14 +50308,14 @@ Pointer.prototype = {
 			hoverPoint = chart.hoverPoint,
 			tooltip = chart.tooltip,
 			tooltipPoints = tooltip && tooltip.shared ? chart.hoverPoints : hoverPoint;
-			
+
 		// Narrow in allowMove
 		allowMove = allowMove && tooltip && tooltipPoints;
-			
+
 		// Check if the points have moved outside the plot area, #1003
 		if (allowMove && splat(tooltipPoints)[0].plotX === UNDEFINED) {
 			allowMove = false;
-		}	
+		}
 
 		// Just move the tooltip, #349
 		if (allowMove) {
@@ -49962,7 +50348,7 @@ Pointer.prototype = {
 			each(chart.axes, function (axis) {
 				axis.hideCrosshair();
 			});
-			
+
 			pointer.hoverX = null;
 
 		}
@@ -49990,7 +50376,7 @@ Pointer.prototype = {
 				}
 			}
 		});
-		
+
 		// Clip
 		chart.clipRect.attr(clip || chart.clipBox);
 	},
@@ -50042,13 +50428,13 @@ Pointer.prototype = {
 		} else if (chartY > plotTop + plotHeight) {
 			chartY = plotTop + plotHeight;
 		}
-		
+
 		// determine if the mouse has moved more than 10px
 		this.hasDragged = Math.sqrt(
 			Math.pow(mouseDownX - chartX, 2) +
 			Math.pow(mouseDownY - chartY, 2)
 		);
-		
+
 		if (this.hasDragged > 10) {
 			clickedInside = chart.isInsidePlot(mouseDownX - plotLeft, mouseDownY - plotTop);
 
@@ -50136,8 +50522,8 @@ Pointer.prototype = {
 					}
 				});
 				if (runZoom) {
-					fireEvent(chart, 'selection', selectionData, function (args) { 
-						chart.zoom(extend(args, hasPinched ? { animation: false } : null)); 
+					fireEvent(chart, 'selection', selectionData, function (args) {
+						chart.zoom(extend(args, hasPinched ? { animation: false } : null));
 					});
 				}
 
@@ -50167,11 +50553,11 @@ Pointer.prototype = {
 		if (e.preventDefault) {
 			e.preventDefault();
 		}
-		
+
 		this.dragStart(e);
 	},
 
-	
+
 
 	onDocumentMouseUp: function (e) {
 		if (charts[hoverChartIndex]) {
@@ -50181,7 +50567,7 @@ Pointer.prototype = {
 
 	/**
 	 * Special handler for mouse move that will hide the tooltip when the mouse leaves the plotarea.
-	 * Issue #149 workaround. The mouseleave event does not always fire. 
+	 * Issue #149 workaround. The mouseleave event does not always fire.
 	 */
 	onDocumentMouseMove: function (e) {
 		var chart = this.chart,
@@ -50215,15 +50601,15 @@ Pointer.prototype = {
 
 		hoverChartIndex = chart.index;
 
-		e = this.normalize(e);		
+		e = this.normalize(e);
 		e.returnValue = false; // #2251, #3224
-		
+
 		if (chart.mouseIsDown === 'mousedown') {
 			this.drag(e);
-		} 
-		
+		}
+
 		// Show the tooltip and run mouse over events (#977)
-		if ((this.inClass(e.target, 'highcharts-tracker') || 
+		if ((this.inClass(e.target, 'highcharts-tracker') ||
 				chart.isInsidePlot(e.chartX - chart.plotLeft, e.chartY - chart.plotTop)) && !chart.openMenu) {
 			this.runPointActions(e);
 		}
@@ -50246,14 +50632,14 @@ Pointer.prototype = {
 				}
 			}
 			element = element.parentNode;
-		}		
+		}
 	},
 
 	onTrackerMouseOut: function (e) {
 		var series = this.chart.hoverSeries,
 			relatedTarget = e.relatedTarget || e.toElement,
 			relatedSeries = relatedTarget && relatedTarget.point && relatedTarget.point.series; // #2499
-		
+
 		if (series && !series.options.stickyTracking && !this.inClass(relatedTarget, PREFIX + 'tooltip') &&
 				relatedSeries !== series) {
 			series.onMouseOut();
@@ -50262,15 +50648,15 @@ Pointer.prototype = {
 
 	onContainerClick: function (e) {
 		var chart = this.chart,
-			hoverPoint = chart.hoverPoint, 
+			hoverPoint = chart.hoverPoint,
 			plotLeft = chart.plotLeft,
 			plotTop = chart.plotTop;
-		
+
 		e = this.normalize(e);
 		e.cancelBubble = true; // IE specific
 
 		if (!chart.cancelClick) {
-			
+
 			// On tracker click, fire the series and point events. #783, #1583
 			if (hoverPoint && this.inClass(e.target, PREFIX + 'tracker')) {
 
@@ -50332,7 +50718,7 @@ Pointer.prototype = {
 				addEvent(doc, 'touchend', pointer.onDocumentTouchEnd);
 			}
 		}
-		
+
 	},
 
 	/**
@@ -50398,9 +50784,9 @@ extend(Highcharts.Pointer.prototype, {
 			scaleKey,
 			setScale = function () {
 				if (!singleTouch && mathAbs(touch0Start - touch1Start) > 20) { // Don't zoom if fingers are too close on this axis
-					scale = forcedScale || mathAbs(touch0Now - touch1Now) / mathAbs(touch0Start - touch1Start); 
+					scale = forcedScale || mathAbs(touch0Now - touch1Now) / mathAbs(touch0Start - touch1Start);
 				}
-				
+
 				clipXY = ((plotLeftTop - touch0Now) / scale) + touch0Start;
 				selectionWH = chart['plot' + (horiz ? 'Width' : 'Height')] / scale;
 			};
@@ -50418,7 +50804,7 @@ extend(Highcharts.Pointer.prototype, {
 			selectionXY = bounds.max - selectionWH;
 			outOfBounds = true;
 		}
-		
+
 		// Is the chart dragged off its bounds, determined by dataMin and dataMax?
 		if (outOfBounds) {
 
@@ -50449,7 +50835,7 @@ extend(Highcharts.Pointer.prototype, {
 		transform[scaleKey] = scale;
 		transform['translate' + XY] = (transformScale * plotLeftTop) + (touch0Now - (transformScale * touch0Start));
 	},
-	
+
 	/**
 	 * Handle touch events with two touches
 	 */
@@ -50465,7 +50851,7 @@ extend(Highcharts.Pointer.prototype, {
 			hasZoom = self.hasZoom,
 			selectionMarker = self.selectionMarker,
 			transform = {},
-			fireClickEvent = touchesLength === 1 && ((self.inClass(e.target, PREFIX + 'tracker') && 
+			fireClickEvent = touchesLength === 1 && ((self.inClass(e.target, PREFIX + 'tracker') &&
 				chart.runTrackerClick) || self.runChartClick),
 			clip = {};
 
@@ -50473,12 +50859,12 @@ extend(Highcharts.Pointer.prototype, {
 		if ((hasZoom || followTouchMove) && !fireClickEvent) {
 			e.preventDefault();
 		}
-		
+
 		// Normalize each touch
 		map(touches, function (e) {
 			return self.normalize(e);
 		});
-		
+
 		// Register the touch start position
 		if (e.type === 'touchstart') {
 			each(touches, function (e, i) {
@@ -50503,10 +50889,10 @@ extend(Highcharts.Pointer.prototype, {
 				}
 			});
 			self.res = true; // reset on next move
-		
+
 		// Event type is touchmove, handle panning and pinching
 		} else if (pinchDown.length) { // can be 0 when releasing, if touchend fires first
-			
+
 
 			// Set the marker
 			if (!selectionMarker) {
@@ -50514,14 +50900,14 @@ extend(Highcharts.Pointer.prototype, {
 					destroy: noop
 				}, chart.plotBox);
 			}
-			
+
 			self.pinchTranslate(pinchDown, touches, transform, selectionMarker, clip, lastValidTouch);
 
 			self.hasPinched = hasZoom;
 
 			// Scale and translate the groups to provide visual feedback during pinching
 			self.scaleGroups(transform, clip);
-			
+
 			// Optionally move the tooltip on touchmove
 			if (!hasZoom && followTouchMove && touchesLength === 1) {
 				this.runPointActions(self.normalize(e));
@@ -50555,7 +50941,7 @@ extend(Highcharts.Pointer.prototype, {
 
 		} else if (e.touches.length === 2) {
 			this.pinch(e);
-		}   
+		}
 	},
 
 	onContainerTouchMove: function (e) {
@@ -50572,7 +50958,7 @@ extend(Highcharts.Pointer.prototype, {
 
 });
 if (win.PointerEvent || win.MSPointerEvent) {
-	
+
 	// The touches object keeps track of the points being touched at all times
 	var touches = {},
 		hasPointerEvent = !!win.PointerEvent,
@@ -50601,7 +50987,7 @@ if (win.PointerEvent || win.MSPointerEvent) {
 					target: e.currentTarget,
 					preventDefault: noop,
 					touches: getWebkitTouches()
-				});				
+				});
 			}
 		};
 
@@ -50670,23 +51056,23 @@ var Legend = Highcharts.Legend = function (chart, options) {
 };
 
 Legend.prototype = {
-	
+
 	/**
 	 * Initialize the legend
 	 */
 	init: function (chart, options) {
-		
+
 		var legend = this,
 			itemStyle = options.itemStyle,
 			padding = pick(options.padding, 8),
 			itemMarginTop = options.itemMarginTop || 0;
-	
+
 		this.options = options;
 
 		if (!options.enabled) {
 			return;
 		}
-	
+
 		legend.itemStyle = itemStyle;
 		legend.itemHiddenStyle = merge(itemStyle, options.itemHiddenStyle);
 		legend.itemMarginTop = itemMarginTop;
@@ -50705,7 +51091,7 @@ Legend.prototype = {
 		legend.render();
 
 		// move checkboxes
-		addEvent(legend.chart, 'endResize', function () { 
+		addEvent(legend.chart, 'endResize', function () {
 			legend.positionCheckboxes();
 		});
 
@@ -50729,16 +51115,16 @@ Legend.prototype = {
 			symbolAttr = { fill: symbolColor },
 			key,
 			val;
-		
+
 		if (legendItem) {
 			legendItem.css({ fill: textColor, color: textColor }); // color for #1553, oldIE
 		}
 		if (legendLine) {
 			legendLine.attr({ stroke: symbolColor });
 		}
-		
+
 		if (legendSymbol) {
-			
+
 			// Apply marker options
 			if (markerOptions && legendSymbol.isMarker) { // #585
 				symbolAttr.stroke = symbolColor;
@@ -50831,7 +51217,7 @@ Legend.prototype = {
 			each(this.allItems, function (item) {
 				var checkbox = item.checkbox,
 					top;
-				
+
 				if (checkbox) {
 					top = (translateY + checkbox.y + (scrollOffset || 0) + 3);
 					css(checkbox, {
@@ -50843,7 +51229,7 @@ Legend.prototype = {
 			});
 		}
 	},
-	
+
 	/**
 	 * Render the legend title on top of the legend
 	 */
@@ -50853,7 +51239,7 @@ Legend.prototype = {
 			titleOptions = options.title,
 			titleHeight = 0,
 			bBox;
-		
+
 		if (titleOptions.text) {
 			if (!this.title) {
 				this.title = this.chart.renderer.label(titleOptions.text, padding - 3, padding - 4, null, null, null, null, null, 'legend-title')
@@ -50932,23 +51318,23 @@ Legend.prototype = {
 
 			if (legend.setItemEvents) {
 				legend.setItemEvents(item, li, useHTML, itemStyle, itemHiddenStyle);
-			}			
+			}
 
 			// Colorize the items
 			legend.colorizeItem(item, item.visible);
 
 			// add the HTML checkbox on top
 			if (showCheckbox) {
-				legend.createCheckboxForItem(item);				
+				legend.createCheckboxForItem(item);
 			}
 		}
 
 		// calculate the positions for the next line
 		bBox = li.getBBox();
 
-		itemWidth = item.checkboxOffset = 
-			options.itemWidth || 
-			item.legendItemWidth || 
+		itemWidth = item.checkboxOffset =
+			options.itemWidth ||
+			item.legendItemWidth ||
 			symbolWidth + symbolPadding + bBox.width + itemDistance + (showCheckbox ? 20 : 0);
 		legend.itemHeight = itemHeight = mathRound(item.legendItemHeight || bBox.height);
 
@@ -51043,7 +51429,7 @@ Legend.prototype = {
 
 		if (!legendGroup) {
 			legend.group = legendGroup = renderer.g('legend')
-				.attr({ zIndex: 7 }) 
+				.attr({ zIndex: 7 })
 				.add();
 			legend.contentGroup = renderer.g()
 				.attr({ zIndex: 1 }) // above background
@@ -51051,7 +51437,7 @@ Legend.prototype = {
 			legend.scrollGroup = renderer.g()
 				.add(legend.contentGroup);
 		}
-		
+
 		legend.renderTitle();
 
 		// add each series or point
@@ -51072,14 +51458,14 @@ Legend.prototype = {
 
 		// render the items
 		each(allItems, function (item) {
-			legend.renderItem(item); 
+			legend.renderItem(item);
 		});
 
 		// Draw the border
 		legendWidth = options.width || legend.offsetWidth;
 		legendHeight = legend.lastItemY + legend.lastLineHeight + legend.titleHeight;
-		
-		
+
+
 		legendHeight = legend.handleOverflow(legendHeight);
 
 		if (legendBorderWidth || legendBackgroundColor) {
@@ -51113,11 +51499,11 @@ Legend.prototype = {
 			// hide the border if no items
 			box[display ? 'show' : 'hide']();
 		}
-		
+
 		legend.legendWidth = legendWidth;
 		legend.legendHeight = legendHeight;
 
-		// Now that the legend width and height are established, put the items in the 
+		// Now that the legend width and height are established, put the items in the
 		// final position
 		each(allItems, function (item) {
 			legend.positionItem(item);
@@ -51146,7 +51532,7 @@ Legend.prototype = {
 			this.positionCheckboxes();
 		}
 	},
-	
+
 	/**
 	 * Set up the overflow handling by adding navigation with up and down arrows below the
 	 * legend.
@@ -51169,7 +51555,7 @@ Legend.prototype = {
 			pages = this.pages,
 			lastY,
 			allItems = this.allItems;
-			
+
 		// Adjust the height
 		if (options.layout === 'horizontal') {
 			spaceHeight /= 2;
@@ -51177,7 +51563,7 @@ Legend.prototype = {
 		if (maxHeight) {
 			spaceHeight = mathMin(spaceHeight, maxHeight);
 		}
-		
+
 		// Reset the legend height and adjust the clipping rectangle
 		pages.length = 0;
 		if (legendHeight > spaceHeight && !options.useHTML) {
@@ -51185,19 +51571,19 @@ Legend.prototype = {
 			this.clipHeight = clipHeight = mathMax(spaceHeight - 20 - this.titleHeight - this.padding, 0);
 			this.currentPage = pick(this.currentPage, 1);
 			this.fullHeight = legendHeight;
-			
+
 			// Fill pages with Y positions so that the top of each a legend item defines
 			// the scroll top for each page (#2098)
 			each(allItems, function (item, i) {
 				var y = item._legendItemPos[1],
 					h = mathRound(item.legendItem.getBBox().height),
 					len = pages.length;
-				
+
 				if (!len || (y - pages[len - 1] > clipHeight && (lastY || y) !== pages[len - 1])) {
 					pages.push(lastY || y);
 					len++;
 				}
-				
+
 				if (i === allItems.length - 1 && y + h - pages[len - 1] > clipHeight) {
 					pages.push(y);
 				}
@@ -51214,7 +51600,7 @@ Legend.prototype = {
 			clipRect.attr({
 				height: clipHeight
 			});
-			
+
 			// Add navigation elements
 			if (!nav) {
 				this.nav = nav = renderer.g().attr({ zIndex: 1 }).add(this.group);
@@ -51232,12 +51618,12 @@ Legend.prototype = {
 					})
 					.add(nav);
 			}
-			
+
 			// Set initial position
 			legend.scroll(0);
-			
+
 			legendHeight = spaceHeight;
-			
+
 		} else if (nav) {
 			clipRect.attr({
 				height: chart.chartHeight
@@ -51248,10 +51634,10 @@ Legend.prototype = {
 			});
 			this.clipHeight = 0; // #1379
 		}
-		
+
 		return legendHeight;
 	},
-	
+
 	/**
 	 * Scroll the legend by a number of pages
 	 * @param {Object} scrollBy
@@ -51268,18 +51654,18 @@ Legend.prototype = {
 			pager = this.pager,
 			padding = this.padding,
 			scrollOffset;
-		
+
 		// When resizing while looking at the last page
 		if (currentPage > pageCount) {
 			currentPage = pageCount;
 		}
-		
+
 		if (currentPage > 0) {
-			
+
 			if (animation !== UNDEFINED) {
 				setAnimation(animation, this.chart);
 			}
-			
+
 			this.nav.attr({
 				translateX: padding,
 				translateY: clipHeight + this.padding + 7 + this.titleHeight,
@@ -51301,36 +51687,36 @@ Legend.prototype = {
 				.css({
 					cursor: currentPage === pageCount ? 'default' : 'pointer'
 				});
-			
+
 			scrollOffset = -pages[currentPage - 1] + this.initialItemY;
 
 			this.scrollGroup.animate({
 				translateY: scrollOffset
-			});			
-			
+			});
+
 			this.currentPage = currentPage;
 			this.positionCheckboxes(scrollOffset);
 		}
-			
+
 	}
-	
+
 };
 
 /*
  * LegendSymbolMixin
- */ 
+ */
 
 var LegendSymbolMixin = Highcharts.LegendSymbolMixin = {
 
 	/**
 	 * Get the series' symbol in the legend
-	 * 
+	 *
 	 * @param {Object} legend The legend object
 	 * @param {Object} item The series (this) or point
 	 */
 	drawRectangle: function (legend, item) {
 		var symbolHeight = legend.options.symbolHeight || 12;
-		
+
 		item.legendSymbol = this.chart.renderer.rect(
 			0,
 			legend.baseline - 5 - (symbolHeight / 2),
@@ -51339,14 +51725,14 @@ var LegendSymbolMixin = Highcharts.LegendSymbolMixin = {
 			legend.options.symbolRadius || 0
 		).attr({
 			zIndex: 3
-		}).add(item.legendGroup);		
-		
+		}).add(item.legendGroup);
+
 	},
 
 	/**
-	 * Get the series' symbol in the legend. This method should be overridable to create custom 
+	 * Get the series' symbol in the legend. This method should be overridable to create custom
 	 * symbols through Highcharts.seriesTypes[type].prototype.drawLegendSymbols.
-	 * 
+	 *
 	 * @param {Object} legend The legend object
 	 */
 	drawLineMarker: function (legend) {
@@ -51381,7 +51767,7 @@ var LegendSymbolMixin = Highcharts.LegendSymbolMixin = {
 			.attr(attr)
 			.add(legendItemGroup);
 		}
-		
+
 		// Draw the marker
 		if (markerOptions && markerOptions.enabled !== false) {
 			radius = markerOptions.radius;
@@ -51400,7 +51786,7 @@ var LegendSymbolMixin = Highcharts.LegendSymbolMixin = {
 
 // Workaround for #2030, horizontal legend items not displaying in IE11 Preview,
 // and for #2580, a similar drawing flaw in Firefox 26.
-// TODO: Explore if there's a general cause for this. The problem may be related 
+// TODO: Explore if there's a general cause for this. The problem may be related
 // to nested group elements, as the legend item texts are within 4 group elements.
 if (/Trident\/7\.0/.test(userAgent) || isFirefox) {
 	wrap(Legend.prototype, 'positionItem', function (proceed, item) {
@@ -51413,7 +51799,7 @@ if (/Trident\/7\.0/.test(userAgent) || isFirefox) {
 
 		// Do it now, for export and to get checkbox placement
 		runPositionItem();
-		
+
 		// Do it after to work around the core issue
 		setTimeout(runPositionItem);
 	});
@@ -51444,7 +51830,7 @@ Chart.prototype = {
 		this.userOptions = userOptions;
 
 		var optionsChart = options.chart;
-		
+
 		// Create margin & spacing array
 		this.margin = this.splashArray('margin', optionsChart);
 		this.spacing = this.splashArray('spacing', optionsChart);
@@ -51554,7 +51940,7 @@ Chart.prototype = {
 	isInsidePlot: function (plotX, plotY, inverted) {
 		var x = inverted ? plotY : plotX,
 			y = inverted ? plotX : plotY;
-			
+
 		return x >= 0 &&
 			x <= this.plotWidth &&
 			y >= 0 &&
@@ -51596,9 +51982,9 @@ Chart.prototype = {
 			renderer = chart.renderer,
 			isHiddenChart = renderer.isHidden(),
 			afterRedraw = [];
-			
+
 		setAnimation(animation, chart);
-		
+
 		if (isHiddenChart) {
 			chart.cloneRenderTo();
 		}
@@ -51612,7 +51998,7 @@ Chart.prototype = {
 
 			if (serie.options.stacking) {
 				hasStackedSeries = true;
-				
+
 				if (serie.isDirty) {
 					hasDirtyStacks = true;
 					break;
@@ -51679,7 +52065,7 @@ Chart.prototype = {
 
 			// redraw axes
 			each(axes, function (axis) {
-				
+
 				// Fire 'afterSetExtremes' only if extremes are set
 				if (axis.isDirtyExtremes) { // #821
 					axis.isDirtyExtremes = false;
@@ -51688,13 +52074,13 @@ Chart.prototype = {
 						delete axis.eventArgs;
 					});
 				}
-				
+
 				if (isDirtyBox || hasStackedSeries) {
 					axis.redraw();
 				}
 			});
 		}
-		
+
 		// the plot areas size has changed
 		if (isDirtyBox) {
 			chart.drawChartBox();
@@ -51719,11 +52105,11 @@ Chart.prototype = {
 
 		// fire the event
 		fireEvent(chart, 'redraw'); // jQuery breaks this when calling it from addEvent. Overwrites chart.redraw
-		
+
 		if (isHiddenChart) {
 			chart.cloneRenderTo(true);
 		}
-		
+
 		// Fire callbacks that are put on hold until after the redraw
 		each(afterRedraw, function (callback) {
 			callback.call();
@@ -51841,7 +52227,7 @@ Chart.prototype = {
 				series.stackKey = series.type + pick(series.options.stack, '');
 			}
 		});
-	},	
+	},
 
 	/**
 	 * Show the title and subtitle of the chart
@@ -51872,7 +52258,7 @@ Chart.prototype = {
 			if (title && titleOptions) {
 				chart[name] = title = title.destroy(); // remove old
 			}
-			
+
 			if (chartTitleOptions && chartTitleOptions.text && !title) {
 				chart[name] = chart.renderer.text(
 					chartTitleOptions.text,
@@ -51887,7 +52273,7 @@ Chart.prototype = {
 				})
 				.css(chartTitleOptions.style)
 				.add();
-			}	
+			}
 		});
 		chart.layOutTitles(redraw);
 	},
@@ -51909,10 +52295,10 @@ Chart.prototype = {
 		if (title) {
 			title
 				.css({ width: (titleOptions.width || autoWidth) + PX })
-				.align(extend({ 
+				.align(extend({
 					y: renderer.fontMetrics(titleOptions.style.fontSize, title).b - 3
 				}, titleOptions), false, 'spacingBox');
-			
+
 			if (!titleOptions.floating && !titleOptions.verticalAlign) {
 				titleOffset = title.getBBox().height;
 			}
@@ -51920,21 +52306,21 @@ Chart.prototype = {
 		if (subtitle) {
 			subtitle
 				.css({ width: (subtitleOptions.width || autoWidth) + PX })
-				.align(extend({ 
-					y: titleOffset + (titleOptions.margin - 13) + renderer.fontMetrics(titleOptions.style.fontSize, subtitle).b 
+				.align(extend({
+					y: titleOffset + (titleOptions.margin - 13) + renderer.fontMetrics(titleOptions.style.fontSize, subtitle).b
 				}, subtitleOptions), false, 'spacingBox');
-			
+
 			if (!subtitleOptions.floating && !subtitleOptions.verticalAlign) {
 				titleOffset = mathCeil(titleOffset + subtitle.getBBox().height);
 			}
 		}
 
-		requiresDirtyBox = this.titleOffset !== titleOffset;				
+		requiresDirtyBox = this.titleOffset !== titleOffset;
 		this.titleOffset = titleOffset; // used in getMargins
 
 		if (!this.isDirtyBox && requiresDirtyBox) {
 			this.isDirtyBox = requiresDirtyBox;
-			// Redraw if necessary (#2719, #2744)		
+			// Redraw if necessary (#2719, #2744)
 			if (this.hasRendered && pick(redraw, true) && this.isDirtyBox) {
 				this.redraw();
 			}
@@ -51958,7 +52344,7 @@ Chart.prototype = {
 		if (!defined(heightOption)) {
 			chart.containerHeight = adapterRun(renderTo, 'height');
 		}
-		
+
 		chart.chartWidth = mathMax(0, widthOption || chart.containerWidth || 600); // #1393, 1460
 		chart.chartHeight = mathMax(0, pick(heightOption,
 			// the offsetHeight of an empty container is 0 in standard browsers, but 19 in IE7:
@@ -51972,7 +52358,7 @@ Chart.prototype = {
 	cloneRenderTo: function (revert) {
 		var clone = this.renderToClone,
 			container = this.container;
-		
+
 		// Destroy the clone and bring the container back to the real renderTo div
 		if (revert) {
 			if (clone) {
@@ -51980,7 +52366,7 @@ Chart.prototype = {
 				discardElement(clone);
 				delete this.renderToClone;
 			}
-		
+
 		// Set up the clone
 		} else {
 			if (container && container.parentNode === this.renderTo) {
@@ -52023,12 +52409,12 @@ Chart.prototype = {
 		if (isString(renderTo)) {
 			chart.renderTo = renderTo = doc.getElementById(renderTo);
 		}
-		
+
 		// Display an error if the renderTo is wrong
 		if (!renderTo) {
 			error(13, true);
 		}
-		
+
 		// If the container already holds a chart, destroy it. The check for hasRendered is there
 		// because web pages that are saved to disk from the browser, will preserve the data-highcharts-chart
 		// attribute and the SVG contents, but not an interactive chart. So in this case,
@@ -52036,8 +52422,8 @@ Chart.prototype = {
 		oldChartIndex = pInt(attr(renderTo, indexAttrName));
 		if (!isNaN(oldChartIndex) && charts[oldChartIndex] && charts[oldChartIndex].hasRendered) {
 			charts[oldChartIndex].destroy();
-		}		
-		
+		}
+
 		// Make a reference to the chart from the div
 		attr(renderTo, indexAttrName, chart.index);
 
@@ -52119,7 +52505,7 @@ Chart.prototype = {
 		if (titleOffset && !defined(margin[0])) {
 			chart.plotTop = mathMax(chart.plotTop, titleOffset + chart.options.title.margin + spacing[0]);
 		}
-		
+
 		// Adjust for legend
 		if (legend.display && !legendOptions.floating) {
 			if (align === 'right') { // horizontal alignment handled first
@@ -52169,7 +52555,7 @@ Chart.prototype = {
 				axis.getOffset();
 			});
 		}
-		
+
 		if (!defined(margin[3])) {
 			chart.plotLeft += axisOffset[3];
 		}
@@ -52203,7 +52589,7 @@ Chart.prototype = {
 					chart.hasUserSize = null;
 				}
 			};
-			
+
 		// Width and height checks for display:none. Target is doc in IE8 and Opera,
 		// win in Firefox, Chrome and IE9.
 		if (!chart.hasUserSize && width && height && (target === win || target === doc)) {
@@ -52228,8 +52614,8 @@ Chart.prototype = {
 			reflow = function (e) {
 				chart.reflow(e);
 			};
-			
-		
+
+
 		addEvent(win, 'resize', reflow);
 		addEvent(chart, 'destroy', function () {
 			removeEvent(win, 'resize', reflow);
@@ -52341,7 +52727,7 @@ Chart.prototype = {
 
 		chart.plotSizeX = inverted ? plotHeight : plotWidth;
 		chart.plotSizeY = inverted ? plotWidth : plotHeight;
-		
+
 		chart.plotBorderWidth = optionsChart.plotBorderWidth || 0;
 
 		// Set boxes used for alignment
@@ -52362,9 +52748,9 @@ Chart.prototype = {
 		clipX = mathCeil(mathMax(plotBorderWidth, clipOffset[3]) / 2);
 		clipY = mathCeil(mathMax(plotBorderWidth, clipOffset[0]) / 2);
 		chart.clipBox = {
-			x: clipX, 
-			y: clipY, 
-			width: mathFloor(chart.plotSizeX - mathMax(plotBorderWidth, clipOffset[1]) / 2 - clipX), 
+			x: clipX,
+			y: clipY,
+			width: mathFloor(chart.plotSizeX - mathMax(plotBorderWidth, clipOffset[1]) / 2 - clipX),
 			height: mathMax(0, mathFloor(chart.plotSizeY - mathMax(plotBorderWidth, clipOffset[2]) / 2 - clipY))
 		};
 
@@ -52425,7 +52811,7 @@ Chart.prototype = {
 
 		if (chartBorderWidth || chartBackgroundColor) {
 			if (!chartBackground) {
-				
+
 				bgAttr = {
 					fill: chartBackgroundColor || NONE
 				};
@@ -52469,7 +52855,7 @@ Chart.prototype = {
 				plotBGImage.animate(plotBox);
 			}
 		}
-		
+
 		// Plot clip
 		if (!clipRect) {
 			chart.clipRect = renderer.clipRect(clipBox);
@@ -52504,7 +52890,7 @@ Chart.prototype = {
 
 	/**
 	 * Detect whether a certain chart property is needed based on inspecting its options
-	 * and series. This mainly applies to the chart.invert property, and in extensions to 
+	 * and series. This mainly applies to the chart.invert property, and in extensions to
 	 * the chart.angular and chart.polar properties.
 	 */
 	propFromSeries: function () {
@@ -52514,20 +52900,20 @@ Chart.prototype = {
 			seriesOptions = chart.options.series,
 			i,
 			value;
-			
-			
+
+
 		each(['inverted', 'angular', 'polar'], function (key) {
-			
+
 			// The default series type's class
 			klass = seriesTypes[optionsChart.type || optionsChart.defaultSeriesType];
-			
+
 			// Get the value from available chart-wide properties
 			value = (
 				chart[key] || // 1. it is set before
 				optionsChart[key] || // 2. it is set in the options
 				(klass && klass.prototype[key]) // 3. it's default series class requires it
 			);
-	
+
 			// 4. Check if any the chart's series require it
 			i = seriesOptions && seriesOptions.length;
 			while (!value && i--) {
@@ -52536,11 +52922,11 @@ Chart.prototype = {
 					value = true;
 				}
 			}
-	
+
 			// Set the chart property
-			chart[key] = value;	
+			chart[key] = value;
 		});
-		
+
 	},
 
 	/**
@@ -52585,7 +52971,7 @@ Chart.prototype = {
 			serie.render();
 		});
 	},
-		
+
 	/**
 	 * Render labels for the chart
 	 */
@@ -52651,7 +53037,7 @@ Chart.prototype = {
 
 
 		// Draw the borders and backgrounds
-		chart.drawChartBox();		
+		chart.drawChartBox();
 
 
 		// Axes
@@ -52715,10 +53101,10 @@ Chart.prototype = {
 			container = chart.container,
 			i,
 			parentNode = container && container.parentNode;
-			
+
 		// fire the chart.destoy event
 		fireEvent(chart, 'destroy');
-		
+
 		// Delete the chart from charts lookup array
 		charts[chart.index] = UNDEFINED;
 		chartCount--;
@@ -52741,8 +53127,8 @@ Chart.prototype = {
 		}
 
 		// ==== Destroy chart properties:
-		each(['title', 'subtitle', 'chartBackground', 'plotBackground', 'plotBGImage', 
-				'plotBorder', 'seriesGroup', 'clipRect', 'credits', 'pointer', 'scroller', 
+		each(['title', 'subtitle', 'chartBackground', 'plotBackground', 'plotBGImage',
+				'plotBorder', 'seriesGroup', 'clipRect', 'credits', 'pointer', 'scroller',
 				'rangeSelector', 'legend', 'resetZoomButton', 'tooltip', 'renderer'], function (name) {
 			var prop = chart[name];
 
@@ -52815,7 +53201,7 @@ Chart.prototype = {
 		// Run an early event after the container and renderer are established
 		fireEvent(chart, 'init');
 
-		
+
 		chart.resetMargins();
 		chart.setChartSize();
 
@@ -52834,8 +53220,8 @@ Chart.prototype = {
 
 		// Run an event after axes and series are initialized, but before render. At this stage,
 		// the series data is indexed and cached in the xData and yData arrays, so we can access
-		// those before rendering. Used in Highstock. 
-		fireEvent(chart, 'beforeRender'); 
+		// those before rendering. Used in Highstock.
+		fireEvent(chart, 'beforeRender');
 
 		// depends on inverted and on margins being set
 		if (Highcharts.Pointer) {
@@ -52853,11 +53239,11 @@ Chart.prototype = {
 		each(chart.callbacks, function (fn) {
 			fn.apply(chart, [chart]);
 		});
-		
-		
+
+
 		// If the chart was rendered outside the top container, put it back in
 		chart.cloneRenderTo(true);
-		
+
 		fireEvent(chart, 'load');
 
 	},
@@ -52881,11 +53267,11 @@ Chart.prototype.callbacks = [];
 
 var CenteredSeriesMixin = Highcharts.CenteredSeriesMixin = {
 	/**
-	 * Get the center of the pie based on the size and center options relative to the  
+	 * Get the center of the pie based on the size and center options relative to the
 	 * plot area. Borrowed by the polar and gauge series types.
 	 */
 	getCenter: function () {
-		
+
 		var options = this.options,
 			chart = this.chart,
 			slicingRoom = 2 * (options.slicedOffset || 0),
@@ -52896,7 +53282,7 @@ var CenteredSeriesMixin = Highcharts.CenteredSeriesMixin = {
 			positions = [pick(centerOption[0], '50%'), pick(centerOption[1], '50%'), options.size || '100%', options.innerSize || 0],
 			smallestSize = mathMin(plotWidth, plotHeight),
 			isPercent;
-		
+
 		return map(positions, function (length, i) {
 			isPercent = /%$/.test(length);
 			handleSlicingRoom = i < 2 || (i === 2 && isPercent);
@@ -53091,7 +53477,7 @@ Point.prototype = {
 			percentage: point.percentage,
 			total: point.total || point.stackTotal
 		};
-	},	
+	},
 
 	/**
 	 * Extendable method for formatting each point's tooltip line
@@ -53508,7 +53894,7 @@ Series.prototype = {
 			series.pointRange = hasCategories ? 1 : options.pointRange;
 
 			series.colorCounter = 0; // for series with colorByPoint (#1547)
-			
+
 			// Update parallel arrays
 			each(this.parallelArrays, function (key) {
 				series[key + 'Data'].length = 0;
@@ -53641,7 +54027,7 @@ Series.prototype = {
 
 		// optionally filter out points outside the plot area
 		if (isCartesian && series.sorted && (!cropThreshold || dataLength > cropThreshold || series.forceCrop)) {
-			
+
 			// it's outside current extremes
 			if (processedXData[dataLength - 1] < min || processedXData[0] > max) {
 				processedXData = [];
@@ -53662,11 +54048,11 @@ Series.prototype = {
 		// Find the closest distance between processed points
 		for (i = processedXData.length - 1; i >= 0; i--) {
 			distance = processedXData[i] - processedXData[i - 1];
-			
+
 			if (!cropped && processedXData[i] > min && processedXData[i] < max) {
 				activePointCount++;
 			}
-			
+
 			if (distance > 0 && (closestPointRange === UNDEFINED || distance < closestPointRange)) {
 				closestPointRange = distance;
 
@@ -53998,7 +54384,7 @@ Series.prototype = {
 
 			// Delete this function to allow it only once
 			series.animate = null;
- 
+
 		}
 	},
 
@@ -54058,7 +54444,7 @@ Series.prototype = {
 			isInside,
 			markerGroup = series.markerGroup,
 			globallyEnabled = pick(
-				seriesMarkerOptions.enabled, 
+				seriesMarkerOptions.enabled,
 				!series.requireSorting || series.activePointCount < (0.5 * series.xAxis.len / seriesMarkerOptions.radius)
 			);
 
@@ -54745,7 +55131,7 @@ Series.prototype = {
 		// Run the animation
 		if (animDuration) {
 			series.animate();
-		} 
+		}
 
 		// Call the afterAnimate function on animation complete (but don't overwrite the animation.complete option
 		// which should be available to the user).
@@ -54806,7 +55192,7 @@ Series.prototype = {
  * The class for stack items
  */
 function StackItem(axis, options, isNegative, x, stackOption) {
-	
+
 	var inverted = axis.chart.inverted;
 
 	this.axis = axis;
@@ -54854,7 +55240,7 @@ StackItem.prototype = {
 		var options = this.options,
 			formatOption = options.format,
 			str = formatOption ?
-				format(formatOption, this) : 
+				format(formatOption, this) :
 				options.formatter.call(this);  // format the text in the label
 
 		// Change the text to reflect the new total and set visibility to hidden in case the serie is hidden
@@ -54869,7 +55255,7 @@ StackItem.prototype = {
 						align: this.textAlign,				// fix the text-anchor
 						rotation: options.rotation,	// rotation
 						visibility: HIDDEN					// hidden until setOffset is called
-					})				
+					})
 					.add(group);							// add to the labels-group
 		}
 	},
@@ -54896,10 +55282,10 @@ StackItem.prototype = {
 			},
 			label = this.label,
 			alignAttr;
-		
+
 		if (label) {
 			label.align(this.alignOptions, null, stackBox);	// align the label to the box
-				
+
 			// Set visibility (#678)
 			alignAttr = label.alignAttr;
 			label[this.options.crop === false || chart.isInsidePlot(alignAttr.x, alignAttr.y) ? 'show' : 'hide'](true);
@@ -54936,8 +55322,8 @@ Axis.prototype.renderStackTotals = function () {
 		chart = axis.chart,
 		renderer = chart.renderer,
 		stacks = axis.stacks,
-		stackKey, 
-		oneStack, 
+		stackKey,
+		oneStack,
 		stackCategory,
 		stackTotalGroup = axis.stackTotalGroup;
 
@@ -55199,7 +55585,7 @@ extend(Chart.prototype, {
 		if (!chart.loadingShown) {
 			css(loadingDiv, {
 				opacity: 0,
-				display: ''				
+				display: ''
 			});
 			animate(loadingDiv, {
 				opacity: loadingOptions.style.opacity
@@ -55626,10 +56012,10 @@ defaultPlotOptions.area = merge(defaultSeriesOptions, {
 var AreaSeries = extendClass(Series, {
 	type: 'area',
 	/**
-	 * For stacks, don't split segments on null values. Instead, draw null values with 
+	 * For stacks, don't split segments on null values. Instead, draw null values with
 	 * no marker. Also insert dummy points for any X position that exists in other series
 	 * in the stack.
-	 */ 
+	 */
 	getSegments: function () {
 		var series = this,
 			segments = [],
@@ -55673,7 +56059,7 @@ var AreaSeries = extendClass(Series, {
 				} else if (pointMap[x]) {
 					segment.push(pointMap[x]);
 
-				// There is no point for this X value in this series, so we 
+				// There is no point for this X value in this series, so we
 				// insert a dummy point in order for the areas to be drawn
 				// correctly.
 				} else {
@@ -55690,11 +56076,11 @@ var AreaSeries = extendClass(Series, {
 
 					plotX = xAxis.translate(x);
 					plotY = yAxis.toPixels(y, true);
-					segment.push({ 
-						y: null, 
+					segment.push({
+						y: null,
 						plotX: plotX,
-						clientX: plotX, 
-						plotY: plotY, 
+						clientX: plotX,
+						plotY: plotY,
 						yBottom: plotY,
 						onMouseOver: noop
 					});
@@ -55712,13 +56098,13 @@ var AreaSeries = extendClass(Series, {
 
 		this.segments = segments;
 	},
-	
+
 	/**
 	 * Extend the base Series getSegmentPath method by adding the path for the area.
 	 * This path is pushed to the series.areaPath property.
 	 */
 	getSegmentPath: function (segment) {
-		
+
 		var segmentPath = Series.prototype.getSegmentPath.call(this, segment), // call base method
 			areaSegmentPath = [].concat(segmentPath), // work on a copy for the area path
 			i,
@@ -55726,24 +56112,24 @@ var AreaSeries = extendClass(Series, {
 			segLength = segmentPath.length,
 			translatedThreshold = this.yAxis.getThreshold(options.threshold), // #2181
 			yBottom;
-		
+
 		if (segLength === 3) { // for animation from 1 to two points
 			areaSegmentPath.push(L, segmentPath[1], segmentPath[2]);
 		}
 		if (options.stacking && !this.closedStacks) {
-			
-			// Follow stack back. Todo: implement areaspline. A general solution could be to 
+
+			// Follow stack back. Todo: implement areaspline. A general solution could be to
 			// reverse the entire graphPath of the previous series, though may be hard with
 			// splines and with series with different extremes
 			for (i = segment.length - 1; i >= 0; i--) {
 
 				yBottom = pick(segment[i].yBottom, translatedThreshold);
-			
+
 				// step line?
 				if (i < segment.length - 1 && options.step) {
 					areaSegmentPath.push(segment[i + 1].plotX, yBottom);
 				}
-				
+
 				areaSegmentPath.push(segment[i].plotX, yBottom);
 			}
 
@@ -55753,9 +56139,9 @@ var AreaSeries = extendClass(Series, {
 		this.areaPath = this.areaPath.concat(areaSegmentPath);
 		return segmentPath;
 	},
-	
+
 	/**
-	 * Extendable method to close the segment path of an area. This is overridden in polar 
+	 * Extendable method to close the segment path of an area. This is overridden in polar
 	 * charts.
 	 */
 	closeSegment: function (path, segment, translatedThreshold) {
@@ -55768,20 +56154,20 @@ var AreaSeries = extendClass(Series, {
 			translatedThreshold
 		);
 	},
-	
+
 	/**
 	 * Draw the graph and the underlying area. This method calls the Series base
 	 * function and adds the area. The areaPath is calculated in the getSegmentPath
 	 * method called from Series.prototype.drawGraph.
 	 */
 	drawGraph: function () {
-		
+
 		// Define or reset areaPath
 		this.areaPath = [];
-		
+
 		// Call the base method
 		Series.prototype.drawGraph.apply(this);
-		
+
 		// Define local variables
 		var series = this,
 			areaPath = this.areaPath,
@@ -55789,19 +56175,19 @@ var AreaSeries = extendClass(Series, {
 			negativeColor = options.negativeColor,
 			negativeFillColor = options.negativeFillColor,
 			props = [['area', this.color, options.fillColor]]; // area name, main color, fill color
-		
+
 		if (negativeColor || negativeFillColor) {
 			props.push(['areaNeg', negativeColor, negativeFillColor]);
 		}
-		
+
 		each(props, function (prop) {
 			var areaKey = prop[0],
 				area = series[areaKey];
-				
+
 			// Create or update the area
 			if (area) { // update
 				area.animate({ d: areaPath });
-	
+
 			} else { // create
 				series[areaKey] = series.chart.renderer.path(areaPath)
 					.attr({
@@ -55848,7 +56234,7 @@ var SplineSeries = extendClass(Series, {
 
 		// find control points
 		if (lastPoint && nextPoint) {
-		
+
 			var lastX = lastPoint.plotX,
 				lastY = lastPoint.plotY,
 				nextX = nextPoint.plotX,
@@ -55889,7 +56275,7 @@ var SplineSeries = extendClass(Series, {
 			point.rightContY = rightContY;
 
 		}
-		
+
 		// Visualize control points for debugging
 		/*
 		if (leftContX) {
@@ -55956,7 +56342,7 @@ var areaProto = AreaSeries.prototype,
 	AreaSplineSeries = extendClass(SplineSeries, {
 		type: 'areaspline',
 		closedStacks: true, // instead of following the previous graph back, follow the threshold back
-		
+
 		// Mix in methods from the area series
 		getSegmentPath: areaProto.getSegmentPath,
 		closeSegment: areaProto.closeSegment,
@@ -56018,9 +56404,9 @@ var ColumnSeries = extendClass(Series, {
 	},
 	cropShoulder: 0,
 	trackerGroups: ['group', 'dataLabelsGroup'],
-	negStacks: true, // use separate negative stacks, unlike area stacks where a negative 
+	negStacks: true, // use separate negative stacks, unlike area stacks where a negative
 		// point is substracted from previous (#1910)
-	
+
 	/**
 	 * Initialize the series
 	 */
@@ -56043,7 +56429,7 @@ var ColumnSeries = extendClass(Series, {
 
 	/**
 	 * Return the width and x offset of the columns adjusted for grouping, groupPadding, pointPadding,
-	 * pointWidth etc. 
+	 * pointWidth etc.
 	 */
 	getColumnMetrics: function () {
 
@@ -56093,7 +56479,7 @@ var ColumnSeries = extendClass(Series, {
 			pointPadding = defined(optionPointWidth) ? (pointOffsetWidth - optionPointWidth) / 2 :
 				pointOffsetWidth * options.pointPadding,
 			pointWidth = pick(optionPointWidth, pointOffsetWidth - 2 * pointPadding), // exact point width, used in polar charts
-			colIndex = (reversedXAxis ? 
+			colIndex = (reversedXAxis ?
 				columnCount - (series.columnIndex || 0) : // #1251
 				series.columnIndex) || 0,
 			pointXOffset = pointPadding + (groupPadding + colIndex *
@@ -56101,11 +56487,11 @@ var ColumnSeries = extendClass(Series, {
 				(reversedXAxis ? -1 : 1);
 
 		// Save it for reading in linked series (Error bars particularly)
-		return (series.columnMetrics = { 
-			width: pointWidth, 
-			offset: pointXOffset 
+		return (series.columnMetrics = {
+			width: pointWidth,
+			offset: pointXOffset
 		});
-			
+
 	},
 
 	/**
@@ -56116,7 +56502,7 @@ var ColumnSeries = extendClass(Series, {
 			chart = series.chart,
 			options = series.options,
 			borderWidth = series.borderWidth = pick(
-				options.borderWidth, 
+				options.borderWidth,
 				series.activePointCount > 0.5 * series.xAxis.len ? 0 : 1
 			),
 			yAxis = series.yAxis,
@@ -56171,8 +56557,8 @@ var ColumnSeries = extendClass(Series, {
 			point.pointWidth = pointWidth;
 
 			// Fix the tooltip on center of grouped columns (#1216, #424)
-			point.tooltipPos = chart.inverted ? 
-				[yAxis.len - plotY, series.xAxis.len - barX - barW / 2] : 
+			point.tooltipPos = chart.inverted ?
+				[yAxis.len - plotY, series.xAxis.len - barX - barW / 2] :
 				[barX + barW / 2, plotY + yAxis.pos - chart.plotTop];
 
 			// Round off to obtain crisp edges and avoid overlapping with neighbours (#2694)
@@ -56205,13 +56591,13 @@ var ColumnSeries = extendClass(Series, {
 	},
 
 	getSymbol: noop,
-	
+
 	/**
 	 * Use a solid rectangle like the area series types
 	 */
 	drawLegendSymbol: LegendSymbolMixin.drawRectangle,
-	
-	
+
+
 	/**
 	 * Columns have no graph
 	 */
@@ -56245,7 +56631,7 @@ var ColumnSeries = extendClass(Series, {
 				} : {};
 
 				pointAttr = point.pointAttr[point.selected ? SELECT_STATE : NORMAL_STATE] || series.pointAttr[NORMAL_STATE];
-				
+
 				if (graphic) { // update
 					stop(graphic);
 					graphic.attr(borderAttr)[chart.pointCount < animationLimit ? 'animate' : 'attr'](merge(shapeArgs));
@@ -56288,7 +56674,7 @@ var ColumnSeries = extendClass(Series, {
 				series.group.attr(attr);
 
 			} else { // run the animation
-				
+
 				attr.scaleY = 1;
 				attr[inverted ? 'translateX' : 'translateY'] = yAxis.pos;
 				series.group.animate(attr, series.options.animation);
@@ -56298,7 +56684,7 @@ var ColumnSeries = extendClass(Series, {
 			}
 		}
 	},
-	
+
 	/**
 	 * Remove this series from the chart
 	 */
@@ -56465,7 +56851,7 @@ var PiePoint = extendClass(Point, {
 		if (point.legendItem) {
 			chart.legend.colorizeItem(point, vis);
 		}
-		
+
 		// Handle ignore hidden slices
 		if (!series.isDirty && series.options.ignoreHiddenPoint) {
 			series.isDirty = true;
@@ -56499,7 +56885,7 @@ var PiePoint = extendClass(Point, {
 		};
 
 		point.graphic.animate(translation);
-		
+
 		if (point.shadowGroup) {
 			point.shadowGroup.animate(translation);
 		}
@@ -56586,7 +56972,7 @@ var PieSeries = {
 		this.generatePoints();
 		if (pick(redraw, true)) {
 			this.chart.redraw(animation);
-		} 
+		}
 	},
 
 	/**
@@ -56605,7 +56991,7 @@ var PieSeries = {
 		// Populate local vars
 		points = this.points;
 		len = points.length;
-		
+
 		// Get the total sum
 		for (i = 0; i < len; i++) {
 			point = points[i];
@@ -56619,15 +57005,15 @@ var PieSeries = {
 			point.percentage = total > 0 ? (point.y / total) * 100 : 0;
 			point.total = total;
 		}
-		
+
 	},
-	
+
 	/**
 	 * Do translation for pie slices
 	 */
 	translate: function (positions) {
 		this.generatePoints();
-		
+
 		var series = this,
 			cumulative = 0,
 			precision = 1000, // issue #172
@@ -56669,9 +57055,9 @@ var PieSeries = {
 
 		// Calculate the geometry for each point
 		for (i = 0; i < len; i++) {
-			
+
 			point = points[i];
-			
+
 			// set start and end angle
 			start = startAngleRad + (cumulative * circ);
 			if (!ignoreHiddenPoint || point.visible) {
@@ -56711,7 +57097,7 @@ var PieSeries = {
 				positions[0] + radiusX * 0.7,
 				positions[1] + radiusY * 0.7
 			];
-			
+
 			point.half = angle < -mathPI / 2 || angle > mathPI / 2 ? 1 : 0;
 			point.angle = angle;
 
@@ -56732,7 +57118,7 @@ var PieSeries = {
 
 		}
 	},
-	
+
 	drawGraph: null,
 
 	/**
@@ -56787,13 +57173,13 @@ var PieSeries = {
 					.attr(
 						point.pointAttr[point.selected ? SELECT_STATE : NORMAL_STATE]
 					)
-					.attr({ 
+					.attr({
 						'stroke-linejoin': 'round'
 						//zIndex: 1 // #2722 (reversed)
 					})
 					.attr(groupTranslation)
 					.add(series.group)
-					.shadow(shadow, shadowGroup);	
+					.shadow(shadow, shadowGroup);
 			}
 
 			// detect point specific visibility (#2430)
@@ -56812,7 +57198,7 @@ var PieSeries = {
 		points.sort(function (a, b) {
 			return a.angle !== undefined && (b.angle - a.angle) * sign;
 		});
-	},		
+	},
 
 	/**
 	 * Use a simple symbol from LegendSymbolMixin
@@ -57209,11 +57595,11 @@ if (seriesTypes.pie) {
 					});
 					series.slotElements.length = 0;
 				}
-					
+
 				slots.forEach(function (pos, no) {
 					var slotX = series.getX(pos, i) + chart.plotLeft - (i ? 100 : 0),
 						slotY = pos + chart.plotTop;
-					
+
 					if (!isNaN(slotX)) {
 						series.slotElements.push(chart.renderer.rect(slotX, slotY - 7, 100, labelHeight, 1)
 							.attr({
@@ -57719,10 +58105,10 @@ var TrackerMixin = Highcharts.TrackerMixin = {
 /**
  * Add tracking event listener to the series group, so the point graphics
  * themselves act as trackers
- */ 
+ */
 
 if (seriesTypes.column) {
-	ColumnSeries.prototype.drawTracker = TrackerMixin.drawTrackerPoint;	
+	ColumnSeries.prototype.drawTracker = TrackerMixin.drawTrackerPoint;
 }
 
 if (seriesTypes.pie) {
@@ -57733,9 +58119,9 @@ if (seriesTypes.scatter) {
 	ScatterSeries.prototype.drawTracker = TrackerMixin.drawTrackerPoint;
 }
 
-/* 
- * Extend Legend for item events 
- */ 
+/*
+ * Extend Legend for item events
+ */
 extend(Legend.prototype, {
 
 	setItemEvents: function (item, legendItem, useHTML, itemStyle, itemHiddenStyle) {
@@ -57754,7 +58140,7 @@ extend(Legend.prototype, {
 				fnLegendItemClick = function () {
 					item.setVisible();
 				};
-				
+
 			// Pass over the click/touch event. #4.
 			event = {
 				browserEvent: event
@@ -57788,16 +58174,16 @@ extend(Legend.prototype, {
 				}
 			);
 		});
-	}	
+	}
 });
 
-/* 
+/*
  * Add pointer cursor to legend itemstyle in defaultOptions
  */
 defaultOptions.legend.itemStyle.cursor = 'pointer';
 
 
-/* 
+/*
  * Extend the Chart object with interaction
  */
 
@@ -57812,7 +58198,7 @@ extend(Chart.prototype, {
 			theme = btnOptions.theme,
 			states = theme.states,
 			alignTo = btnOptions.relativeTo === 'chart' ? null : 'plotBox';
-			
+
 		this.resetZoomButton = chart.renderer.button(lang.resetZoom, null, null, function () { chart.zoomOut(); }, theme, states && states.hover)
 			.attr({
 				align: btnOptions.position.align,
@@ -57820,7 +58206,7 @@ extend(Chart.prototype, {
 			})
 			.add()
 			.align(btnOptions.position, false, alignTo);
-			
+
 	},
 
 	/**
@@ -57828,7 +58214,7 @@ extend(Chart.prototype, {
 	 */
 	zoomOut: function () {
 		var chart = this;
-		fireEvent(chart, 'selection', { resetSelection: true }, function () { 
+		fireEvent(chart, 'selection', { resetSelection: true }, function () {
 			chart.zoom();
 		});
 	},
@@ -57863,7 +58249,7 @@ extend(Chart.prototype, {
 				}
 			});
 		}
-		
+
 		// Show or hide the Reset zoom button
 		resetZoomButton = chart.resetZoomButton;
 		if (displayButton && !resetZoomButton) {
@@ -57871,7 +58257,7 @@ extend(Chart.prototype, {
 		} else if (!displayButton && isObject(resetZoomButton)) {
 			chart.resetZoomButton = resetZoomButton.destroy();
 		}
-		
+
 
 		// Redraw
 		if (hasZoomed) {
@@ -58152,9 +58538,9 @@ extend(Point.prototype, {
 			inverted = chart.inverted;
 
 		return chart.renderer.symbols.circle(
-			plotBox.translateX + (inverted ? series.yAxis.len - this.plotY : this.plotX) - size, 
-			plotBox.translateY + (inverted ? series.xAxis.len - this.plotX : this.plotY) - size, 
-			size * 2, 
+			plotBox.translateX + (inverted ? series.yAxis.len - this.plotY : this.plotX) - size,
+			plotBox.translateY + (inverted ? series.xAxis.len - this.plotX : this.plotY) - size,
+			size * 2,
 			size * 2
 		);
 	}
@@ -58427,18 +58813,18 @@ extend(Series.prototype, {
 });
 // global variables
 extend(Highcharts, {
-	
+
 	// Constructors
 	Axis: Axis,
 	Chart: Chart,
 	Color: Color,
 	Point: Point,
-	Tick: Tick,	
+	Tick: Tick,
 	Renderer: Renderer,
 	Series: Series,
 	SVGElement: SVGElement,
 	SVGRenderer: SVGRenderer,
-	
+
 	// Various
 	arrayMin: arrayMin,
 	arrayMax: arrayMax,

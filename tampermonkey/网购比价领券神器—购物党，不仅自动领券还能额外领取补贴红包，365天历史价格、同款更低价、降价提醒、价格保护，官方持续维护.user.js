@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name        购物党比价工具【官方正版，持续维护】
+// @name        网购比价领券神器—购物党，不仅自动领券还能额外领取补贴红包，365天历史价格、同款更低价、降价提醒、价格保护，官方持续维护
 // @author      购物党
-// @name:zh-cn  购物党比价工具【官方正版，持续维护】
+// @name:zh-cn  网购比价领券神器—购物党，不仅自动领券还能额外领取补贴红包，365天历史价格、同款更低价、降价提醒、价格保护，官方持续维护
 // @antifeature referral-link 含有购物党官方返利
-// @description ［含有购物党的返利］浏览商品页面时，自动比较同款商品在淘宝/京东/亚马逊/当当/苏宁/等百家商城的最低价，提供价格历史、口碑评分等查询。支持商品促销活动，商城优惠信息查询，商品可全网收藏，降价提醒。支持链家、我爱我家、中原地产等主流房产网站房源价格走势查询，为买房人士提供决策参考。
-// @description:zh-hk  ［含有购物党的返利］浏览商品页面时，自动比较同款商品在淘宝/京东/亚马逊/当当/苏宁/等百家商城的最低价，提供价格历史、口碑评分等查询。支持商品促销活动，商城优惠信息查询，商品可全网收藏，降价提醒。支持链家、我爱我家、中原地产等主流房产网站房源价格走势查询，为买房人士提供决策参考。
+// @description 自动比较同款商品在淘宝/京东/天猫/亚马逊/当当//等更低价，提供365天历史价格走势查询，不仅可以领隐藏优惠券，无券商品还能领补贴红包，支持全网降价提醒、京东价格保护自动监控，链家二手房和Steam游戏也能比价！
+// @description:zh-hk  自动比较同款商品在淘宝/京东/天猫/亚马逊/当当//等更低价，提供365天历史价格走势查询，不仅可以领隐藏优惠券，无券商品还能领补贴红包，支持全网降价提醒、京东价格保护自动监控，链家二手房和Steam游戏也能比价！
 // @run-at      document-idle
-// @version     3.1.20
+// @version     3.1.21
 // @grant 	   none
 // @require     https://cdn.gwdang.com/js/vendor-gwd.js?v=2.1
 // @include  https://www.hihonor.com/*
@@ -1322,6 +1322,8 @@
 // @include  https://login.m.taobao.com/*
 // @grant        none
 // @namespace no
+// @downloadURL https://update.greasyfork.org/scripts/436876/%E7%BD%91%E8%B4%AD%E6%AF%94%E4%BB%B7%E9%A2%86%E5%88%B8%E7%A5%9E%E5%99%A8%E2%80%94%E8%B4%AD%E7%89%A9%E5%85%9A%EF%BC%8C%E4%B8%8D%E4%BB%85%E8%87%AA%E5%8A%A8%E9%A2%86%E5%88%B8%E8%BF%98%E8%83%BD%E9%A2%9D%E5%A4%96%E9%A2%86%E5%8F%96%E8%A1%A5%E8%B4%B4%E7%BA%A2%E5%8C%85%EF%BC%8C365%E5%A4%A9%E5%8E%86%E5%8F%B2%E4%BB%B7%E6%A0%BC%E3%80%81%E5%90%8C%E6%AC%BE%E6%9B%B4%E4%BD%8E%E4%BB%B7%E3%80%81%E9%99%8D%E4%BB%B7%E6%8F%90%E9%86%92%E3%80%81%E4%BB%B7%E6%A0%BC%E4%BF%9D%E6%8A%A4%EF%BC%8C%E5%AE%98%E6%96%B9%E6%8C%81%E7%BB%AD%E7%BB%B4%E6%8A%A4.user.js
+// @updateURL https://update.greasyfork.org/scripts/436876/%E7%BD%91%E8%B4%AD%E6%AF%94%E4%BB%B7%E9%A2%86%E5%88%B8%E7%A5%9E%E5%99%A8%E2%80%94%E8%B4%AD%E7%89%A9%E5%85%9A%EF%BC%8C%E4%B8%8D%E4%BB%85%E8%87%AA%E5%8A%A8%E9%A2%86%E5%88%B8%E8%BF%98%E8%83%BD%E9%A2%9D%E5%A4%96%E9%A2%86%E5%8F%96%E8%A1%A5%E8%B4%B4%E7%BA%A2%E5%8C%85%EF%BC%8C365%E5%A4%A9%E5%8E%86%E5%8F%B2%E4%BB%B7%E6%A0%BC%E3%80%81%E5%90%8C%E6%AC%BE%E6%9B%B4%E4%BD%8E%E4%BB%B7%E3%80%81%E9%99%8D%E4%BB%B7%E6%8F%90%E9%86%92%E3%80%81%E4%BB%B7%E6%A0%BC%E4%BF%9D%E6%8A%A4%EF%BC%8C%E5%AE%98%E6%96%B9%E6%8C%81%E7%BB%AD%E7%BB%B4%E6%8A%A4.meta.js
 // ==/UserScript==
 
 gwdangJsonp([0],{
@@ -1873,7 +1875,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     if (G.new_extension && !G.fdsMod) t_server = G.server;
     if (!event) event = "";
     event = encodeURIComponent(event);
-    if (navigator.userAgent.includes('Firefox') && !G.allowTracking) return;
+    // if (navigator.userAgent.includes('Firefox') && !G.allowTracking) return;
     if (!t_server) t_server = G.server;
     var n = 'img_random' + Math.random();
     var img = window[n] = new Image();
@@ -2982,14 +2984,17 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", { style: _vm.mode ? "font-size: 18px;" : "" }, [
                     _vm._v(
-                      "用" +
-                        _vm._s(_vm.site === "360buy" ? "京东" : "淘宝") +
+                      _vm._s(_vm.transText("用")) +
+                        _vm._s(
+                          _vm.transText(_vm.site === "360buy" ? "京东" : "淘宝")
+                        ) +
                         "APP" +
                         _vm._s(
-                          _vm.mode && _vm.mode.includes("login")
-                            ? "扫码领" +
-                                (_vm.mode.includes("gift") ? "红包" : "券")
-                            : "扫码"
+                          _vm.transText(
+                            _vm.mode && _vm.mode.includes("login")
+                              ? "扫码" + _vm.actionText
+                              : "扫码"
+                          )
                         )
                     )
                   ]),
@@ -3056,46 +3061,46 @@ var render = function() {
                                 [
                                   _vm._v(
                                     _vm._s(
-                                      _vm.site === "360buy" ? "京东" : "淘宝"
+                                      _vm.transText(
+                                        _vm.site === "360buy" ? "京东" : "淘宝"
+                                      )
                                     ) + "APP"
                                   )
                                 ]
                               ),
                               _vm._v(" "),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "normal",
-                                  style: _vm.mode
-                                    ? "font-size: 30px"
-                                    : "font-size: 22px"
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(_vm.mode ? " " : "") +
-                                      "扫码" +
-                                      _vm._s(
-                                        _vm.mode
-                                          ? "" +
-                                              (_vm.mode.includes("gift")
-                                                ? "领红包"
-                                                : "直接领券")
-                                          : ""
+                              _vm.mode
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticClass: "normal",
+                                      style: _vm.mode
+                                        ? "font-size: 30px"
+                                        : "font-size: 22px"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(_vm.mode ? " " : "") +
+                                          _vm._s(_vm.transText("扫码直接")) +
+                                          _vm._s(_vm.transText(_vm.actionText))
                                       )
+                                    ]
                                   )
-                                ]
-                              ),
+                                : _vm._e(),
                               _vm._v(" "),
                               !_vm.mode
                                 ? _c("span", { staticClass: "normal" }, [
                                     _vm._v(
-                                      _vm._s(
-                                        _vm.site === "360buy"
-                                          ? "查看商品"
-                                          : _vm.hasBuyButton
-                                          ? "查看优惠"
-                                          : "快捷购买"
-                                      )
+                                      _vm._s(_vm.transText("扫码")) +
+                                        _vm._s(
+                                          _vm.transText(
+                                            _vm.site === "360buy"
+                                              ? "查看商品"
+                                              : _vm.hasBuyButton
+                                              ? "查看优惠"
+                                              : "快捷购买"
+                                          )
+                                        )
                                     )
                                   ])
                                 : _vm._e()
@@ -3110,15 +3115,21 @@ var render = function() {
               !_vm.mode
                 ? _c("span", { staticClass: "gwd-qr-hint" }, [
                     _vm._v(
-                      "在" +
-                        _vm._s(_vm.site === "360buy" ? "京东APP" : "手淘") +
-                        "内" +
+                      _vm._s(_vm.transText("在")) +
                         _vm._s(
-                          _vm.site === "360buy"
-                            ? "浏览该商品"
-                            : _vm.hasBuyButton
-                            ? "查看优惠详情"
-                            : "快捷购买"
+                          _vm.transText(
+                            _vm.site === "360buy" ? "京东APP" : "手淘"
+                          )
+                        ) +
+                        _vm._s(_vm.transText("内")) +
+                        _vm._s(
+                          _vm.transText(
+                            _vm.site === "360buy"
+                              ? "浏览该商品"
+                              : _vm.hasBuyButton
+                              ? "查看优惠详情"
+                              : "快捷购买"
+                          )
                         )
                     )
                   ])
@@ -4600,18 +4611,6 @@ module.exports.init = init;
 
 /***/ }),
 
-/***/ "1733ff6af8002b788e32":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_5_4_2_babel_loader_index_js_node_modules_1_0_3_if_loader_index_js_ref_4_1_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_script_lang_js___ = __webpack_require__("b194ab71c349c2a72948");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_5_4_2_babel_loader_index_js_node_modules_1_0_3_if_loader_index_js_ref_4_1_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_script_lang_js____default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__node_modules_5_4_2_babel_loader_index_js_node_modules_1_0_3_if_loader_index_js_ref_4_1_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_script_lang_js___);
-/* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__node_modules_5_4_2_babel_loader_index_js_node_modules_1_0_3_if_loader_index_js_ref_4_1_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_script_lang_js___) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__node_modules_5_4_2_babel_loader_index_js_node_modules_1_0_3_if_loader_index_js_ref_4_1_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_script_lang_js___[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__node_modules_5_4_2_babel_loader_index_js_node_modules_1_0_3_if_loader_index_js_ref_4_1_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_script_lang_js____default.a); 
-
-/***/ }),
-
 /***/ "17346ce3fbd01930d295":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5316,17 +5315,6 @@ module.exports.listenBar = function (style) {
 
 /***/ }),
 
-/***/ "1d4a38351293e5975c34":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_15_9_3_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_template_id_caa5e08c_scoped_true___ = __webpack_require__("91d14e46c642a51cb733");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__node_modules_15_9_3_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_template_id_caa5e08c_scoped_true___["a"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__node_modules_15_9_3_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_template_id_caa5e08c_scoped_true___["b"]; });
-
-
-/***/ }),
-
 /***/ "1f2fc6d8a8045863aace":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5477,7 +5465,7 @@ exports['default'] = {
         '手淘扫码': '手淘掃碼',
         '联系客服领取': '聯系客服領取'
       };
-      if (G.ss_name === 'priceDog') {
+      if (G.lang === 'zh-tr') {
         return map[text];
       }
       return text;
@@ -6035,10 +6023,13 @@ var getTbTle = function getTbTle() {
 
 var render = function render() {
   var html = __webpack_require__("6b738ba34e5250f446bd");
+  if (G.lang === 'zh-tr') {
+    html = __webpack_require__("a12b5e85e3088629fa8c");
+  }
   var pos = posDict[G.site];
   var str = 'is_tb_site';
   if (G.site === 'tmall') str = 'is_tm_site';
-  if (G.site === 'tmall' && $(pos).length === 0) {
+  if ($(pos).length === 0) {
     pos = '[class^=PicGallery--root]';
     __webpack_require__("3e983ecbff4e1a29654c").appendCss('\n      #cptklbox.is_tm_site { margin-left: 0!important; margin-top: 50px; }\n    ');
   }
@@ -6082,7 +6073,7 @@ var clipboard = function clipboard() {
         $('#gwd-tkl-text').text("复制成功");
         $('#bjg-tkl img').attr('src', G.s_server + '/images/extensions/TKLSuccess@2x.png');
       }
-      $('.cptkl-btn span').text("复制成功");
+      $('.cptkl-btn span').text(G.lang === 'zh-tr' ? '復製成功' : "复制成功");
       $('.cptkl-btn').removeClass('cpready').addClass('cpsuccess');
     }
   } catch (e) {
@@ -6102,7 +6093,7 @@ var addEvent = function addEvent() {
 
     getTkl(function (data) {
       if (data) {
-        $('.cptkl-btn span').text("点击复制淘口令");
+        $('.cptkl-btn span').text(G.lang === 'zh-tr' ? '點擊復製淘口令' : "点击复制淘口令");
         $('.cptkl-btn').addClass('cpready');
         tklOK = true;
         var dptle = getTbTle();
@@ -7278,8 +7269,8 @@ module.exports.init = function (id, adzone_id, callback) {
         }
       }
 
-      if (G.from_device === 'bijiago' && G.aliSite) {
-        data.data.click_url2 = 'https://tb.' + (G.ss_name === 'priceDog' ? 'pricedog' : 'bijiago') + '.com/extension/qrpage?union=' + G.union + '&dp_id=' + id + '-83&tag=9_chrome&discount=' + data.data.coupon.coupon_money;
+      if (G.from_device === 'bijiago' && G.aliSite && data.data.coupon) {
+        data.data.click_url2 = 'https://tb.' + (G.ss_name === 'priceDog' ? 'pricedog' : 'bijiago') + '.com/extension/qrpage?union=' + G.union + '&dp_id=' + id + '-83&tag=9_chrome&discount=' + data.data.coupon.coupon_money + '&lang=' + G.lang;
       }
 
       if (G.from_device === 'biyibi' && G.aliSite) {
@@ -7649,7 +7640,7 @@ module.exports = function ($data) {
     $$out += 'src="https://cdn.gwdang.com/images/extensions/activity/618-take-middle@2x.png"';
     $$out += ' alt="" style="width: 24px; height: 24px;">\n  <span style="font-size: 12px; color: #ff471a; text-decoration: underline; margin-left: 3px; font-weight: 600; font-family: \'Microsoft YaHei\', \'Arial\', \'SimSun\'">';
     $$out += $escape(text);
-    $$out += '</span>\n</a>\n<style>\n  .gwd-middle-tmall {\n    height: 100%;\n    align-items: center;\n    justify-content: center;\n    justify-items: center;\n    width: 150px!important;\n  }\n\n  .gwd-middle-tmall:hover {\n      background: #fff3eb;\n  }\n\n  .gwd-qr-act {\n    display: none;\n    flex-direction: column;\n    position: absolute;\n    width: 144px;\n    height: 167px;\n    box-sizing: border-box;\n    border: 1px solid #ff471a;\n    background: #fff9f6;\n    top: 37px;\n    left: 50%;\n    align-items: center;\n    margin-left: -72px;\n    z-index: 99;\n  }\n\n  .gwd-middle-tmall:hover .gwd-qr-act {\n    display: flex;\n  }\n</style>';
+    $$out += '</span>\n</a>\n<style>\n  .gwd-middle-tmall {\n    height: 100%;\n    align-items: center;\n    justify-content: center;\n    justify-items: center;\n    width: 150px!important;\n    white-space: nowrap;\n  }\n\n  .gwd-middle-tmall:hover {\n      background: #fff3eb;\n  }\n\n  .gwd-qr-act {\n    display: none;\n    flex-direction: column;\n    position: absolute;\n    width: 144px;\n    height: 167px;\n    box-sizing: border-box;\n    border: 1px solid #ff471a;\n    background: #fff9f6;\n    top: 37px;\n    left: 50%;\n    align-items: center;\n    margin-left: -72px;\n    z-index: 99;\n  }\n\n  .gwd-middle-tmall:hover .gwd-qr-act {\n    display: flex;\n  }\n</style>\n';
     return $$out;
 };
 
@@ -8722,6 +8713,8 @@ var _this = this;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+var _commonCommonUtil = __webpack_require__("3e983ecbff4e1a29654c");
+
 var _componentsQRLinkContactTmallVue = __webpack_require__("f48ba811c1b2ba7ef0c9");
 
 var _componentsQRLinkContactTmallVue2 = _interopRequireDefault(_componentsQRLinkContactTmallVue);
@@ -8748,7 +8741,7 @@ var qrReplaceJd = function qrReplaceJd() {
       case 2:
         if ($('.qrcode.fl img').length) {
           __webpack_require__("f02e7d39b343f92cf387").get('baiyibutie').then(function (r) {
-            $('.mobile-only.J-mobile-only').css('position', 'relative').append('<img style="position: absolute; top: 0; left: -110px;" src="https://cdn.gwdang.com/images/extensions/jdScanHint.svg">');
+            $('.mobile-only.J-mobile-only').css('position', 'relative').append('<img style="position: absolute; top: 0; left: -110px; width: 105px" src="https://cdn.gwdang.com/images/extensions/' + (G.lang === 'zh-tr' ? 'jdScanHintTr.png' : 'jdScanHint.svg') + '">');
             $('.qrcode.fl img').attr('src', r).css('width', '80px');
           });
         }
@@ -8761,13 +8754,21 @@ var qrReplaceJd = function qrReplaceJd() {
 };
 
 var qrReplaceTaobao = function qrReplaceTaobao() {
-  var s, s2, imgSrc, loadQr, imgSrcRight, loadQrRight;
+  var s, s2, imgSrc, loadQr, imgSrcRight, loadQrRight, taoScanQr, className;
   return regeneratorRuntime.async(function qrReplaceTaobao$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
+        if (!window.gwd_qr_replaced) {
+          context$1$0.next = 2;
+          break;
+        }
+
+        return context$1$0.abrupt('return');
+
+      case 2:
         s = document.createElement('STYLE');
 
-        s.innerHTML = ' \n    #tk-qr-container > img { display: none!important } \n    ';
+        s.innerHTML = '\n    .tk-qr-wrapper > canvas, .tk-qr-wrapper > img { display: none!important }\n    ';
         document.body.appendChild(s);
 
         s2 = document.createElement('STYLE');
@@ -8795,16 +8796,18 @@ var qrReplaceTaobao = function qrReplaceTaobao() {
           });
         };
 
-        context$1$0.next = 12;
+        context$1$0.next = 14;
         return regeneratorRuntime.awrap(__webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
-          return $('#tk-qr-container').length || $('.tb-qrcode-tool').length;
+          return $('.tk-qr-wrapper').length || $('.tb-qrcode-tool').length;
         }));
 
-      case 12:
+      case 14:
 
         $('[class^=Promotion--trigger]').hover(loadQr);
         $('.tb-qrcode-tool').hover(loadQr);
+
         $('.toolkit-item-qrcode').hover(loadQrRight);
+        window.gwd_qr_replaced = true;
 
         __webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
           return imgSrc;
@@ -8821,23 +8824,38 @@ var qrReplaceTaobao = function qrReplaceTaobao() {
             padding: '10px',
             boxSizing: 'border-box'
           });
-          window.gwd_qr_replaced = true;
         });
 
         __webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
-          return $('#tk-qr-container > img').length && imgSrcRight !== '';
+          // return $('.tk-qr-wrapper > img').length && imgSrcRight !== ''
+          return imgSrcRight !== '';
         }).then(function () {
-          $('#tk-qr-container > img').attr('src', imgSrcRight).css('width', '100px');
+          // $('.tk-qr-wrapper > img').attr('src', imgSrcRight).css('width', '100px')
+          $('.tk-qr-inner canvas').hide();
+          $('.tk-qr-inner').prepend('<img src="' + imgSrcRight + '" style="width: 100px">');
           s.remove();
         });
 
-        // require('common/mutationObserver').observe($('#tk-qr-container')[0], () => {
-        //   if ($('#tk-qr-container > img').length && $('#tk-qr-container > img').attr('src') !== imgSrc ) {
-        //     $('#tk-qr-container > img').attr('src', imgSrc)
-        //   }
-        // })
+        taoScanQr = '';
+        className = $('[class^=Price--tooltipImage]').attr('class');
 
-      case 17:
+        (0, _commonCommonUtil.appendCss)('.' + className + ' { visibility: hidden } .gwd-qrlink-force-display { visibility: visible!important }');
+        $('[class^=Price--priceAction]').hover(function () {
+          if (taoScanQr) return;
+          __webpack_require__("f02e7d39b343f92cf387").get(13).then(function (r) {
+            taoScanQr = r;
+          });
+        });
+        __webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
+          return taoScanQr;
+        }).then(function () {
+          if ($('[class^=Price--tooltipImage]').length) {
+            $('[class^=Price--tooltipImage]').attr('src', taoScanQr).css('margin', '10px').css('width', '80px').css('height', '80px').addClass('gwd-qrlink-force-display');
+            $('[class^=Price--priceTooltip]').css('z-index', '999');
+          }
+        });
+
+      case 25:
       case 'end':
         return context$1$0.stop();
     }
@@ -8845,11 +8863,8 @@ var qrReplaceTaobao = function qrReplaceTaobao() {
 };
 
 module.exports.init = function callee$0$0() {
-  var e, tag, _ret2;
-
+  var e, tag, isNewStyle, div, dom;
   return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
-    var _this2 = this;
-
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
         if (!(['tmall', 'taobao', '360buy'].indexOf(G.site) === -1)) {
@@ -8915,16 +8930,10 @@ module.exports.init = function callee$0$0() {
             var e2 = document.createElement('DIV');
             var left = -113;
             var bottom = undefined;
-            if (G.site === 'tmall') {
-              var _e = $('.tb-gallery');
-              if (_e.length) {
-                _e.append(e2);
-                left = -96;
-              } else {
-                $('[class^=PicGallery--mainPicWrap]').append(e2);
-                left = -125;
-                bottom = '0';
-              }
+            if ($('[class^=PicGallery--mainPicWrap]').length) {
+              $('[class^=PicGallery--mainPicWrap]').append(e2);
+              left = -125;
+              bottom = '0';
             } else {
               $('.tb-item-info-l').append(e2);
             }
@@ -8945,102 +8954,78 @@ module.exports.init = function callee$0$0() {
 
         __webpack_require__("9c38beef5ff283e15bd2").setMet('QRLinkReady');
 
-        // 天猫顶部联系客服
+        isNewStyle = $('[class^=BasicContent--root]').length > 0;
 
-        if (!(G.site === 'tmall' && G.ss_name !== 'priceDog')) {
-          context$1$0.next = 23;
+        if (!(isNewStyle && G.ss_name !== 'priceDog')) {
+          context$1$0.next = 31;
           break;
         }
 
-        context$1$0.next = 20;
-        return regeneratorRuntime.awrap((function callee$1$0() {
-          var isNewStyle, div, dom;
-          return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
-            while (1) switch (context$2$0.prev = context$2$0.next) {
-              case 0:
-                isNewStyle = $('[class^=BasicContent--root]').length > 0;
-                context$2$0.next = 3;
-                return regeneratorRuntime.awrap(__webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
-                  return $('.ww-light.ww-static').length > 0 || isNewStyle;
-                }));
+        context$1$0.next = 21;
+        return regeneratorRuntime.awrap(__webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
+          return $('.ww-light.ww-static').length > 0 || isNewStyle;
+        }));
 
-              case 3:
-                $('.gwd-contact-link').remove();
-                div = document.createElement('DIV');
+      case 21:
+        $('.gwd-contact-link').remove();
+        div = document.createElement('DIV');
 
-                if (isNewStyle) {
-                  $('.gwd-fake').remove();
-                  $('[class^=BasicContent--itemInfo] > [class^=Actions--root]').append('<div class="Actions--divider--2U8scvj gwd-fake"></div>');
-                  $('[class^=BasicContent--itemInfo] > [class^=Actions--root]').append(div);
-                } else {
-                  $('.ww-light.ww-static').css({
-                    whiteSpace: 'nowrap'
-                  }).append(div);
-                }
-                window.contact = new Vue({
-                  el: div,
-                  render: function render(h) {
-                    return h(_componentsQRLinkContactTmallVue2['default'], {
-                      props: {
-                        tag: 4,
-                        withLogo: isNewStyle
-                      }
-                    });
-                  }
-                });
+        if (isNewStyle) {
+          $('.gwd-fake').remove();
+          $('[class^=BasicContent--itemInfo] > [class^=Actions--root]').append('<div class="Actions--divider--2U8scvj gwd-fake"></div>');
+          $('[class^=BasicContent--itemInfo] > [class^=Actions--root]').append(div);
+        } else {
+          $('.ww-light.ww-static').css({
+            whiteSpace: 'nowrap'
+          }).append(div);
+        }
+        window.contact = new Vue({
+          el: div,
+          render: function render(h) {
+            return h(_componentsQRLinkContactTmallVue2['default'], {
+              props: {
+                tag: 4,
+                withLogo: isNewStyle
+              }
+            });
+          }
+        });
 
-                dom = '#J_tbExtra';
+        dom = '#J_tbExtra';
 
-                if (G.site === 'tmall') {
-                  dom = '.tb-wrap';
-                }
-                $(dom).append('\n    <dl class="gwd-qrlink" style="overflow: inherit">\n      <dt style="display: inline-block;' + (G.site === 'tmall' ? 'padding-left: 20px; color: #999' : '') + '">快捷联系</dt>\n      <dd style="overflow: initial; display: inline-block">\n        <div class="ww-light ww-static" style="display: inline-block; vertical-align: middle; overflow: inherit; width: 20px; height: 22px">\n          <a href="" class="ww-inline ww-online"></a>\n        </div>\n        <div id="gwd-link" style="display: inline-block; vertical-align: middle"></div>\n      </dd>\n    </dl>\n  ');
+        if (G.site === 'tmall') {
+          dom = '.tb-wrap';
+        }
+        $(dom).append('\n    <dl class="gwd-qrlink" style="overflow: inherit">\n      <dt style="display: inline-block;' + (G.site === 'tmall' ? 'padding-left: 20px; color: #999' : '') + '">快捷联系</dt>\n      <dd style="overflow: initial; display: inline-block">\n        <div class="ww-light ww-static" style="display: inline-block; vertical-align: middle; overflow: inherit; width: 20px; height: 22px">\n          <a href="" class="ww-inline ww-online"></a>\n        </div>\n        <div id="gwd-link" style="display: inline-block; vertical-align: middle"></div>\n      </dd>\n    </dl>\n  ');
 
-                if ($('#gwd-link').length) {
-                  context$2$0.next = 12;
-                  break;
-                }
-
-                return context$2$0.abrupt('return', {
-                  v: undefined
-                });
-
-              case 12:
-
-                new Vue({
-                  el: '#gwd-link',
-                  render: function render(h) {
-                    return h(_componentsQRLinkContact2['default'], {
-                      props: {
-                        tag: ''
-                      }
-                    });
-                  }
-                });
-
-              case 13:
-              case 'end':
-                return context$2$0.stop();
-            }
-          }, null, _this2);
-        })());
-
-      case 20:
-        _ret2 = context$1$0.sent;
-
-        if (!(typeof _ret2 === 'object')) {
-          context$1$0.next = 23;
+        if ($('#gwd-link').length) {
+          context$1$0.next = 30;
           break;
         }
 
-        return context$1$0.abrupt('return', _ret2.v);
+        return context$1$0.abrupt('return');
 
-      case 23:
+      case 30:
+
+        new Vue({
+          el: '#gwd-link',
+          render: function render(h) {
+            return h(_componentsQRLinkContact2['default'], {
+              props: {
+                tag: ''
+              }
+            });
+          }
+        });
+
+      case 31:
       case 'end':
         return context$1$0.stop();
     }
   }, null, _this);
 };
+
+// 天猫顶部联系客服
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
 
 /***/ }),
@@ -12010,10 +11995,6 @@ var _this = this;
 var request = __webpack_require__("91f250ebeb8d5987491c");
 var productInfo = __webpack_require__("4733a3dd803685ec596a");
 
-var _require = __webpack_require__("d45bbf37f97eb6c6f02e");
-
-var MiniSameList = _require['default'];
-
 module.exports = function callee$0$0(dpId) {
   var link, res, toReturn;
   return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
@@ -12051,9 +12032,12 @@ module.exports = function callee$0$0(dpId) {
           toReturn.msg = '获取优惠券失败';
           if (res.data && res.data.rebate) {
             G.dp.rebate = res.data.rebate;
-          }
-          if (res.data && res.data.slist) {
-            G.dp.slist = res.data.slist;
+          } else {
+            if (res.data && res.data.slist) {
+              G.dp.slist = res.data.slist;
+            } else {
+              G.dp.slist = [];
+            }
             __webpack_require__("9c38beef5ff283e15bd2").setMet('dpSlist', G.dp.slist);
           }
         }
@@ -13058,6 +13042,13 @@ var getProductInfo = function getProductInfo() {
     isbn: '',
     url: window.location.href
   };
+};
+
+var getPrice = function getPrice(selector) {
+  if ($(selector).length) {
+    return $(selector).text().trim();
+  }
+  return '';
 };
 
 var tbInfoFix = function tbInfoFix(info) {
@@ -14079,7 +14070,8 @@ var productPattern = {
       }
     }
     if (dp.price == '') {
-      dp.price = $('#apex_desktop .a-price .a-offscreen').text();
+      dp.price = $('#apex_desktop .a-price span[aria-hidden=true]:eq(0)').text();
+      __webpack_require__("316f9c352c6202560d16").log('dp.price', dp.price);
     }
     if (dp.price == '') dp.price = $('#priceblock_ourprice').text();
     if (dp.price == '') dp.price = $('#priceblock_saleprice').text();
@@ -15134,11 +15126,21 @@ var productPattern = {
     if (!price) {
       price = $('[class^=Price--priceText]:eq(0)').text();
       var detailText = $('[class^=Price--originPrice]:eq(0)').text();
+      var extraPriceText = $('[class^=Price--extraPrice]:eq(0)').text();
+      if (extraPriceText) {
+        detailText += '--' + extraPriceText;
+      }
+      G.priceTextCollectedFromPage = detailText;
       if (detailText.indexOf('折后') > -1 || detailText.indexOf('券后') > -1) {
         // console.log('dp price info bad', price)
         info.ori_price = price;
         price = '';
       }
+    }
+
+    var promoPrice = getPrice('[class^=Price--extraPrice] span[class^=Price--priceText]');
+    if (promoPrice) {
+      price = promoPrice;
     }
 
     info.shop_name = $('.shopkeeper .right a').text();
@@ -15245,7 +15247,7 @@ var productPattern = {
     info.itemId = info.nnid;
     info.userid = userid;
 
-    if (info.img.indexOf('//') === 0) {
+    if (info.img && info.img.indexOf('//') === 0) {
       info.img = 'https:' + info.img;
     }
 
@@ -15763,6 +15765,16 @@ var delayConditions = {
     }
     retryCount++;
     return retryCount > 10;
+  },
+  'amazon': function amazon() {
+    if ($('#apex_desktop .a-price span[aria-hidden=true]').length) {
+      return true;
+    }
+    retryCount++;
+    if (retryCount > 10) {
+      console.warn('amazon not met');
+    }
+    return retryCount > 10;
   }
 };
 
@@ -15797,6 +15809,9 @@ var get = function get(callback) {
 
         try {
           if (siteName && siteName.indexOf('amazon') > -1) siteName = 'amazon';
+          if (siteName === 'taobao' && $('[class^=Item--main--]').length) {
+            siteName = 'tmall';
+          }
           dp = productPattern[siteName]();
           dp.oldPrice = dp.price;
           if (dp.price && dp.price.match(/(?:\?|\？)/)) dp.activePrice = true;
@@ -15847,7 +15862,7 @@ var get = function get(callback) {
         if (typeof dp.isbn == 'undefined' || dp.isbn == null) {
           dp.isbn = '';
         }
-        delayLoadList = ['youpin-mi', 'oneplus', 'lenovo', 'vipshop'];
+        delayLoadList = ['youpin-mi', 'oneplus', 'lenovo', 'vipshop', 'amazon'];
 
         if (!(delayLoadList.indexOf(G.site) > -1 && !dp.price && !dp.name && !reTry)) {
           context$1$0.next = 24;
@@ -15904,7 +15919,7 @@ module.exports.appendTbInfoForUrl = function (url) {
     return url;
   }
 
-  return '' + url + (url.includes('?') ? '' : '?') + '&title=' + encodeURIComponent(G.dp.name) + '&img=' + encodeURIComponent(G.dp.pic) + '&price=' + (G.dp.price ? G.dp.price : G.dp.ori_price) + '&shopName=' + encodeURIComponent(G.dp.shopName.trim()) + '&sellAmount=' + encodeURIComponent(G.dp.shopAmount);
+  return '' + url + (url.includes('?') ? '' : '?') + '&title=' + encodeURIComponent(G.dp.name) + '&img=' + encodeURIComponent(G.dp.pic) + '&price=' + (G.dp.price ? G.dp.price : G.dp.ori_price) + '&shopName=' + encodeURIComponent(G.dp.shopName.trim()) + '&sellAmount=' + encodeURIComponent(G.dp.shopAmount) + (G.lang === 'zh-tr' ? '&lang=zh-tr' : '');
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("0d878046564e4ef2113b")))
 
@@ -16043,75 +16058,173 @@ component.options.__file = "src/standard/module/components/CollectionSettingTop.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(G, $, Vue) {
+/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, G, $, Vue) {
+
+var _this = this;
 
 var request = __webpack_require__("91f250ebeb8d5987491c");
 
+var getH5ShopCoupon = function getH5ShopCoupon() {
+  var id;
+  return regeneratorRuntime.async(function getH5ShopCoupon$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        id = G.dp.itemId.replace('-83', '').replace('-123', '');
+        context$1$0.next = 3;
+        return regeneratorRuntime.awrap(Promise.race([__webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
+          return window.gwd_G.aliSkuResults && window.gwd_G.aliSkuResults[id];
+        }), new Promise(function (resolve) {
+          return setTimeout(resolve, 5000);
+        })]));
+
+      case 3:
+        if (!(window.gwd_G.aliSkuResults && window.gwd_G.aliSkuResults[id])) {
+          context$1$0.next = 7;
+          break;
+        }
+
+        return context$1$0.abrupt('return', {
+          shop_coupon: window.gwd_G.aliSkuResults[id].couponInfo
+        });
+
+      case 7:
+        return context$1$0.abrupt('return', false);
+
+      case 8:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, _this);
+};
+
+var getShopCoupon = function getShopCoupon(g_config) {
+  return request.get(G.server + '/extension/Coupon?dp_id=' + G.dp.itemId + '&sellerId=' + g_config.sellerId + '&price=' + G.dp.price);
+};
+
+var getResult = function getResult(g_config) {
+  return new Promise(function callee$1$0(resolve) {
+    var res;
+    return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
+      while (1) switch (context$2$0.prev = context$2$0.next) {
+        case 0:
+          context$2$0.next = 2;
+          return regeneratorRuntime.awrap(getH5ShopCoupon());
+
+        case 2:
+          res = context$2$0.sent;
+
+          if (!(res && res.shop_coupon !== 'no-coupon')) {
+            context$2$0.next = 7;
+            break;
+          }
+
+          resolve(res);
+          context$2$0.next = 11;
+          break;
+
+        case 7:
+          context$2$0.next = 9;
+          return regeneratorRuntime.awrap(getShopCoupon(g_config));
+
+        case 9:
+          res = context$2$0.sent;
+
+          resolve(res);
+
+        case 11:
+        case 'end':
+          return context$2$0.stop();
+      }
+    }, null, _this);
+  });
+};
+
 module.exports = {
   init: function init() {
+    var _this2 = this;
+
     var g_config = window.g_config;
     var hasShopCoupon = false;
     setTimeout(function () {
       if (!hasShopCoupon) __webpack_require__("9c38beef5ff283e15bd2").setMet('shopCouponGot', false);
     }, 3000);
-    request.get(G.server + '/extension/Coupon?dp_id=' + G.dp.itemId + '&sellerId=' + g_config.sellerId + '&price=' + G.dp.price).then(function (res) {
-      __webpack_require__("9c38beef5ff283e15bd2").setMet('shopCouponGot', res && res.shop_coupon);
-      hasShopCoupon = true;
+    getResult(g_config).then(function callee$1$0(res) {
+      var coupon;
+      return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
+        while (1) switch (context$2$0.prev = context$2$0.next) {
+          case 0:
 
-      if (!res || !res.shop_coupon) return;
-      var coupon = res.shop_coupon;
-      setTimeout(function () {
-        $('#gwd-coupon-placeholder').replaceWith('<div id="shopCouponMini"></div>');
-        // const ShopCouponMini = require('standard/module/components/MiniCoupon').default
-        var ShopCouponTop = __webpack_require__("dc95a667ec8da7724e60")['default'];
-        // new Vue({
-        //   el: '#shopCouponMini',
-        //   render: h => h(ShopCouponMini, {
-        //     props: {
-        //       coupon: coupon,
-        //       tag: 6
-        //     }
-        //   })
-        // })
-        $('.gwd-topbar-left').append('<div id="shopCouponTop"></div>');
-        new Vue({
-          el: '#shopCouponTop',
-          render: function render(h) {
-            return h(ShopCouponTop, {
-              props: {
-                coupon: coupon,
-                tag: 6
-              }
-            });
-          }
-        });
+            __webpack_require__("9c38beef5ff283e15bd2").setMet('shopCouponGot', res && res.shop_coupon);
+            hasShopCoupon = true;
 
-        var CommonCouponBarMini = __webpack_require__("bf749102803a6e48eddc")['default'];
-        new Vue({
-          el: '#shopCouponMini',
-          render: function render(h) {
-            return h(CommonCouponBarMini, {
-              props: {
-                type: 'link',
-                mainColor: '#ff6132',
-                secondColor: '#ff7d38',
-                icon: __webpack_require__("f91a94ff4014724ed642"),
-                text: '当前商品可领店铺券，满' + coupon.limit + '减' + coupon.discount,
-                href: 'https://tb.gwdang.com/extension/qrpage?dp_id=' + G.dp.dpId + '&tag=6&limit=' + coupon.limit + '&discount=' + coupon.discount
-              }
-            });
-          }
-        });
+            if (!(!res || !res.shop_coupon)) {
+              context$2$0.next = 4;
+              break;
+            }
 
-        __webpack_require__("9c38beef5ff283e15bd2").setMet('couponLink', {
-          content: '发现' + coupon.discount + '元店铺券，速领',
-          url: 'https://tb.gwdang.com/extension/qrpage?dp_id=' + G.dp.dpId + '&tag=6&limit=' + coupon.limit + '&discount=' + coupon.discount
-        });
-      }, 0);
+            return context$2$0.abrupt('return');
+
+          case 4:
+            coupon = res.shop_coupon;
+
+            setTimeout(function () {
+              $('#gwd-coupon-placeholder').replaceWith('<div id="shopCouponMini"></div>');
+              // const ShopCouponMini = require('standard/module/components/MiniCoupon').default
+              var ShopCouponTop = __webpack_require__("dc95a667ec8da7724e60")['default'];
+              // new Vue({
+              //   el: '#shopCouponMini',
+              //   render: h => h(ShopCouponMini, {
+              //     props: {
+              //       coupon: coupon,
+              //       tag: 6
+              //     }
+              //   })
+              // })
+              $('.gwd-topbar-left').append('<div id="shopCouponTop"></div>');
+              new Vue({
+                el: '#shopCouponTop',
+                render: function render(h) {
+                  return h(ShopCouponTop, {
+                    props: {
+                      coupon: coupon,
+                      tag: 6
+                    }
+                  });
+                }
+              });
+
+              var CommonCouponBarMini = __webpack_require__("bf749102803a6e48eddc")['default'];
+              new Vue({
+                el: '#shopCouponMini',
+                render: function render(h) {
+                  return h(CommonCouponBarMini, {
+                    props: {
+                      type: 'link',
+                      mainColor: '#ff6132',
+                      secondColor: '#ff7d38',
+                      icon: __webpack_require__("f91a94ff4014724ed642"),
+                      text: '当前商品可领店铺券，满' + coupon.limit + '减' + coupon.discount,
+                      href: 'https://tb.gwdang.com/extension/qrpage?dp_id=' + G.dp.dpId + '&tag=6&limit=' + coupon.limit + '&discount=' + coupon.discount
+                    }
+                  });
+                }
+              });
+
+              __webpack_require__("9c38beef5ff283e15bd2").setMet('couponLink', {
+                content: '发现' + coupon.discount + '元店铺券，速领',
+                url: 'https://tb.gwdang.com/extension/qrpage?dp_id=' + G.dp.dpId + '&tag=6&limit=' + coupon.limit + '&discount=' + coupon.discount
+              });
+            }, 0);
+
+          case 6:
+          case 'end':
+            return context$2$0.stop();
+        }
+      }, null, _this2);
     });
   }
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
 
 /***/ }),
 
@@ -17626,7 +17739,7 @@ exports.push([module.i, ".gwd-promo-normal[data-v-7cd833d3] {\n  line-height: in
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(G, regeneratorRuntime, $, Vue) {
+/* WEBPACK VAR INJECTION */(function($, G, regeneratorRuntime, Vue) {
 
 var _this = this;
 
@@ -17647,6 +17760,13 @@ var countryConfig = __webpack_require__("9bf6d059e9a265559f0c");
 var util = __webpack_require__("d54879e983a83d07f093");
 
 __webpack_require__("0b4163e217e4ff33f7c4");
+
+var getText = function getText(selector) {
+  if ($(selector).length) {
+    return parseFloat($(selector).text().trim());
+  }
+  return '';
+};
 
 var oneHour = 3600000;
 var oneDay = 24 * oneHour;
@@ -17696,6 +17816,12 @@ var noTrendAddTrendData = function noTrendAddTrendData(data) {
     }
   }
   var price = parseFloat(G.dp.price);
+  if (G.aliSite) {
+    var promoPrice = getText('[class^=Price--extraPrice] span[class^=Price--priceText]');
+    var pagePrice = G.dp.ori_price;
+    if (pagePrice) price = pagePrice;
+    if (promoPrice) price = promoPrice;
+  }
   if (!price) return data;
   var date = util.getTimeNumber(new Date().getTime() - 86400000 * 179, "5");
   var date2 = util.getTimeNumber(new Date().getTime(), "5");
@@ -17744,36 +17870,29 @@ var getCommonInfo = function getCommonInfo(callback) {
     price = '';
   }
 
+  if (G.aliSite) {
+    var promoPrice = getText('[class^=Price--extraPrice] span[class^=Price--priceText]');
+    var pagePrice = G.dp.ori_price;
+    if (pagePrice) price = pagePrice * 100;
+    if (promoPrice) price = promoPrice * 100;
+  }
+
   getPriceHistoryDataAndRender(url, price, callback);
 
   if (G.site === 'taobao' || G.site === 'tmall') {
     var origin = window.removeEventListener;
     setTimeout(function callee$1$0() {
-      var map, valItemInfo;
       return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
         while (1) switch (context$2$0.prev = context$2$0.next) {
           case 0:
-            map = {};
-
-            if (!(G.site === 'taobao')) {
-              context$2$0.next = 5;
-              break;
-            }
-
-            map = Hub.config.get("sku").valItemInfo.skuMap; // eslint-disable-line
-            context$2$0.next = 9;
-            break;
-
-          case 5:
-            context$2$0.next = 7;
-            return regeneratorRuntime.awrap(__webpack_require__("e3916f328c1834810f25").getValItemInfo());
-
-          case 7:
-            valItemInfo = context$2$0.sent;
-
-            map = valItemInfo.skuMap;
-
-          case 9:
+            // eslint-disable
+            // let map = {}
+            // if (G.site === 'taobao') {
+            //   map = Hub.config.get("sku").valItemInfo.skuMap; // eslint-disable-line
+            // } else {
+            //   let valItemInfo = await require('common/infoCollect/aliSku').getValItemInfo()
+            //   map = valItemInfo.skuMap
+            // }
 
             $('li').on('click', function (e) {
               if (!$(e.target).parents('.tb-key-sku').length) {
@@ -17808,7 +17927,7 @@ var getCommonInfo = function getCommonInfo(callback) {
             //   }, 0)
             // })
 
-          case 10:
+          case 1:
           case 'end':
             return context$2$0.stop();
         }
@@ -17822,15 +17941,13 @@ var reqId = 0;
 var getPriceHistoryDataAndRender = function getPriceHistoryDataAndRender(url, price, callback) {
   reqId++;
   var currentReq = reqId;
-  if (url.indexOf('detail.tmall.com') > -1 && url.indexOf('skuId') > -1) {
+  if (url.indexOf('skuId') > -1) {
     var skuId = __webpack_require__("3e983ecbff4e1a29654c").getParameterByName('skuId', location.href);
     var dp = __webpack_require__("3e983ecbff4e1a29654c").getParameterByName('id', location.href);
     if (dp && skuId) {
       url = 'https://sku-taobao.com/item.htm?id=' + dp + '-' + skuId;
     }
-  }
-
-  if (G.site === 'taobao') {
+  } else {
     try {
       var sku = Hub.config.get('sku');
       var skuId = sku.skuId;
@@ -17856,7 +17973,7 @@ var getPriceHistoryDataAndRender = function getPriceHistoryDataAndRender(url, pr
         yanzhengma(data.action.to);
         return;
       }
-      if (data.amazons && location.hostname.includes('amazon.cn')) {
+      if (data.amazons && location.hostname.includes('amazon.cn') && !$('.gwd-amazon-link').length) {
         (function () {
           var el = document.createElement('DIV');
           if ($('#gwd-space').length) {
@@ -17865,6 +17982,9 @@ var getPriceHistoryDataAndRender = function getPriceHistoryDataAndRender(url, pr
             $('.search-mod').before(el);
           }
           var siteName = $('#merchant-info .a-link-normal span').text();
+          if (!siteName) {
+            siteName = $('#sellerProfileTriggerId').text();
+          }
           new Vue({
             el: el,
             render: function render(h) {
@@ -17891,7 +18011,16 @@ var getPriceHistoryDataAndRender = function getPriceHistoryDataAndRender(url, pr
         var nowPriceWithPromo = allLine[allLine.length - 1];
         __webpack_require__("9c38beef5ff283e15bd2").setMet('NowPriceWithPromo', nowPriceWithPromo);
       } else {
-        __webpack_require__("9c38beef5ff283e15bd2").setMet('NowPrice', G.dp.price);
+        __webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
+          return G.dp.price;
+        }).then(function () {
+          if (G.dp.price) {
+            if (isNaN(parseFloat(G.dp.price))) {
+              return;
+            }
+            __webpack_require__("9c38beef5ff283e15bd2").setMet('NowPrice', G.dp.price);
+          }
+        });
       }
       if (data.store && data.store[1] && data.store[1].name === "到手价" && data.promo) {
         data.store[1].name = "凑单到手价";
@@ -18502,7 +18631,7 @@ module.exports.init = function callee$0$0() {
         d = window.gwd_trend_request_id;
 
         getPriceInfo(function callee$1$0(data) {
-          var oldId, currentId, oldSku, currentSku, dpId;
+          var oldId, currentId, oldSku, currentSku, permanent, dpId;
           return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
             while (1) switch (context$2$0.prev = context$2$0.next) {
               case 0:
@@ -18561,15 +18690,18 @@ module.exports.init = function callee$0$0() {
 
               case 17:
                 if (!(G.site === 'steampowered')) {
-                  context$2$0.next = 20;
+                  context$2$0.next = 21;
                   break;
                 }
 
-                // 如果当前页面是steam网站 就加载steam价格走势
-                __webpack_require__("0f62f0fb3b5cc89beb7a").init(data);
+                permanent = userData.get('permanent');
+
+                if (permanent && permanent.setsteam !== '0') {
+                  __webpack_require__("0f62f0fb3b5cc89beb7a").init(data);
+                }
                 return context$2$0.abrupt('return');
 
-              case 20:
+              case 21:
                 // 判断是否是历史最低价
                 data = addPriceStatus(data);
                 // 加载价格走势标签
@@ -18577,20 +18709,20 @@ module.exports.init = function callee$0$0() {
                 // 加载价格走势里面的降价提醒
                 renderRemind(data);
                 // renderDetail()
-                context$2$0.next = 25;
+                context$2$0.next = 26;
                 return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('GwdDpIdGot'));
 
-              case 25:
+              case 26:
                 dpId = context$2$0.sent;
 
                 if (!(!data.store || data.store[0].all_line.length < 2)) {
-                  context$2$0.next = 28;
+                  context$2$0.next = 29;
                   break;
                 }
 
                 return context$2$0.abrupt('return');
 
-              case 28:
+              case 29:
                 $('#biggraph_' + G.from_device).remove();
                 __webpack_require__("316f9c352c6202560d16").log(data.store);
                 __webpack_require__("d0de61a729123238553b").init(data, 'dpPage', false, {
@@ -18608,7 +18740,7 @@ module.exports.init = function callee$0$0() {
                   //require('./promoHistory').init(data.promo, data.nopuzzle_promo, data.store, '')
                 }
 
-              case 32:
+              case 33:
               case 'end':
                 return context$2$0.stop();
             }
@@ -18622,14 +18754,14 @@ module.exports.init = function callee$0$0() {
   }, null, _this);
 };
 
-// eslint-disable
-
 // 加载中间展开部分
 
 // if (G.site == 'amazon' || G.site == '6pm') return;
 
 // 获取价格走势数据
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
+
+// 如果当前页面是steam网站 就加载steam价格走势
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
 
 /***/ }),
 
@@ -19093,7 +19225,7 @@ module.exports = {
 
 module.exports = {
   modules: {},
-  version: 1693980053981,
+  version: 1705112558148,
   mv3: true,
   browser: {},
   // debug: /gwdebug/.test(window ? window.location.href: ''),
@@ -19114,7 +19246,7 @@ exports = module.exports = __webpack_require__("e51604a168fd9d6c615d")();
 
 
 // module
-exports.push([module.i, ".gwd-row[data-v-1a72083a] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-1a72083a] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-1a72083a] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-1a72083a] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-1a72083a] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-1a72083a] {\n  justify-content: center;\n}\n.gwd-jic[data-v-1a72083a] {\n  justify-items: center;\n}\n.gwd-button[data-v-1a72083a] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-1a72083a] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-1a72083a]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-1a72083a] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-1a72083a],\n.mainbar-fold #top_coupon_btn[data-v-1a72083a],\n.mainbar-fold .rinfo-btn[data-v-1a72083a],\n.mainbar-fold .gwd-bottom-tmall[data-v-1a72083a] {\n  display: none!important;\n}\n.gwd-font12[data-v-1a72083a] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-1a72083a] {\n  font-size: 14px;\n}\n.gwd-red[data-v-1a72083a] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-1a72083a] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-1a72083a] {\n  color: #333333;\n}\n.gwd-hui999[data-v-1a72083a] {\n  color: #999999;\n}\n.gwd-font10[data-v-1a72083a] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-1a72083a] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-1a72083a] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-1a72083a]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-1a72083a] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-1a72083a]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-1a72083a]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-1a72083a] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-1a72083a]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-1a72083a] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-1a72083a]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-1a72083a]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n.gwd-btn-submit[data-v-1a72083a] {\n  border: none;\n  outline: none;\n  background: #48befe;\n  width: 128px;\n  height: 32px;\n  font-size: 14px;\n  color: white;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-1a72083a] {\n  width: 60px;\n  height: 20px;\n  border-radius: 2px 2px 2px 2px;\n  opacity: 1;\n  border: 1px solid #E6E9EB;\n  color: #404547;\n  background: white;\n  position: relative;\n  box-sizing: border-box;\n}\n.gwd-btn-del[data-v-1a72083a]:hover {\n  filter: brightness(1.05);\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-1a72083a]::before {\n  content: '';\n  position: absolute;\n  top: -1px;\n  left: -1px;\n  right: -1px;\n  bottom: -1px;\n  z-index: -1;\n  background: #e6e9eb;\n}\n.gwd-collection-detail .gwd-vline[data-v-1a72083a] {\n  width: 0;\n  height: 197px;\n  border-right: 1px dashed #e6e9eb;\n  margin-left: 13px;\n  margin-right: 15px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option[data-v-1a72083a] {\n  height: 24px;\n  white-space: nowrap;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option span[data-v-1a72083a] {\n  color: #404547;\n  font-size: 13px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=text][data-v-1a72083a] {\n  width: 60px;\n  height: 24px;\n  border-radius: 4px;\n  border: 1px solid #48befe;\n  color: #48befe;\n  font-size: 13px;\n  margin-left: 8px;\n  margin-right: 8px;\n  text-align: center;\n  box-sizing: border-box;\n  outline: none;\n  padding: 1px 2px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-1a72083a]::-webkit-outer-spin-button,\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-1a72083a]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=number][data-v-1a72083a] {\n  -moz-appearance: textfield;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-1a72083a] {\n  margin-top: 0;\n  margin-left: 0;\n  margin-right: 8px;\n  width: 16px;\n  height: 16px;\n  position: relative;\n  appearance: none;\n  -webkit-appearance: none;\n  bottom: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-1a72083a]::after {\n  content: '';\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  background: url(" + __webpack_require__("ea636f9aa9005290bf2f") + ");\n  background-size: contain;\n  z-index: 2;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-1a72083a]:checked::after {\n  background: url(" + __webpack_require__("37ecdac37cefb38566a4") + ");\n  background-size: contain;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option .gwd-remind-current[data-v-1a72083a] {\n  margin-left: 8px;\n  width: 57px;\n}\n.gwd-remind-error-text[data-v-1a72083a] {\n  color: #d80001;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-remind-hint-text[data-v-1a72083a] {\n  color: #48befe;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-btn-del[data-v-1a72083a] {\n  margin-right: 114px;\n  padding-left: 0;\n  padding-right: 0;\n}\n.gwd-btn-del span[data-v-1a72083a] {\n  position: relative;\n  top: -1px;\n}\n.gwd-collection-detail[data-v-1a72083a] {\n  padding: 16px;\n}\n.gwd-collection-detail .gwd-container[data-v-1a72083a] {\n  width: 100%;\n  min-width: 319px;\n  height: 100px;\n  border-radius: 4px;\n  background: #f8fcfe;\n  padding: 16px;\n  padding-right: 8px;\n  box-sizing: border-box;\n}\n.gwd-collection-detail .gwd-container.gwd-ht[data-v-1a72083a] {\n  padding-left: 4px;\n  padding-right: 4px;\n}\n.gwd-collection-detail .gwd-remind-error-text[data-v-1a72083a] {\n  bottom: 32px;\n}\n.gwd-collection-detail .gwd-remind-hint-text[data-v-1a72083a] {\n  bottom: 32px;\n}\n", ""]);
+exports.push([module.i, ".gwd-row[data-v-1a72083a] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-1a72083a] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-1a72083a] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-1a72083a] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-1a72083a] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-1a72083a] {\n  justify-content: center;\n}\n.gwd-jic[data-v-1a72083a] {\n  justify-items: center;\n}\n.gwd-button[data-v-1a72083a] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-1a72083a] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-1a72083a]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-1a72083a] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-1a72083a],\n.mainbar-fold #top_coupon_btn[data-v-1a72083a],\n.mainbar-fold .rinfo-btn[data-v-1a72083a],\n.mainbar-fold .gwd-bottom-tmall[data-v-1a72083a] {\n  display: none!important;\n}\n.gwd-font12[data-v-1a72083a] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-1a72083a] {\n  font-size: 14px;\n}\n.gwd-red[data-v-1a72083a] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-1a72083a] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-1a72083a] {\n  color: #333333;\n}\n.gwd-hui999[data-v-1a72083a] {\n  color: #999999;\n}\n.gwd-font10[data-v-1a72083a] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-1a72083a] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-1a72083a] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-1a72083a]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-1a72083a] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-1a72083a]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-1a72083a]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-1a72083a] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-1a72083a]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-1a72083a] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-1a72083a]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-1a72083a]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n#gwdang_main[data-v-1a72083a],\n.gwdang-main[data-v-1a72083a],\n.bjgext-detail[data-v-1a72083a] {\n  font-size: 12px;\n}\n#gwdang_main button[data-v-1a72083a],\n.gwdang-main button[data-v-1a72083a],\n.bjgext-detail button[data-v-1a72083a] {\n  text-align: center;\n}\n.gwd-btn-submit[data-v-1a72083a] {\n  border: none;\n  outline: none;\n  background: #48befe;\n  width: 128px;\n  height: 32px;\n  font-size: 14px;\n  color: white;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-1a72083a] {\n  width: 60px;\n  height: 20px;\n  border-radius: 2px 2px 2px 2px;\n  opacity: 1;\n  border: 1px solid #E6E9EB;\n  color: #404547;\n  background: white;\n  position: relative;\n  box-sizing: border-box;\n}\n.gwd-btn-del[data-v-1a72083a]:hover {\n  filter: brightness(1.05);\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-1a72083a]::before {\n  content: '';\n  position: absolute;\n  top: -1px;\n  left: -1px;\n  right: -1px;\n  bottom: -1px;\n  z-index: -1;\n  background: #e6e9eb;\n}\n.gwd-collection-detail .gwd-vline[data-v-1a72083a] {\n  width: 0;\n  height: 197px;\n  border-right: 1px dashed #e6e9eb;\n  margin-left: 13px;\n  margin-right: 15px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option[data-v-1a72083a] {\n  height: 24px;\n  white-space: nowrap;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option span[data-v-1a72083a] {\n  color: #404547;\n  font-size: 13px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=text][data-v-1a72083a] {\n  width: 60px;\n  height: 24px;\n  border-radius: 4px;\n  border: 1px solid #48befe;\n  color: #48befe;\n  font-size: 13px;\n  margin-left: 8px;\n  margin-right: 8px;\n  text-align: center;\n  box-sizing: border-box;\n  outline: none;\n  padding: 1px 2px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-1a72083a]::-webkit-outer-spin-button,\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-1a72083a]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=number][data-v-1a72083a] {\n  -moz-appearance: textfield;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-1a72083a] {\n  margin-top: 0;\n  margin-left: 0;\n  margin-right: 8px;\n  width: 16px;\n  height: 16px;\n  position: relative;\n  appearance: none;\n  -webkit-appearance: none;\n  bottom: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-1a72083a]::after {\n  content: '';\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  background: url(" + __webpack_require__("ea636f9aa9005290bf2f") + ");\n  background-size: contain;\n  z-index: 2;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-1a72083a]:checked::after {\n  background: url(" + __webpack_require__("37ecdac37cefb38566a4") + ");\n  background-size: contain;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option .gwd-remind-current[data-v-1a72083a] {\n  margin-left: 8px;\n  width: 57px;\n}\n.gwd-remind-error-text[data-v-1a72083a] {\n  color: #d80001;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-remind-hint-text[data-v-1a72083a] {\n  color: #48befe;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-btn-del[data-v-1a72083a] {\n  margin-right: 114px;\n  padding-left: 0;\n  padding-right: 0;\n}\n.gwd-btn-del span[data-v-1a72083a] {\n  position: relative;\n  top: -1px;\n}\n.gwd-collection-detail[data-v-1a72083a] {\n  padding: 16px;\n}\n.gwd-collection-detail .gwd-container[data-v-1a72083a] {\n  width: 100%;\n  min-width: 319px;\n  height: 100px;\n  border-radius: 4px;\n  background: #f8fcfe;\n  padding: 16px;\n  padding-right: 8px;\n  box-sizing: border-box;\n}\n.gwd-collection-detail .gwd-container.gwd-ht[data-v-1a72083a] {\n  padding-left: 4px;\n  padding-right: 4px;\n}\n.gwd-collection-detail .gwd-remind-error-text[data-v-1a72083a] {\n  bottom: 32px;\n}\n.gwd-collection-detail .gwd-remind-hint-text[data-v-1a72083a] {\n  bottom: 32px;\n}\n", ""]);
 
 // exports
 
@@ -19138,7 +19270,7 @@ if(main_url.match(/(?:cartridge|Camcorder|carters|feifei\.com\/order\/|ref=ord_c
 '^(?:http|https)://www\\.easeeyes\\.com/goods[0-9]+\\.html':'easeeyes','^(?:http|https)://www\\.lingshi\\.com/product/lingshi-\\d+\\.htm':'lingshi','^(?:http|https)://www\\.nubia\\.com/(?:nubian1|nubiamyprague|pragues|nubiaz9mark|nubiaz9|nubiaz9max|nubiaz9max|nubiaz9max|nubiaz11mini|nubiaZ11mini|nubiaz11max|nubiaz11max|nubiaz11max|nubiaz11|nubiaz11|nubiaz11)':'nubia','^(?:http|https)://shop\\.nubia\\.com/active/\\w+\\.html':'nubia','^(?:http|https)://shop\\.nubia\\.com/product\\.php\\?(?:s|)id=\\d+':'nubia','^(?:http|https)://(?:www|shop)\\.nubia\\.cn/product\\.php\\?sid=\\d+':"nubia",'^(?:http|https)://www.nubia.com/((?!.php).)*$':'nubia','^(?:http|https)://shop.nubia.com/buy/(?:nubian1|nubiamyprague|pragues|nubiaz9mark|nubiaz9|nubiaz9max|nubiaz9max|nubiaz9max|nubiaz11mini|nubiaZ11mini|nubiaz11max|nubiaz11max|nubiaz11max|nubiaz11|nubiaz11|nubiaz11|nubia\\w+)':'nubia','^(?:http|https)://www\\.kzj365\\.com/goods-\\d+\\.html':'kzj365','^(?:http|https)://(?:www|goods)\\.kaola\\.com/product/\\d+\\.html':'kaola','^(?:http|https)://www\\.kaola\\.com.hk/product/\\d+\\.html':'kaola','^(?:http|https)://(?:www|goods)\\.kaola\\.com.hk/product/\\d+\\.html':'kaola','^(?:http|https)://www\\.ymatou\\.(?:com|hk)/product/[a-zA-Z0-9-]+\\.html':'ymatou','^(?:http|https)://detail\\.metao\\.com/products/\\d+':'metao','^(?:http|https):tv\\.coocaa\\.com/goods/\\d+.htm':'coocaa','^(?:http|https)://www\\.coocaa\\.com/goods/get_[0-9]+\\.html':'coocaa','^(?:http|https)://www\\.lifevc\\.com/item/\\d+':'lifevc','^(?:http|https)://www\\.supuy\\.com/products/\\d+\\.html':'supuy','^(?:http|https)://www\\.supumall\\.com/Goods/goodsinfo/goodsCode/[0-9]+':'supuy','^(?:http|https)://www\\.mia\\.com/item-\\d+\\.html':'miyabaobei','^(?:http|https)://miyabaobei.hk/item-[0-9]+.html':'miyabaobei','^(?:http|https)://www.miyabaobei.hk/item-[0-9]+.html':'miyabaobei', //'item.gomehigo.hk/[0-9a-zA-Z]+-pop[0-9]+': 'gomehigo',
 '^(?:http|https)://item.gomehigo.hk/[0-9a-zA-Z]+-.*':'gomehigo','http://www\\.wangfujing\\.com/item/[0-9A-Z]+':'wangfujing','^(?:http|https)://global\\.gou\\.com/product_[0-9]+\\.html':'gou','^(?:http|https)://www\\.gou\\.com/[a-z0-9_]+\\.html':'gou','^(?:http|https)://(?:www\\.|)ikjtao\\.com/goods-[0-9]+\\.html':'ikjtao','^(?:http|https)://(?:www\\.|)ikjtao\\.com/goods.php':'ikjtao','^(?:http|https)://(?:www\\.|)bestkeep\\.cn/item/\\d+':'ikjtao','^(?:http|https)://(?:item|np)\\.ule\\.com/item/[0-9-]+\\.html':'ule','^(?:http|https)://shop\\.philips\\.com\\.cn/product/\\w+/detail\\.htm':'philips','^(?:http|https)://shop\\.tcl\\.com/ProductDetail/index/id/\\d+\\.html':'tcl','^(?:http|https)://mall\\.tcl\\.com/front/product/toProduct/[a-z0-9]+':'tcl','^(?:http|https)://www\\.e-changhong\\.com/webapp/wcs/stores/servlet/Product[\\w_-]+':'changhong','^(?:http|https)://shop\\.konka\\.com/goods\\.php\\?id=\\d+':'konka','^(?:http|https)://shop\\.konka\\.com/product-[0-9]+\\.html':'konka','^(?:http|https)://shop\\.hisense\\.com/Home/Products/detail/gid/\\d+':'hisense','^(?:http|https)://(?:www|shop)\\.hisense\\.com/(?:product|items)/[a-z0-9-]+':'hisense','^(?:http|https)://www\\.ineigo\\.com/Product/product.aspx\\?&?id=\\d+':'ineigo','^(?:http|https)://www\\.skg\\.com/\\d+\\.html':'skg','^(?:http|https)://www\\.skg\\.com/product/[0-9]+\\.htm':'skg','^(?:http|https)://www\\.oyeah\\.com/giveaway-[0-9a-z-]+':'oyeah','^(?:http|https)://www\\.morefood\\.com/products/info/[0-9]+\\.html':'morefood','^(?:http|https)://www\\.zhen\\.com/product-[0-9]+\\.html':'zhen','^(?:http|https)://shop\\.vivo\\.com\\.cn/index\\.php/product-\\d+\\.html':'vivo','^(?:http|https)://shop\\.vivo\\.com\\.cn/product-[0-9]+':'vivo','^(?:http|https)://shop\\.vivo\\.com\\.cn/product/[0-9]+':'vivo','^(?:http|https)://gfive\\.b2c\\.eqimingxing\\.com/product-\\d+\\.html':'gfive','^(?:http|https)://www\\.6pm\\.com/product/':'6pm','^(?:http|https)://www\\.6pm\\.com/p/[a-z0-9-]+/product/':'6pm', // '^(?:http|https)://www\\.sierratradingpost\\.com/[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-': 'sierratradingpost',
 '^(?:http|https)://shop\\.gionee\\.com/goods/\\d+':'gionee','^(?:http|https)://z\\.gionee\\.com/details-pc/\\w+/index\\.html':'gionee','^(?:http|https)://store\\.lining\\.com/shop/goods-[0-9]+':'lining','^(?:http|https)://store\\.lining\\.com/goods/detail.*':'lining','^(?:http|https)://www\\.mf910\\.com/product-[0-9]+\\.html':'mf910','^(?:http|https)://www\\.k-touch\\.cn/product/detail/prod_id/\\d+\\.html':'k-touch','^(?:http|https)://www\\.k-touch\\.cn/Product/ProductDetail\\?productid':'k-touch','^(?:http|https)://item\\.grainger\\.cn/g/\\d+':'grainger','^(?:http|https)://piao\\.163\\.com/\\w+/movie/\\d+\\.html':'wy163','^(?:http|https)://mall\\.163\\.com/p/product/\\d+\\.html':'wy163', //'^(?:http|https)://[\\w]+\\.nuomi\\.com/deal/\\w+\\.html':'nuomi',
-'^(?:http|https)://detail\\.yao.\\95095\\.com/item\\.htm':'taobao-95095','^(?:http|https)://www\\.ebay\\.com/itm/[0-9a-zA-Z]+':'ebay','^(?:http|https)://(?:www\\.|)100yue\\.com/product-[0-9]+\\.html':'100yue','^(?:http|https)://www\\.feiniu\\.com/item/[-\\w]+':'feiniu','^(?:http|https)://www\\.lemall\\.com/product/':'lemall','^(?:http|https)://www\\.lemall\\.com/cn/(?:tv|sale|phone)/\\w+':'lemall','^(?:http|https)://www\\.lemall\\.com/(?:le_2|le_max|le_1pro|x55pro|x65|x55|x43s|x40s|umax120|chao4max70)':'lemall','^(?:http|https)://www\\.lemall\\.com/(?:chao4|le_max|le_max2|le_2pro|le_2|le_max2|x40sx40s)/(?:\\w+/|)\\w+\\.html':'lemall','^(?:http|https)://item\\.feiniu\\.com/[0-9]+':'feiniu','^(?:http|https)://www\\.xgbaby\\.com/product/[0-9]+':'bbready','^(?:http|https)://www\\.zuipin\\.cn/[0-9a-z-]+\\.html':'zuipin','^(?:http|https)://www\\.zuipin\\.cn/goods\\?id=\\d+':'zuipin','^(?:http|https)://item\\.feifei\\.(?:cn|com)/\\w+\\.html':'feifei','^(?:http|https)://www\\.feifei\\.com/order/-/product-info/productname/[0-9]+\\.html':'feifei','^(?:http|https)://guang\\.com/baobei/\\d+':'guang','^(?:http|https)://www\\.haitaocheng\\.com/Product/Detail-\\d+\\.html':'haitaocheng','^(?:http|https)://www\\.rrs(?:jk|)\\.com/product/[0-9]+\\.html':'rrs','^(?:http|https)://shop\\.ccb\\.com/products/pd_[0-9]+\\.jhtml':'ccb','^(?:http|https)://www\\.meilishuo\\.com/(?:prom|share)/item/\\d+':'meilishuo','^(?:http|https)://www\\.meilishuo\\.com/share/[\\d]+':'meilishuo','^(?:http|https)://item\\.meilishuo\\.com/detail/':'meilishuo','^(?:http|https)://www\\.mogujie\\.com/tuan/detail/\\w+':'mogujie','^(?:http|https)://shop\\.mogu(?:jie|)\\.com/detail/\\w+':'mogujie','^(?:http|https)://www\\.mogujie\\.com/note/.*?showtype=good':'mogujie','^(?:http|https)://www\\.supumall\\.com/products/[0-9]+\\.html':'supumall','^(?:http|https)://shop\\.coolpad\\.(?:com|cn)/goods/\\d+\\.htm':'coolpad','^(?:http|https)://(www\\.)?yiguo\\.com/product/\\d+\\.html':'yiguo','^(?:http|https)://(www\\.)?yiguo\\.com/CommodityDetail\\.aspx\\?CommodityId=':'yiguo','^(?:http|https)://item\\.wanggou\\.com/':'wanggou','^(?:http|https)://mall\\.jia\\.com/item/':'jia','^(?:http|https)://www\\.jiumei\\.com/product/[a-z0-9_-]+\\.shtml':'jiumei','^(?:http|https)://weigou\\.baidu\\.com/item':'baidu-weigou','^(?:http|https)://shop\\.letv\\.com/product/':'letv','^(?:http|https)://www\\.(xiao)?mi\\.com/(goods|item)/':'xiaomi','^(?:http|https)://item\\.mi\\.com/[0-9]+\\.html':'xiaomi','^(?:http|https)://item\\.mi\\.com/product/[0-9]+\\.html':'xiaomi','^(?:http|https)://www\\.mi\\.com/(shop/)?buy/detail':'xiaomi','^(?:http|https)://item\\.mi\\.com/buy(?:phone|mitv|mitv\\w+)/[a-z0-9]+':'xiaomi','^(?:http|https)://item\\.mi\\.com/static/[a-z0-9]+':'xiaomi','^(?:http|https)://item\\.mi\\.com/buy/[a-z0-9]+':'xiaomi','^(?:http|https)://www\\.mi\\.com/(?:mi5|mimax|redminote4|note3|hongmi3s|redmipro|hongmi3|hongmi3x|mibookair|mipad2|mitv3s|mitv3s|mitv3s|mitv3|mitv3|mitv3|tvzj|hezi3s|hezi3|hezimini|shb|mivr1c|miwifi3|scooter|mibicycle|kettle|dianfanbao|micamera|xiaoyi|air2|water|water2|ihealth2|ihealth|mjsmartlamp|desklamp|mitu|cute|wangguan|shouhuan2|shouhuan|scale|mituwatch|miwifimini|miwifilite|miwifi3c|miwifi|dianyuan10000|dianyuan10000|dianyuan5000|chaxianban2|powerstrip|recharger|chongdianqi4kou|headphone|quantie|capsuleearphone|pocketaudio|littleaudio|yinxiang|speaker|radio|mimosdge|gelpen|pillowZ1|pillowZ2|roomrobot|recharger7|charger|bluetooth-headset|suitcase|redmi\\w+|mi5splus|mi5s|mix|minote\\w+|mi5c|max\\w+|mi6|mipad3|mitv\\w+)/':'xiaomi','^(?:http|https)://www\\.handu\\.com/goods-':'handu','^(?:http|https)://www\\.yummy77\\.com/product/[0-9]+\\.html':'yummy77','^(?:http|https)://www\\.fruitday\\.com/web/pro/[0-9]+':'fruitday','^(?:http|https)://www\\.fruitday\\.com/prodetail/index/[0-9]+':'fruitday','^(?:http|https)://www\\.benlai\\.com/items?-\\d+':'benlai','^(?:http|https)://www\\.benlai\\.com/[a-z/]+/item-[0-9]+\\.html':'benlai','^(?:http|https)://taoshu\\.com/\\d+\\.html':'taoshu','^(?:http|https)://www\\.meilele\\.com/category-[a-z]+/goods-[0-9]+\\.html':'meilele','^(?:http|https)://www\\.meilele\\.com/tuangou/info-[0-9]+.html':'meilele-tuan','^(?:http|https)://www\\.meilele\\.com/miaosha/ms-[0-9]+.html':'meilele-ms','^(?:http|https)://www\\.gjw\\.com/product/item':'gjw','^(?:http|https)://www\\.gjw\\.com/Home/TuanItem/\\d+\\.htm':'gjw','^(?:http|https)://www\\.gjw\\.com/TryDrink/item-id-[0-9]+\\.htm':'gjw','^(?:http|https)://www\\.oneplus\\.com/cn/':'oneplus','^(?:http|https)://store\\.apple\\.com/cn/product/':'apple','^(?:http|https)://www\\.apple\\.com/cn/(?:macbook|ipad-pro|ipad|ipad-mini-4|iphone-7|iphone-\\w+|ipod-shuffle)/':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-iphone/iphone\\w+':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-mac/\\w+-\\w+\\?product=\\w+/\\w+':'apple','^(?:http|https)://www\\.apple\\.com\\.cn/shop/':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-ipad/ipad-\\w+-\\w+':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-ipod/ipod-\\w+-\\w+':'apple','^(?:http|https)://www\\.apple\\.com/cn/shop/(?:product|buy-[a-z]+)/[a-z0-9-]+':'apple','^(?:http|https)://www\\.j1\\.com/product/':'j1','^(?:http|https)://miao\\.j1\\.com/product/':'j1-miao','^(?:http|https)://(?:www\\.|)zzl365\\.com/product-\\d+':'zzl365','^(?:http|https)://mobile\\.139shop\\.com/.*?/\\d+/\\d+\\.htm':'139shop','^(?:http|https)://139shop\\.com/[a-z0-9-]+/[a-z0-9]+/[a-z0-9]+\\.htm':'139shop','^(?:http|https)://detail\\.1688\\.com/offer/\\d+':'1688','^(?:http|https)://www\\.yiwugou\\.com/product/detail/[0-9]+\\.html':'yiwugou','^(?:http|https)://www\\.zhiwo\\.com/product/\\d+':'zhiwo','^(?:http|https)://www\\.zhiwo\\.com/group/\\d+':'zhiwo-tuan','^(?:http|https)://[^\\.]+\\.miqi\\.cn/[^/]+/p\\d+':'miqi','^(?:http|https)://www\\.miqi\\.cn/[a-z]+/[0-9]+\\.html':'miqi','^(?:http|https)://www\\.camel\\.com\\.cn/[a-zA-Z0-9]+(_[a-zA-Z0-9]+)+/[\\w]+\\.shtml':'camel','^(?:http|https)://www\\.camel\\.com\\.cn/[a-zA-Z0-9_]+/[A-Za-z0-9]+\\.shtml':'camel','^(?:http|https)://www\\.kuaishubao\\.com/\\d+/\\d+':'kuaishubao','^(?:http|https)://www.kuaishubao.com/g/':'kuaishubao','^(?:http|https)://www\\.juegg\\.com/templets/DefaultGreen/Product\\.jsp':'juegg','^(?:http|https)://mall\\.10010\\.com/goodsdetail/[\\d]+\\.html':'mall10010','^(?:http|https)://www\\.wowsai\\.com/goods/':'wowsai','^(?:http|https)://www\\.tianpin\\.com/item/':'tianpin','^(?:http|https)://www\\.tootoo\\.cn/product-':'tootoo','^(?:http|https)://www\\.tootoo\\.cn/[a-z]+/detail/[0-9]+':'tootoo','^(?:http|https)://item\\.minshengec\\.com/[a-z]-(?:|[a-zA-Z%0-9]+)/[a-z0-9-]+\\.jhtml':'minshengec','^(?:http|https)://www\\.sfbest\\.com/html/(sfv)?products/':'sfbest','^(?:http|https)://ht\\.sfbest\\.hk/[0-9a-z_]+\\.htm':'sfbest','^(?:http|https)://shop\\.lenovo\\.com\\.cn/product-':'lenovo','^(?:http|https)://(?:item|\\w+)\\.lenovo\\.com\\.cn/product/\\d+\\.html':'lenovo','^(?:http|https)://shop\\.lenovomobile\\.com/ShowPhone.aspx\\?GdsID=':'lenovo','^(?:http|https)://www\\.lenovomobile\\.com/store/\\d+\\.html':'lenovo','^(?:http|https)://www\\.lenovo\\.com\\.cn/product/[0-9]+\\.html':'lenovo','^(?:http|https)://www\\.lenovo\\.com\\.cn/abtest/[0-9_]+\\.shtml':'lenovo','^(?:http|https)://thinkpad\\.lenovo\\.com\\.cn/product/[0-9]+\\.html':'lenovo','^(?:http|https)://www\\.vmall\\.com/item/\\d+/(?:index|buy)':'vmall','^(?:http|https)://www\\.vmall\\.com/product/\\d+\\.html':'vmall','^(?:http|https)://www.hihonor.com/cn/shop/product/\\d+\\.html':'hihonor','^(?:http|https)://www\\.ihush\\.com/product':'ihush','^(?:http|https)://(?:www\\.)?fclub\\.cn/goods':'fclub','^(?:http|https)://item\\.yohobuy\\.com/product/\\w+/\\w+\\.html':'yohobuy','^(?:http|https)://item\\.yohobuy\\.com/\\w+\\.html':'yohobuy','^(?:http|https)://www\\.yohobuy\\.com/product/\\d+\\.html':'yohobuy','^(?:http|https)://www\\.fclub\\.cn/tuangouDetail\\.html':'fclub','^(?:http|https)://ju\\.taobao\\.com/tg/home\\.htm.*(item_)?id=[\\d]+':'taobao-ju','^(?:http|https)://detail\\.tmall\\.com/item(_o)?\\.htm':'tmall','^(?:http|https)://detail\\.liangxinyao\\.com/item\\.htm':'tmall','^(?:http|https)://world\\.tmall\\.com/item/[0-9]+\.htm':'tmall','^(?:http|https)://detail\\.tmall\\.hk/hk/item\.htm':'tmall','^(?:http|https)://detail\\.tmall\\.hk/item\\.htm':'tmall','^(?:http|https)://item\\.taobao\\.com/item\.htm':'taobao','^(?:http|https)://2\\.taobao\\.com/item\\.htm':'taobao-xianyu','^(?:http|https)://ai\\.taobao\\.com/auction':'ai-taobao','^(?:http|https)://chaoshi\\.detail\\.tmall\\.com/item\\.htm':'tmall','^(?:http|https)://chaoshi\\.detail\\.tmall\\.com/item_o\\.htm':'tmall','^(?:http|https)://detail\\.ju\\.taobao\\.com/home\\.htm':'taobao-ju','^(?:http|https)://(?:archive-shop|shop|www|day|lux)\\.vip(shop)?\\.com/detail':'vipshop','^(?:https|http):\\/\\/detail\\.vip\\.com\\/detail-\\d+':'vipshop','^(?:https|http):\\/\\/www\\.vipglobal\\.hk\\/detail-\\d+':'vipshop','^(?:http|https)://tuan\\.lefeng\\.com/.*?/\\d+_\\d+\\.html':'lefeng','^(?:http|https)://(?:www|product)\\.lefeng\\.com/(product|pklist)/':'lefeng','^(?:http|https)://(?:www|1hour)\\.jxdyf\\.com/product[-/][\\d]+':'jxdyf','^(?:http|https)://www\\.jxdyf\\.com/ProductContent':'jxdyf','^(?:http|https)://www\\.tnice\\.com/product/':'tnice','^(?:http|https)://auction1\\.paipai\\.com/':'paipai','^(?:http|https)://item\\.xinbaigo\\.com/Goods/StyleDetail':'xinbaigo','^(?:http|https)://www\\.orbis\\.com\\.cn.*product\\-[\\d]+':'orbis','^(?:http|https)://www\\.sfht\\.com/detail/[0-9]+\\.html':'sfht','^(?:http|https)://(?:www|cosmetic)\\.d1\\.com\\.cn/product/':'d1','^(?:http|https)://www\\.chazuo\\.com/Product/p\\-[\\d]+':'chazuo','^(?:http|https)://www\\.u1baby\\.com/product\\-[\\d]+':'u1baby','^(?:http|https)://(www\\.)?homevv\\.com/vvshopProductView/pid\\-[\\d]+\\.jhtml':'homevv','^(?:http|https)://(www\\.)?homevv\\.com/vvshopProductView\\.jhtml':'homevv','^(?:http|https)://www\\.paixie\\.net/shoe\\-.+\\.html':'paixie','^(?:http|https)://tuan\\.paixie\\.net/[0-9]+\\.html':'paixie-tuan','^(?:http|https)://faxian\\.paixie\\.net/[0-9]+\\.html':'paixie-faxian','^(?:http|https)://www\\.tao3c\\.com/(outlets/)?product/[\\d]+\\.html':'tao3c','^(?:http|https)://www\\.zm7\\.cn/goods':'zm7','^(?:http|https)://s\\.etao\\.com/item/[\\d]+\\.html':'etao','^(?:http|https)://s\\.etao\\.com/search\\?epid=[\\d]+':'etao','^(?:http|https)://product\\.pchouse\\.com\\.cn/item/[\\d]+\\.html':'pchouse','^(?:http|https)://buy\\.daphne\\.cn/goods\\.php':'daphne','^(?:http|https)://www\\.lucemall\\.com\\.cn/.+/[\\d]+\\.html':'lucemall','^(?:http|https)://www\\.lifevc\\.com/detail/':'lifevc','^(?:http|https)://www\\.easy361\\.com/[^\\?]*goods-[\\d]+\\.html':'easy361','^(?:http|https)://item\\.360hqb\\.com/spu\\-[\\d]+\\.html':'360hqb','^(?:http|https)://item\\.360hqb\\.com/[\\d]+\\.html':'360hqb','^(?:http|https)://q\\.360hqb\\.com/detail/[\\d\\_]+\\.html':'360hqb','^(?:http|https)://www\\.goujiuwang\\.com/product/item\\-id\\-[\\d]+\\.htm':'goujiuwang','^(?:http|https)://www\\.huimai365\\.com/goods\\-[\\d]+\\.html':'huimai365','^(?:http|https)://(www|tuan|dingzhi)\\.jiuxian\\.com/(goods|tuan_detail)\\-.+\\.htm':'jiuxian','^(?:http|https)://www\\.winenice\\.com/p_[\\d]+\\.shtml':'winenice','^(?:http|https)://www\\.yesmywine\\.com/goods/[\\d]+\\.html':'yesmywine','^(?:http|https)://mall\\.yesmywine\\.com/shop/junkang/item-[\\d]+':'yesmywine','^(?:http|https)://mall\\.yesmywine\\.com/shop/[\\w]+/item-[\\d]+':'yesmywine','^(?:http|https)://mall\\.yesmywine\\.com/groupbuy/\\d+\\.html':'yesmywine','^(?:http|https)://www\\.banggo\\.com/Goods/[\\d]+\\.shtml':'banggo','^(?:http|https)://www\\.banggo\\.com/goods_[0-9]+\\.shtml':'banggo','^(?:http|https)://www\\.banggo\\.com/goods/[0-9A-Za-z]+\\.s?html':'banggo','^(?:http|https)://www\\.banggo\\.com/goods/[0-9A-Za-z]+':'banggo','^(?:http|https)://ploy\\.banggo\\.com/second/[0-9-_]+\\.shtml':'banggo','^(?:http|https)://www\\.yanyue\\.cn/smoke\\-product\\-[\\d]+\\.html':'yanyue','^(?:http|https)://www\\.bearbuy\\.com\\.cn/goods\\.php\\?id=[\\d]+':'bearbuy','^(?:http|https)://www\\.amazon\\.cn/.*?(?:dp/|gp/product/|detailApp)':'amazon','^(?:http|https)://www\\.amazon\\.(com|co\\.uk|de|co\\.jp|fr|ca|cn|it|es|com\\.au)/.*?(?:dp/|gp/product/|detailApp)(?!search)':'amazon','^(?:http|https)://(?:product\\.dangdang\\.com/[^\\?]*product.aspx|reco\\.dangdang\\.com/reco_pub\\.php)\\?product_id=\\d+':'dangdang','^(?:http|https)://(?:product|detail)\\.dangdang\\.com/[\\d]+':'dangdang','^(?:http|https)://(?:product|detail)\\.globaldangdang\\.hk/[\\d]+\\.html':'dangdang','^(?:http|https)://z\\.jd\\.com/project/details/\\d+\\.html':"360buy",'^(?:http|https)://item\\.jd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.m\\.jd\\.com/product/\\d+\\.html':'360buy','^(?:http|https)://item\\.m\\.jd\\.com/ware/view.action':'360buy','^(?:http|https)://kpl\\.m\\.jd\\.com/product\\?wareId=\\d+':'360buy','^(?:http|https)://pcitem\\.jd\\.hk/\\d+\\.html':'360buy','^(?:http|https)://npcitem\\.jd\\.hk/\\d+\\.html':'360buy','^(?:http|https)://i-item\\.jd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.paipai\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.yiyaojd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.jkcsjd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.jd\\.hk/\\d+\\.html':'360buy','^(?:http|https)://paimai\\.jd\\.com/\\d+':'360buy-paimai','^(?:http|https)://day\\.jd\\.com/item/.*\\.html':'360buy-day','^(?:http|https)://www\\.(?:360buy|jd)\\.com/product/\\d+\\.html':'360buy','^(?:http|https)://(?:book|e)\\.(?:360buy|jd)\\.com/\\d+\\.html':'360buy-book','^(?:http|https)://re\\.jd\\.com/cps/item/[0-9]+\\.html':'360buy-re','^(?:http|https)://auction\\.jd\\.com/[0-9]+':'360buy-auction','^(?:http|https)://mvd\\.(?:360buy|jd)\\.com/\\d+\\.html':'360buy-mvd','^(?:http|https)://tuan\\.(?:360buy|jd)\\.com/team\\-\\d+\\.html':'360buy-tuan','^(?:http|https)://www\\.(?:360buy|jd)\\.com/tuan/[\\d]+\\-[\\d]+\\.html':'360buy-tuan','^(?:http|https)://www\\.(?:360buy|jd)\\.com/bigimage\\.aspx\\?id=\\d+':'360buy-bigimage','^(?:http|https)://club\\.jd\\.com/bbsDetail/[a-z0-9_-]+\\.html':'360buy-club','^(?:http|https)://www\\.360top\\.com/product/\\d+\\.html':'360top','^(?:http|https)://detail\\.zol\\.com\\.cn/.*?(?:index).*?\\.shtml':'zol','^(?:http|https)://detail\\.zol\\.com\\.cn/[\\d]+/[\\d]+/[a-zA-Z]+\\.shtml':'zol','^(?:http|https)://dealer\\.zol\\.com\\.cn/detail/[\\d]+/[\\d]+_[\\d]+.html':'zol','^(?:http|https)://(?:www|mall)\\.zol\\.com/detail':'zol','^(?:http|https)://detail\\.zol\\.com\\.cn/series/[0-9]+/[0-9_]+\\.html':'zol','^(?:http|https)://www\\.fglady\\.cn/BMsgL':'fglady','^(?:http|https)://(www.|)ouku\\.com/(?:goods|product)':'ouku','^(?:http|https)://(www.|)ouku\\.com/cn/[0-9a-z-_]+\\.html':'ouku','^(?:http|https)://www\\.newegg(\\.com)?\\.cn/Product/.*?\\.htm':'newegg','^(?:http|https)://zhadan\\.newegg(\\.com)?\\.cn/Bomb-\\d+\\.htm':'newegg','^(?:http|https)://zhadan\\.newegg\\.cn':'newegg-zhadan','^(?:http|https)://tuan\\.newegg\\.cn/deal/[0-9]+\\.htm':'newegg-tuan','^(?:http|https)://product\\.kimiss\\.com/product/':'kimiss','^(?:http|https)://www\\.redbaby\\.com\\.cn/.*?/\\d{7}\\d+\\.html':'redbaby','^(?:http|https)://product\\.m18\\.com/':'m18','^(?:http|https)://list\\.m18\\.com/item/':'m18','^(?:http|https)://list\\.m18\\.com/g/':'m18','^(?:http|https)://list\\.m18\\.com/.*Goods.aspx':'m18','^(?:http|https)://www\\.m18\\.com/item/':'m18','^(?:http|https)://www\\.w1\\.cn/goods':'w1','^(?:http|https)://www\\.ashford\\.com/us/watches/[a-z0-9-]+/[a-z0-9-]+':'ashford','^(?:http|https)://www\\.sephora\\.cn/productDetailAction/':'sephoracps','^(?:http|https)://www\\.sephora\\.cn/product/\\d+\\.html':'sephoracps','^(?:http|https)://www\\.sephora\\.cn/tryout/\\d+\\.html':'sephoracps','^(?:http|https)://www\\.lafaso\\.com/(?:product/|goods/product_detail)':'lafaso','^(?:http|https)://www\\.s\\.cn/(?!page)\\w{2,}\\-[A-Za-z0-9]+?[0-9]+?[A-Za-z0-9]+?[\\-_*\\.].*?html':'s', // '^(?:http|https)://www\\.s\\.cn/\\w{2,}\\-[A-Z0-9]+?[0-9]+?[A-Z0-9]+?[\\-_*\\.].*?html': 's',
+'^(?:http|https)://detail\\.yao.\\95095\\.com/item\\.htm':'taobao-95095','^(?:http|https)://www\\.ebay\\.com/itm/[0-9a-zA-Z]+':'ebay','^(?:http|https)://(?:www\\.|)100yue\\.com/product-[0-9]+\\.html':'100yue','^(?:http|https)://www\\.feiniu\\.com/item/[-\\w]+':'feiniu','^(?:http|https)://www\\.lemall\\.com/product/':'lemall','^(?:http|https)://www\\.lemall\\.com/cn/(?:tv|sale|phone)/\\w+':'lemall','^(?:http|https)://www\\.lemall\\.com/(?:le_2|le_max|le_1pro|x55pro|x65|x55|x43s|x40s|umax120|chao4max70)':'lemall','^(?:http|https)://www\\.lemall\\.com/(?:chao4|le_max|le_max2|le_2pro|le_2|le_max2|x40sx40s)/(?:\\w+/|)\\w+\\.html':'lemall','^(?:http|https)://item\\.feiniu\\.com/[0-9]+':'feiniu','^(?:http|https)://www\\.xgbaby\\.com/product/[0-9]+':'bbready','^(?:http|https)://www\\.zuipin\\.cn/[0-9a-z-]+\\.html':'zuipin','^(?:http|https)://www\\.zuipin\\.cn/goods\\?id=\\d+':'zuipin','^(?:http|https)://item\\.feifei\\.(?:cn|com)/\\w+\\.html':'feifei','^(?:http|https)://www\\.feifei\\.com/order/-/product-info/productname/[0-9]+\\.html':'feifei','^(?:http|https)://guang\\.com/baobei/\\d+':'guang','^(?:http|https)://www\\.haitaocheng\\.com/Product/Detail-\\d+\\.html':'haitaocheng','^(?:http|https)://www\\.rrs(?:jk|)\\.com/product/[0-9]+\\.html':'rrs','^(?:http|https)://shop\\.ccb\\.com/products/pd_[0-9]+\\.jhtml':'ccb','^(?:http|https)://www\\.meilishuo\\.com/(?:prom|share)/item/\\d+':'meilishuo','^(?:http|https)://www\\.meilishuo\\.com/share/[\\d]+':'meilishuo','^(?:http|https)://item\\.meilishuo\\.com/detail/':'meilishuo','^(?:http|https)://www\\.mogujie\\.com/tuan/detail/\\w+':'mogujie','^(?:http|https)://shop\\.mogu(?:jie|)\\.com/detail/\\w+':'mogujie','^(?:http|https)://www\\.mogujie\\.com/note/.*?showtype=good':'mogujie','^(?:http|https)://www\\.supumall\\.com/products/[0-9]+\\.html':'supumall','^(?:http|https)://shop\\.coolpad\\.(?:com|cn)/goods/\\d+\\.htm':'coolpad','^(?:http|https)://(www\\.)?yiguo\\.com/product/\\d+\\.html':'yiguo','^(?:http|https)://(www\\.)?yiguo\\.com/CommodityDetail\\.aspx\\?CommodityId=':'yiguo','^(?:http|https)://item\\.wanggou\\.com/':'wanggou','^(?:http|https)://mall\\.jia\\.com/item/':'jia','^(?:http|https)://www\\.jiumei\\.com/product/[a-z0-9_-]+\\.shtml':'jiumei','^(?:http|https)://weigou\\.baidu\\.com/item':'baidu-weigou','^(?:http|https)://shop\\.letv\\.com/product/':'letv','^(?:http|https)://www\\.(xiao)?mi\\.com/(goods|item)/':'xiaomi','^(?:http|https)://item\\.mi\\.com/[0-9]+\\.html':'xiaomi','^(?:http|https)://item\\.mi\\.com/product/[0-9]+\\.html':'xiaomi','^(?:http|https)://www\\.mi\\.com/(shop/)?buy/detail':'xiaomi','^(?:http|https)://item\\.mi\\.com/buy(?:phone|mitv|mitv\\w+)/[a-z0-9]+':'xiaomi','^(?:http|https)://item\\.mi\\.com/static/[a-z0-9]+':'xiaomi','^(?:http|https)://item\\.mi\\.com/buy/[a-z0-9]+':'xiaomi','^(?:http|https)://www\\.mi\\.com/(?:mi5|mimax|redminote4|note3|hongmi3s|redmipro|hongmi3|hongmi3x|mibookair|mipad2|mitv3s|mitv3s|mitv3s|mitv3|mitv3|mitv3|tvzj|hezi3s|hezi3|hezimini|shb|mivr1c|miwifi3|scooter|mibicycle|kettle|dianfanbao|micamera|xiaoyi|air2|water|water2|ihealth2|ihealth|mjsmartlamp|desklamp|mitu|cute|wangguan|shouhuan2|shouhuan|scale|mituwatch|miwifimini|miwifilite|miwifi3c|miwifi|dianyuan10000|dianyuan10000|dianyuan5000|chaxianban2|powerstrip|recharger|chongdianqi4kou|headphone|quantie|capsuleearphone|pocketaudio|littleaudio|yinxiang|speaker|radio|mimosdge|gelpen|pillowZ1|pillowZ2|roomrobot|recharger7|charger|bluetooth-headset|suitcase|redmi\\w+|mi5splus|mi5s|mix|minote\\w+|mi5c|max\\w+|mi6|mipad3|mitv\\w+)/':'xiaomi','^(?:http|https)://www\\.handu\\.com/goods-':'handu','^(?:http|https)://www\\.yummy77\\.com/product/[0-9]+\\.html':'yummy77','^(?:http|https)://www\\.fruitday\\.com/web/pro/[0-9]+':'fruitday','^(?:http|https)://www\\.fruitday\\.com/prodetail/index/[0-9]+':'fruitday','^(?:http|https)://www\\.benlai\\.com/items?-\\d+':'benlai','^(?:http|https)://www\\.benlai\\.com/[a-z/]+/item-[0-9]+\\.html':'benlai','^(?:http|https)://taoshu\\.com/\\d+\\.html':'taoshu','^(?:http|https)://www\\.meilele\\.com/category-[a-z]+/goods-[0-9]+\\.html':'meilele','^(?:http|https)://www\\.meilele\\.com/tuangou/info-[0-9]+.html':'meilele-tuan','^(?:http|https)://www\\.meilele\\.com/miaosha/ms-[0-9]+.html':'meilele-ms','^(?:http|https)://www\\.gjw\\.com/product/item':'gjw','^(?:http|https)://www\\.gjw\\.com/Home/TuanItem/\\d+\\.htm':'gjw','^(?:http|https)://www\\.gjw\\.com/TryDrink/item-id-[0-9]+\\.htm':'gjw','^(?:http|https)://www\\.oneplus\\.com/cn/':'oneplus','^(?:http|https)://store\\.apple\\.com/cn/product/':'apple','^(?:http|https)://www\\.apple\\.com/cn/(?:macbook|ipad-pro|ipad|ipad-mini-4|iphone-7|iphone-\\w+|ipod-shuffle)/':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-iphone/iphone\\w+':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-mac/\\w+-\\w+\\?product=\\w+/\\w+':'apple','^(?:http|https)://www\\.apple\\.com\\.cn/shop/':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-ipad/ipad-\\w+-\\w+':'apple','^(?:http|https)://store\\.apple\\.com/cn/buy-ipod/ipod-\\w+-\\w+':'apple','^(?:http|https)://www\\.apple\\.com/cn/shop/(?:product|buy-[a-z]+)/[a-z0-9-]+':'apple','^(?:http|https)://www\\.j1\\.com/product/':'j1','^(?:http|https)://miao\\.j1\\.com/product/':'j1-miao','^(?:http|https)://(?:www\\.|)zzl365\\.com/product-\\d+':'zzl365','^(?:http|https)://mobile\\.139shop\\.com/.*?/\\d+/\\d+\\.htm':'139shop','^(?:http|https)://139shop\\.com/[a-z0-9-]+/[a-z0-9]+/[a-z0-9]+\\.htm':'139shop','^(?:http|https)://detail\\.1688\\.com/offer/\\d+':'1688','^(?:http|https)://www\\.yiwugou\\.com/product/detail/[0-9]+\\.html':'yiwugou','^(?:http|https)://www\\.zhiwo\\.com/product/\\d+':'zhiwo','^(?:http|https)://www\\.zhiwo\\.com/group/\\d+':'zhiwo-tuan','^(?:http|https)://[^\\.]+\\.miqi\\.cn/[^/]+/p\\d+':'miqi','^(?:http|https)://www\\.miqi\\.cn/[a-z]+/[0-9]+\\.html':'miqi','^(?:http|https)://www\\.camel\\.com\\.cn/[a-zA-Z0-9]+(_[a-zA-Z0-9]+)+/[\\w]+\\.shtml':'camel','^(?:http|https)://www\\.camel\\.com\\.cn/[a-zA-Z0-9_]+/[A-Za-z0-9]+\\.shtml':'camel','^(?:http|https)://www\\.kuaishubao\\.com/\\d+/\\d+':'kuaishubao','^(?:http|https)://www.kuaishubao.com/g/':'kuaishubao','^(?:http|https)://www\\.juegg\\.com/templets/DefaultGreen/Product\\.jsp':'juegg','^(?:http|https)://mall\\.10010\\.com/goodsdetail/[\\d]+\\.html':'mall10010','^(?:http|https)://www\\.wowsai\\.com/goods/':'wowsai','^(?:http|https)://www\\.tianpin\\.com/item/':'tianpin','^(?:http|https)://www\\.tootoo\\.cn/product-':'tootoo','^(?:http|https)://www\\.tootoo\\.cn/[a-z]+/detail/[0-9]+':'tootoo','^(?:http|https)://item\\.minshengec\\.com/[a-z]-(?:|[a-zA-Z%0-9]+)/[a-z0-9-]+\\.jhtml':'minshengec','^(?:http|https)://www\\.sfbest\\.com/html/(sfv)?products/':'sfbest','^(?:http|https)://ht\\.sfbest\\.hk/[0-9a-z_]+\\.htm':'sfbest','^(?:http|https)://shop\\.lenovo\\.com\\.cn/product-':'lenovo','^(?:http|https)://(?:item|\\w+)\\.lenovo\\.com\\.cn/product/\\d+\\.html':'lenovo','^(?:http|https)://shop\\.lenovomobile\\.com/ShowPhone.aspx\\?GdsID=':'lenovo','^(?:http|https)://www\\.lenovomobile\\.com/store/\\d+\\.html':'lenovo','^(?:http|https)://www\\.lenovo\\.com\\.cn/product/[0-9]+\\.html':'lenovo','^(?:http|https)://www\\.lenovo\\.com\\.cn/abtest/[0-9_]+\\.shtml':'lenovo','^(?:http|https)://thinkpad\\.lenovo\\.com\\.cn/product/[0-9]+\\.html':'lenovo','^(?:http|https)://www\\.vmall\\.com/item/\\d+/(?:index|buy)':'vmall','^(?:http|https)://www\\.vmall\\.com/product/\\d+\\.html':'vmall','^(?:http|https)://www\\.vmall\\.com/product/comdetail/index.html':'vmall','^(?:http|https)://www.hihonor.com/cn/shop/product/\\d+\\.html':'hihonor','^(?:http|https)://www\\.ihush\\.com/product':'ihush','^(?:http|https)://(?:www\\.)?fclub\\.cn/goods':'fclub','^(?:http|https)://item\\.yohobuy\\.com/product/\\w+/\\w+\\.html':'yohobuy','^(?:http|https)://item\\.yohobuy\\.com/\\w+\\.html':'yohobuy','^(?:http|https)://www\\.yohobuy\\.com/product/\\d+\\.html':'yohobuy','^(?:http|https)://www\\.fclub\\.cn/tuangouDetail\\.html':'fclub','^(?:http|https)://ju\\.taobao\\.com/tg/home\\.htm.*(item_)?id=[\\d]+':'taobao-ju','^(?:http|https)://detail\\.tmall\\.com/item(_o)?\\.htm':'tmall','^(?:http|https)://detail\\.liangxinyao\\.com/item\\.htm':'tmall','^(?:http|https)://world\\.tmall\\.com/item/[0-9]+\.htm':'tmall','^(?:http|https)://detail\\.tmall\\.hk/hk/item\.htm':'tmall','^(?:http|https)://detail\\.tmall\\.hk/item\\.htm':'tmall','^(?:http|https)://item\\.taobao\\.com/item\.htm':'taobao','^(?:http|https)://2\\.taobao\\.com/item\\.htm':'taobao-xianyu','^(?:http|https)://ai\\.taobao\\.com/auction':'ai-taobao','^(?:http|https)://chaoshi\\.detail\\.tmall\\.com/item\\.htm':'tmall','^(?:http|https)://chaoshi\\.detail\\.tmall\\.com/item_o\\.htm':'tmall','^(?:http|https)://detail\\.ju\\.taobao\\.com/home\\.htm':'taobao-ju','^(?:http|https)://(?:archive-shop|shop|www|day|lux)\\.vip(shop)?\\.com/detail':'vipshop','^(?:https|http):\\/\\/detail\\.vip\\.com\\/detail-\\d+':'vipshop','^(?:https|http):\\/\\/www\\.vipglobal\\.hk\\/detail-\\d+':'vipshop','^(?:http|https)://tuan\\.lefeng\\.com/.*?/\\d+_\\d+\\.html':'lefeng','^(?:http|https)://(?:www|product)\\.lefeng\\.com/(product|pklist)/':'lefeng','^(?:http|https)://(?:www|1hour)\\.jxdyf\\.com/product[-/][\\d]+':'jxdyf','^(?:http|https)://www\\.jxdyf\\.com/ProductContent':'jxdyf','^(?:http|https)://www\\.tnice\\.com/product/':'tnice','^(?:http|https)://auction1\\.paipai\\.com/':'paipai','^(?:http|https)://item\\.xinbaigo\\.com/Goods/StyleDetail':'xinbaigo','^(?:http|https)://www\\.orbis\\.com\\.cn.*product\\-[\\d]+':'orbis','^(?:http|https)://www\\.sfht\\.com/detail/[0-9]+\\.html':'sfht','^(?:http|https)://(?:www|cosmetic)\\.d1\\.com\\.cn/product/':'d1','^(?:http|https)://www\\.chazuo\\.com/Product/p\\-[\\d]+':'chazuo','^(?:http|https)://www\\.u1baby\\.com/product\\-[\\d]+':'u1baby','^(?:http|https)://(www\\.)?homevv\\.com/vvshopProductView/pid\\-[\\d]+\\.jhtml':'homevv','^(?:http|https)://(www\\.)?homevv\\.com/vvshopProductView\\.jhtml':'homevv','^(?:http|https)://www\\.paixie\\.net/shoe\\-.+\\.html':'paixie','^(?:http|https)://tuan\\.paixie\\.net/[0-9]+\\.html':'paixie-tuan','^(?:http|https)://faxian\\.paixie\\.net/[0-9]+\\.html':'paixie-faxian','^(?:http|https)://www\\.tao3c\\.com/(outlets/)?product/[\\d]+\\.html':'tao3c','^(?:http|https)://www\\.zm7\\.cn/goods':'zm7','^(?:http|https)://s\\.etao\\.com/item/[\\d]+\\.html':'etao','^(?:http|https)://s\\.etao\\.com/search\\?epid=[\\d]+':'etao','^(?:http|https)://product\\.pchouse\\.com\\.cn/item/[\\d]+\\.html':'pchouse','^(?:http|https)://buy\\.daphne\\.cn/goods\\.php':'daphne','^(?:http|https)://www\\.lucemall\\.com\\.cn/.+/[\\d]+\\.html':'lucemall','^(?:http|https)://www\\.lifevc\\.com/detail/':'lifevc','^(?:http|https)://www\\.easy361\\.com/[^\\?]*goods-[\\d]+\\.html':'easy361','^(?:http|https)://item\\.360hqb\\.com/spu\\-[\\d]+\\.html':'360hqb','^(?:http|https)://item\\.360hqb\\.com/[\\d]+\\.html':'360hqb','^(?:http|https)://q\\.360hqb\\.com/detail/[\\d\\_]+\\.html':'360hqb','^(?:http|https)://www\\.goujiuwang\\.com/product/item\\-id\\-[\\d]+\\.htm':'goujiuwang','^(?:http|https)://www\\.huimai365\\.com/goods\\-[\\d]+\\.html':'huimai365','^(?:http|https)://(www|tuan|dingzhi)\\.jiuxian\\.com/(goods|tuan_detail)\\-.+\\.htm':'jiuxian','^(?:http|https)://www\\.winenice\\.com/p_[\\d]+\\.shtml':'winenice','^(?:http|https)://www\\.yesmywine\\.com/goods/[\\d]+\\.html':'yesmywine','^(?:http|https)://mall\\.yesmywine\\.com/shop/junkang/item-[\\d]+':'yesmywine','^(?:http|https)://mall\\.yesmywine\\.com/shop/[\\w]+/item-[\\d]+':'yesmywine','^(?:http|https)://mall\\.yesmywine\\.com/groupbuy/\\d+\\.html':'yesmywine','^(?:http|https)://www\\.banggo\\.com/Goods/[\\d]+\\.shtml':'banggo','^(?:http|https)://www\\.banggo\\.com/goods_[0-9]+\\.shtml':'banggo','^(?:http|https)://www\\.banggo\\.com/goods/[0-9A-Za-z]+\\.s?html':'banggo','^(?:http|https)://www\\.banggo\\.com/goods/[0-9A-Za-z]+':'banggo','^(?:http|https)://ploy\\.banggo\\.com/second/[0-9-_]+\\.shtml':'banggo','^(?:http|https)://www\\.yanyue\\.cn/smoke\\-product\\-[\\d]+\\.html':'yanyue','^(?:http|https)://www\\.bearbuy\\.com\\.cn/goods\\.php\\?id=[\\d]+':'bearbuy','^(?:http|https)://www\\.amazon\\.cn/.*?(?:dp/|gp/product/|detailApp)':'amazon','^(?:http|https)://www\\.amazon\\.(com|co\\.uk|de|co\\.jp|fr|ca|cn|it|es|com\\.au)/.*?(?:dp/|gp/product/|detailApp)(?!search)':'amazon','^(?:http|https)://(?:product\\.dangdang\\.com/[^\\?]*product.aspx|reco\\.dangdang\\.com/reco_pub\\.php)\\?product_id=\\d+':'dangdang','^(?:http|https)://(?:product|detail)\\.dangdang\\.com/[\\d]+':'dangdang','^(?:http|https)://(?:product|detail)\\.globaldangdang\\.hk/[\\d]+\\.html':'dangdang','^(?:http|https)://z\\.jd\\.com/project/details/\\d+\\.html':"360buy",'^(?:http|https)://item\\.jd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.m\\.jd\\.com/product/\\d+\\.html':'360buy','^(?:http|https)://item\\.m\\.jd\\.com/ware/view.action':'360buy','^(?:http|https)://kpl\\.m\\.jd\\.com/product\\?wareId=\\d+':'360buy','^(?:http|https)://pcitem\\.jd\\.hk/\\d+\\.html':'360buy','^(?:http|https)://npcitem\\.jd\\.hk/\\d+\\.html':'360buy','^(?:http|https)://i-item\\.jd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.paipai\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.yiyaojd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.jkcsjd\\.com/\\d+\\.html':'360buy','^(?:http|https)://item\\.jd\\.hk/\\d+\\.html':'360buy','^(?:http|https)://paimai\\.jd\\.com/\\d+':'360buy-paimai','^(?:http|https)://day\\.jd\\.com/item/.*\\.html':'360buy-day','^(?:http|https)://www\\.(?:360buy|jd)\\.com/product/\\d+\\.html':'360buy','^(?:http|https)://(?:book|e)\\.(?:360buy|jd)\\.com/\\d+\\.html':'360buy-book','^(?:http|https)://re\\.jd\\.com/cps/item/[0-9]+\\.html':'360buy-re','^(?:http|https)://auction\\.jd\\.com/[0-9]+':'360buy-auction','^(?:http|https)://mvd\\.(?:360buy|jd)\\.com/\\d+\\.html':'360buy-mvd','^(?:http|https)://tuan\\.(?:360buy|jd)\\.com/team\\-\\d+\\.html':'360buy-tuan','^(?:http|https)://www\\.(?:360buy|jd)\\.com/tuan/[\\d]+\\-[\\d]+\\.html':'360buy-tuan','^(?:http|https)://www\\.(?:360buy|jd)\\.com/bigimage\\.aspx\\?id=\\d+':'360buy-bigimage','^(?:http|https)://club\\.jd\\.com/bbsDetail/[a-z0-9_-]+\\.html':'360buy-club','^(?:http|https)://www\\.360top\\.com/product/\\d+\\.html':'360top','^(?:http|https)://detail\\.zol\\.com\\.cn/.*?(?:index).*?\\.shtml':'zol','^(?:http|https)://detail\\.zol\\.com\\.cn/[\\d]+/[\\d]+/[a-zA-Z]+\\.shtml':'zol','^(?:http|https)://dealer\\.zol\\.com\\.cn/detail/[\\d]+/[\\d]+_[\\d]+.html':'zol','^(?:http|https)://(?:www|mall)\\.zol\\.com/detail':'zol','^(?:http|https)://detail\\.zol\\.com\\.cn/series/[0-9]+/[0-9_]+\\.html':'zol','^(?:http|https)://www\\.fglady\\.cn/BMsgL':'fglady','^(?:http|https)://(www.|)ouku\\.com/(?:goods|product)':'ouku','^(?:http|https)://(www.|)ouku\\.com/cn/[0-9a-z-_]+\\.html':'ouku','^(?:http|https)://www\\.newegg(\\.com)?\\.cn/Product/.*?\\.htm':'newegg','^(?:http|https)://zhadan\\.newegg(\\.com)?\\.cn/Bomb-\\d+\\.htm':'newegg','^(?:http|https)://zhadan\\.newegg\\.cn':'newegg-zhadan','^(?:http|https)://tuan\\.newegg\\.cn/deal/[0-9]+\\.htm':'newegg-tuan','^(?:http|https)://product\\.kimiss\\.com/product/':'kimiss','^(?:http|https)://www\\.redbaby\\.com\\.cn/.*?/\\d{7}\\d+\\.html':'redbaby','^(?:http|https)://product\\.m18\\.com/':'m18','^(?:http|https)://list\\.m18\\.com/item/':'m18','^(?:http|https)://list\\.m18\\.com/g/':'m18','^(?:http|https)://list\\.m18\\.com/.*Goods.aspx':'m18','^(?:http|https)://www\\.m18\\.com/item/':'m18','^(?:http|https)://www\\.w1\\.cn/goods':'w1','^(?:http|https)://www\\.ashford\\.com/us/watches/[a-z0-9-]+/[a-z0-9-]+':'ashford','^(?:http|https)://www\\.sephora\\.cn/productDetailAction/':'sephoracps','^(?:http|https)://www\\.sephora\\.cn/product/\\d+\\.html':'sephoracps','^(?:http|https)://www\\.sephora\\.cn/tryout/\\d+\\.html':'sephoracps','^(?:http|https)://www\\.lafaso\\.com/(?:product/|goods/product_detail)':'lafaso','^(?:http|https)://www\\.s\\.cn/(?!page)\\w{2,}\\-[A-Za-z0-9]+?[0-9]+?[A-Za-z0-9]+?[\\-_*\\.].*?html':'s', // '^(?:http|https)://www\\.s\\.cn/\\w{2,}\\-[A-Z0-9]+?[0-9]+?[A-Z0-9]+?[\\-_*\\.].*?html': 's',
 '^(?:http|https)://w?item\\.(?:51buy|yixun)\\.com/':'51buy','^(?:http|https)://www\\.okbuy\\.com/.*?/detail-':'okbuy','^(?:http|https)://www\\.okbuy\\.com/.*?-[\\d]+.html':'okbuy','^(?:http|https)://(www\\.)?letao\\.com/[^\\?]*shoe\\-[^\\~]*$':'letao','^(?:http|https)://(www\\.)?letao\\.com/[a-z0-9]+/detail\\.do\\?id=':'letao','^(?:http|https)://www\\.buy007\\.com/.*?/.*?/[A-Za-z\\d\\_\\-]*?\\.html':'buy007','^(?:http|https)://www\\.taoxie\\.com/commodity':'taoxie','^(?:http|https)://ju\\.suning\\.com/product-[a-zA-Z0-9]+\\.htm':'suning-ju','^(?:http|https)://item\\.suning\\.com/[0-9]+\\.html':'suning','^(?:http|https)://item\\.suning\\.com/[0-9]+/[0-9]+\\.html':'suning','^(?:http|https)://www\\.suning\\.(?:com|cn)/webapp/wcs/stores/servlet/(Prod|prd)':'suning','^(?:http|https)://pai\\.suning\\.(?:com|cn)/shanpai/detail/':'suning-pai','^(?:http|https)://pai\\.suning\\.(?:com|cn)/shanpai/[0-9]/detail/d/[0-9]+\-[0-9]':'suning-pai','^(?:http|https)://[\\w]+\\.suning\\.(?:com|cn)/emall/dgf':'suning-dgf','^(?:http|https)://qiang\\.suning\\.com/rps-web/rp/showActivity_[\\d]+\\.htm':'suning-qiang','^(?:http|https)://product\\.suning\\.com/\\d+':'suning','^(?:http|https)://product\\.suning\\.com/detail[0-9_]+\\.html':'suning','^(?:http|https)://www\\.suning\\.com/detail/':'suning-book-new','^(?:http|https)://snbook\\.suning\\.(?:com|cn)/web/prd/':'suning-snbook','^(?:http|https)://www\\.coo8\\.com/product/':'coo8','^(?:http|https)://(www.|)lusen\\.com/product/productinfo':'lusen','^(?:http|https)://www\\.lusen\\.com/Tuan/ComityInfo\\.aspx\\?id=[0-9]+':'lusen','^(?:http|https)://item\\.gome\\.com\\.cn/[^\\?]':'gome','^(?:http|https)://tao\\.gome\\.com\\.cn/p\\-D[0-9]+':'gome-tao','^(?:http|https)://q\\.gome\\.com\\.cn/item/\\w[0-9]+\\.html':'gome-q','^(?:http|https)://tuan\\.gome\\.com\\.cn/deal/\\w+\\.html':'gome-tuan','^(?:http|https)://www\\.gomehome\\.com/product/productinfo\\?p=[0-9-]+':'gome-home','^(?:http|https)://www\\.gome\\.com\\.cn/ec/rushbuy/limitbuy/itemdetail':'gome-rushbuy','^(?:http|https)://(?:www|item|s)\\.(yhd|yihaodian|1mall)\\.com/(?:product|item)/\\d+':'yihaodian','^(?:http|https)://item\\.yhd\\.com/item/lp/[0-9_]+':'yihaodian','^(?:http|https)://try\\.yhd\\.com/(free|fee)/\\d{4,6}_\\d+/':'yihaodian','^(?:http|https)://t\\.(yhd|yihaodian|1mall)\\.com/detail/\\d+':'yihaodian-tuan','^(?:http|https)://[a-zA-Z]+\\.womai\\.com/(.*)Product(?:\\-|\\.do\\?m?id)':'womai','^(?:http|https)://(www|sh|gz|zs)\\.womai\\.com/related-':'womai-related','^(?:http|https)://(www\\.)?leyou\\.com\\.cn/product/single/':'leyou','^(?:http|https)://haitao\\.leyou\\.com\\.cn/item/single/sku/':'leyou','^(?:http|https)://leleshan\\.leyou\\.com\\.cn/product/single/[A-Z0-9]+':'leyou-leleshan','^(?:http|https)://www\\.shopin\\.net/product/':'shopin','^(?:http|https)://(?:item|www|ebay)\\.xiu\\.com/product/':'xiu','^(?:http|https)://outlets\\.xiu\\.com/[\\d]+\\.shtml':'xiu','^(?:http|https)://ferragamo\\.xiu\\.com/[\\d]{6,10}\\.shtml':'xiu','^(?:http|https)://tuan\\.xiu\\.com/team_[\\d]+':'xiu-tuan','^(?:http|https)://item\\.mbaobao\\.com/pshow':'mbaobao','^(?:http|https)://www\\.mbaobao\\.com/item/':'mbaobao','^(?:http|https)://item\\.vjia\\.com/[\\d]*?\\.html':'vjia','^(?:http|https)://www\\.7cv\\.com/product/':'7cv','^(?:http|https)://www\\.qinqinbaby\\.com/product/':'qinqinbaby','^(?:http|https)://www\\.qinqinbaby\\.com/goods/[0-9]+':'qinqinbaby','^(?:http|https)://www\\.chunshuitang\\.com/[a-z]+/[0-9]+\\.html':'chunshuitang','^(?:http|https)://www\\.x\\.com\\.cn/n_product/[\\w]+\\.shtml':'x','^(?:http|https)://www\\.x\\.com\\.cn/product':'x','^(?:http|https)://www\\.guopi\\.com/p\\.jsp':'guopi','^(?:http|https)://www\\.no5\\.com\\.cn/goods/':'no5','^(?:http|https)://www\\.no5\\.com\\.cn/product/[0-9]+\\.html':'no5','^(?:http|https)://web[\\d]+\\.sasa\\.com/SasaWeb/sch/product/viewProductDetail':'sasa','^(?:http|https)://www\\.sasa\\.com/[a-z]+/[a-zA-Z0-9_-]+':'sasa','^(?:http|https)://www\\.sasa\\.com/[a-z]+-\\d+\\.html':'sasa','^(?:http|https)://www\\.hksasa\\.cn/[a-z]+-\\d+\\.html':'sasa','^(?:http|https)://www\\.dhc\\.net\\.cn/gds/(?:detail|csearch\\.jsp\\?ccd=[\\d]+)':'dhc','^(?:http|https)://www\\.9dadao\\.com/product/':'9dadao','^(?:http|https)://www\\.360kxr\\.com/product/':'360kxr','^(?:http|https)://www\\.m6go\\.com/product':'m6go','^(?:http|https)://www\\.gou\\.com/product':'m6go','^(?:http|https)://www\\.m6go\\.com/qg/product':'m6go','^(?:http|https)://www\\.gou\\.com/qg/product':'m6go','^(?:http|https)://www\\.likeface\\.com/product':'likeface','^(?:http|https)://www\\.qxian\\.com/.*?[0-9]*?\\.html':'qxian','^(?:http|https)://www\\.didamall\\.com/(?:products|libao)/info/':'didamall','^(?:http|https)://www\\.yaodian100\\.com/ecmall/product':'yaodian100','^(?:http|https)://www\\.yaofang\\.cn/goods':'yaofang','^(?:http|https)://www\\.lijiababy\\.com\\.cn/(?:eshop/product|Clothing/.*?/Product_item\\.aspx)':'lijiababy','^(?:http|https)://99read\\.com/Product/[a-zA-Z]*\\d+[a-zA-Z]*\\.aspx':'99read','^(?:http|https)://product\\.china-pub\\.com/\\d+':'china-pub','^(?:http|https)://(www.|)bookschina\\.com/[\\d]+\\.htm':'bookschina','^(?:http|https)://(www.|)bookschina\\.com/GROUPBUY/groupbuy.aspx\\?groupid\\=[0-9]+':'bookschina-tuan','^(?:http|https)://(?:|www\\.)efeihu\\.com/(?:Product/|Pages/ProductShow/ProductDetails\\.aspx)':'efeihu','^(?:http|https)://tuan\\.efeihu\\.com/[0-9a-zA-Z]+/Detials.aspx\\?id=[0-9]+':'efeihu','^(?:http|https)://www\\.360mart\\.com/product[s]?/.*?\\.html':'360mart','^(?:http|https)://www\\.yintai\\.com/product/productdetail':'yintai','^(?:http|https)://item\\.yintai\\.com/':'yintai','^(?:http|https)://www\\.quwan\\.com/goods':'quwan','^(?:http|https)://www\\.urcosme\\.com/search/final':'urcosme','^(?:http|https)://cn\\d*\\.strawberrynet\\.com/.*?/[0-9]+/':'strawberrynet','^(?:http|https)://www\\.strawberrynet\\.com/.*?/[0-9]+/':'strawberrynet','^(?:http|https)://www\\.luce\\.com\\.cn/product/':'luce','^(?:http|https)://www\\.k121\\.com/item':'k121','^(?:http|https)://www\\.happigo\\.com/[\\w]+/[\\w]+/[\\w]+/[\\d]+\\.html':'happigo','^(?:http|https)://www.happigo.com/item-[0-9]+.html':'happigo','^(?:http|https)://mall\\.happigo\\.com/goods-[\\d]+\\.html':'happigo','^(?:http|https)://mall\\.happigo\\.com/groupbuy-[0-9-]+\\.html':'happigo','^(?:http|https)://www\\.gap\\.cn/[^\\?]*product/[\\d]+\\.html':'gap','^(?:http|https)://www\\.misslele\\.com/.+[\\d]+\\.html':'misslele','^(?:http|https)://www\\.5lux\\.com/goods':'5lux','^(?:http|https)://(?:www|hui)\\.5lux\.com/good/detail/[0-9]+':'5lux','^(?:http|https)://www\\.xiaozhuren\\.com/(Disney/)?goods\\.php':'xiaozhuren','^(?:http|https)://www\\.all3c\\.com/product/':'all3c','^(?:http|https)://www\\.idaphne\\.com/goods':'idaphne','^(?:http|https)://product\\.pcbaby\\.com\\.cn/a/':'pcbaby','^(?:http|https)://www\\.binggo\\.com/.*?/\\d{7}\\d+\\.html':'binggo','^(?:http|https)://www\\.tiantian\\.com/.+/[a-zA-Z]?[\\d]+\\.html':'tiantian','^(?:http|https)://tuan\\.tiantian\\.com/Sale/(?:Details|FlashDetails)/[a-zA-Z0-9]+':'tiantian-tuan','^(?:http|https)://www\\.xiji\\.com/product-[0-9]+\\.html':'xiji','^(?:http|https)://www\\.xijie\\.com/prod':'xijie','^(?:http|https)://mall\\.jumei\\.com[^\\?]*/product_':'jumei','^(?:http|https)://pop\\.jumei\\.com/i/deal/\\w+\\.html':'jumei','^(?:http|https)://(gz|bj|sh)\\.jumei\\.com/i/deal/\\w+\\.html':'jumei','^(?:http|https)://item\\.jumei\\.com/[0-9a-zA-Z]+\\.html':'jumei','^(?:http|https)://www\\.jumeiglobal\\.com/deal/\\w+\\.html':'jumeiglobal','^(?:http|https)://item\\.jumeiglobal\\.com/[0-9a-zA-Z]+\\.html':'jumeiglobal','^(?:http|https)://www\\.jumeiglobal\\.com/Deal/Combination\\?':'jumeiglobal','^(?:http|https)://buy\\.caomeipai\\.com/goods':'caomeipai','^(?:http|https)://www\\.dahuozhan\\.com/product/':'dahuozhan','^(?:http|https)://www\\.dazhe\\.cn/goodsdetail':'dazhe','^(?:http|https)://www\\.huolida\\.com/product/':'huolida','^(?:http|https)://www\\.12dian\\.com/product':'12dian','^(?:http|https)://www\\.yougou\\.com/c_':'yougou','^(?:http|https)://(?:outlets|www)\\.yougou\\.com/[^?]+sku-[\\w]+':'yougou','^(?:http|https)://(?:outlets|seoul|www)\\.yougou\\.com/[a-z-]+/sku-[a-z0-9-]+\\.shtml':'yougou','^(?:http|https)://www\\.111\\.com\\.cn/(?:product|item)/':'111','^(?:http|https)://www\\.daoyao\\.com/product':'daoyao','^(?:http|https)://www\\.jianke\\.com/product/':'jianke','^(?:http|https)://www\\.jianke\\.com/tuan/product/[0-9]+\\.html':'jianke','^(?:http|https)://www\\.360kad\\.com/product/[0-9a-z]+\\.shtml':'360kad','^(?:http|https)://www\\.lbxcn.com/(?:Product|item)/[0-9]+.html':'lbxcn','^(?:http|https)://www\\.lbxcn.com/hepstorefront/lbx/zh/LBX/.*/p/[0-9]+':'lbxcn','^(?:http|https)://book\\.douban\\.com/subject/[\\d]+':'douban','^(?:http|https)://dongxi\\.douban\\.com/show/[\\d]+':'douban-dongxi','^(?:http|https)://product\\.it168\\.com/detail/doc/[0-9]+/index\\.shtml':'it168','^(?:http|https)://product\\.pconline\\.com\\.cn/[^/]*?/[^/]*?/[0-9]+\\.html':'pconline','^(?:http|https)://product\\.pcpop\\.com/[0-9]+/Index\\.html':'pcpop','^(?:http|https)://cosme\\.pclady\\.com\\.cn/product/[0-9]+\\.html':'pclady','^(?:http|https)://brand\\.yoka\\.com/cosmetics/.*?/detail[0-9]+\\.htm':'yoka','^(?:http|https)://detail\\.55bbs\\.com/.*?/index[0-9]+\\.shtml':'55bbs','^(?:http|https)://hzp\\.onlylady.com/.*?/[0-9]+/':'onlylady','^(?:http|https)://www\\.24dq.com/product.*?html':'24dq','^(?:http|https)://www\\.muyingzhijia\\.com/Shopping/ProductDetail\\.aspx':'muyingzhijia','^(?:http|https)://www\\.muyingzhijia\\.com/product/\\d+\\.html':'muyingzhijia','^(?:http|https)://item\\.muyingzhijia\\.com/\\d+\\.html':'muyingzhijia','^(?:http|https)://www\\.houmart\\.com/p\\-[\\d]+\\.html':'houmart','^(?:http|https)://www\\.onlyts\\.cn/goods':'onlyts','^(?:http|https)://www\\.winxuan\\.com/product/.*?[0-9]*?':'winxuan','^(?:http|https)://item\\.winxuan\\.com/[0-9]+':'winxuan','^(?:http|https)://detail\\.bookuu\\.com/[0-9]*?\\.html':'bookuu','^(?:http|https)://www\\.bookuu\\.com/detail\\.php\\?id=\\d+':'bookuu','^(?:http|https)://e\\.bookuu\\.com/detail\\.php\\?id=\\d+':'bookuu','^(?:http|https)://wenju\\.bookuu\\.com/detail\\.php\\?id=\\d+':'bookuu','^(?:http|https)://book\\.beifabook\\.com/Product/BookDetail.aspx':'beifabook','^(?:http|https)://product\\.yesky\\.com/product/.*?[0-9]*?/':'yesky','^(?:http|https)://product\\.pchome\\.net/.*?[0-9]*?\\.html':'pchome','^(?:http|https)://product\\.enet\\.com\\.cn/[a-zA-Z\\-].*?[\\d].*?\\.html':'enet','^(?:http|https)://(www\\.)?(?:ruiyi|rayi)\\.(?:com|cn|com\\.cn)/\\?product-[\\d].*?\\.html':'ruiyi','^(?:http|https)://www\\.nop\\.cn/product-[\\d]*?\\.html':'nop','^(?:http|https)://product\\.imobile\\.com\\.cn/show/[\\d].*?\\.html':'imobile','^(?:http|https)://product\\.cnmo\\.com/cell_phone/index[\\d].*?\\.shtml':'cnmo','^(?:http|https)://phone\\.shouji\\.com\\.cn/[\\d]+/detail/[\\d]+':'shouji','^(?:http|https)://product\\.tompda\\.com/[a-zA-Z]/[a-zA-Z]/[\\d]+/[\\d]+':'tompda','^(?:http|https)://www\\.3533\\.com/phone/phone.+\\.htm':'phone3533','^(?:http|https)://product\\.intozgc\\.com/[a-zA-Z\\_]+\\_[\\d]+':'intozgc','^(?:http|https)://product\\.chinabyte\\.com/product/[\\d]+/[\\d]+':'chinabyte','^(?:http|https)://app\\.tech\\.ifeng\\.com/[a-zA-Z\\-\\_]+/[a-zA-Z\\-\\_]+/[a-zA-Z0-9\\-\\_]+':'ifeng','^(?:http|https)://app\\.tech\\.ifeng\\.com/[a-zA-Z\\-\\_]+/detail\\-index\\-[0-9]+\\.html':'ifeng','^(?:http|https)://www2\\.xitek\\.com/production/product.php':'xitek','^(?:http|https)://product\\.imp3\\.net/product\\.php':'imp3','^(?:http|https)://www\\.menglu\\.com/product/[\\d]+\\.html':'menglu','^(?:http|https)://(?:lady|lingerie|www|fashion|shipin|item)\\.moonbasa\\.com/[a-zA-Z]\\-[\\d]+\\.html':'moonbasa','^(?:http|https)://www\\.(?:ing2ing|qjherb|korirl|alaves|0-100s|cherriespie|clafield|baoyeah|suorang|monteamor|rutisher)\\.com/p\\-[\\d]+\\.html':'moonbasa','^(?:http|https)://www\\.keede\\.com(\\.cn)?/[a-zA-Z]+[\\d]+\\.html':'keede','^(?:http|https)://www\\.kede\\.com(\\.cn)?/[a-zA-Z]+[\\d]+\\.html':'keede','^(?:http|https)://k1\\.keede\\.cn/[a-zA-Z]+[\\d]+\\.html':'keede','^(?:http|https)://k1\\.kede\\.cn/[a-zA-Z]+[\\d]+\\.html':'keede','^(?:http|https)://item(\\.vt)?\\.vancl\\.com/[\\d]+\\.html':'vancl','^(?:http|https)://www\\.dazhongdianqi\\.com\\.cn/dazhong/product[\\-\\d]+\\.htm':'dazhongdianqi','^(?:http|https)://www\\.skinstorechina\\.com/.+/.+[\\d]+\\-p\\.html':'skinstorechina','^(?:http|https)://item\\.buy\\.qq\\.com/item/':'qq','^(?:http|https)://.*\\.zol\\.com\\.cn/\\d+/\\d+\\.html':'zol-article','^(?:http|https)://.*\\.pconline\\.com\\.cn/\\d+/\\d+\\.html':'pconline-article','^(?:http|https)://.*\\.yesky\\.com/\\d+/\\d+\\.shtml':'yesky-article','^(?:http|https)://.*\\.it168\\.com/[a-z]\\d+/\\d+/\\d+/\\d+\\.shtml':'it168-article','^(?:http|https)://.*\\.pcpop\\.com/doc/\\d+/\\d+/\\d+\\.shtml':'pcpop-article','^(?:http|https)://.*\\.pchome\\.net/content-\\d+\\.html':'pchome-article','^(?:http|https)://.*\\.139shop\\.com/.*?/\\d+/\\d+\\.htm':'139shop-article','^(?:http|https)://www\\.milier\\.com/product/':'milier','^(?:http|https)://www\\.sportica\\.cn/goods':'sportica','^(?:http|https)://www\\.zhenpin\\.com/product':'zhenpin','^(?:http|https)://www\\.gaojie\\.com/product/':'gaojie','^(?:http|https)://www\\.naruko\\.com\\.cn/shop/product/Goods\\.aspx':'naruko','^(?:http|https)://www\\.(?:vivian|masamaso|linkmasa)\\.(?:com|cn)/goods_':'masamaso','^(?:http|https)://item\\.secoo\\.com/':'secoo','^(?:http|https)://paimai\\.secoo\\.com/[0-9]+\\.shtml':'secoo','^(?:http|https)://sale\\.secoo\\.com/[0-9]+\\.shtml':'secoo','^(?:http|https)://(?:www|tuan)\\.ehaier\\.com/product/':'ehaier','^(?:http|https)://qiji\\.ehaier\\.com/new/newExploreManager/dateil/[0-9]+':'ehaier','^(?:http|https)://www\\.handuyishe\\.com/goods':'handuyishe','^(?:http|https)://www\\.wbiao\\.cn/[a-z0-9-]+\\.html':'wbiao', // '^(?:http|https)://www\\.wbiao\\.cn/[a-z]+/[a-z0-9-]+\\.html': 'wbiao',
 '^(?:http|https)://www\\.wbiao\\.cn/goods\\.php\\?goods_id=[0-9]+':'wbiao','^(?:http|https)://www\\.wbiao\\.cn/van-der-bauwede-\\w[0-9]+\\.html':'wbiao','^(?:http|https)://www\\.shangpin\\.com(\\.hk)*/.*?product/':'shangpin','^(?:http|https)://www\\.pba\\.cn/(?:product|sp)':'pba','^(?:http|https)://www\\.metromall\\.cn/Product/':'metromall','^(?:http|https)://www\\.lizi\\.com/product':'lizi','^(?:http|https)://www\\.kadang\\.com/[a-zA-Z0-9/]*detail\\d+':'kadang','^(?:http|https)://www\\.kadang\\.com/product/[0-9]+':'kadang','^(?:http|https)://www\\.aimer\\.com\\.cn/goods/':'aimer','^(?:http|https)://www\\.lamiu\\.com/goods_':'lamiu','^(?:http|https)://www\\.lamiu\\.com/(?:goods_|product-)':'lamiu','^(?:http|https)://www\\.esprit\\.cn/(?:product|item)/\\w+':'esprit','^(?:http|https)://www\\.liebo\\.com/product/':'liebo','^(?:http|https)://www\\.wangjiu\\.com/product/(?!flashPromotion)':'wangjiu','^(?:http|https)://www.wangjiu.com/mall/item-pid-[a-zA-Z0-9]+\\.html':'wangjiu','^(?:http|https)://www\\.xifuquan\\.com/product/':'xifuquan','^(?:http|https)://www\\.189\\.cn/products/':'189','^(?:http|https)://www\\.hicdma\\.com/product_detail_':'hicdma','^(?:http|https)://mall\\.10010\\.com/goodsdetail/':'10010','^(?:http|https)://www\\.e100\\.cn/ebiz/channel/(.*/)+\\d+\\.html':'e100','^(?:http|https)://store\\.samsung\\.com/cn/.*/p/.*':'samsung','^(?:http|https)://www\\.samsungeshop\\.com\\.cn/product/.*':'samsung','^(?:http|https)://store\\.meizu\\.com/product/':'meizu','^(?:http|https)://detail\\.meizu\\.com/item/\\w+':'meizu','^(?:http|https)://b2c\\.958shop\\.com/.*/\\d+\\.html':'958shop','^(?:http|https)://www\\.okhqb\\.com/item/\\d+\\.html':'okhqb','^(?:http|https)://www\\.okhqb\\.com/qiang/\\d+/\\d+\\.html':'okhqb','^(?:http|https)://www\\.ztedevice\\.com\\.cn/product/':'ztedevice','^(?:http|https)://www\\.daling\\.com/detail-[0-9]+\\.html':'daling','^(?:http|https)://item\\.showjoy\\.com/sku/[0-9]+\\.html':'showjoy','^(?:http|https)://www\\.ocj\\.com\\.cn/detail/[0-9]+':'ocj','^(?:http|https)://www\\.ocj\\.kr/detail/[0-9]+':'ocj-kr','^(?:http|https)://www\\.ocj\\.com\\.cn/otuans/[a-z]+/[0-9]+':'ocj-tuan','^http://www\\.lvyoumall\\.com/(tuan/goods-|tmh/goods-|goods/)\\d+':'lvyoumall','http://www\\.kjt\\.com/product/detail/\\d+':'kjt','^(?:http|https)://store\\.logitech\\.com\\.cn/pro/proDetail/\\d+':'logitech','^(?:http|https)://store\\.logitech\\.com\\.cn/product/PointDetail/\\d+':'logitech','http://shop\\.boohee\\.com/store/goods/\\w+':'boohee','http://www\\.meici\\.com/product-[a-zA-Z0-9-]+\\.html':'meici','http://www\\.meici\\.com/product.*':'meici','http://(?:global|you|www)\\.beibei\\.com/detail/[0-9-]+\\.html':'beibei','http://store\\.nike\\.com/cn/zh_cn/pd/[a-zA-Z0-9\\u4e00-\\u9fa5-]+':'nike','http://store\\.nike\\.com/cn/zh_cn/product/[a-zA-Z0-9\\u4e00-\\u9fa5-]+':'nike','^(?:http|https)://www\\.nike\\.com/cn/t/[a-zA-Z0-9\\u4e00-\\u9fa5-]+':'nike','^(?:http|https)://www\\.fengqu\\.com\/detail\/':'fengqu','^(?:http|https)://www\\.mei\\.com/silo/.*-event-event/.*\\.html':'mei','^(?:http|https)://www\\.mei\\.com/item\\.html\\?':'mei','^(?:http|https)://www\\.vsigo\\.cn/.*\\.html':'vsigo','^(?:http|https)://www\\.sundan\\.com/product-[0-9]+':'sundan','^(?:http|https)://www\\.jiae\\.com/productdetail':'jiae','^(?:http|https)://hd\\.zazhipu\\.com/.*\\.asp\\?id=[0-9]+':'zazhipu','^(?:http|https)://www\\.microsoftstore\\.com\\.cn/%E7%B1%BB%E5%88%AB/.*/p/.*':'microsoftstore','^(?:http|https)://www\\.microsoftstore\\.com\\.cn/surface/[a-z0-9A-Z-]+':'microsoftstore','^(?:http|https)://www\\.xgdq\\.com/product-[0-9]+\\.html':'xgdq','^(?:http|https)://(?:www\\.|)xtep\\.com\\.cn/goods/do_index':'xtep','^(?:http|https)://www\\.xtep\\.com\\.cn/team-[0-9]+\\.html':'xtep','^(?:http|https)://www\\.xtep\\.com\\.cn/spike-[0-9]+\\.html':'xtep','^(?:http|https)://www\\.staples\\.cn/product/[0-9a-zA-Z]+':'staples', // '^(?:http|https)://(?:www\\.|)efotile\\.com/productdetail/[a-z0-9-_]+/[a-z0-9-_]+\\.html': 'efotile',
 '^(?:http|https)://mall\\.midea\\.com/detail/index':'midea','^(?:http|https)://www\\.midea\\.cn/detail/index':'midea','^(?:http|https)://www\\.midea\\.cn/[0-9]+/[0-9]+\\.html':'midea','^(?:http|https)://www1\\.macys\\.com/shop/product/\\w+':'macys','^(?:http|https)://cn.shopbop.com/[a-z0-9-]+/vp/\\w+':'shopbop', // 'www\\.bestcake\\.com/\\w+/item/[a-z0-9-]+': 'bestcake',
@@ -19247,7 +19379,7 @@ exports = module.exports = __webpack_require__("e51604a168fd9d6c615d")();
 
 
 // module
-exports.push([module.i, ".gwd-row[data-v-3f03717c] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-3f03717c] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-3f03717c] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-3f03717c] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-3f03717c] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-3f03717c] {\n  justify-content: center;\n}\n.gwd-jic[data-v-3f03717c] {\n  justify-items: center;\n}\n.gwd-button[data-v-3f03717c] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-3f03717c] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-3f03717c]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-3f03717c] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-3f03717c],\n.mainbar-fold #top_coupon_btn[data-v-3f03717c],\n.mainbar-fold .rinfo-btn[data-v-3f03717c],\n.mainbar-fold .gwd-bottom-tmall[data-v-3f03717c] {\n  display: none!important;\n}\n.gwd-font12[data-v-3f03717c] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-3f03717c] {\n  font-size: 14px;\n}\n.gwd-red[data-v-3f03717c] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-3f03717c] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-3f03717c] {\n  color: #333333;\n}\n.gwd-hui999[data-v-3f03717c] {\n  color: #999999;\n}\n.gwd-font10[data-v-3f03717c] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-3f03717c] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-3f03717c] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-3f03717c]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-3f03717c] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-3f03717c]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-3f03717c]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-3f03717c] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-3f03717c]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-3f03717c] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-3f03717c]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-3f03717c]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n.gwd-btn-submit[data-v-3f03717c] {\n  border: none;\n  outline: none;\n  background: #48befe;\n  width: 128px;\n  height: 32px;\n  font-size: 14px;\n  color: white;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-3f03717c] {\n  width: 60px;\n  height: 20px;\n  border-radius: 2px 2px 2px 2px;\n  opacity: 1;\n  border: 1px solid #E6E9EB;\n  color: #404547;\n  background: white;\n  position: relative;\n  box-sizing: border-box;\n}\n.gwd-btn-del[data-v-3f03717c]:hover {\n  filter: brightness(1.05);\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-3f03717c]::before {\n  content: '';\n  position: absolute;\n  top: -1px;\n  left: -1px;\n  right: -1px;\n  bottom: -1px;\n  z-index: -1;\n  background: #e6e9eb;\n}\n.gwd-collection-detail .gwd-vline[data-v-3f03717c] {\n  width: 0;\n  height: 197px;\n  border-right: 1px dashed #e6e9eb;\n  margin-left: 13px;\n  margin-right: 15px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option[data-v-3f03717c] {\n  height: 24px;\n  white-space: nowrap;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option span[data-v-3f03717c] {\n  color: #404547;\n  font-size: 13px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=text][data-v-3f03717c] {\n  width: 60px;\n  height: 24px;\n  border-radius: 4px;\n  border: 1px solid #48befe;\n  color: #48befe;\n  font-size: 13px;\n  margin-left: 8px;\n  margin-right: 8px;\n  text-align: center;\n  box-sizing: border-box;\n  outline: none;\n  padding: 1px 2px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-3f03717c]::-webkit-outer-spin-button,\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-3f03717c]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=number][data-v-3f03717c] {\n  -moz-appearance: textfield;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-3f03717c] {\n  margin-top: 0;\n  margin-left: 0;\n  margin-right: 8px;\n  width: 16px;\n  height: 16px;\n  position: relative;\n  appearance: none;\n  -webkit-appearance: none;\n  bottom: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-3f03717c]::after {\n  content: '';\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  background: url(" + __webpack_require__("ea636f9aa9005290bf2f") + ");\n  background-size: contain;\n  z-index: 2;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-3f03717c]:checked::after {\n  background: url(" + __webpack_require__("37ecdac37cefb38566a4") + ");\n  background-size: contain;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option .gwd-remind-current[data-v-3f03717c] {\n  margin-left: 8px;\n  width: 57px;\n}\n.gwd-remind-error-text[data-v-3f03717c] {\n  color: #d80001;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-remind-hint-text[data-v-3f03717c] {\n  color: #48befe;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-red-price[data-v-3f03717c] {\n  color: #d80001;\n}\n.gwd-collection-comp[data-v-3f03717c] {\n  border-left: 1px solid #e6e9eb;\n}\n.gwd-collection-detail[data-v-3f03717c] {\n  width: 300px;\n  position: relative;\n}\n.gwd-collection-detail .gwd-container[data-v-3f03717c] {\n  width: 100%;\n  height: 100px;\n  border-radius: 4px;\n  background: #f8fcfe;\n  padding: 8px;\n  box-sizing: border-box;\n}\n.gwd-collection-detail.gwd-ht[data-v-3f03717c] {\n  width: 335px;\n}\n", ""]);
+exports.push([module.i, ".gwd-row[data-v-3f03717c] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-3f03717c] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-3f03717c] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-3f03717c] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-3f03717c] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-3f03717c] {\n  justify-content: center;\n}\n.gwd-jic[data-v-3f03717c] {\n  justify-items: center;\n}\n.gwd-button[data-v-3f03717c] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-3f03717c] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-3f03717c]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-3f03717c] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-3f03717c],\n.mainbar-fold #top_coupon_btn[data-v-3f03717c],\n.mainbar-fold .rinfo-btn[data-v-3f03717c],\n.mainbar-fold .gwd-bottom-tmall[data-v-3f03717c] {\n  display: none!important;\n}\n.gwd-font12[data-v-3f03717c] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-3f03717c] {\n  font-size: 14px;\n}\n.gwd-red[data-v-3f03717c] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-3f03717c] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-3f03717c] {\n  color: #333333;\n}\n.gwd-hui999[data-v-3f03717c] {\n  color: #999999;\n}\n.gwd-font10[data-v-3f03717c] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-3f03717c] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-3f03717c] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-3f03717c]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-3f03717c] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-3f03717c]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-3f03717c]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-3f03717c] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-3f03717c]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-3f03717c] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-3f03717c]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-3f03717c]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n#gwdang_main[data-v-3f03717c],\n.gwdang-main[data-v-3f03717c],\n.bjgext-detail[data-v-3f03717c] {\n  font-size: 12px;\n}\n#gwdang_main button[data-v-3f03717c],\n.gwdang-main button[data-v-3f03717c],\n.bjgext-detail button[data-v-3f03717c] {\n  text-align: center;\n}\n.gwd-btn-submit[data-v-3f03717c] {\n  border: none;\n  outline: none;\n  background: #48befe;\n  width: 128px;\n  height: 32px;\n  font-size: 14px;\n  color: white;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-3f03717c] {\n  width: 60px;\n  height: 20px;\n  border-radius: 2px 2px 2px 2px;\n  opacity: 1;\n  border: 1px solid #E6E9EB;\n  color: #404547;\n  background: white;\n  position: relative;\n  box-sizing: border-box;\n}\n.gwd-btn-del[data-v-3f03717c]:hover {\n  filter: brightness(1.05);\n  cursor: pointer;\n}\n.gwd-btn-del[data-v-3f03717c]::before {\n  content: '';\n  position: absolute;\n  top: -1px;\n  left: -1px;\n  right: -1px;\n  bottom: -1px;\n  z-index: -1;\n  background: #e6e9eb;\n}\n.gwd-collection-detail .gwd-vline[data-v-3f03717c] {\n  width: 0;\n  height: 197px;\n  border-right: 1px dashed #e6e9eb;\n  margin-left: 13px;\n  margin-right: 15px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option[data-v-3f03717c] {\n  height: 24px;\n  white-space: nowrap;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option span[data-v-3f03717c] {\n  color: #404547;\n  font-size: 13px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=text][data-v-3f03717c] {\n  width: 60px;\n  height: 24px;\n  border-radius: 4px;\n  border: 1px solid #48befe;\n  color: #48befe;\n  font-size: 13px;\n  margin-left: 8px;\n  margin-right: 8px;\n  text-align: center;\n  box-sizing: border-box;\n  outline: none;\n  padding: 1px 2px;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-3f03717c]::-webkit-outer-spin-button,\n.gwd-collection-detail .gwd-container .gwd-remind-option input[data-v-3f03717c]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=number][data-v-3f03717c] {\n  -moz-appearance: textfield;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-3f03717c] {\n  margin-top: 0;\n  margin-left: 0;\n  margin-right: 8px;\n  width: 16px;\n  height: 16px;\n  position: relative;\n  appearance: none;\n  -webkit-appearance: none;\n  bottom: 0;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-3f03717c]::after {\n  content: '';\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  background: url(" + __webpack_require__("ea636f9aa9005290bf2f") + ");\n  background-size: contain;\n  z-index: 2;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option input[type=radio][data-v-3f03717c]:checked::after {\n  background: url(" + __webpack_require__("37ecdac37cefb38566a4") + ");\n  background-size: contain;\n}\n.gwd-collection-detail .gwd-container .gwd-remind-option .gwd-remind-current[data-v-3f03717c] {\n  margin-left: 8px;\n  width: 57px;\n}\n.gwd-remind-error-text[data-v-3f03717c] {\n  color: #d80001;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-remind-hint-text[data-v-3f03717c] {\n  color: #48befe;\n  position: absolute;\n  bottom: 61px;\n  left: 0;\n  right: 0;\n  text-align: center;\n}\n.gwd-red-price[data-v-3f03717c] {\n  color: #d80001;\n}\n.gwd-collection-comp[data-v-3f03717c] {\n  border-left: 1px solid #e6e9eb;\n}\n.gwd-collection-detail[data-v-3f03717c] {\n  width: 300px;\n  position: relative;\n}\n.gwd-collection-detail .gwd-container[data-v-3f03717c] {\n  width: 100%;\n  height: 100px;\n  border-radius: 4px;\n  background: #f8fcfe;\n  padding: 8px;\n  box-sizing: border-box;\n}\n.gwd-collection-detail.gwd-ht[data-v-3f03717c] {\n  width: 335px;\n}\n", ""]);
 
 // exports
 
@@ -19262,7 +19394,7 @@ exports = module.exports = __webpack_require__("e51604a168fd9d6c615d")();
 
 
 // module
-exports.push([module.i, ".gwd-row {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc {\n  justify-content: center;\n}\n.gwd-jic {\n  justify-items: center;\n}\n.gwd-button {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button {\n  font-size: 0;\n}\n.bjg-bar-button:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button,\n.mainbar-fold #top_coupon_btn,\n.mainbar-fold .rinfo-btn,\n.mainbar-fold .gwd-bottom-tmall {\n  display: none!important;\n}\n.gwd-font12 {\n  font-size: 12px;\n}\n.gwd-font14 {\n  font-size: 14px;\n}\n.gwd-red {\n  color: #ff3532;\n}\n.gwd-red-bg {\n  background: #ff3532;\n}\n.gwd-hui333 {\n  color: #333333;\n}\n.gwd-hui999 {\n  color: #999999;\n}\n.gwd-font10 {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11 {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9 {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable:hover {\n  background: #edf1f2;\n}\n.right-info > * {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit:hover {\n  color: #e03024 !important;\n}\n.gwd-button:hover {\n  filter: brightness(1.1);\n}\n.gwd-button {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n.gwd-hidden {\n  display: none!important;\n}\n.gwd-topbar-right {\n  /*display: flex;*/\n  flex-direction: column;\n  justify-content: flex-end;\n  flex-wrap: nowrap;\n}\n#gwd_setting_div .gwd-hover-helper {\n  content: '';\n  position: absolute;\n  top: -10px;\n  left: 0;\n  right: 0;\n  height: 10px;\n}\n#gwd_setting_div {\n  cursor: pointer;\n  display: none;\n}\n#gwd_setting_div a:hover {\n  color: #48befe;\n}\n#gwdang-banner-ad:hover {\n  background: none;\n}\n.gwd-topbar-logo:hover #gwd_setting_div {\n  display: block;\n}\n", ""]);
+exports.push([module.i, ".gwd-row {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc {\n  justify-content: center;\n}\n.gwd-jic {\n  justify-items: center;\n}\n.gwd-button {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button {\n  font-size: 0;\n}\n.bjg-bar-button:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button,\n.mainbar-fold #top_coupon_btn,\n.mainbar-fold .rinfo-btn,\n.mainbar-fold .gwd-bottom-tmall {\n  display: none!important;\n}\n.gwd-font12 {\n  font-size: 12px;\n}\n.gwd-font14 {\n  font-size: 14px;\n}\n.gwd-red {\n  color: #ff3532;\n}\n.gwd-red-bg {\n  background: #ff3532;\n}\n.gwd-hui333 {\n  color: #333333;\n}\n.gwd-hui999 {\n  color: #999999;\n}\n.gwd-font10 {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11 {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9 {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable:hover {\n  background: #edf1f2;\n}\n.right-info > * {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit:hover {\n  color: #e03024 !important;\n}\n.gwd-button:hover {\n  filter: brightness(1.1);\n}\n.gwd-button {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n#gwdang_main,\n.gwdang-main,\n.bjgext-detail {\n  font-size: 12px;\n}\n#gwdang_main button,\n.gwdang-main button,\n.bjgext-detail button {\n  text-align: center;\n}\n.gwd-hidden {\n  display: none!important;\n}\n.gwd-topbar-right {\n  /*display: flex;*/\n  flex-direction: column;\n  justify-content: flex-end;\n  flex-wrap: nowrap;\n}\n#gwd_setting_div .gwd-hover-helper {\n  content: '';\n  position: absolute;\n  top: -10px;\n  left: 0;\n  right: 0;\n  height: 10px;\n}\n#gwd_setting_div {\n  cursor: pointer;\n  display: none;\n}\n#gwd_setting_div a:hover {\n  color: #48befe;\n}\n#gwdang-banner-ad:hover {\n  background: none;\n}\n.gwd-topbar-logo:hover #gwd_setting_div {\n  display: block;\n}\n", ""]);
 
 // exports
 
@@ -19317,7 +19449,9 @@ var render = function() {
     [
       _vm.withLogo ? _c("div", { staticClass: "gwd-ww-logo" }) : _vm._e(),
       _vm._v(" "),
-      _c("span", { staticClass: "gwd-contact-text" }, [_vm._v("扫码联系客服")]),
+      _c("span", { staticClass: "gwd-contact-text" }, [
+        _vm._v(_vm._s(_vm.transText("扫码联系客服")))
+      ]),
       _vm._v(" "),
       _vm.qr
         ? _c(
@@ -19354,13 +19488,13 @@ var render = function() {
                   _c(
                     "span",
                     { staticClass: "bold", style: "font-size: 20px;" },
-                    [_vm._v("淘宝APP")]
+                    [_vm._v(_vm._s(_vm.transText("淘宝APP")))]
                   ),
                   _vm._v(" "),
                   _c(
                     "span",
                     { staticClass: "normal", style: "font-size: 18px" },
-                    [_vm._v("扫码")]
+                    [_vm._v(_vm._s(_vm.transText("扫码")))]
                   ),
                   _vm._v(" "),
                   _c(
@@ -19369,7 +19503,7 @@ var render = function() {
                       staticClass: "normal",
                       staticStyle: { "margin-left": "10px" }
                     },
-                    [_vm._v("联系客服")]
+                    [_vm._v(_vm._s(_vm.transText("联系客服")))]
                   )
                 ]
               )
@@ -20708,7 +20842,9 @@ module.exports.gZip = function (str) {
   return pako.gzip(JSON.stringify(str));
 };
 module.exports.unGzip = function (str) {
-  return JSON.parse(pako.ungzip(str));
+  var z = pako.ungzip(str);
+  var decoder = new TextDecoder('utf8');
+  return JSON.parse(decoder.decode(z));
 };
 
 /***/ }),
@@ -20742,7 +20878,7 @@ module.exports = function ($data) {
     $$out += $escape(qr);
     $$out += '" alt="" style="width: 130px; height: 130px; margin-top: 7px">\n    <div style="margin-top: 5px; vertical-align: middle; font-size: 0; height: 14px; line-height: 14px; text-align: center; white-space: nowrap">\n      <span style="font-size: 12px; color: #ff1a78; font-weight: bold; margin-left: 15px">微信扫码</span>\n      <span style="margin-left: 3px; color: #070707; font-size: 12px; transform-origin: center left; transform: scale(0.8333); display: inline-block; white-space: nowrap">';
     $$out += $escape(qrText);
-    $$out += '</span>\n    </div>\n  </div>\n</div>\n<style>\n  .gwd-middle-tmall {\n    height: 100%;\n    align-items: center;\n    justify-content: center;\n    justify-items: center;\n    width: 150px!important;\n  }\n\n  .gwd-middle-tmall:hover {\n      background: #fff3eb;\n  }\n\n  .gwd-qr-act {\n    display: none;\n    flex-direction: column;\n    position: absolute;\n    width: 144px;\n    height: 167px;\n    box-sizing: border-box;\n    border: 1px solid #ff471a;\n    background: #fff9f6;\n    top: 37px;\n    left: 50%;\n    align-items: center;\n    margin-left: -72px;\n    z-index: 999;\n  }\n\n  .gwd-middle-tmall:hover .gwd-qr-act {\n    display: flex;\n  }\n</style>';
+    $$out += '</span>\n    </div>\n  </div>\n</div>\n<style>\n  .gwd-middle-tmall {\n    height: 100%;\n    align-items: center;\n    justify-content: center;\n    justify-items: center;\n    width: 150px!important;\n    white-space: nowrap;\n  }\n\n  .gwd-middle-tmall:hover {\n      background: #fff3eb;\n  }\n\n  .gwd-qr-act {\n    display: none;\n    flex-direction: column;\n    position: absolute;\n    width: 144px;\n    height: 167px;\n    box-sizing: border-box;\n    border: 1px solid #ff471a;\n    background: #fff9f6;\n    top: 37px;\n    left: 50%;\n    align-items: center;\n    margin-left: -72px;\n    z-index: 999;\n  }\n\n  .gwd-middle-tmall:hover .gwd-qr-act {\n    display: flex;\n  }\n</style>\n';
     return $$out;
 };
 
@@ -21642,7 +21778,7 @@ var renderMini = function renderMini(dom) {
   }
   addCommonEvent();
 
-  var store = __webpack_require__("e41a11f7982e4aab1ce6");
+  var store = __webpack_require__("e41a11f7982e4aab1ce6").getStore();
   new Vue({
     el: '#gwd_mini_remind .minibar-btn-box',
     store: store,
@@ -21771,6 +21907,49 @@ module.exports.getHtInfo = function () {
 
 /***/ }),
 
+/***/ "660610db8f6e89357da9":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var communicate = __webpack_require__("91f58afd0ad3a4e2ef06");
+
+module.exports = {
+  get: function get(path, params, callback) {
+    var reqId = parseInt(Math.random() * 10000).toString() + Date.now();
+    return new Promise(function (resolve) {
+      communicate.trigger({
+        type: 'backgroundReq',
+        reqId: reqId,
+        path: path,
+        params: typeof params === 'object' ? JSON.stringify(params) : '{}',
+        referer: location.href
+      });
+      communicate.on(function (resp) {
+        if (resp.type === 'backgroundResp' && resp.value.reqId === reqId) {
+          if (!callback) {
+            try {
+              resolve(JSON.parse(resp.value.data));
+            } catch (e) {
+              __webpack_require__("316f9c352c6202560d16").error(e);
+              resolve(resp.value.data);
+            }
+            return;
+          }
+          try {
+            callback(JSON.parse(resp.value.data));
+          } catch (e) {
+            callback(resp.value.data);
+          }
+        }
+      });
+    });
+  }
+};
+
+/***/ }),
+
 /***/ "664f6df1f2ec50016f49":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21878,14 +22057,16 @@ module.exports = function (time, type) {
   return str;
 };
 
+var offset = 0 * 3600000;
+
 module.exports.isSameDay = function (a, b) {
-  var aTime = new Date(a);
-  var bTime = new Date(b);
+  var aTime = new Date(a + offset);
+  var bTime = new Date(b + offset);
   return aTime.toLocaleDateString() === bTime.toLocaleDateString();
 };
 
 module.exports.localeDateString = function (x) {
-  return new Date(x).toLocaleDateString();
+  return new Date(x + offset).toLocaleDateString();
 };
 
 /***/ }),
@@ -22074,10 +22255,6 @@ var host = 'i.gwdang.com';
 var userData = __webpack_require__("472a9b3fc8c8805a5dd7");
 var communicate = __webpack_require__("91f58afd0ad3a4e2ef06");
 
-var test = {
-  code: 1
-};
-
 var getUserToken = function getUserToken() {
   var resolved = false;
   return new Promise(function (resolve) {
@@ -22233,6 +22410,10 @@ var getDetail = function getDetail(dp_id) {
 };
 
 module.exports = {
+  reset: function reset() {
+    current = null;
+    currentCollectId = null;
+  },
   /**
    * 登录
    * @param username
@@ -22703,7 +22884,7 @@ var sitePattern = {
   '360buy': ['#summary-price', '.summary-price', '#surplus-time', '#product-intro #price'],
   '360buy-book': ['#summary-price'],
   '360buy-re': ['.shop_intro .shop_intro_a'],
-  'taobao': ['.tm-fcs-panel', '#J_PromoPrice', '#J_StrPriceModBox'],
+  'taobao': ['.tm-fcs-panel', '#J_PromoPrice', '#J_StrPriceModBox', '[class^=Price--root]'],
   'taobao-ju': ['.J_BuySubForm'],
   'taobao-95095': ['.tm-fcs-panel', '#J_PromoPrice', '#J_StrPriceModBox'],
   'tmall': ['.tm-fcs-panel', '#J_PromoPrice', '#J_StrPriceModBox', '[class^=Price--root]'],
@@ -22943,7 +23124,7 @@ var renderCon = function renderCon() {
       case 11:
         renderMiniBar(container);
 
-        store = __webpack_require__("e41a11f7982e4aab1ce6");
+        store = __webpack_require__("e41a11f7982e4aab1ce6").getStore();
 
         new Vue({
           el: '#gwd_mini_remind .minibar-btn-box',
@@ -22983,8 +23164,6 @@ var util = __webpack_require__("d54879e983a83d07f093");
 var miniFavor = __webpack_require__("472c3193857af11233c9");
 var userCenter = __webpack_require__("69afa85b8d7929dd88c5");
 var siteInfo = __webpack_require__("5e05e6f5fe79ccf5d009");
-
-var store = __webpack_require__("e41a11f7982e4aab1ce6");
 
 var permanent = undefined,
     oinfo = undefined;
@@ -23045,6 +23224,7 @@ var delFavor = function delFavor(id) {
   }
 };
 var addFavor = function addFavor(callback) {
+  var store = __webpack_require__("e41a11f7982e4aab1ce6").getStore();
   var pagedp = G.dp;
   var dp = oinfo.now;
 
@@ -23210,6 +23390,7 @@ var addDetailEvent = function addDetailEvent() {
 };
 
 var renderDetail = function renderDetail(dp_id) {
+  var store = __webpack_require__("e41a11f7982e4aab1ce6").getStore();
   var hidebtn = undefined;
   var dom = '#gwdang_main';
   var style = 'top:37px;';
@@ -23381,7 +23562,7 @@ var request = __webpack_require__("91f250ebeb8d5987491c");
 var globalCondition = __webpack_require__("9c38beef5ff283e15bd2");
 
 exports['default'] = {
-  props: ['mode'],
+  props: ['mode', 'days'],
   data: function data() {
     return {
       qrLink: '',
@@ -23423,7 +23604,7 @@ exports['default'] = {
             }
 
             context$1$0.next = 11;
-            return regeneratorRuntime.awrap(request.get(qrApi.src));
+            return regeneratorRuntime.awrap(request.get(qrApi.src + '&protect=' + this.days));
 
           case 11:
             res = context$1$0.sent;
@@ -23481,7 +23662,7 @@ module.exports = exports['default'];
   var parseprice = __webpack_require__("cb0906562effcf1b0e6c");
   var util = __webpack_require__("d54879e983a83d07f093");
   var viewPriceTip = __webpack_require__("d5fd5dd54e6f8fc35e0a");
-  if (G.ss_name == 'priceDog') {
+  if (G.lang == 'zh-tr') {
     viewPriceTip = __webpack_require__("6a43c4117801f101b13d");
   }
   var pageInfo = G.pageInfo;
@@ -23492,7 +23673,7 @@ module.exports = exports['default'];
       newId,
       nowPrice = 0;
   var tipResult = {};
-  var blacklist = [/shangpin\.com/];
+  var blacklist = [/shangpin\.com/, /cfe\.m\.jd\.com/, /1688\.com/];
   var moneyInfo = undefined;
   var priceTle = {
     'pri-t1': lang.getString(langCfg, 'priceUp'),
@@ -23611,7 +23792,7 @@ module.exports = exports['default'];
     }
     if (block()) return;
     if (pageInfo.type === 1) {
-      $('body').append('<a id ="' + b + '_price_tip" class="' + G.from_device + '-ext" src="javascript:void(0)" target="_self">\n          <div class="tip_btn_box">\n            <em></em>\n            <span>比价</span>\n          </div>\n          <div id="' + b + '_price_tip_detail"></div>\n        </a>');
+      $('body').append('<a id ="' + b + '_price_tip" class="' + G.from_device + '-ext" src="javascript:void(0)" target="_self">\n          <div class="tip_btn_box">\n            <em></em>\n            <span>' + (G.lang === 'zh-tr' ? '比價' : '比价') + '</span>\n          </div>\n          <div id="' + b + '_price_tip_detail"></div>\n        </a>');
       smallTip = $('#' + b + '_price_tip');
       smallTip2 = $('#' + b + '_price_tip .tip_btn_box');
       tipDetail = $('#' + b + '_price_tip_detail');
@@ -23899,7 +24080,7 @@ module.exports = exports['default'];
     if (data && data.is_ban) {
       yanzhengma(data.action.to);
     } else {
-      tipDetail.html('<div>抱歉，当前商品暂无价格走势~</div>');
+      tipDetail.html(G.lang === 'zh-tr' ? '<div>抱歉，當前商品暫無價格走勢~</div>' : '<div>抱歉，当前商品暂无价格走势~</div>');
       tipDetail.addClass('tip-error-info');
       tipDetail.css('width', 220);
       tipDetail.show();
@@ -24201,6 +24382,9 @@ exports['default'] = {
   computed: (0, _vuex.mapState)({
     checked: function checked(state) {
       return state.priceRemind.collected;
+    },
+    id: function id(state) {
+      return state.priceRemind.instanceId;
     }
   })
 };
@@ -26498,17 +26682,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "7d96823596453ce40ef0":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_4_1_2_vue_style_loader_index_js_node_modules_0_20_2_css_loader_index_js_node_modules_15_9_3_vue_loader_lib_loaders_stylePostLoader_js_node_modules_4_1_0_less_loader_dist_cjs_js_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_style_index_0_id_caa5e08c_scoped_true_lang_less___ = __webpack_require__("dfad5c6dbfc1e10f989e");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_4_1_2_vue_style_loader_index_js_node_modules_0_20_2_css_loader_index_js_node_modules_15_9_3_vue_loader_lib_loaders_stylePostLoader_js_node_modules_4_1_0_less_loader_dist_cjs_js_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_style_index_0_id_caa5e08c_scoped_true_lang_less____default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__node_modules_4_1_2_vue_style_loader_index_js_node_modules_0_20_2_css_loader_index_js_node_modules_15_9_3_vue_loader_lib_loaders_stylePostLoader_js_node_modules_4_1_0_less_loader_dist_cjs_js_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_style_index_0_id_caa5e08c_scoped_true_lang_less___);
-/* unused harmony reexport namespace */
- /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0__node_modules_4_1_2_vue_style_loader_index_js_node_modules_0_20_2_css_loader_index_js_node_modules_15_9_3_vue_loader_lib_loaders_stylePostLoader_js_node_modules_4_1_0_less_loader_dist_cjs_js_node_modules_15_9_3_vue_loader_lib_index_js_vue_loader_options_MiniSameList_vue_vue_type_style_index_0_id_caa5e08c_scoped_true_lang_less____default.a); 
-
-/***/ }),
-
 /***/ "7f54b9e6b1eddb2a3a91":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27474,87 +27647,170 @@ module.exports.init = function (data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(G, Vue) {
+/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, G, $, Vue) {
 
 var QRLink = __webpack_require__("041f80fea3d67bf79b22")['default'];
 var util = __webpack_require__("3e983ecbff4e1a29654c");
 
 module.exports = {
   init: function init() {
-    if (window.gwd_G && G.from_device === 'bijiago') return;
-    if (!location.hostname.includes('.jd.com')) return;
-    if (location.href.indexOf('plogin.m.jd.com') === -1) {
-      return;
-    }
-    setTimeout(function () {
-      if (!document.querySelector('.policy_tip-checkbox')) {
-        return;
-      }
-      if (!document.querySelector('.policy_tip-checkbox').checked) {
-        document.querySelector('.policy_tip-checkbox').click();
-      }
-    }, 2000);
-
-    var d = decodeURIComponent(util.getParameterByName('returnurl'));
-    var d2 = util.getParameterByName('returnurl', d);
-    if (d2) {
-      d = decodeURIComponent(d2);
-    }
-    if (d.includes('item.m.jd.com/product')) {
-      var id = d.split('item.m.jd.com/product/')[1];
-      var link = 'https://item.jd.com/' + id;
-      var img = __webpack_require__("b578198bfa51eac13e46");
-      var a = document.createElement('A');
-      a.style.position = 'absolute';
-      a.style.left = '50%';
-      a.style.bottom = '10%';
-      a.style.transform = 'translate(-50%, -10%)';
-      a.href = G.u_server + '/union/go?site_id=3&target_url=' + encodeURIComponent(link) + '&union=' + G.union + '&column=h5_to_pc';
-      a.innerHTML = '<img src="' + img + '" />';
-      document.body.appendChild(a);
-    }
-    if (location.href.indexOf('sku') === -1) {
-      return;
-    }
-    var giftMoney = false;
-    if (location.href.indexOf('giftcoupon') > -1) {
-      giftMoney = true;
-      //return
-    }
-    console.log(util);
-
-    var dpId = util.getParameterByName('sku', d);
-    console.log(d);
-    console.log(util.getParameterByName('returnurl', d));
-    if (!dpId) {
-      return;
-    }
-
-    var e = document.createElement('DIV');
-    document.body.appendChild(e);
-    var tag = '';
-    if (G.from_device === 'bijiago' || G.from_device === 'biyibi') {
-      tag = 7;
-    }
-    var app = new Vue({
-      el: e,
-      render: function render(h) {
-        return h(QRLink, {
-          ref: 'qr',
-          props: {
-            mode: giftMoney ? 'gwd-mode-login gwd-giftMoney' : 'gwd-mode-login',
-            dpId: dpId + '-3',
-            tag: tag
+    var returnUrl, id, link, a, d, d2, img, giftMoney, dpId, e, tag, app;
+    return regeneratorRuntime.async(function init$(context$1$0) {
+      while (1) switch (context$1$0.prev = context$1$0.next) {
+        case 0:
+          if (!(window.gwd_G && G.from_device === 'bijiago')) {
+            context$1$0.next = 2;
+            break;
           }
-        });
+
+          return context$1$0.abrupt('return');
+
+        case 2:
+          if (location.hostname.includes('.jd.com')) {
+            context$1$0.next = 4;
+            break;
+          }
+
+          return context$1$0.abrupt('return');
+
+        case 4:
+          if (!location.hostname.includes('cfe.m.jd.com')) {
+            context$1$0.next = 26;
+            break;
+          }
+
+          returnUrl = util.getParameterByName('returnurl');
+
+          if (!returnUrl.includes('item.m.jd.com/product')) {
+            context$1$0.next = 26;
+            break;
+          }
+
+          context$1$0.next = 9;
+          return regeneratorRuntime.awrap(__webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
+            return $('.main-wrap').length;
+          }));
+
+        case 9:
+          id = returnUrl.split('item.m.jd.com/product/')[1];
+          link = 'https://item.jd.com/' + id;
+          a = document.createElement('A');
+
+          a.href = G.u_server + '/union/go?site_id=3&target_url=' + encodeURIComponent(link) + '&union=' + G.union + '&column=h5_to_pc';
+          a.innerHTML = '无需验证，直达商品详情页';
+          a.style.width = '350px';
+          a.style.height = '46px';
+          a.style.lineHeight = '46px';
+          a.style.textAlign = 'center';
+          a.style.fontSize = '15px';
+          a.style.border = '1px solid #e23a3a';
+          a.style.borderRadius = '35px';
+          a.style.color = '#e23a3a';
+          a.style.display = 'inline-block';
+          a.style.position = 'relative';
+          a.style.top = '-36px';
+          $('.main-wrap').append(a);
+
+        case 26:
+          if (!(location.href.indexOf('plogin.m.jd.com') === -1)) {
+            context$1$0.next = 28;
+            break;
+          }
+
+          return context$1$0.abrupt('return');
+
+        case 28:
+          setTimeout(function () {
+            if (!document.querySelector('.policy_tip-checkbox')) {
+              return;
+            }
+            if (!document.querySelector('.policy_tip-checkbox').checked) {
+              document.querySelector('.policy_tip-checkbox').click();
+            }
+          }, 2000);
+
+          d = decodeURIComponent(util.getParameterByName('returnurl'));
+          d2 = util.getParameterByName('returnurl', d);
+
+          if (d2) {
+            d = decodeURIComponent(d2);
+          }
+          if (d.includes('item.m.jd.com/product')) {
+            id = d.split('item.m.jd.com/product/')[1];
+            link = 'https://item.jd.com/' + id;
+            img = __webpack_require__("b578198bfa51eac13e46");
+            a = document.createElement('A');
+
+            a.style.position = 'absolute';
+            a.style.left = '50%';
+            a.style.bottom = '10%';
+            a.style.transform = 'translate(-50%, -10%)';
+            a.href = G.u_server + '/union/go?site_id=3&target_url=' + encodeURIComponent(link) + '&union=' + G.union + '&column=h5_to_pc';
+            a.innerHTML = '<img src="' + img + '" />';
+            document.body.appendChild(a);
+          }
+          // if (location.href.indexOf('sku') === -1) {
+          //   return
+          // }
+          giftMoney = false;
+
+          if (location.href.indexOf('giftcoupon') > -1) {
+            giftMoney = true;
+            //return
+          }
+          console.log(util);
+
+          dpId = util.getParameterByName('sku', d);
+
+          console.log(d);
+          console.log(util.getParameterByName('returnurl', d));
+          if (!dpId) {
+            dpId = '1';
+          }
+
+          if (!d.includes('item.m.jd.com/product')) {
+            context$1$0.next = 42;
+            break;
+          }
+
+          return context$1$0.abrupt('return');
+
+        case 42:
+          e = document.createElement('DIV');
+
+          document.body.appendChild(e);
+          tag = 'login';
+
+          if ((G.from_device === 'bijiago' || G.from_device === 'biyibi') && dpId !== '1') {
+            tag = 7;
+          }
+          app = new Vue({
+            el: e,
+            render: function render(h) {
+              return h(QRLink, {
+                ref: 'qr',
+                props: {
+                  mode: giftMoney ? 'gwd-mode-login gwd-giftMoney' : 'gwd-mode-login',
+                  dpId: dpId + '-3',
+                  tag: tag,
+                  url: d
+                }
+              });
+            }
+          });
+
+          setTimeout(function () {
+            app.$refs.qr.over();
+          }, 0);
+
+        case 48:
+        case 'end':
+          return context$1$0.stop();
       }
-    });
-    setTimeout(function () {
-      app.$refs.qr.over();
-    }, 0);
+    }, null, this);
   }
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
 
 /***/ }),
 
@@ -28628,102 +28884,9 @@ exports = module.exports = __webpack_require__("e51604a168fd9d6c615d")();
 
 
 // module
-exports.push([module.i, ".gwd-row {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc {\n  justify-content: center;\n}\n.gwd-jic {\n  justify-items: center;\n}\n.gwd-button {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button {\n  font-size: 0;\n}\n.bjg-bar-button:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button,\n.mainbar-fold #top_coupon_btn,\n.mainbar-fold .rinfo-btn,\n.mainbar-fold .gwd-bottom-tmall {\n  display: none!important;\n}\n.gwd-font12 {\n  font-size: 12px;\n}\n.gwd-font14 {\n  font-size: 14px;\n}\n.gwd-red {\n  color: #ff3532;\n}\n.gwd-red-bg {\n  background: #ff3532;\n}\n.gwd-hui333 {\n  color: #333333;\n}\n.gwd-hui999 {\n  color: #999999;\n}\n.gwd-font10 {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11 {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9 {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable:hover {\n  background: #edf1f2;\n}\n.right-info > * {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit:hover {\n  color: #e03024 !important;\n}\n.gwd-button:hover {\n  filter: brightness(1.1);\n}\n.gwd-button {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n", ""]);
+exports.push([module.i, ".gwd-row {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc {\n  justify-content: center;\n}\n.gwd-jic {\n  justify-items: center;\n}\n.gwd-button {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button {\n  font-size: 0;\n}\n.bjg-bar-button:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button,\n.mainbar-fold #top_coupon_btn,\n.mainbar-fold .rinfo-btn,\n.mainbar-fold .gwd-bottom-tmall {\n  display: none!important;\n}\n.gwd-font12 {\n  font-size: 12px;\n}\n.gwd-font14 {\n  font-size: 14px;\n}\n.gwd-red {\n  color: #ff3532;\n}\n.gwd-red-bg {\n  background: #ff3532;\n}\n.gwd-hui333 {\n  color: #333333;\n}\n.gwd-hui999 {\n  color: #999999;\n}\n.gwd-font10 {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11 {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9 {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable:hover {\n  background: #edf1f2;\n}\n.right-info > * {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit:hover {\n  color: #e03024 !important;\n}\n.gwd-button:hover {\n  filter: brightness(1.1);\n}\n.gwd-button {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n#gwdang_main,\n.gwdang-main,\n.bjgext-detail {\n  font-size: 12px;\n}\n#gwdang_main button,\n.gwdang-main button,\n.bjgext-detail button {\n  text-align: center;\n}\n", ""]);
 
 // exports
-
-
-/***/ }),
-
-/***/ "91d14e46c642a51cb733":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "minibar-tab",
-      staticStyle: { flex: "1", display: "inline-block" },
-      attrs: { id: "gwd_mini_compare" },
-      on: {
-        "~hover": function($event) {
-          return _vm.logHover($event)
-        }
-      }
-    },
-    [
-      _c("div", { staticClass: "minibar-btn-box" }, [
-        _c("em", { staticClass: "setting-bg mini-compare-icon " }),
-        _vm._v(" "),
-        _vm.data.length && _vm.data[0].view_price < _vm.pri
-          ? _c("span", { staticStyle: { float: "none" } }, [
-              _vm._v("更低价:¥" + _vm._s(_vm.data[0].view_price))
-            ])
-          : _vm.data.length === 0
-          ? _c("span", { staticStyle: { float: "none" } }, [_vm._v("暂无结果")])
-          : _c("span", { staticStyle: { float: "none" } }, [
-              _vm._v("其他" + _vm._s(_vm.data.length) + "家报价")
-            ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "minibar-detail",
-          attrs: { id: "gwd_mini_compare_detail" }
-        },
-        [
-          _c(
-            "ul",
-            _vm._l(_vm.data, function(item) {
-              return _c("li", { key: item.nid }, [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: item.url, target: "_blank" },
-                    on: {
-                      click: function($event) {
-                        return _vm.logLink()
-                      }
-                    }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "https://cdn.gwdang.com/images/favicon/" +
-                          item.site +
-                          ".png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "m-item-sitename" }, [
-                      _vm._v(_vm._s(item.shopName))
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "m-item-price prifontf" }, [
-                      _vm._v("¥" + _vm._s(item.view_price))
-                    ])
-                  ]
-                )
-              ])
-            }),
-            0
-          )
-        ]
-      )
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
 
 
 /***/ }),
@@ -28870,10 +29033,6 @@ var _this = this;
 
 var $ = __webpack_require__("e081b2491b5c9b12b9da");
 var communicate = __webpack_require__("91f58afd0ad3a4e2ef06");
-
-var _require = __webpack_require__("4733a3dd803685ec596a");
-
-var tbInfoFix = _require.tbInfoFix;
 
 Promise.prototype.done = function (onFulfilled, onRejected) {
     return this.then(onFulfilled, onRejected)['catch'](function (error) {
@@ -29068,6 +29227,7 @@ module.exports.raw = function (url, isarg) {
  */
 module.exports.rawGet = function (url) {
     var allowCredentials = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+    var timeout = arguments.length <= 2 || arguments[2] === undefined ? 3000 : arguments[2];
 
     if (url.includes('/helper/qrcode?')) {
         url = __webpack_require__("4733a3dd803685ec596a").appendTbInfoForUrl(url);
@@ -29088,9 +29248,10 @@ module.exports.rawGet = function (url) {
             });
             setTimeout(function () {
                 if (!resolved) {
+                    __webpack_require__("316f9c352c6202560d16").warn('请求超时', url);
                     reject();
                 }
-            }, 3000);
+            }, timeout);
         });
     } else {
         if (allowCredentials) {
@@ -29313,6 +29474,13 @@ module.exports.requestXHR = function requestXHR(url) {
     var withCredentials = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
     var customHeaders = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
 
+    if (G.serviceWorker) {
+        return fetch(url, {
+            "credentials": withCredentials ? "include" : ''
+        }).then(function (r) {
+            return r.text();
+        });
+    }
     return new Promise(function (resolve) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.addEventListener('load', function () {
@@ -29371,7 +29539,7 @@ module.exports.requestXHRPost = function requestXHR(url, data) {
 };
 
 module.exports.jdRequest = function callee$0$0(id) {
-    var gwdConfig, area, cat, t, shopId, vendorId, params, payload, payloadCopy, sign;
+    var gwdConfig, cat, t, shopId, vendorId, area, params, payload, payloadCopy, sign;
     return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
         while (1) switch (context$1$0.prev = context$1$0.next) {
             case 0:
@@ -29381,7 +29549,7 @@ module.exports.jdRequest = function callee$0$0(id) {
             case 2:
                 gwdConfig = context$1$0.sent;
 
-                if (gwdConfig.allowJdRequest) {
+                if (!(!gwdConfig.allowJdRequest || location.hostname.includes('.jd.hk'))) {
                     context$1$0.next = 5;
                     break;
                 }
@@ -29389,7 +29557,14 @@ module.exports.jdRequest = function callee$0$0(id) {
                 return context$1$0.abrupt('return');
 
             case 5:
-                area = '1_72_55653_0', cat = pageConfig.product.cat.join(','), t = Date.now(), shopId = pageConfig.product.shopId, vendorId = pageConfig.product.venderId;
+                cat = pageConfig.product.cat.join(','), t = Date.now(), shopId = pageConfig.product.shopId, vendorId = pageConfig.product.venderId;
+                context$1$0.next = 8;
+                return regeneratorRuntime.awrap(__webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
+                    return $('.ui-area-text').length;
+                }));
+
+            case 8:
+                area = $('.ui-area-text').attr('data-id').replaceAll('-', '_');
                 params = {
                     skuId: id,
                     cat: cat,
@@ -29410,10 +29585,10 @@ module.exports.jdRequest = function callee$0$0(id) {
                 payloadCopy = Object.assign({}, payload);
 
                 payloadCopy.body = SHA256(JSON.stringify(params)).toString();
-                context$1$0.next = 12;
+                context$1$0.next = 15;
                 return regeneratorRuntime.awrap(window.PSign.sign(payloadCopy));
 
-            case 12:
+            case 15:
                 sign = context$1$0.sent;
 
                 payload.h5st = encodeURI(sign.h5st);
@@ -29427,7 +29602,7 @@ module.exports.jdRequest = function callee$0$0(id) {
                     'x-rp-client': 'h5_1.0.0'
                 }));
 
-            case 18:
+            case 21:
             case 'end':
                 return context$1$0.stop();
         }
@@ -29453,7 +29628,7 @@ module.exports.buildUrl = function (url, payload) {
 module.exports.trigger = function (data) {
   if (document.createEvent) {
     var evt = document.createEvent('CustomEvent');
-    data.evt_from = G.from_device;
+    data.evt_from = G.from_device || 'externalJS';
     evt.initCustomEvent('gwd_extension', true, true, data);
     document.dispatchEvent(evt);
   }
@@ -29498,7 +29673,7 @@ exports = module.exports = __webpack_require__("e51604a168fd9d6c615d")();
 
 
 // module
-exports.push([module.i, ".gwd-row[data-v-222e987e] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-222e987e] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-222e987e] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-222e987e] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-222e987e] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-222e987e] {\n  justify-content: center;\n}\n.gwd-jic[data-v-222e987e] {\n  justify-items: center;\n}\n.gwd-button[data-v-222e987e] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-222e987e] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-222e987e]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-222e987e] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-222e987e],\n.mainbar-fold #top_coupon_btn[data-v-222e987e],\n.mainbar-fold .rinfo-btn[data-v-222e987e],\n.mainbar-fold .gwd-bottom-tmall[data-v-222e987e] {\n  display: none!important;\n}\n.gwd-font12[data-v-222e987e] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-222e987e] {\n  font-size: 14px;\n}\n.gwd-red[data-v-222e987e] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-222e987e] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-222e987e] {\n  color: #333333;\n}\n.gwd-hui999[data-v-222e987e] {\n  color: #999999;\n}\n.gwd-font10[data-v-222e987e] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-222e987e] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-222e987e] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-222e987e]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-222e987e] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-222e987e]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-222e987e]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-222e987e] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-222e987e]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-222e987e] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-222e987e]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-222e987e]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n.gwd-switch[data-v-222e987e] {\n  position: relative;\n  display: inline-block;\n  width: 40px;\n  height: 22px;\n  box-sizing: border-box !important;\n}\n.gwd-switch input[data-v-222e987e] {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.gwd-switch .gwd-slider[data-v-222e987e] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #bfbfbf;\n  border-radius: 16px;\n}\n.gwd-switch .gwd-slider[data-v-222e987e]::before {\n  position: absolute;\n  content: \"\";\n  height: 18px;\n  width: 18px;\n  left: 2px;\n  bottom: 2px;\n  background-color: white;\n  border-radius: 50%;\n}\n.gwd-switch input:checked + .gwd-slider[data-v-222e987e] {\n  background-color: #48befe;\n}\n.gwd-switch input:checked + .gwd-slider[data-v-222e987e]::before {\n  -webkit-transform: translateX(18px);\n  -ms-transform: translateX(18px);\n  transform: translateX(18px);\n}\n.gwd-allow-animation .gwd-slider[data-v-222e987e],\n.gwd-allow-animation .gwd-slider[data-v-222e987e]::before {\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n}\n", ""]);
+exports.push([module.i, ".gwd-row[data-v-222e987e] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-222e987e] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-222e987e] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-222e987e] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-222e987e] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-222e987e] {\n  justify-content: center;\n}\n.gwd-jic[data-v-222e987e] {\n  justify-items: center;\n}\n.gwd-button[data-v-222e987e] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-222e987e] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-222e987e]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-222e987e] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-222e987e],\n.mainbar-fold #top_coupon_btn[data-v-222e987e],\n.mainbar-fold .rinfo-btn[data-v-222e987e],\n.mainbar-fold .gwd-bottom-tmall[data-v-222e987e] {\n  display: none!important;\n}\n.gwd-font12[data-v-222e987e] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-222e987e] {\n  font-size: 14px;\n}\n.gwd-red[data-v-222e987e] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-222e987e] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-222e987e] {\n  color: #333333;\n}\n.gwd-hui999[data-v-222e987e] {\n  color: #999999;\n}\n.gwd-font10[data-v-222e987e] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-222e987e] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-222e987e] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-222e987e]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-222e987e] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-222e987e]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-222e987e]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-222e987e] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-222e987e]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-222e987e] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-222e987e]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-222e987e]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n#gwdang_main[data-v-222e987e],\n.gwdang-main[data-v-222e987e],\n.bjgext-detail[data-v-222e987e] {\n  font-size: 12px;\n}\n#gwdang_main button[data-v-222e987e],\n.gwdang-main button[data-v-222e987e],\n.bjgext-detail button[data-v-222e987e] {\n  text-align: center;\n}\n.gwd-switch[data-v-222e987e] {\n  position: relative;\n  display: inline-block;\n  width: 40px;\n  height: 22px;\n  box-sizing: border-box !important;\n}\n.gwd-switch input[data-v-222e987e] {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.gwd-switch .gwd-slider[data-v-222e987e] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #bfbfbf;\n  border-radius: 16px;\n}\n.gwd-switch .gwd-slider[data-v-222e987e]::before {\n  position: absolute;\n  content: \"\";\n  height: 18px;\n  width: 18px;\n  left: 2px;\n  bottom: 2px;\n  background-color: white;\n  border-radius: 50%;\n}\n.gwd-switch input:checked + .gwd-slider[data-v-222e987e] {\n  background-color: #48befe;\n}\n.gwd-switch input:checked + .gwd-slider[data-v-222e987e]::before {\n  -webkit-transform: translateX(18px);\n  -ms-transform: translateX(18px);\n  transform: translateX(18px);\n}\n.gwd-allow-animation .gwd-slider[data-v-222e987e],\n.gwd-allow-animation .gwd-slider[data-v-222e987e]::before {\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n}\n", ""]);
 
 // exports
 
@@ -30953,17 +31128,28 @@ var renderCouponTip = function renderCouponTip(id, parentD, site) {
     if (!data.data) return;
     data = data.data;
     if (data.rebate) {
-      $(parentD).append('<span class="search_coupon_tip" style="pointer-events: none">可以领红包</span>');
+      $(parentD).append('<span class="search_coupon_tip" style="pointer-events: none">' + (G.lang === 'zh-tr' ? '可以領紅包' : '可以领红包') + '</span>');
       return;
     }
     data.site = site;
     globalInfo[id] = data;
-    var link = 'https://tb.gwdang.com/extension/qrpage?dp_id=' + id + '-83&tag=9_' + G.browser + '&discount=' + data.coupon.coupon_money;
+    var domain = G.from_device.includes('bijiago') ? 'bijiago' : 'gwdang';
+    var browser = G.browser;
+    if (G.from_device.includes('bijiago')) {
+      browser = 'chrome';
+    }
+    var link = 'https://tb.' + domain + '.com/extension/qrpage?dp_id=' + id + '-83&tag=9_' + browser + '&discount=' + data.coupon.coupon_money;
+    if (G.lang === 'zh-tr') {
+      link += '&lang=zh-tr';
+    }
     var dom = '<a href="' + link + '" data-id="' + id + '" title="当前商品点击领券立减' + data.coupon.coupon_money + '元" class="search_coupon_tip" target="_blank">￥' + data.coupon.coupon_money + ' 优惠券<a>';
     if (useQrCode) {
       dom = '<a  data-id="' + id + '" class="search_coupon_tip" style="cursor:default;" target="_blank">￥' + data.coupon.coupon_money + ' 优惠券<a>';
     }
-    $(parentD).append($(dom));
+    if (G.lang === 'zh-tr') {
+      dom = dom.replaceAll('优惠券', '優惠券').replaceAll('当前商品点击领券立减', '當前商品點擊領券立減').replaceAll('元', '元');
+    }
+    $(parentD).css('position', 'relative').append($(dom));
   }, true, price);
 };
 var listenDom = function listenDom() {
@@ -31051,8 +31237,6 @@ module.exports.init = function () {
   // useQrCode = true;
   useQrCode = false;
   setTimeout(function callee$1$0() {
-    var _urls, groups, i;
-
     return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
       while (1) switch (context$2$0.prev = context$2$0.next) {
         case 0:
@@ -31063,43 +31247,7 @@ module.exports.init = function () {
             listenDom();
           }
 
-          // collect group data
-          try {
-            _urls = Search.get('app').userConfig.data.mods.itemlist.data.auctions.filter(function (x) {
-              return x.i2iTags && x.i2iTags.samestyle;
-            }).map(function (x) {
-              return x.i2iTags.samestyle.url;
-            }).filter(function (x) {
-              return x.length;
-            });
-            groups = _urls.map(function (url) {
-              var nid = new URLSearchParams(url).get('nid');
-              var uniqpid = new URLSearchParams(url).get('uniqpid');
-              return {
-                nid: nid,
-                uniqpid: uniqpid
-              };
-            });
-            // url
-
-            for (i in groups) {
-              // let url = groups[i].url
-              // await new Promise(resolve => setTimeout(resolve, 1000))
-              // let html = await fetch(url).then(res => res.text())
-              // let jsObj = html.split('page_config = ')[1].split(';\n')[0]
-              // let data = JSON.parse(jsObj)
-              // let items = data.mods.recitem.data.items.map(x => x.nid)
-              // groups[i].items = items
-              // console.log('items ' + groups[i].nid, groups[i].items)
-              // delete groups[i].url
-            }
-            console.log(groups);
-            __webpack_require__("91f250ebeb8d5987491c").get(G.server + '/visit?action=tbSearchGroup&data=' + encodeURIComponent(JSON.stringify(groups)));
-          } catch (e) {
-            console.error(e);
-          }
-
-        case 3:
+        case 2:
         case 'end':
           return context$2$0.stop();
       }
@@ -31114,7 +31262,7 @@ module.exports.init = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, $, Vue) {
+/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, $, Vue, G) {
 
 var _this = this;
 
@@ -31123,27 +31271,23 @@ module.exports.init = function callee$0$0(mode) {
   return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
+        context$1$0.next = 2;
+        return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('GwdPriceTrendLoaded'));
+
+      case 2:
         className = $('.crumb .item.first').text();
         allowedList = '家用电器、食品饮料、电脑/办公、母婴、手机通讯、家庭清洁/纸品、数码、个人护理、美妆护肤、医疗、营养保健、厨具、酒类、家装建材、汽车用品、运动户外、生鲜、家纺、服饰内衣、玩具乐器、家居日用、箱包皮具、家具、钟表、鞋靴、宠物生活、礼品、图书、珠宝首饰、文娱、工业品'.split('、').map(function (x) {
           return x.replace('电脑/办公', '电脑、办公');
         });
 
         if (!(allowedList.indexOf(className) > -1)) {
-          context$1$0.next = 15;
+          context$1$0.next = 17;
           break;
         }
 
         subClass = $('.crumb .item').text();
 
         if (!(className === '手机通讯' && subClass.indexOf('办号卡') > -1)) {
-          context$1$0.next = 6;
-          break;
-        }
-
-        return context$1$0.abrupt('return');
-
-      case 6:
-        if (!(className === '珠宝首饰' && subClass.indexOf('黄金') > -1)) {
           context$1$0.next = 8;
           break;
         }
@@ -31151,27 +31295,36 @@ module.exports.init = function callee$0$0(mode) {
         return context$1$0.abrupt('return');
 
       case 8:
-        text = $('.u-jd').text().trim();
-
-        if (!text) {
-          text = $('.shopHeader .tag').text().trim();
-        }
-
-        if (!(text !== '自营')) {
-          context$1$0.next = 12;
+        if (!(className === '珠宝首饰' && subClass.indexOf('黄金') > -1)) {
+          context$1$0.next = 10;
           break;
         }
 
         return context$1$0.abrupt('return');
 
-      case 12:
+      case 10:
+        text = $('.u-jd').text().trim();
+
+        if (!text) {
+          text = $('.shopHeader .tag').text().trim();
+        }
         context$1$0.next = 14;
-        return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('GwdPriceTrendLoaded'));
+        return regeneratorRuntime.awrap(__webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
+          return $('#ns_services').length > 0;
+        }));
 
       case 14:
+        if (!(!$('#ns_services').text().includes('价保') && text !== '自营')) {
+          context$1$0.next = 16;
+          break;
+        }
+
+        return context$1$0.abrupt('return');
+
+      case 16:
         render(mode);
 
-      case 15:
+      case 17:
       case 'end':
         return context$1$0.stop();
     }
@@ -31179,28 +31332,83 @@ module.exports.init = function callee$0$0(mode) {
 };
 
 var render = function render(mode) {
-  __webpack_require__("83271c7588396d2d5e59").log('jdPriceProtect:show');
-  var GwdPriceProtectMiddle = __webpack_require__("a48225d279d5cbed8beb")['default'];
-  new Vue({
-    el: '.gwd-price-protect',
-    render: function render(h) {
-      return h(GwdPriceProtectMiddle, {
-        props: {
-          mode: mode
+  var days, GwdPriceProtectMiddle;
+  return regeneratorRuntime.async(function render$(context$1$0) {
+    var _this2 = this;
+
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        days = 30;
+
+        if ($('#ns_services').text().includes('天价保')) {
+          days = parseInt($('#ns_services').text().match(/(\d+)天价保/)[1]);
         }
-      });
+        __webpack_require__("83271c7588396d2d5e59").log('jdPriceProtect:show');
+        GwdPriceProtectMiddle = __webpack_require__("a48225d279d5cbed8beb")['default'];
+
+        new Vue({
+          el: '.gwd-price-protect',
+          render: function render(h) {
+            return h(GwdPriceProtectMiddle, {
+              props: {
+                mode: mode,
+                days: days
+              }
+            });
+          }
+        });
+
+        $('#choose-btns').css('min-width', '800px').append('\n    <a target="_blank" id="gwd_protect" style="border: 1px solid #e23a3a; width: 142px; height: 46px; color: #e23a3a; font-size: 18px; display: inline-block; cursor: pointer; text-align: center; line-height: 44px; box-sizing: border-box; font-weight: bold">价保下单</a>');
+
+        $('#gwd_protect').click(function callee$1$0(e) {
+          var qrApi, res, qrLink;
+          return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
+            while (1) switch (context$2$0.prev = context$2$0.next) {
+              case 0:
+                e.preventDefault();
+                context$2$0.next = 3;
+                return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('qrApiReady'));
+
+              case 3:
+                qrApi = context$2$0.sent;
+
+                if (!(qrApi.type === 'api')) {
+                  context$2$0.next = 10;
+                  break;
+                }
+
+                context$2$0.next = 7;
+                return regeneratorRuntime.awrap(__webpack_require__("91f250ebeb8d5987491c").get(qrApi.src + '&protect=' + days));
+
+              case 7:
+                res = context$2$0.sent;
+                qrLink = res.data.qrImgStr;
+
+                window.open('https://tb.gwdang.com/extension/qrpage?dp_id=' + G.dp.dpId + '&days=' + days + '&alterQrUrl=' + encodeURIComponent(qrLink));
+
+              case 10:
+              case 'end':
+                return context$2$0.stop();
+            }
+          }, null, _this2);
+        });
+
+        // $('.gwd-price-protect').replaceWith(`
+        //
+        // `)
+        setTimeout(function () {
+          $('#gwd-price-protect').click(function (e) {
+            __webpack_require__("83271c7588396d2d5e59").log('jdPriceProtect:click');
+          });
+        }, 0);
+
+      case 8:
+      case 'end':
+        return context$1$0.stop();
     }
-  });
-  // $('.gwd-price-protect').replaceWith(`
-  //
-  // `)
-  setTimeout(function () {
-    $('#gwd-price-protect').click(function (e) {
-      __webpack_require__("83271c7588396d2d5e59").log('jdPriceProtect:click');
-    });
-  }, 0);
+  }, null, _this);
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"], __webpack_require__("5d4f0e584bd9a3a675b3")))
 
 /***/ }),
 
@@ -31216,6 +31424,8 @@ var detect = __webpack_require__("60624e018be49fb2d959");
 var priceParser = __webpack_require__("e29ce4c2a4af273fcade");
 var request = __webpack_require__("91f250ebeb8d5987491c");
 var gzip = __webpack_require__("61191ae0f0390d21295c");
+
+var seprator = ':';
 
 var quanobj = {
   'manjian': {},
@@ -31319,7 +31529,7 @@ var sitePattern = {
           }
           var url = $(e).find('a').attr('href');
           if (url) {
-            return url + ':' + prepend + text;
+            return url + seprator + prepend + text;
           } else {
             return prepend + text;
           }
@@ -31381,14 +31591,26 @@ var sitePattern = {
     });
     var tbNew = $('[class^=Promotion--caption]');
     if (tbNew.length) {
-      var z = tbNew.text().split('，');
-      z.forEach(function (item) {
-        if (item.indexOf('券') > -1) {
-          coupon.push(item);
-        } else {
-          promo.push(item);
-        }
-      });
+      (function () {
+        var z = [];
+        var texts = tbNew.toArray().map(function (x) {
+          return x.innerText;
+        });
+        texts.forEach(function (item) {
+          if (item.indexOf('，') > -1) {
+            z = z.concat(item.split('，'));
+          } else {
+            z.push(item);
+          }
+        });
+        z.forEach(function (item) {
+          if (item.indexOf('券') > -1) {
+            coupon.push(item);
+          } else {
+            promo.push(item);
+          }
+        });
+      })();
     }
     return {
       promo: promo,
@@ -31928,11 +32150,12 @@ var fillPromoWithLinkData = function fillPromoWithLinkData(info, promoLinkData) 
   info.promo = info.promo.map(function (item) {
     promoLinkData.forEach(function (promo) {
       if (item.indexOf(promo.value) > -1 && (item.indexOf('.jd.com') === -1 || item.indexOf('item.jd.com/') > -1)) {
-        if (item.indexOf(':') > -1) {
-          item = item.split(':')[1];
+        item = item.replaceAll(':', '_').replaceAll(';', '_');
+        if (item.indexOf(seprator) > -1) {
+          item = item.split(seprator)[1];
         }
         if (promo.promoId) {
-          item = 'https://search.jd.com/Search?activity_id=' + promo.promoId + '&sku=' + pageConfig.product.skuid + ':' + item;
+          item = 'https://search.jd.com/Search?activity_id=' + promo.promoId + '&sku=' + pageConfig.product.skuid + seprator + item;
         }
       }
     });
@@ -31942,16 +32165,18 @@ var fillPromoWithLinkData = function fillPromoWithLinkData(info, promoLinkData) 
 
 var fillPromoWithCouponLinkData = function fillPromoWithCouponLinkData(info, couponLinkData) {
   info.quan = info.quan.map(function (item) {
-    item = item.toString();
+    var stritem = item.toString();
     var theCoupon = null;
     couponLinkData.forEach(function (coupon) {
-      if (item.indexOf(coupon.couponValue) > -1 && item.indexOf('.jd.com') === -1) {
+      if (stritem.indexOf(coupon.couponValue) > -1 && stritem.indexOf('.jd.com') === -1) {
         theCoupon = coupon;
-        item = 'https://search.jd.com/Search?coupon_batch=' + coupon.batchId + '&sku=' + pageConfig.product.skuid + ':' + item;
+        // item = `https://search.jd.com/Search?coupon_batch=${coupon.batchId}&sku=${pageConfig.product.skuid}:${item}`
+        item = coupon.batchId + '_' + coupon.roleId + '_' + coupon.encryptedKey + seprator + stritem;
       }
-      if ((item.indexOf(coupon.quota + '元减') > -1 || item.indexOf(coupon.quota + '减') > -1) && item.indexOf('.jd.com') === -1) {
+      if ((stritem.indexOf(coupon.quota + '元减') > -1 || stritem.indexOf(coupon.quota + '减') > -1) && stritem.indexOf('.jd.com') === -1) {
         theCoupon = coupon;
-        item = 'https://search.jd.com/Search?coupon_batch=' + coupon.batchId + '&sku=' + pageConfig.product.skuid + ':' + item;
+        // item = `https://search.jd.com/Search?coupon_batch=${coupon.batchId}&sku=${pageConfig.product.skuid}:${item}`
+        item = coupon.batchId + '_' + coupon.roleId + '_' + coupon.encryptedKey + seprator + stritem;
       }
     });
 
@@ -32106,6 +32331,15 @@ var init2 = function init2() {
 
       case 51:
         dp_id = context$1$0.sent;
+
+        if (!(G.priceTextCollectedFromPage && (G.priceTextCollectedFromPage.includes('券后') || G.priceTextCollectedFromPage.includes('折后')))) {
+          context$1$0.next = 54;
+          break;
+        }
+
+        return context$1$0.abrupt('return');
+
+      case 54:
         skuid = __webpack_require__("3e983ecbff4e1a29654c").getParameterByName('skuId');
 
         request.get(G.server + '/extension/InTimePromotion?dp_id=' + dp_id + '&price=' + pagePrice + '&promo_text=' + promoText + (skuid ? '&sku_id=' + skuid : '')).then(function (res) {
@@ -32143,7 +32377,7 @@ var init2 = function init2() {
         // if (callbacks)
         //   callbacks(disPrice, coudanObj, xdljObj)
 
-      case 54:
+      case 56:
       case 'end':
         return context$1$0.stop();
     }
@@ -32888,7 +33122,8 @@ exports['default'] = {
       type: String
     },
     dpId: String,
-    tag: Number
+    tag: Number,
+    url: String
   },
   data: function data() {
     return {
@@ -32907,7 +33142,35 @@ exports['default'] = {
       }
     }, 500);
   },
+  computed: {
+    actionText: function actionText() {
+      if (this.dpId !== '1-3') {
+        return '领' + (this.mode.includes('gift') ? '红包' : '券');
+      }
+      return '参加活动';
+    }
+  },
   methods: {
+    transText: function transText(text) {
+      var map = {
+        '扫码联系客服': '掃碼聯繫客服',
+        '淘宝APP': '淘寶APP',
+        '天猫APP': '天貓APP',
+        '京东': '京東',
+        '京东APP': '京東APP',
+        '用': '用',
+        '扫码': '掃碼',
+        '联系客服': '聯繫客服',
+        '在': '在',
+        '内': '內',
+        '浏览该商品': '瀏覽該商品',
+        '查看商品': '查看商品'
+      };
+      if (G.lang === 'zh-tr' && map[text]) {
+        return map[text];
+      }
+      return text;
+    },
     over: function over() {
       var _this2 = this;
 
@@ -32926,7 +33189,7 @@ exports['default'] = {
         //   })
         //   return
         // }
-        __webpack_require__("91f250ebeb8d5987491c").rawGet(G.u_server + ('/helper/qrcode?union=' + G.union + '&event=appQrcode' + (this.mode || this.tag ? this.mode.includes('gift') ? '&rebate=1' : '&tag=' + (this.tag ? this.tag : 1) : '') + '&dp_id=') + (this.dpId ? this.dpId : G.dp.dpId)).then(function (res) {
+        __webpack_require__("91f250ebeb8d5987491c").rawGet(G.u_server + ('/helper/qrcode?union=' + G.union + '&event=appQrcode' + (this.mode || this.tag ? this.mode.includes('gift') ? '&rebate=1' : '&tag=' + (this.tag ? this.tag : 1) : '') + '&dp_id=') + (this.dpId ? this.dpId : G.dp.dpId) + (this.dpId === '1-3' ? '&url=' + encodeURIComponent(this.url) : '')).then(function (res) {
           console.log(res);
           if (typeof res === 'string') {
             res = JSON.parse(res);
@@ -34474,7 +34737,7 @@ if(false) {
 module.exports.init = function (css) {
   var imgurl = undefined;
   try {
-    if (G.from_device === 'firefox' || G.localHost && G.from_device !== 'default') {
+    if (G.localHost && G.from_device !== 'default') {
       css = G.localHost + 'css/' + css;
       imgurl = G.localHost + 'css/images.css';
     } else if (chrome && chrome.extension && (G.from_device === 'chrome' || G.from_device === '2345')) {
@@ -34611,7 +34874,24 @@ component.options.__file = "src/standard/module/components/PriceTrend/BarTrendIn
       if ($this.price == null) {
         $this.price = "0";
       }
-      request.get(G.server + "/brwext/monitor?" + 'site=' + G.site + '&subsite_id=' + G.subsite_id + '&dp_id=' + dp_id + '&province_id=' + G.province_id + '&url=' + encodeURIComponent(G.dp.url) + '&price=' + $this.price + "&stock=" + $this.inventory + '&rawurl=' + encodeURIComponent(window.location.href));
+
+      var payload = {
+        site: G.site,
+        subsite_id: G.subsite_id,
+        dp_id: dp_id,
+        province_id: G.province_id,
+        url: encodeURIComponent(G.dp.url),
+        price: $this.price,
+        stock: $this.inventory,
+        rawurl: encodeURIComponent(window.location.href)
+      };
+
+      if (G.priceTextCollectedFromPage) {
+        payload.price_text = G.priceTextCollectedFromPage;
+      }
+
+      var url = request.makeUrl(G.server, '/brwext/monitor', payload);
+      request.get(url);
     },
     _setPrice: function _setPrice(callback) {
       var that = this;
@@ -34793,68 +35073,6 @@ module.exports = function (isbn) {
   str += newNum.toString();
   return str;
 };
-
-/***/ }),
-
-/***/ "b194ab71c349c2a72948":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var log = __webpack_require__("03dd60018ce5ed1344a1");
-
-exports['default'] = {
-  props: ['data', 'pri'],
-  mounted: function mounted() {
-    log('miniCompare:length', this.data.length);
-  },
-  methods: {
-    logLink: function logLink() {
-      log('miniCompare:linkClick');
-    },
-    logHover: function logHover() {
-      log('miniCompare:hover');
-    }
-  }
-};
-module.exports = exports['default'];
 
 /***/ }),
 
@@ -35739,21 +35957,6 @@ if (false) {
 }
 component.options.__file = "src/standard/module/components/QRLinkLeft.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "b7e1f6822177fb5f7aba":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("e51604a168fd9d6c615d")();
-// imports
-
-
-// module
-exports.push([module.i, "#gwd_mini_compare_detail[data-v-caa5e08c] {\n  display: none;\n}\n#gwd_mini_compare:hover #gwd_mini_compare_detail[data-v-caa5e08c] {\n  display: block;\n}\n", ""]);
-
-// exports
-
 
 /***/ }),
 
@@ -37682,7 +37885,7 @@ var render = function() {
                       staticClass: "gwd-remind-error-text",
                       class: { "gwd-fadeout-5s": _vm.errorFadeClass }
                     },
-                    [_vm._v("\n      " + _vm._s(_vm.errorText) + "\n    ")]
+                    [_vm._v("\n        " + _vm._s(_vm.errorText) + "\n      ")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -37693,7 +37896,7 @@ var render = function() {
                       staticClass: "gwd-remind-hint-text",
                       class: { "gwd-fadeout-5s": _vm.hintFadeClass }
                     },
-                    [_vm._v("\n      " + _vm._s(_vm.hintText) + "\n    ")]
+                    [_vm._v("\n        " + _vm._s(_vm.hintText) + "\n      ")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -39076,6 +39279,7 @@ module.exports = exports['default'];
 //
 //
 //
+//
 
 
 
@@ -39221,7 +39425,9 @@ var dpAddRanking = function dpAddRanking(dpId) {
       case 14:
         r = context$1$0.sent;
 
-        r = r.data.rank_c;
+        if (r.data) {
+          r = r.data.rank_c;
+        }
 
       case 16:
 
@@ -39240,6 +39446,7 @@ var dpAddRanking = function dpAddRanking(dpId) {
         a = document.createElement('A');
 
         a.innerHTML = '查看榜单全部商品';
+        if (G.lang === 'zh-tr') a.innerHTML = '查看榜單全部商品';
         a.classList.add('gwd-font11');
         a.classList.add('gwd-red-after-visit');
         a.href = r[0].rurl;
@@ -39271,21 +39478,21 @@ var dpAddRanking = function dpAddRanking(dpId) {
           }
         });
 
-        context$1$0.next = 33;
+        context$1$0.next = 34;
         return regeneratorRuntime.awrap(__webpack_require__("3e983ecbff4e1a29654c").sleep(2000));
 
-      case 33:
+      case 34:
         widthLeft = $('.crumb.fl').css('width'), widthRight = $('.contact.fr').css('width'), total = $('#crumb-wrap .w').css('width');
         length = parseInt(total) - parseInt(widthLeft) - parseInt(widthRight);
 
         if (!(length < 235)) {
-          context$1$0.next = 37;
+          context$1$0.next = 38;
           break;
         }
 
         return context$1$0.abrupt('return');
 
-      case 37:
+      case 38:
         e2 = document.createElement('DIV');
 
         $('.crumb.fl').append(e2);
@@ -39325,7 +39532,7 @@ var dpAddRanking = function dpAddRanking(dpId) {
         //   }
         // }, 300)
 
-      case 40:
+      case 41:
       case 'end':
         return context$1$0.stop();
     }
@@ -40978,11 +41185,11 @@ module.exports.getRate = function (callback) {
       }
       callback();
     })['catch'](function () {
-      //callback()
+      callback();
     });
   } else {
-      callback();
-    }
+    callback();
+  }
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("5d4f0e584bd9a3a675b3")))
 
@@ -41351,12 +41558,12 @@ var render = function render(result) {
       $('li[data-sku=' + key + ']').addClass('gwd-has-coupon');
       var txt1 = '当前商品点击领券立减' + d.coupon + '元',
           txt2 = '￥' + d.coupon + ' 优惠券';
-      if (G.ss_name === 'priceDog') {
+      if (G.lang === 'zh-tr') {
         txt1 = '當前商品點擊領券立減' + d.coupon + '元';
         txt2 = '￥' + d.coupon + ' 優惠券';
       }
       if (mode === 'promoPage') {
-        $('a[data-sku=' + key + ']:eq(0)').append('\n          <a href="' + d.click_url + '" class="search_coupon_tip" title="' + txt1 + '" style="position: absolute; cursor:pointer; line-height: 23px; top: 0; right: 0; width: unset; min-width: 92px" target="_blank">' + txt2 + '</a>\n        ');
+        $('a[data-sku=' + key + ']:eq(0)').css('position', 'relative').append('\n          <a href="' + d.click_url + '" class="search_coupon_tip" title="' + txt1 + '" style="position: absolute; cursor:pointer; line-height: 23px; top: 0; right: 0; width: unset; min-width: 92px" target="_blank">' + txt2 + '</a>\n        ');
       } else {
         $('li[data-sku=' + key + '] .p-img').append('\n          <a href="' + d.click_url + '" class="search_coupon_tip" title="' + txt1 + '" style="position: absolute; cursor:pointer; line-height: 23px; top: 0; right: 0" target="_blank">' + txt2 + '</a>\n        ');
       }
@@ -41569,26 +41776,31 @@ module.exports.init = function callee$0$0() {
           if (thePromo.length && G.ss_name !== 'priceDog') {
             var url = thePromo[0].url;
             var link = promoUrlMap[' ' + url];
-            $(item).append('<a href=' + link + ' target="_blank" style="color: #ee2f36; text-decoration: underline; margin-left: 5px; font-size: 12px; white-space: nowrap">查看此活动全部商品<img src="https://cdn.gwdang.com/images/extensions/redArrow.svg" style="width: 10px; height: 10px;"></a>');
+            var title = G.lang === 'zh-tr' ? '查看此活動全部商品' : '查看此活动全部商品';
+            $(item).append('<a href=' + link + ' target="_blank" style="color: #ee2f36; text-decoration: underline; margin-left: 5px; font-size: 12px; white-space: nowrap">' + title + '<img src="https://cdn.gwdang.com/images/extensions/redArrow.svg" style="width: 10px; height: 10px;"></a>');
           }
         });
 
         coupons = localPromo.quan.map(function (item) {
           item = item.toString().replace('http://', '//').replace('https://', '//');
           if (item.indexOf(':') > -1) {
-            var _item$split3 = item.split(':');
-
-            var _item$split32 = _slicedToArray(_item$split3, 2);
-
-            var url = _item$split32[0];
-            var text = _item$split32[1];
-
+            var itemArr = item.split(':');
+            // let [url, text] = item.split(':')
+            // url = '//search.jd.com/Search?activity_id=' + url.split('_')[0] + '&sku=' + G.dp.itemId.replace('-3', '')
             return {
-              text: text,
-              url: url
+              text: itemArr[itemArr.length - 1],
+              url: itemArr[0]
             };
           }
         });
+
+        // const remotePromos = await globalCondition.met('promoGot')
+        // let coupons = remotePromos.promo_list.filter(x => x.tag === 'coupon').map(x => {
+        //   return {
+        //     text: x.text.split(':').length > 1 ? x.text.split(':')[1] : x.text,
+        //     url: x.id
+        //   }
+        // })
 
         coupons = coupons.filter(function (item) {
           return item && item.url;
@@ -42287,6 +42499,7 @@ var _commonGlobalCondition = __webpack_require__("9c38beef5ff283e15bd2");
 var _commonGlobalCondition2 = _interopRequireDefault(_commonGlobalCondition);
 
 var timeUtil = __webpack_require__("6868b03b94b90a856624");
+var extConsole = __webpack_require__("316f9c352c6202560d16");
 
 !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
   var today = new Date();
@@ -42492,7 +42705,7 @@ var timeUtil = __webpack_require__("6868b03b94b90a856624");
 
   Highcharts.setOptions({
     global: {
-      timezoneOffset: 8
+      timezoneOffset: 0
     }
   });
 
@@ -42873,6 +43086,7 @@ var timeUtil = __webpack_require__("6868b03b94b90a856624");
         var tipObj = {};
         tipObj.x = this.x;
         var x = new Date(this.x);
+        extConsole.log('date', x);
         var year = x.getFullYear();
 
         var month = x.getMonth() + 1;
@@ -42881,11 +43095,8 @@ var timeUtil = __webpack_require__("6868b03b94b90a856624");
         var hasdiscount = undefined;
         if (month < 10) month = '0' + month;
         if (day < 10) day = '0' + day;
-        //showHour = true;
+        // showHour = true;
         var timeStr = year + "/" + month + "/" + day + (showHour ? " " + hour + ":00" : '');
-        // if (timeStr === '2023/06/20') {
-        //   console.warn('timeCheck', timeStr, timeUtil.localeDateString(this.x))
-        // }
         tipObj.time = timeStr.replace(/\//g, '.');
         var result1 = "";
         var filtered = this.points.sort(function (a, b) {
@@ -44051,10 +44262,10 @@ var timeUtil = __webpack_require__("6868b03b94b90a856624");
                         continue;
                       }
                       if (j.start !== 'short_day_line_begin_time') {
-                        store[i][j.start] = getMidDay(store[i][j.start]);
+                        //store[i][j.start] = getMidDay(store[i][j.start]);
                       }
                       if (store[i].all_equal_short && j.start === 'all_line_begin_time') {
-                        store[i][j.start] = store[i].short_day_line_begin_time;
+                        //store[i][j.start] = store[i].short_day_line_begin_time;
                       }
                       enablePlot('#' + j.plot);
                       var newSeries = {
@@ -44843,59 +45054,6 @@ if(false) {
 
 /***/ }),
 
-/***/ "d45bbf37f97eb6c6f02e":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MiniSameList_vue_vue_type_template_id_caa5e08c_scoped_true___ = __webpack_require__("1d4a38351293e5975c34");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MiniSameList_vue_vue_type_script_lang_js___ = __webpack_require__("1733ff6af8002b788e32");
-/* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_1__MiniSameList_vue_vue_type_script_lang_js___) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_1__MiniSameList_vue_vue_type_script_lang_js___[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MiniSameList_vue_vue_type_style_index_0_id_caa5e08c_scoped_true_lang_less___ = __webpack_require__("7d96823596453ce40ef0");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__node_modules_15_9_3_vue_loader_lib_runtime_componentNormalizer_js__ = __webpack_require__("9d0a4e2aa6ff804219fc");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(__WEBPACK_IMPORTED_MODULE_3__node_modules_15_9_3_vue_loader_lib_runtime_componentNormalizer_js__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_1__MiniSameList_vue_vue_type_script_lang_js___["default"],
-  __WEBPACK_IMPORTED_MODULE_0__MiniSameList_vue_vue_type_template_id_caa5e08c_scoped_true___["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_0__MiniSameList_vue_vue_type_template_id_caa5e08c_scoped_true___["b" /* staticRenderFns */],
-  false,
-  null,
-  "caa5e08c",
-  null
-  
-)
-
-/* hot reload */
-if (false) {
-  var api = require("/Users/huangdie/work-gwdang/extension/browser/dev/node_modules/.2.3.4@vue-hot-reload-api/dist/index.js")
-  api.install(require('vue'))
-  if (api.compatible) {
-    module.hot.accept()
-    if (!api.isRecorded('caa5e08c')) {
-      api.createRecord('caa5e08c', component.options)
-    } else {
-      api.reload('caa5e08c', component.options)
-    }
-    module.hot.accept("./MiniSameList.vue?vue&type=template&id=caa5e08c&scoped=true&", function () {
-      api.rerender('caa5e08c', {
-        render: render,
-        staticRenderFns: staticRenderFns
-      })
-    })
-  }
-}
-component.options.__file = "src/standard/module/components/MiniSameList.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
 /***/ "d54879e983a83d07f093":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45138,7 +45296,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, $, Vue) {
+/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, G, $, Vue) {
 
 var _this = this;
 
@@ -45148,24 +45306,22 @@ var _componentsCollectionSettingTop = __webpack_require__("4849c6a660d6f2d7dba4"
 
 var _componentsCollectionSettingTop2 = _interopRequireDefault(_componentsCollectionSettingTop);
 
-var store = __webpack_require__("e41a11f7982e4aab1ce6");
 var MiniBarCollectionButton = __webpack_require__("966caf0f29e39a633494")['default'];
 var CollectionSettingMini = __webpack_require__("0dac12c39a7042f8ce1c")['default'];
 
 module.exports.init = function callee$0$0() {
+  var store, instanceId;
   return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
+        store = __webpack_require__("e41a11f7982e4aab1ce6").getStore();
+        instanceId = G.instanceId;
 
-        // new Vue({
-        //   el: '#gwd_mini_remind .minibar-btn-box',
-        //   store,
-        //   render: h => h(MiniBarCollectionButton)
-        // })
-
+        __webpack_require__("316f9c352c6202560d16").log('collection setting start with instance id', instanceId);
         __webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
-          return $('.gwd-collection-mini-content').length;
+          return $('.gwd-collection-mini-content').length && G.instanceId === instanceId;
         }).then(function () {
+          __webpack_require__("316f9c352c6202560d16").log('collection setting mini render', instanceId);
           new Vue({
             el: '.gwd-collection-mini-content',
             store: store,
@@ -45180,8 +45336,9 @@ module.exports.init = function callee$0$0() {
         });
 
         __webpack_require__("d54879e983a83d07f093").waitForConditionFn(function () {
-          return $('.gwd-collection-trend-content').length;
+          return $('.gwd-collection-trend-content').length && G.instanceId === instanceId;
         }).then(function () {
+          __webpack_require__("316f9c352c6202560d16").log('collection setting top render', instanceId);
           new Vue({
             el: '.gwd-collection-trend-content',
             store: store,
@@ -45209,7 +45366,7 @@ module.exports.init = function callee$0$0() {
           });
         });
 
-      case 2:
+      case 5:
       case 'end':
         return context$1$0.stop();
     }
@@ -45217,6 +45374,7 @@ module.exports.init = function callee$0$0() {
 };
 
 module.exports.setPriceData = function (money, data) {
+  var store = __webpack_require__("e41a11f7982e4aab1ce6").getStore();
   var price_ranges = data['store'][0].price_range.split('-');
   store.commit('priceTrend/setState', {
     money: money,
@@ -45224,7 +45382,13 @@ module.exports.setPriceData = function (money, data) {
     priceRange: Number(price_ranges[0]).toFixed(2) + ' ~ ' + Number(price_ranges[1]).toFixed(2)
   });
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
+
+// new Vue({
+//   el: '#gwd_mini_remind .minibar-btn-box',
+//   store,
+//   render: h => h(MiniBarCollectionButton)
+// })
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("3deef7cc191860c0adf2")["default"]))
 
 /***/ }),
 
@@ -45606,7 +45770,7 @@ exports.push([module.i, ".bjg-coupon-white[data-v-c1c2cbdc] {\n  color: #ffffff;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-//
+/* WEBPACK VAR INJECTION */(function(G) {//
 //
 //
 //
@@ -45709,21 +45873,36 @@ exports.push([module.i, ".bjg-coupon-white[data-v-c1c2cbdc] {\n  color: #ffffff;
 
 
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _commonComponentsMemberCouponMixin = __webpack_require__("1fffec0778a8d8b2e8e2");
 
 var _commonComponentsMemberCouponMixin2 = _interopRequireDefault(_commonComponentsMemberCouponMixin);
 
-exports["default"] = {
+exports['default'] = {
   props: ['withLogo'],
-  mixins: [_commonComponentsMemberCouponMixin2["default"]]
+  mixins: [_commonComponentsMemberCouponMixin2['default']],
+  methods: {
+    transText: function transText(text) {
+      var map = {
+        '扫码联系客服': '掃碼聯繫客服',
+        '淘宝APP': '淘寶APP',
+        '扫码': '掃碼',
+        '联系客服': '聯繫客服'
+      };
+      if (G.lang === 'zh-tr') {
+        return map[text];
+      }
+      return text;
+    }
+  }
 };
-module.exports = exports["default"];
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("5d4f0e584bd9a3a675b3")))
 
 /***/ }),
 
@@ -45978,34 +46157,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "dfad5c6dbfc1e10f989e":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("b7e1f6822177fb5f7aba");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__("4310ff0d1d73bb2c547a").default
-var update = add("91fa333a", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/.0.20.2@css-loader/index.js!../../../../node_modules/.15.9.3@vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/.4.1.0@less-loader/dist/cjs.js!../../../../node_modules/.15.9.3@vue-loader/lib/index.js??vue-loader-options!./MiniSameList.vue?vue&type=style&index=0&id=caa5e08c&scoped=true&lang=less&", function() {
-     var newContent = require("!!../../../../node_modules/.0.20.2@css-loader/index.js!../../../../node_modules/.15.9.3@vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/.4.1.0@less-loader/dist/cjs.js!../../../../node_modules/.15.9.3@vue-loader/lib/index.js??vue-loader-options!./MiniSameList.vue?vue&type=style&index=0&id=caa5e08c&scoped=true&lang=less&");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
 /***/ "e1295245ec2ddb5b21e1":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46101,7 +46252,7 @@ exports['default'] = {
         '查看优惠': '查看優惠',
         '快捷购买': '快捷購買'
       };
-      if (G.ss_name === 'priceDog') {
+      if (G.lang === 'zh-tr') {
         return map[text];
       }
       return text;
@@ -46231,7 +46382,9 @@ function parserFactory(extractPrice) {
           priItem[0].plus = PLUS;
         }
       }
-      __webpack_require__("ee3f371a85b894c823bf").sendPriCheck(priItem);
+
+      G.priItem = priItem;
+      // require('common/getListInfo').sendPriCheck(priItem)
     }
 
     var price = extractPrice();
@@ -46593,7 +46746,7 @@ exports = module.exports = __webpack_require__("e51604a168fd9d6c615d")();
 
 
 // module
-exports.push([module.i, ".gwd-row[data-v-42d39176] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-42d39176] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-42d39176] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-42d39176] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-42d39176] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-42d39176] {\n  justify-content: center;\n}\n.gwd-jic[data-v-42d39176] {\n  justify-items: center;\n}\n.gwd-button[data-v-42d39176] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-42d39176] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-42d39176]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-42d39176] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-42d39176],\n.mainbar-fold #top_coupon_btn[data-v-42d39176],\n.mainbar-fold .rinfo-btn[data-v-42d39176],\n.mainbar-fold .gwd-bottom-tmall[data-v-42d39176] {\n  display: none!important;\n}\n.gwd-font12[data-v-42d39176] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-42d39176] {\n  font-size: 14px;\n}\n.gwd-red[data-v-42d39176] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-42d39176] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-42d39176] {\n  color: #333333;\n}\n.gwd-hui999[data-v-42d39176] {\n  color: #999999;\n}\n.gwd-font10[data-v-42d39176] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-42d39176] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-42d39176] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-42d39176]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-42d39176] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-42d39176]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-42d39176]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-42d39176] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-42d39176]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-42d39176] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-42d39176]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-42d39176]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n.gwd-member-coupon-mini[data-v-42d39176] {\n  width: 460px;\n  background: white;\n  border-left: 1px solid #e6e9eb;\n  border-right: 1px solid #e6e9eb;\n  border-bottom: 1px solid #e6e9eb;\n  height: 37px;\n}\n.gwd-coupon-take[data-v-42d39176] {\n  width: 50px;\n  height: 26px;\n  background: #ff3d5d;\n  border-radius: 2px;\n  color: white;\n  font-size: 13px;\n  text-align: center;\n  line-height: 26px;\n  cursor: pointer;\n  position: relative;\n  margin-left: 20px;\n  margin-right: 15px;\n  display: inline-block;\n}\n.gwd-coupon-take .gwd-qr-container[data-v-42d39176] {\n  position: absolute;\n  display: none;\n  right: -15px;\n  top: 30px;\n  z-index: 9;\n}\n.gwd-member-coupon-mini:hover .gwd-qr-container[data-v-42d39176] {\n  display: block;\n}\n", ""]);
+exports.push([module.i, ".gwd-row[data-v-42d39176] {\n  display: flex;\n  flex-direction: row;\n}\n.gwd-inline-row[data-v-42d39176] {\n  display: inline-flex;\n  flex-direction: row;\n}\n.gwd-column[data-v-42d39176] {\n  display: flex;\n  flex-direction: column;\n}\n.gwd-inline-column[data-v-42d39176] {\n  display: inline-flex;\n  flex-direction: column;\n}\n.gwd-align[data-v-42d39176] {\n  align-content: center;\n  align-items: center;\n}\n.gwd-jcc[data-v-42d39176] {\n  justify-content: center;\n}\n.gwd-jic[data-v-42d39176] {\n  justify-items: center;\n}\n.gwd-button[data-v-42d39176] {\n  outline: none;\n  border: none;\n}\n.bjg-bar-button[data-v-42d39176] {\n  font-size: 0;\n}\n.bjg-bar-button[data-v-42d39176]:hover {\n  background: #fffbef;\n  cursor: pointer;\n}\n.bjg-bar-button:hover .bjg-window[data-v-42d39176] {\n  display: block;\n}\n.mainbar-fold .bjg-bar-button[data-v-42d39176],\n.mainbar-fold #top_coupon_btn[data-v-42d39176],\n.mainbar-fold .rinfo-btn[data-v-42d39176],\n.mainbar-fold .gwd-bottom-tmall[data-v-42d39176] {\n  display: none!important;\n}\n.gwd-font12[data-v-42d39176] {\n  font-size: 12px;\n}\n.gwd-font14[data-v-42d39176] {\n  font-size: 14px;\n}\n.gwd-red[data-v-42d39176] {\n  color: #ff3532;\n}\n.gwd-red-bg[data-v-42d39176] {\n  background: #ff3532;\n}\n.gwd-hui333[data-v-42d39176] {\n  color: #333333;\n}\n.gwd-hui999[data-v-42d39176] {\n  color: #999999;\n}\n.gwd-font10[data-v-42d39176] {\n  font-size: 12px;\n  transform: scale(0.8333);\n  transform-origin: bottom center;\n}\n.gwd-font11[data-v-42d39176] {\n  font-size: 12px;\n  transform: scale(0.91666);\n  transform-origin: bottom center;\n}\n.gwd-font9[data-v-42d39176] {\n  font-size: 12px;\n  transform: scale(0.75);\n  transform-origin: bottom center;\n}\n.gwd-hoverable[data-v-42d39176]:hover {\n  background: #edf1f2;\n}\n.right-info > *[data-v-42d39176] {\n  border-left: 1px solid #edf1f2;\n}\n.gwd-red-after-visit[data-v-42d39176]:hover {\n  color: #e03024 !important;\n}\n.gwd-button[data-v-42d39176]:hover {\n  filter: brightness(1.1);\n}\n.gwd-button[data-v-42d39176] {\n  padding-top: 1px;\n  padding-bottom: 1px;\n}\n.gwd-button[data-v-42d39176]:active {\n  filter: brightness(0.9);\n}\n.gwd-fadeout-5s[data-v-42d39176] {\n  opacity: 0;\n  transition: opacity 5s;\n}\n.gwd-scrollbar[data-v-42d39176]::-webkit-scrollbar {\n  width: 6px;\n  border-radius: 17px;\n}\n.gwd-scrollbar[data-v-42d39176]::-webkit-scrollbar-thumb {\n  border-radius: 17px;\n  background: #999;\n}\n#gwdang_main[data-v-42d39176],\n.gwdang-main[data-v-42d39176],\n.bjgext-detail[data-v-42d39176] {\n  font-size: 12px;\n}\n#gwdang_main button[data-v-42d39176],\n.gwdang-main button[data-v-42d39176],\n.bjgext-detail button[data-v-42d39176] {\n  text-align: center;\n}\n.gwd-member-coupon-mini[data-v-42d39176] {\n  width: 460px;\n  background: white;\n  border-left: 1px solid #e6e9eb;\n  border-right: 1px solid #e6e9eb;\n  border-bottom: 1px solid #e6e9eb;\n  height: 37px;\n}\n.gwd-coupon-take[data-v-42d39176] {\n  width: 50px;\n  height: 26px;\n  background: #ff3d5d;\n  border-radius: 2px;\n  color: white;\n  font-size: 13px;\n  text-align: center;\n  line-height: 26px;\n  cursor: pointer;\n  position: relative;\n  margin-left: 20px;\n  margin-right: 15px;\n  display: inline-block;\n}\n.gwd-coupon-take .gwd-qr-container[data-v-42d39176] {\n  position: absolute;\n  display: none;\n  right: -15px;\n  top: 30px;\n  z-index: 9;\n}\n.gwd-member-coupon-mini:hover .gwd-qr-container[data-v-42d39176] {\n  display: block;\n}\n", ""]);
 
 // exports
 
@@ -46844,7 +46997,7 @@ module.exports.init = function callee$0$0(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(regeneratorRuntime, G) {
+/* WEBPACK VAR INJECTION */(function(G, regeneratorRuntime) {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -46872,258 +47025,282 @@ var userCenter = __webpack_require__("69afa85b8d7929dd88c5");
 var extConsole = __webpack_require__("316f9c352c6202560d16");
 
 var inited = false;
+var instanceId = null,
+    store = null;
 
-module.exports = new _vuex2["default"].Store({
-  modules: {
-    user: {
-      namespaced: true,
-      state: {
-        login: false,
-        wxQr: ''
-      },
-      mutations: {
-        setLogin: function setLogin(state) {
-          var login = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
+var getStore = function getStore() {
+  __webpack_require__("316f9c352c6202560d16").log('getStore with instanceId', instanceId, 'G.instanceId', G.instanceId, 'G', G);
+  if (G.instanceId !== instanceId) {
+    instanceId = G.instanceId;
+    store = makeStore();
+    window.gwdStore = store;
+    return store;
+  } else {
+    window.gwdStore = store;
+    return store;
+  }
+};
 
-          state.login = login;
+module.exports.getStore = getStore;
+
+var makeStore = function makeStore() {
+  return new _vuex2["default"].Store({
+    modules: {
+      user: {
+        namespaced: true,
+        state: {
+          login: false,
+          wxQr: ''
         },
-        setWxQr: function setWxQr(state, qr) {
-          state.wxQr = qr;
-        }
-      }
-    },
-    priceRemind: {
-      namespaced: true,
-      state: {
-        mode: 0,
-        notifySite: 0, // 0 全网商家 1 当前商家
-        allPrice: 0,
-        currentPrice: 0,
-        hovered: false,
-        collected: false,
-        settedNotifySite: null,
-        nowPrice: 0
-      },
-      mutations: {
-        setState: function setState(state, payload) {
-          Object.keys(payload).forEach(function (key) {
-            state[key] = payload[key];
-          });
-        },
-        updateRemindSettings: function updateRemindSettings(state, payload) {
-          Object.keys(payload).forEach(function (key) {
-            state[key] = payload[key];
-          });
+        mutations: {
+          setLogin: function setLogin(state) {
+            var login = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
+
+            state.login = login;
+          },
+          setWxQr: function setWxQr(state, qr) {
+            state.wxQr = qr;
+          }
         }
       },
-      actions: {
-        cancel: function cancel(ctx) {
-          return regeneratorRuntime.async(function cancel$(context$1$0) {
-            while (1) switch (context$1$0.prev = context$1$0.next) {
-              case 0:
-                return context$1$0.abrupt("return", userCenter["delete"]().then(function (res) {
-                  ctx.commit('updateRemindSettings', {
-                    collected: false,
-                    settedNotifySite: null
-                  });
-                  return new Promise(function (resolve) {
-                    return resolve();
-                  });
-                }));
-
-              case 1:
-              case "end":
-                return context$1$0.stop();
-            }
-          }, null, this);
+      priceRemind: {
+        namespaced: true,
+        state: {
+          instanceId: G.instanceId,
+          mode: 0,
+          notifySite: 0, // 0 全网商家 1 当前商家
+          allPrice: 0,
+          currentPrice: 0,
+          hovered: false,
+          collected: false,
+          settedNotifySite: null,
+          nowPrice: 0
         },
-        init: function init(ctx) {
-          var dp_query, currentPrice, allPrice;
-          return regeneratorRuntime.async(function init$(context$1$0) {
-            while (1) switch (context$1$0.prev = context$1$0.next) {
-              case 0:
-                if (!inited) {
-                  context$1$0.next = 2;
-                  break;
-                }
-
-                return context$1$0.abrupt("return");
-
-              case 2:
-                inited = true;
-                if (G.userLogin) {
-                  ctx.commit('user/setLogin', true, { root: true });
-                }
-                if (G.userLogin && G.productChecked && G.productChecked.collected) {
-                  ctx.commit('setState', {
-                    collected: true
-                  });
-                }
-
-                context$1$0.next = 7;
-                return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('dp_query_set'));
-
-              case 7:
-                dp_query = _commonUserData2["default"].get('dp_query');
-                context$1$0.next = 10;
-                return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('NowPrice'));
-
-              case 10:
-                currentPrice = context$1$0.sent;
-
-                if (G.aliSite && G.dp.price) currentPrice = G.dp.price;
-                allPrice = parseFloat(dp_query.b2c.min_price) || currentPrice;
-
-                if (!allPrice || isNaN(allPrice)) allPrice = currentPrice;
-                currentPrice = parseFloat(currentPrice.toString().replace(',', ''));
-                allPrice = parseFloat(allPrice.toString().replace(',', ''));
-                if (dp_query.b2c.product && dp_query.b2c.product.length !== 0) {
-                  (0, _commonLog2["default"])('allsite-lowpri-show');
-                  _commonCnzz2["default"].log('allsite-lowpri-show');
-                }
-                ctx.commit('updateRemindSettings', {
-                  allPrice: allPrice,
-                  currentPrice: currentPrice,
-                  notifySite: 1,
-                  nowPrice: currentPrice
-                });
-                __webpack_require__("9c38beef5ff283e15bd2").setMet('PriceRemindSetted');
-
-              case 19:
-              case "end":
-                return context$1$0.stop();
-            }
-          }, null, this);
+        mutations: {
+          setState: function setState(state, payload) {
+            Object.keys(payload).forEach(function (key) {
+              state[key] = payload[key];
+            });
+          },
+          updateRemindSettings: function updateRemindSettings(state, payload) {
+            Object.keys(payload).forEach(function (key) {
+              state[key] = payload[key];
+            });
+          }
         },
-        hover: function hover(ctx) {
-          var url;
-          return regeneratorRuntime.async(function hover$(context$1$0) {
-            while (1) switch (context$1$0.prev = context$1$0.next) {
-              case 0:
-                if (ctx.state.hovered) {
-                  context$1$0.next = 7;
-                  break;
-                }
-
-                if (G.userLogin) {
-                  url = "https://www.gwdang.com/collect/get_qrcode/";
-
-                  if (G.qrApi && G.qrApi !== 'default') {
-                    url = G.qrApi;
-                  }
-                  _commonRequest2["default"].rawGet(url, true).then(function (data) {
-                    ctx.commit('user/setWxQr', data.img_url, { root: true });
-                  });
-                }
-
-                if (!(G.userLogin && ctx.state.collected)) {
-                  context$1$0.next = 6;
-                  break;
-                }
-
-                context$1$0.next = 5;
-                return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('GwdDpIdGot'));
-
-              case 5:
-                userCenter.detail(G.dp.dpId).then(function (r) {
-                  extConsole.log('detail', r);
-                  var payload = {
-                    mode: r.data.notifier.mode,
-                    notifySite: r.data.notifier.site,
-                    settedNotifySite: r.data.notifier.site
-                  };
-                  if (payload.notifySite === 1) {
-                    payload.currentPrice = r.data.notifier.threshold;
-                  } else {
-                    payload.allPrice = r.data.notifier.threshold;
-                  }
-                  // payload.currentPrice = r.data.notifier.threshold
-                  ctx.commit('updateRemindSettings', payload);
-                });
-
-              case 6:
-                ctx.commit('setState', {
-                  hovered: true
-                });
-
-              case 7:
-              case "end":
-                return context$1$0.stop();
-            }
-          }, null, this);
-        },
-        submit: function submit(ctx, payload) {
-          return regeneratorRuntime.async(function submit$(context$1$0) {
-            while (1) switch (context$1$0.prev = context$1$0.next) {
-              case 0:
-                return context$1$0.abrupt("return", userCenter.add(payload.price, payload.notifySite, payload.mode).then(function (r) {
-                  if (r.error_code && r.error_code === 1000) {
-                    ctx.commit('user/setLogin', false, { root: true });
-                  }
-                  if (r.code === 100 || r.code <= 0) {
-                    return new Promise(function (resolve, reject) {
-                      reject(r.msg);
+        actions: {
+          cancel: function cancel(ctx) {
+            return regeneratorRuntime.async(function cancel$(context$2$0) {
+              while (1) switch (context$2$0.prev = context$2$0.next) {
+                case 0:
+                  return context$2$0.abrupt("return", userCenter["delete"]().then(function (res) {
+                    ctx.commit('updateRemindSettings', {
+                      collected: false,
+                      settedNotifySite: null
                     });
-                  }
-                  if (r.code === 1) {
-                    var mode = payload.mode;
-                    var site = payload.notifySite;
-                    if (r.data) {
-                      mode = r.data.notifier.mode;
-                      site = r.data.notifier.site;
-                    }
-                    var payloadRes = {
-                      mode: mode,
-                      notifySite: site,
-                      settedNotifySite: site,
-                      collected: true
-                    };
-                    if (r.data) {
-                      if (payloadRes.notifySite === 1) {
-                        payloadRes.currentPrice = r.data.notifier.threshold;
-                      } else {
-                        payloadRes.allPrice = r.data.notifier.threshold;
-                      }
-                    } else {
-                      if (payloadRes.notifySite === 1) {
-                        payloadRes.currentPrice = payload.price;
-                      } else {
-                        payloadRes.allPrice = payload.price;
-                      }
-                    }
-                    ctx.commit('updateRemindSettings', payloadRes);
                     return new Promise(function (resolve) {
-                      resolve('提交成功');
+                      return resolve();
+                    });
+                  }));
+
+                case 1:
+                case "end":
+                  return context$2$0.stop();
+              }
+            }, null, this);
+          },
+          reset: function reset(ctx) {
+            return regeneratorRuntime.async(function reset$(context$2$0) {
+              while (1) switch (context$2$0.prev = context$2$0.next) {
+                case 0:
+                case "end":
+                  return context$2$0.stop();
+              }
+            }, null, this);
+          },
+          init: function init(ctx) {
+            var dp_query, currentPrice, allPrice;
+            return regeneratorRuntime.async(function init$(context$2$0) {
+              while (1) switch (context$2$0.prev = context$2$0.next) {
+                case 0:
+                  // if (inited) {
+                  //   return
+                  // }
+                  inited = true;
+                  if (G.userLogin) {
+                    ctx.commit('user/setLogin', true, { root: true });
+                  }
+                  if (G.userLogin && G.productChecked && G.productChecked.collected) {
+                    ctx.commit('setState', {
+                      collected: true
                     });
                   }
-                }));
 
-              case 1:
-              case "end":
-                return context$1$0.stop();
-            }
-          }, null, this);
+                  context$2$0.next = 5;
+                  return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('dp_query_set'));
+
+                case 5:
+                  dp_query = _commonUserData2["default"].get('dp_query');
+                  context$2$0.next = 8;
+                  return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('NowPrice'));
+
+                case 8:
+                  currentPrice = context$2$0.sent;
+
+                  if (G.aliSite && G.dp.price) currentPrice = G.dp.price;
+                  allPrice = parseFloat(dp_query.b2c.min_price) || currentPrice;
+
+                  if (!allPrice || isNaN(allPrice)) allPrice = currentPrice;
+                  currentPrice = parseFloat(currentPrice.toString().replace(',', ''));
+                  allPrice = parseFloat(allPrice.toString().replace(',', ''));
+                  if (dp_query.b2c.product && dp_query.b2c.product.length !== 0) {
+                    (0, _commonLog2["default"])('allsite-lowpri-show');
+                    _commonCnzz2["default"].log('allsite-lowpri-show');
+                  }
+                  ctx.commit('updateRemindSettings', {
+                    allPrice: allPrice,
+                    currentPrice: currentPrice,
+                    notifySite: 1,
+                    nowPrice: currentPrice
+                  });
+                  __webpack_require__("9c38beef5ff283e15bd2").setMet('PriceRemindSetted');
+
+                case 17:
+                case "end":
+                  return context$2$0.stop();
+              }
+            }, null, this);
+          },
+          hover: function hover(ctx) {
+            var url;
+            return regeneratorRuntime.async(function hover$(context$2$0) {
+              while (1) switch (context$2$0.prev = context$2$0.next) {
+                case 0:
+                  if (ctx.state.hovered) {
+                    context$2$0.next = 7;
+                    break;
+                  }
+
+                  if (G.userLogin) {
+                    url = "https://www.gwdang.com/collect/get_qrcode/";
+
+                    if (G.qrApi && G.qrApi !== 'default') {
+                      url = G.qrApi;
+                    }
+                    _commonRequest2["default"].rawGet(url, true).then(function (data) {
+                      ctx.commit('user/setWxQr', data.img_url, { root: true });
+                    });
+                  }
+
+                  if (!(G.userLogin && ctx.state.collected)) {
+                    context$2$0.next = 6;
+                    break;
+                  }
+
+                  context$2$0.next = 5;
+                  return regeneratorRuntime.awrap(__webpack_require__("9c38beef5ff283e15bd2").met('GwdDpIdGot'));
+
+                case 5:
+                  userCenter.detail(G.dp.dpId).then(function (r) {
+                    extConsole.log('detail', r);
+                    var payload = {
+                      mode: r.data.notifier.mode,
+                      notifySite: r.data.notifier.site,
+                      settedNotifySite: r.data.notifier.site
+                    };
+                    if (payload.notifySite === 1) {
+                      payload.currentPrice = r.data.notifier.threshold;
+                    } else {
+                      payload.allPrice = r.data.notifier.threshold;
+                    }
+                    // payload.currentPrice = r.data.notifier.threshold
+                    ctx.commit('updateRemindSettings', payload);
+                  });
+
+                case 6:
+                  ctx.commit('setState', {
+                    hovered: true
+                  });
+
+                case 7:
+                case "end":
+                  return context$2$0.stop();
+              }
+            }, null, this);
+          },
+          submit: function submit(ctx, payload) {
+            return regeneratorRuntime.async(function submit$(context$2$0) {
+              while (1) switch (context$2$0.prev = context$2$0.next) {
+                case 0:
+                  return context$2$0.abrupt("return", userCenter.add(payload.price, payload.notifySite, payload.mode).then(function (r) {
+                    if (r.error_code && r.error_code === 1000) {
+                      ctx.commit('user/setLogin', false, { root: true });
+                    }
+                    if (r.code === 100 || r.code <= 0) {
+                      return new Promise(function (resolve, reject) {
+                        reject(r.msg);
+                      });
+                    }
+                    if (r.code === 1) {
+                      var mode = payload.mode;
+                      var site = payload.notifySite;
+                      if (r.data) {
+                        mode = r.data.notifier.mode;
+                        site = r.data.notifier.site;
+                      }
+                      var payloadRes = {
+                        mode: mode,
+                        notifySite: site,
+                        settedNotifySite: site,
+                        collected: true
+                      };
+                      if (r.data) {
+                        if (payloadRes.notifySite === 1) {
+                          payloadRes.currentPrice = r.data.notifier.threshold;
+                        } else {
+                          payloadRes.allPrice = r.data.notifier.threshold;
+                        }
+                      } else {
+                        if (payloadRes.notifySite === 1) {
+                          payloadRes.currentPrice = payload.price;
+                        } else {
+                          payloadRes.allPrice = payload.price;
+                        }
+                      }
+                      ctx.commit('updateRemindSettings', payloadRes);
+                      return new Promise(function (resolve) {
+                        resolve('提交成功');
+                      });
+                    }
+                  }));
+
+                case 1:
+                case "end":
+                  return context$2$0.stop();
+              }
+            }, null, this);
+          }
         }
-      }
-    },
-    priceTrend: {
-      namespaced: true,
-      state: {
-        money: '',
-        priceRange: '',
-        nowPrice: ''
       },
-      mutations: {
-        setState: function setState(state, payload) {
-          Object.keys(payload).forEach(function (key) {
-            state[key] = payload[key];
-          });
+      priceTrend: {
+        namespaced: true,
+        state: {
+          money: '',
+          priceRange: '',
+          nowPrice: ''
+        },
+        mutations: {
+          setState: function setState(state, payload) {
+            Object.keys(payload).forEach(function (key) {
+              state[key] = payload[key];
+            });
+          }
         }
       }
     }
-  }
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("0d878046564e4ef2113b"), __webpack_require__("5d4f0e584bd9a3a675b3")))
+  });
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("5d4f0e584bd9a3a675b3"), __webpack_require__("0d878046564e4ef2113b")))
 
 /***/ }),
 
@@ -49598,7 +49775,8 @@ var siteDicts = {
 };
 var siteIdDicts = {
   "yihaodian": 31,
-  "tmall": 83
+  "tmall": 83,
+  'taobao': 123
 };
 var listenerDicts = {
   "yihaodian": ".clearfix>#plist"
@@ -49689,7 +49867,7 @@ var sendInfo = function sendInfo(info) {
   }
   sended.push(JSON.stringify(info));
   if (!info || info.length === 0) return;
-  var province_id = priceCheck.getSubStationId(G.site);
+  var province_id = priceCheck.getSubStationId(G.site || gwd_G.site);
   var data = {
     'province_id': province_id,
     'info': info
@@ -49703,7 +49881,7 @@ var sendInfo = function sendInfo(info) {
   cnzz.log('getListInfo_is_into');
   // 发送的数据需要加密处理
   data = __webpack_require__("61191ae0f0390d21295c").gZip(data);
-  var siteid = siteIdDicts[G.site] || siteIdDicts['nowSite'] || nowSiteId;
+  var siteid = siteIdDicts[G.site || gwd_G.site] || siteIdDicts['nowSite'] || nowSiteId;
   if (window.XMLHttpRequest) {
     try {
       // communicate.trigger({
@@ -49712,7 +49890,7 @@ var sendInfo = function sendInfo(info) {
       //   url: `${G.server}/extension?ac=sendListInfo&site_id=${siteid}&u=${G.union}`
       // });
       var xml = new XMLHttpRequest();
-      xml.open('POST', G.server + '/extension?ac=sendListInfo&site_id=' + siteid + '&u=' + G.union);
+      xml.open('POST', window.gwd_G.server + '/extension?ac=sendListInfo&site_id=' + siteid + '&u=' + G.union + '&from=externalJS');
       xml.send(data);
 
       //request.post(`${G.server}/extension?ac=sendListInfo&site_id=${siteid}&u=${G.union}`, data, false)
@@ -49813,7 +49991,7 @@ module.exports.init = function () {
 };
 
 module.exports.sendPriCheck = function (info) {
-  nowSiteId = __webpack_require__("60624e018be49fb2d959").getSiteId(G.site);
+  nowSiteId = __webpack_require__("60624e018be49fb2d959").getSiteId(G.site || gwd_G.site);
   sendInfo(info);
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("e081b2491b5c9b12b9da"), __webpack_require__("5d4f0e584bd9a3a675b3")))

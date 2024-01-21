@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         万能验证码自动输入（升级版）
 // @namespace    https://www.like996.icu:1205/
-// @version      5.2
-// @description  在将来的时间里将会在后台默默的为你自动识别页面是否存在验证码并填入。对于一些书写不规整的验证码页面请手动配置规则。感谢老六提供框架代码，感谢哈士奇提供思路支持。
+// @version      6.3
+// @description  自动识别填写英文、数字、滑动拼图、滑动行为等验证码，对于自动规则无法覆盖的验证码页面请手动配置规则。感谢老六、哈士奇两位大佬提供的帮助！
 // @author       crab
-// @match        http://*/*
-// @match        https://*/*
+// @match        *://*/*
 // @connect      like996.icu
 // @connect      *
 // @require      http://libs.baidu.com/jquery/2.0.0/jquery.min.js
@@ -20,14 +19,19 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getResourceText
 // @nocompat     Chrome
+// @downloadURL https://update.greasyfork.org/scripts/418942/%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5%EF%BC%88%E5%8D%87%E7%BA%A7%E7%89%88%EF%BC%89.user.js
+// @updateURL https://update.greasyfork.org/scripts/418942/%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5%EF%BC%88%E5%8D%87%E7%BA%A7%E7%89%88%EF%BC%89.meta.js
 // ==/UserScript==
+
+let Set = undefined;
+
 class CaptchaWrite {
     IdCard() {
         return Set["idCard"] == undefined ? "" : Set["idCard"];
     }
 
     getCaptchaServerUrl() {
-        return "https://www.like996.icu:1205/";
+        return "https://like996.icu:1205/";
     }
 
     constructor() {
@@ -62,14 +66,16 @@ class CaptchaWrite {
         var that = this;
         let res = confirm('您确认要恢复出厂设置吗？注意：清除后所有内容均需重新设置！');
         if (res == true) {
-            GM_setValue("set", {"idCard": ""});
+            GM_setValue("set", { "idCard": "" });
         }
         return res;
     }
 
     // 打开帮助页面
     openHelp() {
-        return GM_openInTab(this.getCaptchaServerUrl() + "help.html", 'active');
+        return GM_openInTab(this.getCaptchaServerUrl() + "help.html", {
+            active: true
+        });
     }
 
     //手动添加英数规则
@@ -125,7 +131,7 @@ class CaptchaWrite {
                                 that.Query({
                                     "method": "captchaHostAdd", "data": AddRule
                                 }, function (data) {
-                                    writeResultIntervals[writeResultIntervals.length] = {"img": img, "input": input}
+                                    writeResultIntervals[writeResultIntervals.length] = { "img": img, "input": input }
                                 });
                                 that.delCapFoowwLocalStorage(window.location.host);
                             });
@@ -172,7 +178,7 @@ class CaptchaWrite {
         let eleHeight = Number(that.getNumber(that.getElementStyle(el).height)) || 0;
         let eleTop = Number($(el).offset().top) || 0;
         let storagePathCache = that.getCapFoowwLocalStorage("slidePathCache");
-        let ruleCache = (storagePathCache && storagePathCache) || {ocr_type: 4};
+        let ruleCache = (storagePathCache && storagePathCache) || { ocr_type: 4 };
 
         if (tagName === "img") {
             if (eleWidth >= eleHeight && eleWidth > 150) {
@@ -180,7 +186,7 @@ class CaptchaWrite {
                 that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
                 that.Hint('您已成功选择大图片。', 5000);
                 that.checkTargetNeedZIndex(ruleCache, el);
-            } else if (eleWidth < 100 && eleWidth > 15 && eleHeight >= eleWidth - 5) {
+            } else if (eleWidth < 100 && eleWidth > 15 && eleWidth - eleHeight <= 10) {
                 ruleCache['small_image'] = that.Aimed(el);
                 that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
                 that.Hint('您已成功选择小图片。', 5000);
@@ -219,7 +225,7 @@ class CaptchaWrite {
                         that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
                         that.checkTargetNeedZIndex(ruleCache, curEl);
                         break;
-                    } else if (eleWidth < 100 && eleWidth > 15 && eleHeight >= eleWidth - 5) {
+                    } else if (eleWidth < 100 && eleWidth > 15 && eleWidth - eleHeight <= 10) {
                         ruleCache['small_image'] = that.Aimed(el);
                         that.Hint('您已成功选择小图片。', 5000);
                         that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
@@ -229,13 +235,13 @@ class CaptchaWrite {
                 }
                 if (tagName === "canvas") {
                     // 如果是canvas 直接寻找class中特定样式
-                    if (that.checkClassName(curEl, "canvas_bg") || that.checkClassName(curEl.parentNode, "captcha_basic_bg")) {
+                    if ((that.checkClassName(curEl, "canvas_bg") || that.checkClassName(curEl.parentNode, "captcha_basic_bg")) || (position != "absolute" && (eleWidth > 300 && eleWidth >= eleHeight * 1.5 && eleWidth <= eleHeight * 3))) {
                         ruleCache['big_image'] = that.Aimed(el);
                         that.Hint('您已成功选择大图片。', 5000);
                         that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
                         that.checkTargetNeedZIndex(ruleCache, curEl);
                         break;
-                    } else if (that.checkClassName(curEl, "canvas_slice")) {
+                    } else if (that.checkClassName(curEl, "slide") || that.checkClassName(curEl, "slice") || that.checkClassName(curEl, "mark")) {
                         ruleCache['small_image'] = that.Aimed(el);
                         that.Hint('您已成功选择小图片。', 5000);
                         that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
@@ -249,7 +255,7 @@ class CaptchaWrite {
 
             curEl = el;
             const firstImg = curEl.querySelector("img");
-            firstImg && that.onSlideTagClick({target: firstImg});
+            firstImg && that.onSlideTagClick({ target: firstImg });
         }
         const finish = Object.keys(ruleCache).filter((item) => item).length == 4;
         if (finish) {
@@ -268,7 +274,7 @@ class CaptchaWrite {
             }
 
             //添加规则
-            that.Query({"method": "captchaHostAdd", "data": AddRule});
+            that.Query({ "method": "captchaHostAdd", "data": AddRule });
 
             that.Hint('规则添加完毕，开始识别中。', 5000);
             ruleCache.ocrType = 4;
@@ -313,7 +319,7 @@ class CaptchaWrite {
     // 检查滑动拼图验证码并识别
     checkSlideCaptcha(slideCache) {
         var that = this;
-        const {big_image, small_image, move_item} = slideCache;
+        const { big_image, small_image, move_item } = slideCache;
 
         document.querySelector(big_image).onload = function () {
             that.checkSlideCaptcha(slideCache);
@@ -340,6 +346,8 @@ class CaptchaWrite {
 
             const big_base64 = await that.ImgElemToBase64(bigImgElem);
             const small_base64 = await that.ImgElemToBase64(smallImgElem);
+            $(bigImgElem).removeAttr("crab-src-base64");
+            $(smallImgElem).removeAttr("crab-src-base64");
             if (small_base64 == null || big_base64 == null) {
                 console.log("滑动拼图验证码为null");
                 return;
@@ -365,9 +373,9 @@ class CaptchaWrite {
 
             that.Identify_Crab(null, postData, function Slide(data) {
                 console.log("等待滑动距离：" + data.data)
-                that.moveSideCaptcha(smallImgElem, moveItemElem, data);
+                that.moveSideCaptcha(bigImgElem, smallImgElem, moveItemElem, data);
             });
-        };
+        }
         check();
     }
 
@@ -409,7 +417,7 @@ class CaptchaWrite {
                 $("canvas,img,div").each(function () {
                     $(this).off("click");
                 });
-                let AddRule = (storagePathCache && storagePathCache) || {ocr_type: 5};
+                let AddRule = (storagePathCache && storagePathCache) || { ocr_type: 5 };
                 AddRule['path'] = window.location.href;
                 AddRule['title'] = document.title;
                 AddRule['host'] = window.location.host;
@@ -417,7 +425,7 @@ class CaptchaWrite {
                 AddRule['idcard'] = that.IdCard();
 
                 //添加规则
-                that.Query({"method": "captchaHostAdd", "data": AddRule});
+                that.Query({ "method": "captchaHostAdd", "data": AddRule });
 
                 that.Hint('规则添加完毕，开始识别中。', 5000);
                 AddRule.ocrType = 5;
@@ -434,7 +442,7 @@ class CaptchaWrite {
     // 检查滑块行为验证码并识别
     checkSlideBehaviorCaptcha(slideCache) {
         var that = this;
-        const {move_item} = slideCache;
+        const { move_item } = slideCache;
 
         //判断验证码是否存在并可见
         if (!move_item || document.querySelector(move_item) == null || !$(move_item).is(":visible")) {
@@ -472,10 +480,10 @@ class CaptchaWrite {
 
             that.Identify_Crab(null, postData, function Slide(data) {
                 console.log("等待滑动距离：" + data.data)
-                that.moveSideCaptcha(moveItemElem, moveItemElem, data);
+                that.moveSideCaptcha(moveItemElem, moveItemElem, moveItemElem, data);
                 that.delCapFoowwLocalStorage("滑块行为识别缓存：" + small_image_width);
             });
-        };
+        }
         check();
     }
 
@@ -485,7 +493,7 @@ class CaptchaWrite {
      * @param moveItem 按钮
      * @param distance 滑动距离
      */
-    moveSideCaptcha(targetImg, moveItem, data) {
+    moveSideCaptcha(bigImg, smallImg, moveItem, data) {
         var that = this;
         var distance = data.data
         if (distance === 0) {
@@ -493,7 +501,7 @@ class CaptchaWrite {
             return;
         }
         var btn = moveItem;
-        let target = targetImg;
+        let target = smallImg;
 
         // 剩余滑动距离
         let varible = null;
@@ -503,16 +511,23 @@ class CaptchaWrite {
         let targetLeft = that.getNumber(that.getElementStyle(target).left) || 0;
         let targetMargin = that.getNumber(that.getElementStyle(target).marginLeft) || 0;
         let targetParentLeft = that.getNumber(that.getElementStyle(target.parentNode).left) || 0;
+        let targetParentMargin = that.getNumber(that.getElementStyle(target.parentNode).marginLeft) || 0;
         let targetTransform = that.getNumber(that.getEleTransform(target)) || 0;
         let targetParentTransform = that.getNumber(that.getEleTransform(target.parentNode)) || 0;
+
+        // 滑块与小图元素距离屏幕左侧的差距(用于后期取不到滑动距离切换参照物的差值)
+        let eledifference = moveItem.getBoundingClientRect().x - smallImg.getBoundingClientRect().x;
+
+        // 小图与大图元素距离屏幕左侧的差距(用于后期取不到滑动距离切换参照物的差值)
+        let bigToSmaill = smallImg.getBoundingClientRect().x - bigImg.getBoundingClientRect().x;
 
         var rect = btn.getBoundingClientRect();
         //鼠标指针在屏幕上的坐标；
         var screenX = rect.x;
         var screenY = rect.y;
         //鼠标指针在浏览器窗口内的坐标；
-        var clientX = rect.width / 2 - 2;
-        var clientY = rect.height / 2 - 2;
+        var clientX = screenX + rect.width / 2 - 2;
+        var clientY = screenY + rect.height / 2 - 2;
 
         // 初始化 MouseEvent 对象
         const mousedown = new MouseEvent("mousedown", {
@@ -533,13 +548,15 @@ class CaptchaWrite {
         var sideCount = 0;
         // 滑不动了的次数
         var sideMaxCount = 0;
+        // 滑动取值规则
+        var crabRuleId = 0;
 
         //持续滑动
         function continueSide() {
             setTimeout(function () {
                 var intervalLock = that.getCapFoowwLocalStorage("验证码滑动整体超时锁");
                 if (intervalLock == null) {
-                    that.setCapFoowwLocalStorage("验证码滑动整体超时锁", {time: new Date().getTime()}, new Date().getTime() + (1000 * 10));
+                    that.setCapFoowwLocalStorage("验证码滑动整体超时锁", { time: new Date().getTime() }, new Date().getTime() + (1000 * 10));
                 } else {
                     // 采用自解开锁模式
                     if (intervalLock.time + 1000 * 3 < new Date().getTime()) {
@@ -576,33 +593,46 @@ class CaptchaWrite {
                     //正常来说，小图片应该比滑块的宽度小，此处做*2加权判断
                     if (targetWidth < btnWidth * 2) {
                         // 滑块一般贴近左边，而小图可能稍稍向右，所以总滑动距离-滑块得差
-                        distance = that.getNumber(distance) + (targetWidth - btnWidth);
-                    }else{
-                        distance=distance-2.5;
+                        distance = that.getNumber(distance) + eledifference;
+                    } else {
+                        distance = distance - 2.5;
                     }
                     target = btn;
                 }
                 let newTargetLeft = that.getNumber(that.getElementStyle(target).left) || 0;
                 let newTargetMargin = that.getNumber(that.getElementStyle(target).marginLeft) || 0;
                 let newTargetParentLeft = that.getNumber(that.getElementStyle(target.parentNode).left) || 0;
+                let newTargetParentMargin = that.getNumber(that.getElementStyle(target.parentNode).marginLeft) || 0;
                 let newTargetTransform = that.getNumber(that.getEleTransform(target)) || 0;
                 let newTargetParentTransform = that.getNumber(that.getEleTransform(target.parentNode)) || 0;
 
-                if (newTargetLeft !== targetLeft) {
+                if (newTargetLeft !== targetLeft || crabRuleId == 1) {
                     varible = newTargetLeft;
                     targetLeft = newTargetLeft;
-                } else if (newTargetParentLeft !== targetParentLeft) {
+                    crabRuleId = 1;
+                } else if (newTargetParentLeft !== targetParentLeft || crabRuleId == 2) {
                     varible = newTargetParentLeft;
                     targetParentLeft = newTargetParentLeft;
-                } else if (newTargetTransform !== targetTransform) {
+                    crabRuleId = 2;
+                } else if (newTargetTransform !== targetTransform || targetTransform != 0 || crabRuleId == 3) {
                     varible = newTargetTransform;
                     targetTransform = newTargetTransform;
-                } else if (newTargetParentTransform != targetParentTransform) {
+                    crabRuleId = 3;
+                } else if (newTargetParentTransform != targetParentTransform || crabRuleId == 4) {
                     varible = newTargetParentTransform;
-                    targetParentTransform = varible;
-                } else if (newTargetMargin != targetMargin) {
+                    targetParentTransform = newTargetParentTransform;
+                    crabRuleId = 4;
+                } else if (newTargetMargin != targetMargin || crabRuleId == 5) {
                     varible = newTargetMargin;
                     targetMargin = newTargetMargin;
+                    crabRuleId = 5;
+                } else if (newTargetParentMargin != targetParentMargin || crabRuleId == 6) {
+                    if (bigToSmaill != 0) {
+                        newTargetParentMargin = newTargetParentMargin + bigToSmaill;
+                    }
+                    varible = newTargetParentMargin;
+                    targetParentMargin = newTargetParentMargin;
+                    crabRuleId = 6;
                 }
 
                 if (varible != null && varible != 0) {
@@ -651,7 +681,6 @@ class CaptchaWrite {
                     }
 
                     dx += tempDistance;
-
                     // 随机定义y得偏差
                     let sign = Math.random() > 0.5 ? -1 : 1;
                     dy += Math.ceil(Math.random() * 2 * sign);
@@ -668,19 +697,23 @@ class CaptchaWrite {
     // 完成滑动
     finishSide(btn, _screenX, _screenY, _clientX, _clientY) {
         var that = this;
-        var mouseup = new MouseEvent("mouseup", {
-            bubbles: true,
-            cancelable: true,
-            view: document.defaultView,
-            clientX: _clientX,
-            clientY: _clientY,
-            screenX: _screenX,
-            screenY: _screenY
-        });
-        setTimeout(() => {
-            btn.dispatchEvent(mouseup);
-            console.log("滑动完毕，释放鼠标");
-        }, Math.ceil(Math.random() * 500));
+        var eventList = ["mouseup"]
+        for (var i = 0; i < eventList.length; i++) {
+            var mouseup = new MouseEvent(eventList[i], {
+                bubbles: true,
+                cancelable: true,
+                view: document.defaultView,
+                clientX: _clientX,
+                clientY: _clientY,
+                screenX: _screenX,
+                screenY: _screenY
+            });
+            setTimeout(() => {
+                btn.dispatchEvent(mouseup);
+                console.log("滑动完毕，释放鼠标");
+            }, Math.ceil(Math.random() * 500));
+        }
+
         //1秒后解除全局锁,避免网速慢导致验证码刷新不出来
         setTimeout(() => {
             that.delCapFoowwLocalStorage("验证码滑动整体超时锁");
@@ -727,7 +760,7 @@ class CaptchaWrite {
             display: 'none'
 
         });
-        $("body").prepend(TipHtml);
+        $("body").append(TipHtml);
         return TipHtml;
     }
 
@@ -741,7 +774,7 @@ class CaptchaWrite {
             window.parent.postMessage({
                 sign: "crab",
                 action: "Hint",
-                postData: {Content: Content, Duration: Duration}
+                postData: { Content: Content, Duration: Duration }
             }, "*");
             return;
         }
@@ -800,7 +833,7 @@ class CaptchaWrite {
         GM_xmlhttpRequest({
             url: that.getCaptchaServerUrl() + Json.method,
             method: 'POST',
-            headers: {'Content-Type': 'application/json; charset=utf-8', 'path': window.location.href},
+            headers: { 'Content-Type': 'application/json; charset=utf-8', 'path': window.location.href },
             data: JSON.stringify(Json.data),
             responseType: "json",
             onload: obj => {
@@ -859,9 +892,10 @@ class CaptchaWrite {
             } else if (Rule.code == 533 && Set["autoIdentification"] == "true") {
                 //如果当前网页无规则，则启动自动查找验证码功能（无法一直执行否则将大量错误识别！）
                 console.log('新网站开始自动化验证码查找' + Pathname);
+                let autoRulesCheckElems = [];
                 const autoRulesIntervalID = setInterval(function () {
-                    var MatchList = that.AutoRules();
-                    if (MatchList.length) {
+                    var MatchList = that.AutoRules(autoRulesCheckElems);
+                    if (MatchList !=null && MatchList.length > 0) {
                         //改为定时器绑定，解决快捷键失效问题
                         writeResultIntervals.splice(0);
                         console.log('检测到新规则，开始绑定元素');
@@ -885,8 +919,8 @@ class CaptchaWrite {
         window.addEventListener(
             "message",
             (event) => {
-                const {data = {}} = event || {};
-                const {sign, action, postData} = data;
+                const { data = {} } = event || {};
+                const { sign, action, postData } = data;
                 if (sign === "crab") {
                     if (action && actions[action]) {
                         actions[action](postData);
@@ -947,14 +981,14 @@ class CaptchaWrite {
             }
         }
         postData["idCard"] = that.IdCard();
-        postData["version"] = "5.2";
+        postData["version"] = "6.3";
         that.setCapFoowwLocalStorage("识别结果缓存:" + postDataHash, "识别中..", new Date().getTime() + (9999999 * 9999999));//同一个验证码只识别一次
         var url = that.getCaptchaServerUrl() + "/hello";
         console.log("验证码变动，开始识别");
         GM_xmlhttpRequest({
             url: url,
             method: 'POST',
-            headers: {'Content-Type': 'application/json; charset=UTF-8', 'path': window.location.href},
+            headers: { 'Content-Type': 'application/json; charset=UTF-8', 'path': window.location.href },
             data: JSON.stringify(postData),
             responseType: "json",
             onload: obj => {
@@ -1021,7 +1055,7 @@ class CaptchaWrite {
             return;
         }
 
-        var postData = {img: imgBase64, ocr_type: 1};
+        var postData = { img: imgBase64, ocr_type: 1 };
         that.Identify_Crab(imgElement, postData, callback);
     }
 
@@ -1057,6 +1091,9 @@ class CaptchaWrite {
                         imgBase64 = imgBase64.replace("%0D%0A", "");
                     }
                 } else if (imgSrc != undefined && (((imgSrc.indexOf("http") == 0 || imgSrc.indexOf("//") == 0) && imgSrc.indexOf(window.location.protocol + "//" + window.location.host + "/") == -1) || $(imgObj).attr("crab_err") != undefined)) {
+                    if (imgSrc.indexOf("//") == 0) {
+                        imgSrc = window.location.protocol + imgSrc;
+                    }
                     // 跨域模式下单独获取src进行转base64
                     var Results = that.getCapFoowwLocalStorage("验证码跨域识别锁：" + imgSrc);
                     if (Results != null) {
@@ -1088,7 +1125,7 @@ class CaptchaWrite {
                     });
                 } else {
                     // 使用canvas进行图片转换
-                    imgBase64 = that.ConversionBase(imgObj).toDataURL("image/png");
+                    imgBase64 = that.ConversionBase(imgObj);
                 }
 
                 var transform = that.getElementStyle(imgObj)['transform'];
@@ -1162,12 +1199,16 @@ class CaptchaWrite {
     RuleBindingElement(img, input) {
         var that = this;
         //创建一个触发操作
-        if (document.querySelector(img) == null) {
+        let imgObj = img;
+        if(typeof(imgObj) == "string"){
+            imgObj=document.querySelector(img)
+        }
+        if (imgObj == null) {
             return;
         }
 
-        document.querySelector(img).onload = function () {
-            that.RuleBindingElement(img, input)
+        imgObj.onload = function () {
+            that.RuleBindingElement(imgObj, input)
         }
 
         this.ImgPathToResult(img, function WriteRule(vcode) {
@@ -1184,13 +1225,18 @@ class CaptchaWrite {
         if (typeof (InputEvent) !== 'undefined') {
             //使用 InputEvent 方法，主流浏览器兼容
             WriteInput.value = ImgCodeResult;
-            WriteInput.dispatchEvent(new InputEvent("input")); //模拟事件
-            let eventNames = ["change", "blur", "focus", "keypress", "keydown", "input", "keydown", "keyup", "select"];
+            let eventReactNames = ["input", "change", "focus", "invalid", "keypress", "keydown", "keyup", "input", "blur", "select", "focus"];
+            for (var j = 0; j < eventReactNames.length; j++) {
+                if (that.FireForReact(WriteInput, eventReactNames[j])) {
+                    WriteInput.value = ImgCodeResult;
+                    //return;
+                }
+            }
+            let eventNames = ["keypress", "keydown", "keyup", "input", "blur", "select", "focus"];
             for (var i = 0; i < eventNames.length; i++) {
                 that.Fire(WriteInput, eventNames[i]);
+                WriteInput.value = ImgCodeResult;
             }
-            that.FireForReact(WriteInput, "change");
-            WriteInput.value = ImgCodeResult;
         } else if (KeyboardEvent) {
             //使用 KeyboardEvent 方法，ES6以下的浏览器方法
             WriteInput.dispatchEvent(new KeyboardEvent("input"));
@@ -1212,10 +1258,12 @@ class CaptchaWrite {
             var funName = Object.keys(element).find(p => Object.keys(element[p]).find(f => f.toLowerCase().endsWith(eventName)));
             if (funName != undefined) {
                 element[funName].onChange(env)
+                return true;
             }
         } catch (e) {
             // console.log("各类react事件调用出错！")
         }
+        return false;
 
     }
 
@@ -1226,8 +1274,49 @@ class CaptchaWrite {
         canvas.height = img.height;
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0, img.width, img.height);
-        return canvas;
+        var imgObj = $(img);
+        try {
+            //尝试直接转换，如果失败，可能存在跨域
+            return canvas.toDataURL("image/png");
+        } catch (e) {
+            // 对跨域的场景进行处理
+            let imgSrc = imgObj.attr("crab-src");
+            let imgBase64 = imgObj.attr("crab-src-base64");
+
+            if (imgBase64 != undefined) {
+                return imgBase64;
+            }
+            if (imgSrc == undefined) {
+                throw new Error("canvas图片跨域，无法加载！");
+            }
+            // 跨域模式下单独获取src进行转base64
+            var Results = this.getCapFoowwLocalStorage("验证码跨域识别锁：" + imgSrc);
+            if (Results != null) {
+                return null;
+            }
+            this.setCapFoowwLocalStorage("验证码跨域识别锁：" + imgSrc, "避免逻辑错误多次识别", new Date().getTime() + (9999999 * 9999999));//同一个url仅识别一次
+
+
+            this.Hint('正在处理跨域验证码请勿操作鼠标！');
+            GM_xmlhttpRequest({
+                url: imgSrc,
+                method: 'GET',
+                responseType: "blob",
+                onload: (response) => {
+                    if (response.status === 200) {
+                        const blob = response.response;
+                        const fileReader = new FileReader();
+                        fileReader.onloadend = (e) => {
+                            const base64 = e.target.result;
+                            $(img).attr("crab-src-base64", base64);
+                        }
+                        fileReader.readAsDataURL(blob);
+                    }
+                }
+            });
+        }
     }
+
 
     // 部分滑动图片可能存在旋转，需要修正
     rotationImg(img) {
@@ -1250,9 +1339,33 @@ class CaptchaWrite {
 
     }
 
+    hashCode(strKey) {
+        var hash = 0;
+        if (strKey != null && strKey != "") {
+            for (var i = 0; i < strKey.length; i++) {
+                hash = hash * 31 + strKey.charCodeAt(i);
+                hash = this.intValue(hash);
+            }
+        }
+        return hash;
+    }
+
+    intValue(num) {
+        var MAX_VALUE = 0x7fffffff;
+        var MIN_VALUE = -0x80000000;
+        if (num > MAX_VALUE || num < MIN_VALUE) {
+            return num &= 0xFFFFFFFF;
+        }
+        return num;
+    }
+
     //自动规则
-    AutoRules() {
+    AutoRules(autoRulesCheckElems) {
         var that = this;
+        if (autoRulesCheckElems.length > 1500) {
+            //如果一个页面的元素超过1500个，则停止自动规则，避免卡顿
+            return;
+        }
         // 最终规则
         var MatchList = [];
         //验证码元素
@@ -1262,6 +1375,11 @@ class CaptchaWrite {
             if (!$(img).is(":visible")) {
                 return true;
             }
+            let elemCode = that.hashCode($(img).html());
+            if (autoRulesCheckElems.indexOf(elemCode) == -1) {
+                autoRulesCheckElems.push(elemCode);
+            }
+
             let checkList = [...that.getCaptchaFeature(img), ...that.getCaptchaFeature(img.parentNode),];
             checkList = checkList.filter((item) => item);
             for (let i = 0; i < checkList.length; i++) {
@@ -1270,7 +1388,7 @@ class CaptchaWrite {
                     return true;
                 }
             }
-            let isInvalid = ["#", "about:blank"].includes(img.getAttribute("src")) || !img.getAttribute("src");
+            let isInvalid = ["#", "about:blank"].includes(img.getAttribute("src")) || !img.getAttribute("src") || img.getAttribute("src").indexOf("data:") == 0;
             let imgRules = "code,captcha,yzm,check,random,veri,vcodeimg,验证码,看不清,换一张,login,点击,verify,yanzhengma".split(",");
             let isHave = false;
             for (let i = 0; i < checkList.length && !isHave; i++) {
@@ -1287,7 +1405,7 @@ class CaptchaWrite {
                             && ((imgTagName == "img" && !isInvalid) || imgTagName != "img") && imgWidth > 30 && imgWidth < 150
                             && ((imgTagName == "div" && imgStyles['backgroundImage'] != 'none') || imgTagName != "div")
                             && imgHeight < 80 && imgHeight != imgWidth) {
-                            captchaMap.push({"img": img, "input": null})
+                            captchaMap.push({ "img": img, "input": null })
                             isHave = true;
                             break;
                         }
@@ -1321,7 +1439,7 @@ class CaptchaWrite {
                         // 给目标元素添加边框，证明自动规则选中得
                         $(imgEle).css("borderStyle", "solid").css("borderColor", "red").css("border-width", "2px").css("box-sizing", "border-box");
                         $(input).css("borderStyle", "solid").css("borderColor", "red").css("border-width", "1px").css("box-sizing", "border-box");
-                        MatchList.push({"img": that.Aimed(imgEle), "input": that.Aimed(input)})
+                        MatchList.push({ "img": that.Aimed(imgEle), "input": that.Aimed(input) })
                         break;
                     }
                     if (type === "password") {
@@ -1344,6 +1462,7 @@ class CaptchaWrite {
         checkList.push(el.getAttribute("alt"));
         checkList.push(el.getAttribute("src"));
         checkList.push(el.getAttribute("name"));
+        checkList.push(el.getAttribute("title"));
 
         return checkList;
     }
@@ -1404,11 +1523,17 @@ class CaptchaWrite {
                 return result;
             }
         }
-        var cssPath = that.geElementCssPath(Element);
+        // 如果有elemClassName则直接返回
+        var elemClassName = that.getElementClassName(Element);
+        if (elemClassName != null && elemClassName.length < 200) {
+            return elemClassName;
+        }
+
+        var cssPath = that.getElementCssPath(Element);
         if (cssPath != null && cssPath != "") {
             try {
                 //避免样式选择器有时候选到错的无法使用问题
-                if ($(cssPath).length > 0) {
+                if ($(cssPath).length == 1) {
                     return cssPath;
                 }
             } catch (e) {
@@ -1445,7 +1570,7 @@ class CaptchaWrite {
     getElementId(element) {
         var id = element.id;
         if (id) {
-            if (id.indexOf("exifviewer-img-") == -1) {// 对抗类似vue这种无意义id
+            if (this.checkBadElemId(id)) {// 对抗类似vue这种无意义id
                 if (id.length < 40) {// 对抗某些会自动变换id的验证码
                     return true;
                 }
@@ -1548,12 +1673,30 @@ class CaptchaWrite {
                     return null;
                 }
                 if (/\d/.test(value)) {
-                    // 存在数字则可能是时间戳之类得，直接抛弃
-                    return null;
+                    // 存在数字则可能是时间戳之类得，尝试获取上级目录
+                    const lastSlashIndex = value.lastIndexOf('/');
+                    if (lastSlashIndex !== -1) {
+                        let truncateURL = value.substring(0, lastSlashIndex);
+                        if (truncateURL.indexOf("blob:") == 0) {
+                            truncateURL = truncateURL.substring(5, truncateURL.length);
+                        }
+                        if (truncateURL.indexOf("http") != 0) {
+                            truncateURL = "http:" + truncateURL;
+                        }
+                        try{
+                            const url = new URL(value);
+                            if (url.pathname != "/") {
+                                value = truncateURL;
+                            }
+                        }catch(e){
+                            //非标准url，不需要处理，直接返回即可
+                        }
+                    }
                 }
                 return elementKeys[i].name + "^='" + value + "'";
             }
         }
+
         return null;
     }
 
@@ -1590,9 +1733,30 @@ class CaptchaWrite {
         return null;
     }
 
+    // 判断ClassName是否只有一个
+    getElementClassName(element) {
+        var a = element.classList;
+        var elementClassName = [];
+        for (var i = 0; i < a.length; i++) {
+            if (a[i].indexOf("hover") != -1 || a[i].indexOf("active") != -1) {
+                continue
+            }
+            elementClassName.push("." + a[i]);
+        }
+        if (elementClassName.length == 0) {
+            return null;
+        }
+        var selectElement = element.localName + Array.from(elementClassName).join('');
+        if ($(selectElement).length == 1) {
+            return selectElement;
+        }
+        return null;
+    }
+
+
     // 操作webStorage 增加缓存，减少对服务端的请求
     setCapFoowwLocalStorage(key, value, ttl_ms) {
-        var data = {value: value, expirse: new Date(ttl_ms).getTime()};
+        var data = { value: value, expirse: new Date(ttl_ms).getTime() };
         sessionStorage.setItem(key, JSON.stringify(data));
     }
 
@@ -1704,27 +1868,43 @@ class CaptchaWrite {
         }
     }
 
+
     // 获取元素的cssPath选择器
-    geElementCssPath(element) {
-        if (!(element instanceof Element)) return;
-        var path = [];
-        while (element.nodeType === Node.ELEMENT_NODE) {
-            var selector = element.nodeName.toLowerCase();
-            if (element.id && element.id.indexOf("exifviewer-img-") == -1) {
-                selector += "#" + element.id;
+    getElementCssPath(element) {
+        if (!(element instanceof Element) || !element.parentElement) {
+            return null;
+        }
+
+        const path = [];
+        while (element.parentElement) {
+            let selector = element.nodeName.toLowerCase();
+            if (element.id && this.checkBadElemId(element.id)) {
+                selector += `#${element.id}`;
                 path.unshift(selector);
                 break;
             } else {
-                var sib = element, nth = 1;
-                while ((sib = sib.previousElementSibling)) {
-                    if (sib.nodeName.toLowerCase() == selector) nth++;
+                const siblings = Array.from(element.parentElement.children).filter(e => e.nodeName.toLowerCase() === selector);
+                const index = siblings.indexOf(element);
+
+                if (siblings.length > 1) {
+                    selector += `:nth-of-type(${index + 1})`;
                 }
-                if (nth != 1) selector += ":nth-of-type(" + nth + ")";
+
+                path.unshift(selector);
+                element = element.parentElement;
             }
-            path.unshift(selector);
-            element = element.parentNode;
         }
-        return path.join(" > ");
+
+        return path.join(' > ');
+    }
+
+    //检查是否为随机的Id
+    checkBadElemId(idStr) {
+        if (idStr.indexOf("exifviewer-img-") != -1) {
+            return false;
+        }
+        const pattern = /[-_]\d$/;
+        return !pattern.test(idStr);
     }
 
     // 获取指定字符串hash
@@ -1763,8 +1943,7 @@ class CaptchaWrite {
                 "100": "4",
                 "101": "5",
                 "102": "6",
-                "103": "7"
-                ,
+                "103": "7",
                 "104": "8",
                 "105": "9",
                 "106": "*",
@@ -1774,8 +1953,7 @@ class CaptchaWrite {
                 "110": ".",
                 "111": "/",
                 "112": "F1",
-                "113": "F2"
-                ,
+                "113": "F2",
                 "114": "F3",
                 "115": "F4",
                 "116": "F5",
@@ -1784,8 +1962,7 @@ class CaptchaWrite {
                 "119": "F8",
                 "120": "F9",
                 "121": "F10",
-                "122": "F11"
-                ,
+                "122": "F11",
                 "123": "F12",
                 "8": "BackSpace",
                 "9": "Tab",
@@ -1793,8 +1970,7 @@ class CaptchaWrite {
                 "13": "回车",
                 "16": "Shift",
                 "17": "Control",
-                "18": "Alt"
-                ,
+                "18": "Alt",
                 "20": "Cape Lock",
                 "27": "Esc",
                 "32": "空格",
@@ -1802,8 +1978,7 @@ class CaptchaWrite {
                 "34": "Page Down",
                 "35": "End",
                 "36": "Home",
-                "37": "←"
-                ,
+                "37": "←",
                 "38": "↑",
                 "39": "→",
                 "40": "↓",
@@ -1812,8 +1987,7 @@ class CaptchaWrite {
                 "144": "Num Lock",
                 "186": ";",
                 "187": "=",
-                "188": ","
-                ,
+                "188": ",",
                 "189": "-",
                 "190": ".",
                 "191": "/",
@@ -1823,8 +1997,7 @@ class CaptchaWrite {
                 "221": "]",
                 "222": "'",
                 "65": "A",
-                "66": "B"
-                ,
+                "66": "B",
                 "67": "C",
                 "68": "D",
                 "69": "E",
@@ -1835,8 +2008,7 @@ class CaptchaWrite {
                 "74": "J",
                 "75": "K",
                 "76": "L",
-                "77": "M"
-                ,
+                "77": "M",
                 "78": "N",
                 "79": "O",
                 "80": "P",
@@ -1847,8 +2019,7 @@ class CaptchaWrite {
                 "85": "U",
                 "86": "V",
                 "87": "W",
-                "88": "X"
-                ,
+                "88": "X",
                 "89": "Y",
                 "90": "Z",
                 "48": "0",
@@ -1966,16 +2137,40 @@ async function GUISettings() {
         for (var i = 0; i < menuList.length; i++) {
             container.appendChild(await CKTools.domHelper("li", async list => {
                 list.classList.add("showav_menuitem");
+                list.setAttribute('menuId', i);
+                list.addEventListener("click", e => {
+                    let targetElem = $(e.target.parentElement);
+                    let menuId = targetElem.attr("menuId");
+                    if (menuList[menuId].type == "button") {
+                        if (eval(menuList[menuId].doWork)) {
+                            crabCaptcha.Hint(menuList[menuId].hintOpen);
+                        }
+                    } else {
+                        const label = document.querySelector("#" + menuList[menuId].name + "Tip");
+                        const checkbox = document.querySelector("#" + menuList[menuId].name);
+                        if (!label) return;
+                        if (!checkbox.checked) {
+                            label.innerHTML = "<b>[已开启]</b> " + menuList[menuId].title;
+                            Set[menuList[menuId].name] = menuList[menuId].openVul;
+                            GM_setValue("set", Set);
+                            checkbox.checked = true;
+                            crabCaptcha.Hint(menuList[menuId].hintOpen);
+                            let doWork = menuList[menuId].doWork;
+                            if (doWork != null) {
+                                eval(doWork)
+                            }
+                        } else {
+                            label.innerHTML = "<span>[已关闭]</span>" + menuList[menuId].title;
+                            Set[menuList[menuId].name] = menuList[menuId].closeVul;
+                            checkbox.checked = false;
+                            GM_setValue("set", Set);
+                            crabCaptcha.Hint(menuList[menuId].hintClose);
+                        }
+                    }
+                })
                 if (menuList[i].type == 'button') {
                     list.appendChild(await CKTools.domHelper("label", label => {
                         label.id = menuList[i].name + "Tip";
-                        label.value = i;
-                        label.setAttribute('doWork', menuList[i].doWork);
-                        label.addEventListener("click", e => {
-                            if (eval($(e.target).attr("doWork"))) {
-                                crabCaptcha.Hint(menuList[e.target.value].hintOpen);
-                            }
-                        })
                         label.innerHTML = menuList[i].title;
                     }));
                 } else {
@@ -1983,30 +2178,8 @@ async function GUISettings() {
                         input.type = "checkbox";
                         input.id = menuList[i].name;
                         input.name = menuList[i].name;
-                        input.value = i;
                         input.style.display = "none";
                         input.checked = Set[menuList[i].name] == 'true';
-                        input.setAttribute('doWork', menuList[i].doWork);
-                        input.addEventListener("change", e => {
-                            var i = e.target.value;
-                            const label = document.querySelector("#" + menuList[i].name + "Tip");
-                            if (!label) return;
-                            if (input.checked) {
-                                label.innerHTML = "<b>[已开启]</b> " + menuList[i].title;
-                                Set[menuList[i].name] = menuList[i].openVul;
-                                GM_setValue("set", Set);
-                                crabCaptcha.Hint(menuList[i].hintOpen);
-                                let doWork = $(e.target).attr("doWork");
-                                if (doWork != null) {
-                                    eval(doWork)
-                                }
-                            } else {
-                                label.innerHTML = "<span>[已关闭]</span>" + menuList[i].title;
-                                Set[menuList[i].name] = menuList[i].closeVul;
-                                GM_setValue("set", Set);
-                                crabCaptcha.Hint(menuList[i].hintClose);
-                            }
-                        })
                     }));
                     list.appendChild(await CKTools.domHelper("label", label => {
                         label.id = menuList[i].name + "Tip";
@@ -2088,16 +2261,16 @@ async function GUIAddRule() {
         for (var i = 0; i < menuList.length; i++) {
             container.appendChild(await CKTools.domHelper("li", async list => {
                 list.classList.add("showav_menuitem");
+                list.setAttribute('doWork', menuList[i].doWork);
+                list.addEventListener("click", e => {
+                    CKTools.modal.hideModal();
+                    eval($(e.target.parentElement).attr("doWork"));
+                });
                 if (menuList[i].type == 'button') {
                     list.appendChild(await CKTools.domHelper("label", label => {
                         label.id = menuList[i].name + "Tip";
                         label.value = i;
-                        label.setAttribute('doWork', menuList[i].doWork);
                         label.setAttribute('style', "color:blue");
-                        label.addEventListener("click", e => {
-                            CKTools.modal.hideModal();
-                            eval($(e.target).attr("doWork"));
-                        })
                         label.innerHTML = menuList[i].title;
                     }));
                 }
@@ -2127,11 +2300,21 @@ async function GUIAddRule() {
     //强制设置置顶，避免被占用
     $("#CKTOOLS-modal").css("z-index", "99999999999");
     $("#CKTOOLS-modal").height("400px");
+
+
 }
 
+// hook一份ctx的结果，用于跨域获取
+const originalDrawImage = CanvasRenderingContext2D.prototype.drawImage;
+CanvasRenderingContext2D.prototype.drawImage = function (image, ...args) {
+    if (image.tagName != null && image.tagName.toLowerCase() === "img" && image.src.indexOf("http") != -1) {
+        $(this.canvas).attr("crab-src", image.src)
+    }
+    originalDrawImage.call(this, image, ...args);
+};
 var crabCaptcha = new CaptchaWrite();
 (function () {
-    const resourceList = [{name: 'cktools', type: 'js'}]
+    const resourceList = [{ name: 'cktools', type: 'js' }]
 
     function applyResource() {
         resloop: for (let res of resourceList) {

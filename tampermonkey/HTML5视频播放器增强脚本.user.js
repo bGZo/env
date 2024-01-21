@@ -9,7 +9,7 @@
 // @name:de      HTML5 Video Player erweitertes Skript
 // @namespace    https://github.com/xxxily/h5player
 // @homepage     https://github.com/xxxily/h5player
-// @version      3.7.6
+// @version      3.7.12
 // @description  视频增强脚本，支持所有H5视频网站，例如：B站、抖音、腾讯视频、优酷、爱奇艺、西瓜视频、油管（YouTube）、微博视频、知乎视频、搜狐视频、网易公开课、百度网盘、阿里云盘、ted、instagram、twitter等。全程快捷键控制，支持：倍速播放/加速播放、视频画面截图、画中画、网页全屏、调节亮度、饱和度、对比度、自定义配置功能增强等功能，为你提供愉悦的在线视频播放体验。还有视频广告快进、在线教程/教育视频倍速快学、视频文件下载等能力
 // @description:en  Video enhancement script, supports all H5 video websites, such as: Bilibili, Douyin, Tencent Video, Youku, iQiyi, Xigua Video, YouTube, Weibo Video, Zhihu Video, Sohu Video, NetEase Open Course, Baidu network disk, Alibaba cloud disk, ted, instagram, twitter, etc. Full shortcut key control, support: double-speed playback/accelerated playback, video screenshots, picture-in-picture, full-screen web pages, adjusting brightness, saturation, contrast
 // @description:zh  视频增强脚本，支持所有H5视频网站，例如：B站、抖音、腾讯视频、优酷、爱奇艺、西瓜视频、油管（YouTube）、微博视频、知乎视频、搜狐视频、网易公开课、百度网盘、阿里云盘、ted、instagram、twitter等。全程快捷键控制，支持：倍速播放/加速播放、视频画面截图、画中画、网页全屏、调节亮度、饱和度、对比度、自定义配置功能增强等功能，为你提供愉悦的在线视频播放体验。还有视频广告快进、在线教程/教育视频倍速快学、视频文件下载等能力
@@ -40,6 +40,8 @@
 // @grant        GM_setClipboard
 // @run-at       document-start
 // @license      GPL
+// @downloadURL https://update.greasyfork.org/scripts/381682/HTML5%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC.user.js
+// @updateURL https://update.greasyfork.org/scripts/381682/HTML5%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC.meta.js
 // ==/UserScript==
 (function (w) { if (w) { w.name = 'h5player'; } })();
 
@@ -1779,6 +1781,9 @@ const configManager = new ConfigManager({
       playbackRate: 1,
       volume: 1,
 
+      /* 最后一次设定的播放速度，默认1.5 */
+      lastPlaybackRate: 1.5,
+
       /* 是否允许存储播放进度 */
       allowRestorePlayProgress: {
 
@@ -1812,7 +1817,7 @@ const configManager = new ConfigManager({
       {
         desc: '启用或禁止自动恢复播放进度功能',
         key: 'shift+r',
-        command: 'capture'
+        command: 'switchRestorePlayProgressStatus'
       },
       {
         desc: '垂直镜像翻转',
@@ -2322,52 +2327,99 @@ class TCC {
 }
 
 class Debug {
-  constructor (msg, printTime = false) {
-    const t = this;
-    msg = msg || 'debug message:';
-    t.log = t.createDebugMethod('log', null, msg);
-    t.error = t.createDebugMethod('error', null, msg);
-    t.info = t.createDebugMethod('info', null, msg);
-    t.warn = t.createDebugMethod('warn', null, msg);
+  constructor (config = {}) {
+    this.config = {
+      msg: '[Debug Msg]',
+      /* 显示调用栈信息 */
+      trace: false,
+      /* 是否把调用栈信息和要打印的信息放在一组折叠起来，直接输出的话再大量较多信息的时候会显得非常凌乱，所以默认true */
+      traceGroup: true,
+      printTime: false,
+
+      /* 统一设置字体颜色，背景颜色，其它样式等 */
+      color: '#000000',
+      backgroundColor: 'transparent',
+      style: '',
+
+      ...config,
+
+      /* 为不同的调试方法设置不同的字体颜色，背景颜色，其它样式等 */
+      colorMap: {
+        info: '#2274A5',
+        log: '#95B46A',
+        warn: '#F5A623',
+        error: '#D33F49',
+        ...config.colorMap || {}
+      },
+      backgroundColorMap: {
+        info: '',
+        log: '',
+        warn: '',
+        error: '',
+        ...config.backgroundColorMap || {}
+      },
+      styleMap: {
+        info: '',
+        log: '',
+        warn: '',
+        error: '',
+        ...config.styleMap || {}
+      }
+    };
+
+    const debugMethodList = ['log', 'error', 'info', 'warn'];
+    debugMethodList.forEach((name) => {
+      this[name] = this.createDebugMethod(name);
+    });
   }
 
   create (msg) {
     return new Debug(msg)
   }
 
-  createDebugMethod (name, color, tipsMsg) {
+  createDebugMethod (name) {
     name = name || 'info';
 
-    const bgColorMap = {
-      info: '#2274A5',
-      log: '#95B46A',
-      warn: '#F5A623',
-      error: '#D33F49'
-    };
-
-    const printTime = this.printTime;
+    const { msg, color, colorMap, backgroundColor, backgroundColorMap, style, styleMap, printTime, trace, traceGroup } = this.config;
+    const textColor = colorMap[name] || color;
+    const bgColor = backgroundColorMap[name] || backgroundColor;
+    const customStyle = styleMap[name] || style;
 
     return function () {
       if (!window._debugMode_) {
         return false
       }
 
-      const msg = tipsMsg || 'debug message:';
-
       const arg = Array.from(arguments);
-      arg.unshift(`color: white; background-color: ${color || bgColorMap[name] || '#95B46A'}`);
+      const arg0 = arg[0];
+      arg.unshift(`color: ${textColor}; background-color: ${bgColor}; ${customStyle}`);
+
+      let timeStr = '';
 
       if (printTime) {
         const curTime = new Date();
         const H = curTime.getHours();
         const M = curTime.getMinutes();
         const S = curTime.getSeconds();
-        arg.unshift(`%c [${H}:${M}:${S}] ${msg} `);
-      } else {
-        arg.unshift(`%c ${msg} `);
+        timeStr = `[${H}:${M}:${S}] `;
       }
 
-      window.console[name].apply(window.console, arg);
+      arg.unshift(`%c ${timeStr}${msg} `);
+
+      if (trace) {
+        if (traceGroup) {
+          const arg1Str = typeof arg0 === 'string' ? arg0 : Object.prototype.toString.call(arg0);
+          console.groupCollapsed(`%c ${timeStr}${msg} ${arg1Str}`, `color: ${textColor}; background-color: ${bgColor}; ${customStyle}`);
+          window.console[name].apply(console, arg);
+          console.trace();
+          console.groupEnd();
+        } else {
+          window.console[name].apply(console, arg);
+          console.trace();
+        }
+      } else {
+        window.console[name].apply(window.console, arg);
+      }
     }
   }
 
@@ -2376,9 +2428,39 @@ class Debug {
   }
 }
 
+// function demo () {
+//   window._debugMode_ = true
+//   window.debug = new Debug({
+//     msg: '[Debug Message]',
+//     colorMap: {
+//       info: '#FFFFFF',
+//       log: '#FFFFFF'
+//     },
+//     backgroundColorMap: {
+//       info: '#2274A5',
+//       log: '#95B46A'
+//     },
+//     style: 'font-size: 22px; font-weight: bold; padding: 2px 4px; border-radius: 2px;',
+//     trace: true,
+//     traceGroup: true,
+//     printTime: true
+//   })
+
+//   window.debug.log('debug mode is on', window.debug)
+//   window.debug.info('debug mode is on', window.debug)
+//   window.debug.warn('debug mode is on', window.debug)
+//   window.debug.error('debug mode is on', window.debug)
+// }
+// demo()
+
 var Debug$1 = new Debug();
 
-var debug = Debug$1.create('h5player message:');
+var debug = Debug$1.create({
+  msg: '[H5player Msg]',
+  trace: false,
+  traceGroup: true,
+  printTime: false
+});
 
 const $q = function (str) { return document.querySelector(str) };
 
@@ -2398,6 +2480,7 @@ const taskConf = {
    * */
   'demo.demo': {
     // disable: true, // 在该域名下禁止插件的所有功能
+    init: function (h5Player, taskConf) {},
     fullScreen: '.fullscreen-btn',
     exitFullScreen: '.exit-fullscreen-btn',
     webFullScreen: function () {},
@@ -2406,6 +2489,8 @@ const taskConf = {
     // pause: ['.player-pause', '.player-pause02'], //多种情况对应不同的选择器时，可使用数组，插件会对选择器进行遍历，知道找到可用的为止
     pause: '.player-pause',
     play: '.player-play',
+    afterPlay: function (h5Player, taskConf) {},
+    afterPause: function (h5Player, taskConf) {},
     switchPlayStatus: '.player-play',
     playbackRate: function () {},
     // playbackRate: true, // 当给某个功能设置true时，表示使用网站自身的能力控制视频，而忽略插件的能力
@@ -2442,9 +2527,108 @@ const taskConf = {
     exclude: /\t/
   },
   'youtube.com': {
+    init: function (h5Player, taskConf) {
+      if (h5Player.hasBindSkipAdEvents) { return }
+      const startTime = new Date().getTime();
+      let skipCount = 0;
+
+      const skipHandler = (element) => {
+        const endTime = new Date().getTime();
+        const time = endTime - startTime;
+        /* 过早触发会导致广告无法跳过 */
+        if (time < 3000) {
+          return false
+        }
+
+        /* 页面处于不可见状态时候也不触发 */
+        if (document.hidden) {
+          return false
+        }
+
+        element.click();
+        skipCount++;
+
+        debug.log('youtube.com ad skip count', skipCount);
+      };
+
+      ready('.ytp-ad-skip-button', function (element) {
+        skipHandler(element);
+      });
+
+      ready('.ytp-ad-skip-button-modern', function (element) {
+        skipHandler(element);
+      });
+
+      h5Player.hasBindSkipAdEvents = true;
+    },
     webFullScreen: 'button.ytp-size-button',
     fullScreen: 'button.ytp-fullscreen-button',
     next: '.ytp-next-button',
+    afterPlay: function (h5Player, taskConf) {
+      /* 解决快捷键暂停、播放后一直有loading图标滞留的问题 */
+      const player = h5Player.player();
+      const playerwWrap = player.closest('.html5-video-player');
+
+      if (!playerwWrap) {
+        return
+      }
+
+      playerwWrap.classList.add('ytp-autohide', 'playing-mode');
+      clearTimeout(playerwWrap.autohideTimer);
+      playerwWrap.autohideTimer = setTimeout(() => {
+        playerwWrap.classList.add('ytp-autohide', 'playing-mode');
+      }, 1000);
+
+      if (!playerwWrap.hasBindCustomEvents) {
+        const mousemoveHander = (event) => {
+          playerwWrap.classList.remove('ytp-autohide', 'ytp-hide-info-bar');
+
+          clearTimeout(playerwWrap.mousemoveTimer);
+          playerwWrap.mousemoveTimer = setTimeout(() => {
+            if (!player.paused) {
+              playerwWrap.classList.add('ytp-autohide', 'ytp-hide-info-bar');
+            }
+          }, 1000 * 2);
+        };
+
+        const clickHander = (event) => {
+          h5Player.switchPlayStatus();
+          mousemoveHander();
+        };
+
+        player.addEventListener('mousemove', mousemoveHander);
+        player.addEventListener('click', clickHander);
+
+        playerwWrap.hasBindCustomEvents = true;
+      }
+
+      const spinner = playerwWrap.querySelector('.ytp-spinner');
+
+      if (spinner) {
+        const hiddenSpinner = () => { spinner && (spinner.style.visibility = 'hidden'); };
+        const visibleSpinner = () => { spinner && (spinner.style.visibility = 'visible'); };
+
+        /* 点击播放时立即隐藏spinner */
+        hiddenSpinner();
+
+        clearTimeout(playerwWrap.spinnerTimer);
+        playerwWrap.spinnerTimer = setTimeout(() => {
+          /* 1秒后将spinner设置为none，并且恢复Spinner的可见状态，以便其它逻辑仍能正确控制spinner的显隐状态 */
+          spinner.style.display = 'none';
+          visibleSpinner();
+        }, 1000);
+      }
+    },
+    afterPause: function (h5Player, taskConf) {
+      const player = h5Player.player();
+      const playerwWrap = player.closest('.html5-video-player');
+
+      if (!playerwWrap) return
+
+      playerwWrap.classList.remove('ytp-autohide', 'playing-mode');
+      playerwWrap.classList.add('paused-mode');
+      clearTimeout(playerwWrap.autohideTimer);
+    },
     shortcuts: {
       register: [
         'escape'
@@ -3109,9 +3293,9 @@ async function setClipboard (blob) {
         [blob.type]: blob
       })
     ]).then(() => {
-      console.info('[setClipboard] clipboard suc');
+      console.info('[setClipboard] clipboard suc', blob.type);
     }).catch((e) => {
-      console.error('[setClipboard] clipboard err', e);
+      console.error('[setClipboard] clipboard err', blob.type, e);
     });
   } else {
     console.error('当前网站不支持将数据写入到剪贴板里，见：\n https://developer.mozilla.org/en-US/docs/Web/API/Clipboard');
@@ -3166,15 +3350,26 @@ var videoCapturer = {
     title = title || 'videoCapturer_' + Date.now();
 
     try {
+      /**
+       * 尝试复制到剪贴板
+       * 注意部分浏览器不支持将'image/jpeg'类型的数据写入到剪贴板，image/jpg可以，但会导致toBlob的结果为png的数据，
+       * 所以这里新起了'image/png'来尝试复制到剪贴板，而不能将setClipboard(blob)放到下面的try里
+       * 另外由于下面的自动下载截图会导致页面失焦，也会造成复制到剪贴板失败，所以这里先复制到剪贴板，再进行下载
+       */
+      canvas.toBlob(function (blob) {
+        setClipboard(blob);
+      }, 'image/png', 0.99);
+    } catch (e) {
+      console.error('无法将截图复制到剪贴板。', e);
+    }
+
+    try {
       canvas.toBlob(function (blob) {
         const el = document.createElement('a');
         el.download = `${title}.jpg`;
         el.href = URL.createObjectURL(blob);
         el.click();
-
-        /* 尝试复制到剪贴板 */
-        setClipboard(blob);
-      }, 'image/jpg', 0.99);
+      }, 'image/jpeg', 0.99);
     } catch (e) {
       videoCapturer.previe(canvas, title);
       console.error('视频源受CORS标识限制，无法直接下载截图，见：\n https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS');
@@ -4495,7 +4690,7 @@ class HookJs {
   }
 }
 
-var hookJs = new HookJs();
+const hookJs = new HookJs(true);
 
 /**
  * 禁止对playbackRate进行锁定
@@ -4696,7 +4891,8 @@ let monkeyMenuList = [
   /* 推广位，只允许推荐有用的东西 */
   {
     title: i18n.t('recommend'),
-    disable: !i18n.language().includes('zh'),
+    // disable: !i18n.language().includes('zh'),
+    disable: true,
     fn: () => {
       function randomZeroOrOne () {
         return Math.floor(Math.random() * 2)
@@ -5097,6 +5293,7 @@ const combinationKeysMonitor = (function () {
 class HotkeysRunner {
   constructor (hotkeys, win = window) {
     this.window = win;
+    this.windowList = [win];
     /* Mac和window使用的修饰符是不一样的 */
     this.MOD = typeof navigator === 'object' && /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? 'Meta' : 'Ctrl';
     // 'Control', 'Shift', 'Alt', 'Meta'
@@ -5111,6 +5308,11 @@ class HotkeysRunner {
   /* 设置其它window对象的组合键监控逻辑 */
   setCombinationKeysMonitor (win) {
     this.window = win;
+
+    if (!this.windowList.includes(win)) {
+      this.windowList.push(win);
+    }
+
     combinationKeysMonitor.init(win);
   }
 
@@ -5201,8 +5403,14 @@ class HotkeysRunner {
   isMatchPrevPress (press) { return this.isMatch(this.prevPress, press) }
 
   run (opts = {}) {
-    const KeyboardEvent = this.window.KeyboardEvent;
-    if (!(opts.event instanceof KeyboardEvent)) { return false }
+    // 这里只对单个window有效
+    // const KeyboardEvent = this.window.KeyboardEvent
+    // if (!(opts.event instanceof KeyboardEvent)) { return false }
+
+    const KeyboardEventList = this.windowList.map(win => win.KeyboardEvent);
+    if (!KeyboardEventList.includes(opts.event.constructor)) {
+      return false
+    }
 
     const event = opts.event;
     const target = opts.target || null;
@@ -5486,7 +5694,7 @@ const h5Player = {
 
   playbackRate: configManager.get('media.playbackRate'),
   volume: configManager.get('media.volume'),
-  lastPlaybackRate: 1,
+  lastPlaybackRate: configManager.get('media.lastPlaybackRate'),
   /* 快进快退步长 */
   skipStep: 5,
 
@@ -5922,6 +6130,16 @@ const h5Player = {
     return Date.now() - this.playbackRateInfo.lockTimeout < 0
   },
 
+  /* 解决高低倍速频繁切换后，音画不同步的问题 */
+  fixPlaybackRate: function (oldPlaybackRate) {
+    const t = this;
+    const curPlaybackRate = t.getPlaybackRate();
+
+    if (Math.abs(curPlaybackRate - oldPlaybackRate) > 1) {
+      t.setCurrentTimeUp(0.1, true);
+    }
+  },
+
   /* 设置播放速度 */
   setPlaybackRate: function (num, notips, duplicate) {
     const t = this;
@@ -5938,6 +6156,8 @@ const h5Player = {
     }
 
     if (!player) return
+
+    const oldPlaybackRate = t.getPlaybackRate();
 
     let curPlaybackRate;
     if (num) {
@@ -5983,6 +6203,7 @@ const h5Player = {
         }
       });
 
+      t.fixPlaybackRate(oldPlaybackRate);
       return true
     }
 
@@ -6057,6 +6278,8 @@ const h5Player = {
       /* 600ms时重新触发无效的话，再来个1200ms后触发，如果是1200ms才生效，则调速生效的延迟已经非常明显了 */
       t._setPlaybackRateDuplicate2_ = setTimeout(duplicatePlaybackRate, 1200);
     }
+
+    t.fixPlaybackRate(oldPlaybackRate);
   },
 
   /**
@@ -6067,7 +6290,7 @@ const h5Player = {
    */
   setPlaybackRatePlus: function (num) {
     num = Number(num);
-    if (!num || !Number.isInteger(num)) {
+    if (!num || Number.isNaN(num)) {
       return false
     }
 
@@ -6102,6 +6325,7 @@ const h5Player = {
     const playbackRate = oldPlaybackRate === 1 ? t.lastPlaybackRate : 1;
     if (oldPlaybackRate !== 1) {
       t.lastPlaybackRate = oldPlaybackRate;
+      configManager.setLocalStorage('media.lastPlaybackRate', oldPlaybackRate);
     }
 
     t.setPlaybackRate(playbackRate);
@@ -6239,7 +6463,7 @@ const h5Player = {
     }
   },
 
-  setCurrentTimeUp (num) {
+  setCurrentTimeUp (num, hideTips) {
     num = Number(numUp(num) || this.skipStep);
 
     if (TCC$1.doTask('addCurrentTime')) ; else {
@@ -6250,7 +6474,9 @@ const h5Player = {
         /* 防止外部进度控制逻辑的干扰，所以锁定一段时间 */
         this.lockCurrentTime(500);
 
-        this.tips(i18n.t('tipsMsg.forward') + num + i18n.t('tipsMsg.seconds'));
+        if (!hideTips) {
+          this.tips(i18n.t('tipsMsg.forward') + num + i18n.t('tipsMsg.seconds'));
+        }
       }
     }
   },
@@ -6730,6 +6956,8 @@ const h5Player = {
 
         t.tips(i18n.t('tipsMsg.play'));
       }
+
+      TCC$1.doTask('afterPlay');
     } else {
       if (TCC$1.doTask('pause')) ; else {
         if (t.mediaPlusApi) {
@@ -6747,6 +6975,8 @@ const h5Player = {
 
         t.tips(i18n.t('tipsMsg.pause'));
       }
+
+      TCC$1.doTask('afterPause');
     }
   },
 
@@ -7938,6 +8168,7 @@ async function h5PlayerInit () {
 
     /* 禁止对playbackRate等属性进行锁定 */
     hackDefineProperty();
+    // if (!location.host.includes('bilibili')) {}
 
     /* 禁止对shadowdom使用close模式 */
     hackAttachShadow();

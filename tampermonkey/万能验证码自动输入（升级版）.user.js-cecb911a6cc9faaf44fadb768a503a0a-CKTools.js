@@ -610,47 +610,7 @@
 				}
 			}
 		}
-		static bili = class {
-			static getCSRFToken() {
-				return CKTools.getCookie("bili_jct");
-			}
-			static async playerReady() {
-				let i = 50;
-				while (--i >= 0) {
-					await CKTools.wait(100);
-					if (!('player' in window)) continue;
-					if (!('isInitialized' in window.player)) continue;
-					if (!window.player.isInitialized()) continue;
-				}
-				if (i < 0) return false;
-				await CKTools.waitForPageVisible();
-				while (1) {
-					await CKTools.wait(200);
-					if (document.querySelector(".bilibili-player-video-control-wrap")) return true;
-				}
-			}
-			static getTotalTime() {
-				return waitForAttribute(CKTools.get('video, bwp-video'), 'duration');
-			}
-			static getCurrentTime() {
-				return CKTools.get('video, bwp-video').currentTime;
-			}
-			static setTime(t) {
-				return window.player.seek(t);
-			}
-			static play() {
-				return window.player.play();
-			}
-			static pause() {
-				return window.player.pause();
-			}
-			static getInfoByBvid(bvid) {
-				return fetch('https://api.bilibili.com/x/web-interface/view?bvid=' + bvid).then(raw => raw.json());
-			}
-			static getInfoByAid(aid) {
-				return fetch('https://api.bilibili.com/x/web-interface/view?aid=' + aid).then(raw => raw.json());
-			}
-		}
+		
 		static EventEmitter = class {
 			handlers = {};
 			on(name, func) {
