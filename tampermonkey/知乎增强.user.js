@@ -3,10 +3,10 @@
 // @name:zh-CN   知乎增强
 // @name:zh-TW   知乎增強
 // @name:en      Zhihu enhancement
-// @version      2.2.15
+// @version      2.3.6
 // @author       X.I.U
-// @description  移除登录弹窗、屏蔽首页视频、默认收起回答、快捷收起回答/评论（左键两侧）、快捷回到顶部（右键两侧）、屏蔽用户、屏蔽关键词、移除高亮链接、屏蔽盐选内容/热榜杂项、净化搜索热门、净化标题消息、展开问题描述、显示问题作者、置顶显示时间、完整问题时间、区分问题文章、直达问题按钮、默认高清原图、默认站外直链
-// @description:zh-TW  移除登錄彈窗、屏蔽首頁視頻、默認收起回答、快捷收起回答/評論、快捷回到頂部、屏蔽用戶、屏蔽關鍵詞、移除高亮鏈接、屏蔽鹽選內容、淨化搜索熱門、淨化標題消息、置頂顯示時間、完整問題時間、區分問題文章、默認高清原圖、默認站外直鏈...
+// @description  屏蔽首页视频、默认收起回答、快捷收起回答/评论（左键两侧）、快捷回到顶部（右键两侧）、屏蔽用户、屏蔽关键词、移除高亮链接、屏蔽盐选内容/热榜杂项、净化搜索热门、净化标题消息、展开问题描述、显示问题作者、默认高清原图（无水印）、置顶显示时间、完整问题时间、区分问题文章、直达问题按钮、默认站外直链...
+// @description:zh-TW  屏蔽首頁視頻、默認收起回答、快捷收起回答/評論、快捷回到頂部、屏蔽用戶、屏蔽關鍵詞、移除高亮鏈接、屏蔽鹽選內容、淨化搜索熱門、淨化標題消息、默認高清原圖（無水印）、置頂顯示時間、完整問題時間、區分問題文章、默認站外直鏈...
 // @description:en  A more personalized Zhihu experience~
 // @match        *://www.zhihu.com/*
 // @match        *://zhuanlan.zhihu.com/*
@@ -40,6 +40,7 @@ var menu_ALL = [
     ['menu_blockUsers', '屏蔽指定用户', '屏蔽指定用户', true],
     ['menu_customBlockUsers', '自定义屏蔽用户', '自定义屏蔽用户', ['故事档案局', '盐选推荐', '盐选科普', '盐选成长计划', '知乎盐选会员', '知乎盐选创作者', '盐选心理', '盐选健康必修课', '盐选奇妙物语', '盐选生活馆', '盐选职场', '盐选文学甄选', '盐选作者小管家', '盐选博物馆', '盐选点金', '盐选测评室', '盐选科技前沿', '盐选会员精品']],
     ['menu_blockKeywords', '屏蔽指定关键词', '屏蔽指定关键词', true],
+    ['menu_blockKeywordsComment', '屏蔽关键词 - 评论区', '屏蔽关键词 - 评论区', true],
     ['menu_customBlockKeywords', '自定义屏蔽关键词', '自定义屏蔽关键词', []],
     ['menu_blockType', '屏蔽指定类别 (视频/文章等)', '勾选 = 屏蔽该类别的信息流', ''],
     ['menu_blockTypeVideo', '视频 [首页、搜索页、问题页]', '视频（首页、搜索页、问题页）', true],
@@ -70,10 +71,12 @@ function registerMenuCommand() {
     }
     for (let i=0;i<menu_ALL.length;i++){ // 循环注册脚本菜单
         menu_ALL[i][3] = GM_getValue(menu_ALL[i][0]);
-        if (menu_ALL[i][0] === 'menu_customBlockUsers') {
+        if (menu_ALL[i][0] === 'menu_customBlockUsers') { // 只有 [屏蔽指定用户] 启用时，才注册菜单 [自定义屏蔽用户]
             if (menu_value('menu_blockUsers')) menu_ID[i] = GM_registerMenuCommand(`#️⃣ ${menu_ALL[i][1]}`, function(){customBlockUsers()});
-        } else if (menu_ALL[i][0] === 'menu_customBlockKeywords') {
+        } else if (menu_ALL[i][0] === 'menu_customBlockKeywords') { // 只有 [屏蔽指定关键词] 启用时，才注册菜单 [自定义屏蔽关键词]
             if (menu_value('menu_blockKeywords')) menu_ID[i] = GM_registerMenuCommand(`#️⃣ ${menu_ALL[i][1]}`, function(){customBlockKeywords()});
+        } else if (menu_ALL[i][0] === 'menu_blockKeywordsComment') { // 只有 [屏蔽指定关键词] 启用时，才注册菜单 [屏蔽关键词 - 评论区]
+            if (menu_value('menu_blockKeywords')) menu_ID[i] = GM_registerMenuCommand(`${menu_ALL[i][3]?'✅':'❌'} ${menu_ALL[i][1]}`, function(){menu_switch(`${menu_ALL[i][3]}`,`${menu_ALL[i][0]}`,`${menu_ALL[i][2]}`)});
         } else if (menu_ALL[i][0] === 'menu_blockType') {
             menu_ID[i] = GM_registerMenuCommand(`#️⃣ ${menu_ALL[i][1]}`, function(){menu_setting('checkbox', menu_ALL[i][1], menu_ALL[i][2], true, [menu_ALL[i+1], menu_ALL[i+2], menu_ALL[i+3], menu_ALL[i+4], menu_ALL[i+5], menu_ALL[i+6], menu_ALL[i+7]])});
         } else if (menu_ALL[i][0] != 'menu_blockTypeVideo' && menu_ALL[i][0] != 'menu_blockTypeArticle' && menu_ALL[i][0] != 'menu_blockTypePin' && menu_ALL[i][0] != 'menu_blockTypeTopic' && menu_ALL[i][0] != 'menu_blockTypeSearch' && menu_ALL[i][0] != 'menu_blockYanXuan' && menu_ALL[i][0] != 'menu_blockTypeLiveHot') {
@@ -456,7 +459,7 @@ function blockUsers(type) {
             break;
     }
     blockUsers_comment(); //       评论区
-    blockUsers_button(); //        加入黑名单按钮
+    blockUsers_button(); //        加入黑名单按钮（用户信息悬浮框中）
 
     function blockUsers_(className1, className2) {
         // 前几条因为是直接加载的，而不是动态插入网页的，所以需要单独判断
@@ -615,18 +618,20 @@ function blockUsers(type) {
             for (const mutation of mutationsList) {
                 for (const target of mutation.addedNodes) {
                     if (target.nodeType != 1) return
-                    let item = target.querySelector('img.Avatar[width="24"]')
-                    if (item) {
-                        //console.log(item)
-                        menu_value('menu_customBlockUsers').forEach(function(item1){ // 遍历用户黑名单
-                            //console.log(item.alt,item1)
-                            if (item.alt === item1) { // 找到就删除该搜索结果
-                                item.parentElement.parentElement.style.display = "none";
-                            }
-                        })
+                    //console.log(target)
+                    if (target.tagName == 'DIV' && target.className.indexOf('css-') == 0 && target.dataset.id == undefined) {
+                        let item = target.querySelector('a[href^="https://www.zhihu.com/people/"]>img.Avatar[alt][loading]')
+                        if (item) {
+                            //console.log(item)
+                            menu_value('menu_customBlockUsers').forEach(function(item1){ // 遍历用户黑名单
+                                if (item.alt === item1) { // 找到就删除该搜索结果
+                                    //console.log(item.alt,item1)
+                                    item.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+                                }
+                            })
 
-                        // 添加屏蔽用户按钮（点赞、回复等按钮后面）
-                        /*if (item) {
+                            // 添加屏蔽用户按钮（点赞、回复等按钮后面）
+                            /*if (item) {
                             let footer = findParentElement(item, 'CommentItemV2-meta', true).parentElement.querySelector('.CommentItemV2-metaSibling > .CommentItemV2-footer'),
                                 userid = item.parentElement;
                             if (userid && footer && !footer.lastElementChild.dataset.name) {
@@ -635,6 +640,7 @@ function blockUsers(type) {
                                 footer.lastElementChild.onclick = function(){blockUsers_button_add(this.dataset.name, this.dataset.userid, false)}
                             }
                         }*/
+                        }
                     }
                 }
             }
@@ -651,14 +657,23 @@ function blockUsers(type) {
                 for (const target of mutation.addedNodes) {
                     if (target.nodeType != 1) return
                     //console.log(target, target.className)
-                    if (target.className && (target.className.indexOf('Popover-content Popover-content--top HoverCard-popoverTarget') > -1 || target.className.indexOf('Popover-content Popover-content--bottom HoverCard-popoverTarget') > -1) || target.querySelector('.Popover-content.Popover-content--top.HoverCard-popoverTarget') || target.querySelector('.Popover-content.Popover-content--bottom.HoverCard-popoverTarget')) {
-                        let item = target.querySelector('.MemberButtonGroup.ProfileButtonGroup.HoverCard-buttons'),
-                            item1 = target.querySelector('a.UserLink-link'),
-                            name = item1.textContent,
-                            userid = item1.href.split('/')[4];
-                        if (item && !target.querySelector('button[data-name][data-userid]')) {
-                            item.insertAdjacentHTML('beforeend', `<button type="button" data-name="${name}" data-userid="${userid}" class="Button FollowButton Button--primary Button--red" style="width: 100%;margin: 7px 0 0 0;"><span style="display: inline-flex; align-items: center;">​<svg class="Zi Zi--Plus FollowButton-icon" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M18.376 5.624c-3.498-3.499-9.254-3.499-12.752 0-3.499 3.498-3.499 9.254 0 12.752 3.498 3.499 9.254 3.499 12.752 0 3.499-3.498 3.499-9.14 0-12.752zm-1.693 1.693c2.37 2.37 2.596 6.094.678 8.69l-9.367-9.48c2.708-1.919 6.32-1.58 8.69.79zm-9.48 9.48c-2.37-2.37-2.595-6.095-.676-8.69l9.48 9.48c-2.822 1.918-6.433 1.58-8.803-.79z" fill-rule="evenodd"></path></svg></span>屏蔽用户</button>`);
-                            item.lastElementChild.onclick = function(){blockUsers_button_add(this.dataset.name, this.dataset.userid, false)}
+                    if (target.className && (target.className.indexOf('css-') == 0 || target.style == 'opacity: 1;')) {
+                        const item = target.querySelector('.MemberButtonGroup.ProfileButtonGroup.HoverCard-buttons'),
+                              item1 = target.querySelector('img.Avatar+div span.UserLink>a.UserLink-link[data-za-detail-view-element_name=User]');
+                        if (item1) {
+                            const name = item1.textContent, userid = item1.href.split('/')[4], users = menu_value('menu_customBlockUsers');
+                            for (let num = 0;num<users.length;num++) { // 判断是否已存在
+                                if (users[num] === name) { // 已存在
+                                    target.querySelectorAll('.Button.Button--primary.Button--red').forEach(function(item){item.style.display = 'none';}) // 隐藏知乎自带的已屏蔽按钮
+                                    item.insertAdjacentHTML('afterbegin', `<button type="button" data-name="${name}" data-userid="${userid}" class="Button FollowButton Button--primary Button--red"><span style="display: inline-flex; align-items: center;">​<svg width="1.2em" height="1.2em" viewBox="0 0 24 24" class="Zi Zi--Ban" fill="currentColor"><path fill-rule="evenodd" d="M16.346 18.113a7.5 7.5 0 0 1-10.46-10.46l10.46 10.46Zm1.767-1.767L7.654 5.886a7.5 7.5 0 0 1 10.46 10.46ZM22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z" clip-rule="evenodd"></path></svg></span> 已屏蔽</button>`);
+                                    item.firstElementChild.onclick = function(){this.disabled = true;blockUsers_button_del(this.dataset.name, this.dataset.userid, false)}
+                                    return
+                                }
+                            };
+                            if (item && !target.querySelector('button[data-name][data-userid]')) {
+                                item.insertAdjacentHTML('beforeend', `<button type="button" data-name="${name}" data-userid="${userid}" class="Button FollowButton Button--primary Button--red" style="width: 100%;margin: 7px 0 0 0;"><span style="display: inline-flex; align-items: center;">​<svg width="1.2em" height="1.2em" viewBox="0 0 24 24" class="Zi Zi--Ban" fill="currentColor"><path fill-rule="evenodd" d="M16.346 18.113a7.5 7.5 0 0 1-10.46-10.46l10.46 10.46Zm1.767-1.767L7.654 5.886a7.5 7.5 0 0 1 10.46 10.46ZM22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z" clip-rule="evenodd"></path></svg></span> 屏蔽用户</button>`);
+                                item.lastElementChild.onclick = function(){this.disabled = true;blockUsers_button_add(this.dataset.name, this.dataset.userid, false)}
+                            }
                         }
                     }
                 }
@@ -677,14 +692,14 @@ function blockUsers(type) {
         for (let num = 0;num<users.length;num++) { // 判断是否已存在
             if (users[num] === name) { // 已存在
                 document.querySelectorAll('.Button.Button--primary.Button--red').forEach(function(item){item.style.display = 'none';}) // 隐藏知乎自带的已屏蔽按钮
-                item.insertAdjacentHTML('beforeend', `<button type="button" data-name="${name}" data-userid="${userid}" class="Button FollowButton Button--primary Button--red" style="margin: 0 0 0 12px;"><span style="display: inline-flex; align-items: center;">​<svg class="Zi Zi--Plus FollowButton-icon" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M18.376 5.624c-3.498-3.499-9.254-3.499-12.752 0-3.499 3.498-3.499 9.254 0 12.752 3.498 3.499 9.254 3.499 12.752 0 3.499-3.498 3.499-9.14 0-12.752zm-1.693 1.693c2.37 2.37 2.596 6.094.678 8.69l-9.367-9.48c2.708-1.919 6.32-1.58 8.69.79zm-9.48 9.48c-2.37-2.37-2.595-6.095-.676-8.69l9.48 9.48c-2.822 1.918-6.433 1.58-8.803-.79z" fill-rule="evenodd"></path></svg></span>取消屏蔽</button>`);
-                item.lastElementChild.onclick = function(){blockUsers_button_del(this.dataset.name, this.dataset.userid, true)}
+                item.insertAdjacentHTML('afterbegin', `<button type="button" data-name="${name}" data-userid="${userid}" class="Button FollowButton Button--primary Button--red" style="margin: 0 0 0 12px;"><span style="display: inline-flex; align-items: center;">​<svg width="1.2em" height="1.2em" viewBox="0 0 24 24" class="Zi Zi--Ban" fill="currentColor"><path fill-rule="evenodd" d="M16.346 18.113a7.5 7.5 0 0 1-10.46-10.46l10.46 10.46Zm1.767-1.767L7.654 5.886a7.5 7.5 0 0 1 10.46 10.46ZM22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z" clip-rule="evenodd"></path></svg></span> 已屏蔽</button>`);
+                item.firstElementChild.onclick = function(){this.disabled = true;blockUsers_button_del(this.dataset.name, this.dataset.userid, true)}
                 return
             }
         };
         if (item) {
-            item.insertAdjacentHTML('beforeend', `<button type="button" data-name="${name}" data-userid="${userid}" class="Button FollowButton Button--primary Button--red" style="margin: 0 0 0 12px;"><span style="display: inline-flex; align-items: center;">​<svg class="Zi Zi--Plus FollowButton-icon" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M18.376 5.624c-3.498-3.499-9.254-3.499-12.752 0-3.499 3.498-3.499 9.254 0 12.752 3.498 3.499 9.254 3.499 12.752 0 3.499-3.498 3.499-9.14 0-12.752zm-1.693 1.693c2.37 2.37 2.596 6.094.678 8.69l-9.367-9.48c2.708-1.919 6.32-1.58 8.69.79zm-9.48 9.48c-2.37-2.37-2.595-6.095-.676-8.69l9.48 9.48c-2.822 1.918-6.433 1.58-8.803-.79z" fill-rule="evenodd"></path></svg></span>屏蔽用户</button>`);
-            item.lastElementChild.onclick = function(){blockUsers_button_add(this.dataset.name, this.dataset.userid, true)}
+            item.insertAdjacentHTML('beforeend', `<button type="button" data-name="${name}" data-userid="${userid}" class="Button FollowButton Button--primary Button--red" style="margin: 0 0 0 12px;"><span style="display: inline-flex; align-items: center;">​<svg width="1.2em" height="1.2em" viewBox="0 0 24 24" class="Zi Zi--Ban" fill="currentColor"><path fill-rule="evenodd" d="M16.346 18.113a7.5 7.5 0 0 1-10.46-10.46l10.46 10.46Zm1.767-1.767L7.654 5.886a7.5 7.5 0 0 1 10.46 10.46ZM22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z" clip-rule="evenodd"></path></svg></span> 屏蔽用户</button>`);
+            item.lastElementChild.onclick = function(){this.disabled = true;blockUsers_button_add(this.dataset.name, this.dataset.userid, true)}
         }
     }
 
@@ -756,6 +771,9 @@ function blockKeywords(type) {
         case 'index':
             blockKeywords_('.Card.TopstoryItem.TopstoryItem-isRecommend', 'Card TopstoryItem TopstoryItem-isRecommend');
             break;
+        case 'follow':
+            blockKeywords_('.Card.TopstoryItem.TopstoryItem-isFollow', 'Card TopstoryItem TopstoryItem-isFollow');
+            break;
         case 'topic':
             blockKeywords_('.List-item.TopicFeedItem', 'List-item TopicFeedItem');
             break;
@@ -769,6 +787,7 @@ function blockKeywords(type) {
             blockKeywords_search();
             break;
         case 'comment':
+            if (!menu_value('menu_blockKeywordsComment')) return // 如果 [屏蔽关键词 - 评论区] 未启用则跳过
             blockKeywords_comment();
             break;
     }
@@ -834,23 +853,17 @@ function blockKeywords(type) {
 
     function blockKeywords_comment() {
         function filterComment(comment) {
-            let content = comment.querySelector('.RichText'); // 寻找评论文字所在元素
-            let texts = [content.textContent.toLowerCase()]; // 因为要针对评论中的表情，所以需要整个数组并全部转为小写（用来不区分大小写）
-            for (let i = 0; i < content.children.length; i++) { // 该条针对的是评论中的表情
-                let emoticonValue = content.children[i].getAttribute('data-zhihu-emoticon'); // 确定是表情就将其添加到稍后遍历的数组中
-                if (emoticonValue) {
-                    texts.push(emoticonValue)
-                }
-            }
+            let content = comment.querySelector('.CommentContent'); // 寻找评论文字所在元素
+            let text = content.textContent.toLowerCase(); // 全部转为小写（用来不区分大小写）
+            content.querySelectorAll('img.sticker[alt]').forEach((img)=>{text += img.alt}) // 将评论中的表情添加到待遍历的评论文字中
 
             let keywords = menu_value('menu_customBlockKeywords');
-            for (const text of texts) {
-                for (const keyword of keywords) { // 遍历关键词黑名单
-                    if (keyword != '' && text.indexOf(keyword.toLowerCase()) > -1) { // 找到就删除该评论
-                        console.log('已屏蔽评论：' + text);
-                        content.textContent = '[该评论已屏蔽]';
-                        break;
-                    }
+            for (const keyword of keywords) { // 遍历关键词黑名单
+                if (keyword != '' && text.indexOf(keyword.toLowerCase()) > -1) { // 找到就删除该评论
+                    console.log('已屏蔽评论：' + text);
+                    content.dataset.text = content.innerHTML
+                    content.onclick = (e)=>{if (e.target.dataset.text) {e.target.innerHTML = e.target.dataset.text;e.target.removeAttribute('data-text');}}
+                    content.textContent = '[该评论已屏蔽，可点击显示]';
                 }
             }
         }
@@ -859,9 +872,21 @@ function blockKeywords(type) {
             for (const mutation of mutationsList) {
                 for (const target of mutation.addedNodes) {
                     if (target.nodeType != 1) return
-                    for (const node of target.querySelectorAll('*')) {
-                        if (node.className === 'CommentItemV2-metaSibling') filterComment(node);
+                    //console.log(target);
+                    if (target.tagName == 'DIV' && target.className.indexOf('css-') == 0 && target.dataset.id == undefined) {
+                        let item = target.querySelector('a[href^="https://www.zhihu.com/people/"]>img.Avatar[alt][loading]')
+                        if (item) {
+                            //console.log(item)
+                            filterComment(item.parentElement.parentElement.parentElement.parentElement)
+                        }
                     }
+
+                    /*if (target.tagName == 'DIV' && target.dataset.id !== undefined) {
+                        console.log(target);
+                        for (const node of target.querySelectorAll('*')) {
+                            if (node.className === 'CommentItemV2-metaSibling') filterComment(node);
+                        }
+                    }*/
                 }
             }
         };
@@ -1010,7 +1035,7 @@ function removeHighlightLink() {
         for (const mutation of mutationsList) {
             for (const target of mutation.addedNodes) {
                 if (target.nodeType != 1 || target.tagName != 'A') break
-                if (target.dataset.zaNotTrackLink && target.href.indexOf('https://www.zhihu.com/search?q=') > -1) {
+                if (target.dataset.zaNotTrackLink && target.href.indexOf('https://zhida.zhihu.com/search?q=') > -1) {
                     target.parentElement.replaceWith(target.textContent);
                 }
             }
@@ -1020,7 +1045,7 @@ function removeHighlightLink() {
     observer.observe(document, { childList: true, subtree: true });
 
     // 针对的是打开网页后直接加载的前面几个回答（上面哪些是针对动态加载的回答）
-    document.querySelectorAll('span > a[data-za-not-track-link][href^="https://www.zhihu.com/search?q="]').forEach(e => e.parentElement.replaceWith(e.textContent))
+    document.querySelectorAll('span > a[data-za-not-track-link][href^="https://zhida.zhihu.com/search?q="]').forEach(e => e.parentElement.replaceWith(e.textContent))
 }
 
 
@@ -1370,15 +1395,15 @@ function getUTC8(t) {
 }
 
 
-// 默认站外直链，修改自：https://greasyfork.org/scripts/402808（从 JQuery 改为原生 JavaScript，且精简、优化了代码）
-function directLink () {
-    document.querySelectorAll('a.external[href*="link.zhihu.com/?target="], a.LinkCard[href*="link.zhihu.com/?target="]:not(.MCNLinkCard):not(.ZVideoLinkCard):not(.ADLinkCardContainer)').forEach(function (_this) {_this.href = decodeURIComponent(_this.href.substring(_this.href.indexOf('link.zhihu.com/?target=') + 23));});
+// 默认高清原图（无水印）
+function originalPic(){
+    document.querySelectorAll('img[data-original][data-original-token][data-lazy-status]:not([data-original-xiu]):not(.comment_sticker):not(.Avatar)').forEach(function(one){one.src = 'https://' + one.dataset.original.split('/')[2] + '/' + one.dataset.originalToken + '.webp'; one.dataset.originalXiu = 'true';});
 }
 
 
-// 默认高清原图，修改自：https://greasyfork.org/scripts/402808（从 JQuery 改为原生 JavaScript，且精简、优化了代码）
-function originalPic(){
-    document.querySelectorAll('img[data-original]:not(.comment_sticker):not(.Avatar)').forEach(function(one){if (one.src != one.dataset.original) {one.src = one.dataset.original}});
+// 默认站外直链，修改自：https://greasyfork.org/scripts/402808（从 JQuery 改为原生 JavaScript，且精简、优化了代码）
+function directLink () {
+    document.querySelectorAll('a.external[href*="link.zhihu.com/?target="], a.LinkCard[href*="link.zhihu.com/?target="]:not(.MCNLinkCard):not(.ZVideoLinkCard):not(.ADLinkCardContainer)').forEach(function (_this) {_this.href = decodeURIComponent(_this.href.substring(_this.href.indexOf('link.zhihu.com/?target=') + 23));});
 }
 
 
@@ -1462,18 +1487,21 @@ function blockHotOther() {
                 blockUsers('question'); //                                     屏蔽指定用户
                 blockYanXuan(); //                                             屏蔽盐选内容
             }, 300);
-        } else if (location.pathname == '/') {
+        } else if (location.pathname == '/') { // 推荐
             setTimeout(()=>{
                 blockUsers('index'); //                                        屏蔽指定用户
                 blockKeywords('index'); //                                     屏蔽指定关键词
                 blockType(); //                                                屏蔽指定类别（视频/文章等）
             }, 500);
-        } else if (location.pathname == '/hot') {
+        } else if (location.pathname == '/hot') { // 热榜
             setTimeout(()=>{
-                //屏蔽指定关键词
-                blockKeywords('index');
-                // 移除热播杂项
-                blockHotOther();
+                blockKeywords('index'); //                                     屏蔽指定关键词
+                blockHotOther(); //                                            移除热播杂项
+            }, 500);
+        } else if (location.pathname == '/follow') { // 关注
+            setTimeout(()=>{
+                blockKeywords('follow'); //                                    屏蔽指定关键词
+                blockType(); //                                                屏蔽指定类别（视频/文章等）
             }, 500);
         }
     })
@@ -1490,8 +1518,9 @@ function blockHotOther() {
 
     function start(){
         removeHighlightLink(); //                                              移除高亮链接
-        setInterval(originalPic,100); //                                       默认高清原图
-        setInterval(directLink, 100); //                                       默认站外直链
+        originalPic();directLink(); // 先立即执行一次
+        setInterval(originalPic,500); //                                       默认高清原图（无水印）
+        setInterval(directLink, 500); //                                       默认站外直链
         if (location.hostname != 'zhuanlan.zhihu.com') {
             if (location.pathname.indexOf('/column/') === -1) cleanSearch(); //净化搜索热门
             collapsedAnswer(); //                                              一键收起回答
@@ -1568,6 +1597,9 @@ function blockHotOther() {
             setInterval(function(){topTime_('.ContentItem.AnswerItem, .ContentItem.ArticleItem', 'ContentItem-meta')}, 300); // 置顶显示时间
             blockKeywords('collection'); //                                    屏蔽指定关键词
 
+        } else if (location.pathname.indexOf('/pin/') > -1) { // 想法 //
+            backToTop('main[role=main]'); //                                   快捷返回顶部
+            setInterval(function(){topTime_('.ContentItem.PinItem', 'ContentItem-meta')}, 300); // 置顶显示时间
 
         } else { //                                                     首页 //
             // 解决屏蔽类别后，因为首页信息流太少而没有滚动条导致无法加载更多内容的问题
@@ -1579,13 +1611,16 @@ function blockHotOther() {
             setInterval(function(){topTime_('.TopstoryItem', 'ContentItem-meta')}, 300); // 置顶显示时间
             addTypeTips(); //                                                  区分问题文章
             addToQuestion(); //                                                直达问题按钮
-            if (location.pathname == '/') {
+            if (location.pathname == '/') { // 推荐
                 blockUsers('index'); //                                        屏蔽指定用户
                 blockKeywords('index'); //                                     屏蔽指定关键词
                 blockType(); //                                                屏蔽指定类别（视频/文章等）
-            } else if (location.pathname == '/hot') {
+            } else if (location.pathname == '/hot') { // 热榜
                 blockKeywords('index'); //                                     屏蔽指定关键词
                 blockHotOther(); //                                            屏蔽热榜杂项
+            } else if (location.pathname == '/follow') { // 关注
+                blockKeywords('follow'); //                                    屏蔽指定关键词
+                blockType(); //                                                屏蔽指定类别（视频/文章等）
             } else {
                 blockUsers();
             }
