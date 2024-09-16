@@ -1,6 +1,6 @@
 # Ready for Windows
 ## Package management
->[!importent] 
+>[!IMPORTANT] 
 `winget` is required by following command.
 
 ### Import `scoop`
@@ -8,50 +8,98 @@
 * run `install-scoop.bat`
 * run following command with admin permissions
 ```bash
-scoop reset *
+$ scoop reset *
 ```
 
 
-## Edit components build-in
-### Ads
-https://github.com/xM4ddy/OFGB  ![GitHub stars](https://img.shields.io/github/stars/xM4ddy/OFGB)
+## Components build-in
+### Remove: Ads 
+Run `ads.bat` to download.
 
-More garbage packages installed as follows:  
-- Office plus via: [https://v2ex.com/t/1048191](https://v2ex.com/t/1048191)  
-- WebExperience Widget, run `uninstall-widgets.bat`
+### Remove: Packages
 
-### Option: Laptop 
->[!NOTE]
-Considered battery duration and laptop overheat, disable `Processor performance boost mode`.
+```bash
+$ winget uninstall "windows web experience pack"
+$ winget uninstall "电脑管家"
+$ winget uninstall "资讯"
+```
 
-Run <code>process-boost.bat</code>, then go `powercfg.cpl` to disable boost.
+### Replace: Powershell
 
-### Disabled services
+```shell
+#Powershell 7
+$ winget install --id Microsoft.PowerShell
+```
+
+### Replace: Search
+```shell
+# EverythingToolbar
+$ winget install stnkl.EverythingToolbar
+```
+
+### Disable: Services
 Run `disable-services.bat`
 
-### Firewall
+### Disable: Firewall
 Run `disable-firewall.bat`
 
-### Disable Windows Defender
-dControl
+### Disable: Windows Defender
+use `dControl`, but ([not open-source](https://www.sordum.org/9480/defender-control-v2-1/))
 
-### Font render
+### Disable: Windows Update
+
+TODO
+
+### Disable: Sticky keys
+
 TODO
 
 
-## Recommended others components
-### Powershell 7
-```shell
-winget install --id Microsoft.PowerShell
-```
 
-### Search Everything ![GitHub stars](https://img.shields.io/github/stars/srwi/EverythingToolbar)
-```shell
-winget install stnkl.EverythingToolbar
+### Option: Font Render
+
+* ClearType build-in
+
+* MacType
+  ````sh
+  $ winget install MacType.MacType
+  ````
+
+* Replace Fonts
+
+## Laptop Option
+
+### Processor performance boost mode
+
+Run <code>process-boost.bat</code>, then go `powercfg.cpl` to disable boost it. If you are using windows 11, you could use the `EnergyStar` meanwhile.
+
+```bash
+$ winget install 9NF7JTB3B17P
 ```
 
 ## Customized
-### Flypy input support 
+
+### Install Runtime Dependencies
+
+```bash
+# C++
+$ winget install Microsoft.VCRedist.2010.x64
+$ winget install Microsoft.VCRedist.2012.x64
+$ winget install Microsoft.VCRedist.2013.x64
+$ winget install Microsoft.VCRedist.2015+.x64
+```
+
+### Coding: Case Sensitive
+
+```shell
+# Windows
+$ fsutil.exe file setCaseSensitiveInfo ~\workspaces enable
+# Git
+$ git config core.ignorecase false 
+```
+
+### Chinese Flypy Support
+
 Run `install-flypy.bat`
 
 ### Proxy
@@ -59,7 +107,16 @@ https://github.com/bGZo/proxy
 
 
 ## References
+
+* https://github.com/xM4ddy/OFGB ![](https://img.shields.io/github/stars/xM4ddy/OFGB)
+* https://github.com/srwi/EverythingToolbar ![](https://img.shields.io/github/stars/srwi/EverythingToolbar)
+* https://v2ex.com/t/1048191
+* https://v2ex.com/t/1048191
+* https://www.youtube.com/watch?v=iWBVtXPfTB0
 * https://stackoverflow.com/questions/70735284
 * https://superuser.com/questions/1684005
+* https://www.zhihu.com/question/443835000/answer/1726902348
 * https://answers.microsoft.com/en-us/windows/forum/all/how-to-permanently-stop-the-widgets-service-from/de082ed2-81db-4074-a334-0c9ca13f15c4
 * https://stackoverflow.com/questions/70735284
+* https://juejin.cn/post/7135422871735631902
+* https://www.xttblog.com/?p=5294
