@@ -46,9 +46,9 @@ proxyOnTerminal(){
     fi
 
     # FIXME: does shell have callback function to callback output to docker?
-    export all_proxy="http://$host_ip:7890"
-    export http_proxy="http://$host_ip:7890"
-    export https_proxy="http://$host_ip:7890"
+    export all_proxy="http://$host_ip:10800"
+    export http_proxy="http://$host_ip:10800"
+    export https_proxy="http://$host_ip:10800"
     echo "Proxy is ON."
 }
 
