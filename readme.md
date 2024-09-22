@@ -2,6 +2,19 @@
 ## Package management
 >[!IMPORTANT] 
 `winget` is required by following command.
+Luckily, `winget` has supported for proxy, with unstable network.[^proxy_winget]. So Choose one way to use proxy:
+
+```bash
+$ sudo winget settings --enable ProxyCommandLineOptions
+
+# Temporary
+$ winget --proxy http://127.0.0.1:7890 install 
+# Permanent
+$ winget settings set DefaultProxy https://127.0.0.1:2345
+# Cancel permanent
+$ winget settings reset DefaultProxy
+```
+
 
 ### Import `scoop`
 * Move scoop folder under ~
@@ -13,10 +26,10 @@ $ scoop reset *
 
 
 ## Components build-in
-### Remove: Ads 
-Run `ads.bat` to download.
+### Remove: Ads  ![https://github.com/xM4ddy/OFGB ](https://img.shields.io/github/stars/xM4ddy/OFGB)
+Run `ads.bat` to download. depend -> 
 
-### Remove: Packages
+### Remove: Packages [^uninstall-garbage]
 
 ```bash
 $ winget uninstall "windows web experience pack"
@@ -31,9 +44,9 @@ $ winget uninstall "资讯"
 $ winget install --id Microsoft.PowerShell
 ```
 
-### Replace: Search
+### Replace: Search ![https://github.com/srwi/EverythingToolbar](https://img.shields.io/github/stars/srwi/EverythingToolbar)
 ```shell
-# EverythingToolbar
+# EverythingToolbar 
 $ winget install stnkl.EverythingToolbar
 ```
 
@@ -46,6 +59,10 @@ Run `disable-firewall.bat`
 ### Disable: Windows Defender
 use `dControl`, but ([not open-source](https://www.sordum.org/9480/defender-control-v2-1/))
 
+### Hide: Windows Security Notifications[^wsn]
+
+Run `disable-security-notifications.reg`
+
 ### Disable: Windows Update
 
 TODO
@@ -53,8 +70,6 @@ TODO
 ### Disable: Sticky keys
 
 TODO
-
-
 
 ### Option: Font Render
 
@@ -69,12 +84,50 @@ TODO
 
 ## Laptop Option
 
-### Processor performance boost mode
+### Processor performance boost mode [^overheat-laptop]
 
 Run <code>process-boost.bat</code>, then go `powercfg.cpl` to disable boost it. If you are using windows 11, you could use the `EnergyStar` meanwhile.
 
 ```bash
 $ winget install 9NF7JTB3B17P
+```
+
+### Modern Standby (S0)
+
+Check your laptop whether support S3 sleep mode:
+
+```bash
+powercfg -a
+```
+
+If shown only support S0, run `kill-s0-sleep.bat` delete sleep mode.[^windows_modern_standby]
+
+> [!NOTE]
+> If you delete sleep mode, you should select your laptop to hibernate after closing lid.
+
+```shell
+powercfg /hibernate on
+```
+
+## SubSystem
+
+### WSL
+
+Install WSL
+
+```bash
+$ sudo dism /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+$ wsl --set-default-version 2
+$ wsl --install --no-distribution
+```
+
+> [!NOTE]
+> If show `无法解析服务器的名称或地址`, just set system proxy, then retry.
+
+Then import ubuntu
+
+```bash
+wsl --import ubuntu "C:\Users\bgzo\wsl\" "C:\Users\bgzo\Downloads\ubuntu.tar" --version 2
 ```
 
 ## Customized
@@ -89,7 +142,7 @@ $ winget install Microsoft.VCRedist.2013.x64
 $ winget install Microsoft.VCRedist.2015+.x64
 ```
 
-### Coding: Case Sensitive
+### Coding: Case Sensitive [^case-sensitive]
 
 ```shell
 # Windows
@@ -108,15 +161,10 @@ https://github.com/bGZo/proxy
 
 ## References
 
-* https://github.com/xM4ddy/OFGB ![](https://img.shields.io/github/stars/xM4ddy/OFGB)
-* https://github.com/srwi/EverythingToolbar ![](https://img.shields.io/github/stars/srwi/EverythingToolbar)
-* https://v2ex.com/t/1048191
-* https://v2ex.com/t/1048191
-* https://www.youtube.com/watch?v=iWBVtXPfTB0
-* https://stackoverflow.com/questions/70735284
-* https://superuser.com/questions/1684005
-* https://www.zhihu.com/question/443835000/answer/1726902348
-* https://answers.microsoft.com/en-us/windows/forum/all/how-to-permanently-stop-the-widgets-service-from/de082ed2-81db-4074-a334-0c9ca13f15c4
-* https://stackoverflow.com/questions/70735284
-* https://juejin.cn/post/7135422871735631902
-* https://www.xttblog.com/?p=5294
+[^windows_modern_standby]: via https://www.chiphell.com/thread-2460017-1-1.html to check abnormal power on count with ssd disk. more instructions you could via https://www.bilibili.com/video/BV1Pv4y1d7Ms/, solution via https://blog.csdn.net/sinat_30603081/article/details/130637807
+[^case-sensitive]: case-sensitive via https://juejin.cn/post/7135422871735631902, https://www.zhihu.com/question/443835000/answer/1726902348↩
+[^uninstall-garbage]: https://superuser.com/questions/1684005/how-do-i-prevent-widgets-exe-from-getting-automatically-started-on-windows-11, https://answers.microsoft.com/en-us/windows/forum/all/how-to-permanently-stop-the-widgets-service-from/de082ed2-81db-4074-a334-0c9ca13f15c4, https://v2ex.com/t/1048191
+[^overheat-laptop]: https://www.youtube.com/watch?v=iWBVtXPfTB0
+[^wsn]:https://learn.microsoft.com/en-us/windows/security/operating-system-security/system-security/windows-defender-security-center/wdsc-hide-notifications
+[^proxy_winget]: https://github.com/microsoft/winget-cli/issues/190, https://github.com/microsoft/winget-cli/discussions/4428
+
