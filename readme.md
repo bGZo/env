@@ -171,6 +171,10 @@ Run `install-flypy.bat`
 1. ClearType build-in windows.
 2. Install [Noble Scarlet](https://github.com/fernvenue/microsoft-yahei)[^auto_replace_in_chinese_windows]
 3. Replace with Apple PingFang using https://github.com/Tatsu-syo/noMeiryoUI
+
+> [!NOTE]
+> In 22H2 later versions, something would be wrong. via https://github.com/Tatsu-syo/noMeiryoUI/discussions/86
+
 4. (Not recommend, cause *outdated*) MacType
 
 ````sh
