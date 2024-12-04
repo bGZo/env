@@ -18,6 +18,8 @@ function Show-Menu {
     Write-Output "3: update subscription 🔄"
     Write-Output "4: setting uwp ⚙️"
     Write-Output "5: run 🐱"
+    Write-Output "6: enable system proxy ⚙️"
+    Write-Output "7: reset system proxy ⚙️"
     Write-Output "0: quit 🔚"
 
     $key = [System.Console]::ReadKey($true) # Read-Host "input your instruct"
@@ -26,7 +28,7 @@ function Show-Menu {
 
         '1' {
             Clear-Host
-            Write-Output "Start update/download core 🚀"
+            Write-Output "[1] Start update/download core..."
 
             Update-Core
 
@@ -36,7 +38,7 @@ function Show-Menu {
 
         '2' {
             Clear-Host
-            Write-Output "Start update/download mmdb 🗄️"
+            Write-Output "[2] Start update/download mmdb..."
 
             Update-MMDB
 
@@ -45,7 +47,7 @@ function Show-Menu {
         }
         '3' {
             Clear-Host
-            Write-Output "Start update subscription 🔄"
+            Write-Output "[3] Start update subscription..."
 
 
             Update-Subscription
@@ -56,7 +58,7 @@ function Show-Menu {
 
         '4' {
             Clear-Host
-            Write-Output "Start setting uwp ⚙️"
+            Write-Output "[4] Start setting uwp..."
 
             Open-UWP-Settings
 
@@ -66,7 +68,7 @@ function Show-Menu {
 
         '5' {
             Clear-Host
-            Write-Output "Start running 🐱"
+            Write-Output "[5] Start running..."
 
             Running-Cat
 
@@ -75,15 +77,35 @@ function Show-Menu {
 
         }
 
+        '6' {
+            Clear-Host
+            Write-Output "[6] Enable system proxy..."
 
+            Set-SystemProxy 1 "127.0.0.1:10800"
+
+            Pause
+            Show-Menu
+        }
+
+        '7' {
+            Clear-Host
+            Write-Output "[7] Reset system proxy..."
+
+            Set-SystemProxy 1 "192.168.31.20:10800"
+
+            Pause
+            Show-Menu
+        }
+        
         '0' {
             Clear-Host
+            Write-Output "[0] Exit... God bless u..."
             exit
         }
 
 
         default {
-            Write-Output "`n invaild choose, try again"
+            Write-Output "`ninvaild choose, try again"
             Pause
             Show-Menu
         }
@@ -92,7 +114,7 @@ function Show-Menu {
 
 function Pause {
     Write-Output "Type anything plz..."
-    [System.Console]::ReadKey($true)
+    [System.Console]::ReadKey($true) > $null
 }
 
 
@@ -235,6 +257,12 @@ function Get-Github-Lastest-Release-Url($repo) {
 
     # we always get the lastest one.
     return $windowsLinks[-1]
+}
+
+
+function Set-SystemProxy ($enable, $address) {
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $enable
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyServer -Value $address
 }
 
 
