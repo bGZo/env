@@ -36,12 +36,14 @@ Git should be config like:
 ```bash
 git config --global user.name 'HX'
 git config --global user.email ''
+ssh-keygen -t rsa -C ""
 ```
 
 Clone repo, then:
 
 ```bash
 $ git submodule update --init --recursive
+$ git submodule update --remote --recursive 
 $ cp zsh/.zshrcBackup ~/.zshrc
 $ vim ~/.zshrc
 $ chsh -s /usr/bin/zsh
@@ -55,6 +57,4 @@ $ chsh -s /usr/bin/zsh
 - [x] logseq
 - [ ] vscode
 
-
-## References
 [^DOTFILES_INTRO]: https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/
