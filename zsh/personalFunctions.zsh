@@ -38,6 +38,63 @@ swithThemeOnGnome() {
 #+-----------+
 #|feat: Proxy|
 #+-----------+
+proxy(){
+    local host_ip="$1"
+    if [ -z "$host_ip" ]; then
+        echo "Usage: proxy <host_ip> <host_port>"
+        return 1
+    fi
+
+    local host_address="$2"
+    if [ -z "$host_address" ]; then
+        echo "Usage: proxy <host_ip> <host_port>"
+        return 1
+    fi
+
+    export all_proxy="http://$host_ip:$host_address"
+    export http_proxy="http://$host_ip:$host_address"
+    export https_proxy="http://$host_ip:$host_address"
+    echo "Proxy is ON with $host_ip:$host_address"
+}
+
+
+get-proxy(){
+    os_type=$(uname -s)
+    if [[ "$os_type" == "Darwin" ]]; then
+        # macOS
+        host_ip=$(scutil --proxy | grep HTTPProxy | awk '{print $3}')
+        host_port=$(scutil --proxy | grep HTTPPort | awk '{print $3}')
+    
+    elif [[ "$os_type" = "Linux" ]]; then
+
+        if [[ $(uname -r) == *Microsoft* || $(uname -r) == *WSL* ]]; then
+            # WSL
+            host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
+            host_port="10800" # todo
+        
+        else
+            # unknow machine
+            host_ip="127.0.0.1"
+            host_port="10800" # todo
+        fi
+    fi
+
+    echo "$host_ip:$host_port"
+}
+
+
+
+
+auto-proxy(){
+    local proxy=$(get-proxy)
+
+    host_ip=$(echo "$proxy" | cut -d ':' -f 1)
+    host_port=$(echo "$proxy" | cut -d ':' -f 2)
+
+    proxy "$host_ip" "$host_port"
+}
+
+
 proxyOnTerminal(){
     local host_ip="$1"
     if [ -z "$host_ip" ]; then
