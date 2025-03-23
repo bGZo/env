@@ -11,7 +11,7 @@
 // @license    GPL-3.0-only
 // @create     2015-11-25
 // @run-at     document-start
-// @version    27.06
+// @version    27.13
 // @connect    baidu.com
 // @connect    google.com
 // @connect    google.com.hk
@@ -49,9 +49,15 @@
 // @home-url2  https://github.com/langren1353/GM_script
 // @homepageURL  https://greasyfork.org/zh-TW/scripts/14178
 // @copyright  2015-2025, AC
-// @lastmodified  2024-08-26
+// @lastmodified  2025-03-22
 // @feedback-url  https://github.com/langren1353/GM_script
-// @note    2024.08-26-V27.05 fix：暗黑模式
+// @note    2025.03-22-V27.13 修复google更新导致多列问题、修复百度翻页问题
+// @note    2025.03-10-V27.12 修复duckduckGO 样式表问题；新增好搜页面双列支持
+// @note    2025.03-07-V27.11 fix for less.js issue at high version browser, read html without head tag 
+// @note    2025.03-04-V27.10 fix：谷歌百度模式显示效果；Less.js被Q的问题；谷歌第二页脚本问题；
+// @note    2025.01-14-V27.09 fix：谷歌样式生效问题、谷歌显示字体问题、必应去广告失效导致的所有数据丢失问题
+// @note    2024.11-17-V27.07 fix：谷歌排版问题、谷歌翻页后图片无效问题
+// @note    2024.08-26-V27.06 fix：暗黑模式
 // @note    2024.08-19-V27.05 fix：拦截功能、被拦截域名问题、和其他脚本兼容的CSS植入问题、优化域名检测逻辑；
 // @note    2024.08-16-V27.04 修复：谷歌双列加载缓慢、双列效果优化、单列居中效果优化；bing页面bug修复；暗黑模式引入；编号、下划线功能修复；鸭鸭修复 & 勿忘国耻
 // @note    2024.08-09-V27.03 增加字节跳动的Vue地址，避免部分地区打不开lib.baomitu.com导致的脚本无效
@@ -102,17 +108,20 @@
 // @resource  bingCommonStyle    https://ibaidu.tujidu.com/newcss/bingCommonStyle.less?t=27.04
 // @resource  bingOnePageStyle   https://ibaidu.tujidu.com/newcss/bingOnePageStyle.less?t=27.04
 // @resource  bingTwoPageStyle   https://ibaidu.tujidu.com/newcss/bingTwoPageStyle.less?t=27.04
-// @resource  duckduckgoCommonStyle    https://ibaidu.tujidu.com/newcss/duckCommonStyle.less?t=27.04
-// @resource  duckduckgoOnePageStyle   https://ibaidu.tujidu.com/newcss/duckOnePageStyle.less?t=27.04
-// @resource  duckduckgoTwoPageStyle   https://ibaidu.tujidu.com/newcss/duckTwoPageStyle.less?t=27.04
+// @resource  duckCommonStyle    https://ibaidu.tujidu.com/newcss/duckCommonStyle.less?t=27.04
+// @resource  duckOnePageStyle   https://ibaidu.tujidu.com/newcss/duckOnePageStyle.less?t=27.04
+// @resource  duckTwoPageStyle   https://ibaidu.tujidu.com/newcss/duckTwoPageStyle.less?t=27.04
 // @resource  dogeCommonStyle    https://ibaidu.tujidu.com/newcss/dogeCommonStyle.less?t=27.04
 // @resource  dogeOnePageStyle   https://ibaidu.tujidu.com/newcss/dogeOnePageStyle.less?t=27.04
 // @resource  dogeTwoPageStyle   https://ibaidu.tujidu.com/newcss/dogeTwoPageStyle.less?t=27.04
+// @resource  haosouCommonStyle    https://ibaidu.tujidu.com/newcss/haosouCommonStyle.less?t=27.04
+// @resource  haosouOnePageStyle   https://ibaidu.tujidu.com/newcss/haosouOnePageStyle.less?t=27.04
+// @resource  haosouTwoPageStyle   https://ibaidu.tujidu.com/newcss/haosouTwoPageStyle.less?t=27.04
 // @resource  HuYanStyle         https://ibaidu.tujidu.com/newcss/HuYanStyle.less?t=27.04
 // @resource  BgAutoFit          https://ibaidu.tujidu.com/newcss/BgAutoFit.less?t=27.04
 // @resource  HuaHua-ACDrakMode  https://ibaidu.tujidu.com/newcss/HuaHua-ACDrakMode.less?t=27.04
 // @resource  baiduLiteStyle     https://gitcode.net/-/snippets/1906/raw/master/LiteStyle.css?inline=false
-// @require   https://update.greasyfork.org/scripts/433620/1422795/Less4_1_2_fixed.js
+// @require   https://cdn.jsdelivr.net/npm/less_browser_fix@4.2.2/dist/less.min.js
 // @require   https://lib.baomitu.com/vue/3.2.31/vue.runtime.global.prod.min.js
 // @require   https://lf6-cdn-tos.bytecdntp.com/cdn/expire-10-y/vue/3.2.31/vue.runtime.global.prod.min.js
 // @noframes
@@ -154,14 +163,14 @@
       }
     },
   })
-
+  
   const { reactive, watch } = Vue;
   const MyApi = (() => {
     /**
      * @param cssText CSS的内容，如果是less的话，需要编译后的
      * @param className 新增的类名，或者是一堆类名（空格隔开）
      */
-    function addStyle(cssText, className = ''){ // 添加CSS代码，不考虑文本载入时间，带有className
+    function addStyle(cssText, className = '', dataName){ // 添加CSS代码，不考虑文本载入时间，带有className
       if(className) {
         const selectorName = (' ' + className).split(' ').join('.')
         
@@ -169,6 +178,7 @@
         if(!oldNode) {
           oldNode = document.createElement("style");
           oldNode.className = className;
+          oldNode.dataset.name = dataName
           MyApi.safeFunc(() => {
             document.children[0].appendChild(oldNode);
           })
@@ -529,16 +539,20 @@
       unsafeWindow.AC_GM_Interface = {
         async get(key, dataStr) {
           if(key.includes('op_')) {
-            const trueKey = key.replace(/^op_/, '')
+            const trueKey = tureKeyFix(key)
             const config = JSON.parse(await GM.getValue('ACConfig', '{}'))
-            return config[trueKey] || dataStr
+            let res = config[trueKey] || JSON.parse(dataStr)
+            if(key.includes('common')) {
+              res.version = GM_info.script.version
+            }
+            return res
           } else {
             return JSON.parse(await GM.getValue(key, dataStr))
           }
         },
         async save(key, dataObj) {
           if(key.includes('op_')) {
-            const trueKey = key.replace(/^op_/, '')
+            const trueKey = tureKeyFix(key)
             const config = JSON.parse(await GM.getValue('ACConfig', '{}'))
             config[trueKey] = dataObj
             GM.setValue('ACConfig', JSON.stringify(config))
@@ -549,11 +563,15 @@
           }
         },
         async change(key, dataObj) {
-          const trueKey = key.replace(/^op_/, '')
+          const trueKey = tureKeyFix(key)
           const Sync = JSON.parse(await GM.getValue('ACConfig', '{}'))
           Sync[trueKey] = dataObj
           GM.setValue('SyncConfig', JSON.stringify(Sync)) // 触发到Sync上，通过Sync通信
         },
+      }
+      
+      function tureKeyFix(key) {
+        return key.replace(/^op_/, '').replace('duckgo', '')
       }
 
       if(location.host.includes('localhost')) {
@@ -563,6 +581,7 @@
       throw new Error('90dao不需要执行其他函数，抛出异常表示结束')
     }
   }
+  
   try{
     setHostBind()
   } catch (e)
@@ -570,7 +589,7 @@
     // 不再执行后续函数，停在这里了
     return;
   }
-
+  
   class SiteOptions {
     constructor(_gmInstance) {
       this.gmInstance = _gmInstance
@@ -591,6 +610,7 @@
           HT_insert: ["", 2], // 1 = beforebegin; 2 = beforeend
           replaceE: "",
           stylish: "",
+          afertPagerAutoCallFunc: (pageElements, scriptElements) => {} // 执行完脚本后，执行这个函数
         }
       }
 
@@ -608,7 +628,7 @@
       this.google = this._s_google()
       this.bing = this._s_bing()
       this.haosou = this._s_haosou()
-      this.duckduckgo = this._s_duckduckgo()
+      this.duck = this._s_duck()
       this.baidu_xueshu = this._s_baidu_xueshu()
       this.google_scholar = this._s_google_scholar()
     }
@@ -631,7 +651,7 @@
         BlockType: "h3 a",
         MultiPageType: "#container #content_left, body[news] #container #content_left>div:not([class]):not([id])",
         pager: {
-          nextLink: '//div[@id="page"]//a[contains(text(),"下一页")][@href]',
+          nextLink: '//div[@id="page"]//a[contains(span/text(), "下一页")]',
           pageElement: "css;div#content_left > *",
           HT_insert: ["css;div#content_left", 2], // 1 = beforebegin; 2 = beforeend
           replaceE: "css;#page",
@@ -693,6 +713,18 @@
           pageElement: "id('rso')|id('center_col')/style[contains(.,'relative')][id('rso')]",
           HT_insert: ["css;#res", 2], // 1 = beforebegin; 2 = beforeend
           replaceE: '//div[@id="navcnt"] | //div[@id="rcnt"]//div[@role="navigation"]',
+          afertPagerAutoCall: (pageElements, scriptElements) => {
+            // 插入scripts & style - 保证js加载
+            scriptElements.forEach((one) => {
+              const newScript = document.createElement('script')
+              newScript.textContent = one.textContent // 新建一个脚本，否则可能因为不执行导致失败
+              newScript.type = one.type
+              newScript.nonce = one.nonce
+              try{
+                toElement.appendChild(newScript)
+              }catch (e){}
+            })
+          } // 执行完脚本后，执行这个函数
         }
       }
     }
@@ -708,17 +740,20 @@
         CounterType: ".results>div",
         BlockType: "h3 a",
         // TODO 增加这个
-        MultiPageType: "????????", // 多列模式下，待选择的元素，未来再说
+        MultiPageType: ".result li", // 多列模式下，待选择的元素，未来再说
         pager: {
           nextLink: "//div[@id='page']//a[text()='下一页>'] | id('snext')",
-          pageElement: "//div[@id='container']/div",
-          HT_insert: ["//div[@id='container']", 2], // 1 = beforebegin; 2 = beforeend
-          replaceE: "id('page')"
+          pageElement: "//div[@id='container']/div[@id='main']/ul[@class='result']/li",
+          HT_insert: ["//div[@id='container']//ul[@class='result']", 2], // 1 = beforebegin; 2 = beforeend
+          replaceE: "id('page')",
+          afertPagerAutoCallFunc: (pageElements, scriptElements) => {
+            So.web.lazyLoad.init() // 加载好搜图片的
+          } // 执行完脚本后，执行这个函数
         }
       }
     }
 
-    _s_duckduckgo() {
+    _s_duck() {
       if (this.useItem.SiteTypeID === 10){}
       return {
         SiteTypeID: 10,
@@ -813,13 +848,21 @@
     add(uniqueName, cssText) {
       uniqueName = 'AC-' + uniqueName // 加上特殊前缀，标志关键词
       
-      // 如果有，并且数据还一模一样，那么跳过
+      // 如果有，并且数据还一模一样，那么跳过；如果数据不一样，那么覆盖
       if (this.cssInsertSet[uniqueName] && this.cssInsertSet[uniqueName] === cssText) {
         return
       }
       console.mylog('--->插入样式表:' + uniqueName)
       this.cssInsertSet[uniqueName] = `\n/************${uniqueName}*********/\n` + cssText
       this.hasChanged = true
+    }
+    remove(uniqueName) {
+      uniqueName = 'AC-' + uniqueName // 加上特殊前缀，标志关键词
+      if (this.cssInsertSet[uniqueName]) {
+        console.mylog('--->移除样式表:' + uniqueName)
+        delete this.cssInsertSet[uniqueName]
+        this.hasChanged = true
+      }
     }
 
     clear() {
@@ -829,21 +872,23 @@
 
     doInsert() {
       const cssText = Object.values(this.cssInsertSet).join('\n')
-      MyApi.addStyle(cssText, Object.keys(this.cssInsertSet).join(' ')) // 方便排查css插入
+      MyApi.addStyle(cssText, 'AC-CSSAutoInsertBase', Object.keys(this.cssInsertSet).join(' ')) // 方便排查css插入
       console.mylog('插入CSS完成')
     }
   }
   class ACGM {
-    constructor() {
+    constructor() {      
       this.initGM()
       this.bindGM()
     }
 
     async initACGM() {
+      
       let ACConfig = {}
       this.blockRuleList = []
       const DefaultConfig = {
         common: {
+          version: '', // 从代码中动态拉取，丢弃任何值
           isDevMode: false, // 是否为调试模式，从页面给出来的
           isLocalDevMode: false, // 是否为本地调试模式，从页面给出来的，用于加载本地CSS
           localDebugBaseUrl: '', // 本地调试模式，本地CSS的入口地址
@@ -877,9 +922,12 @@
           optimizeBing: true,
           ...new BaseConfig()
         },
-        duckduckgo: {
-          optimizeDuckDuckGo: true, // 是否开启优化
+        duck: {
+          optimizeDuck: true, // 是否开启优化
           ...new BaseConfig()
+        },
+        haosou: {
+          ...new BaseConfig(false)
         }
       };
       try {
@@ -984,7 +1032,7 @@
       this.openSeetingsUrl = storeValue || 'https://ac-baidu.tujidu.com/pages/custom/#' + CONST.options.siteName
       
       if (!storeValue) {
-        console.log('目前不存在')
+        console.log('不存在自定义配置')
         GM_xmlhttpRequest({
           method: "HEAD",
           timeout: 3000,
@@ -1029,7 +1077,7 @@
     }
 
     async loadStyleByName_WithLessCache(styleName) {
-      if(CONST.curConfig.isLocalDevMode && CONST.curConfig.localDebugBaseUrl) {
+      if(CONST.curConfig.isDevMode && CONST.curConfig.isLocalDevMode && CONST.curConfig.localDebugBaseUrl) {
         const renderCSSKeyName = '__AC.RenderCSS__' + styleName
         return await setLocalLessData(renderCSSKeyName, getDebugStyle) // 不带缓存，随时刷新了
         // return await cacheStyle(renderCSSKeyName, getDebugStyle) // 带缓存，随时刷新了
@@ -1078,17 +1126,17 @@
       console.mylog('CSS加载开始' + +this.curConfig.adsStyleMode)
       // 加载多列
       if (this.curConfig.adsStyleEnable) {
-        if (+this.curConfig.adsStyleMode >= 4) {
-          this.adsCSSList.multiPageStyle = await this.getMultiPageStyle() // 多列效果
-        }
-        if (+this.curConfig.adsStyleMode >= 3) {
-          this.adsCSSList.twoPageStyle = await this.loadStyleByName_WithLessCache(this.options.siteName + 'TwoPageStyle') // 双列效果
+        if (+this.curConfig.adsStyleMode >= 1) {
+          this.adsCSSList.leftCommonStyle = await this.loadStyleByName_WithLessCache(this.options.siteName + 'CommonStyle') // 单列效果
         }
         if (+this.curConfig.adsStyleMode >= 2) {
           this.adsCSSList.onePageStyle = await this.loadStyleByName_WithLessCache(this.options.siteName + 'OnePageStyle') // 单列居中
         }
-        if (+this.curConfig.adsStyleMode >= 1) {
-          this.adsCSSList.leftCommonStyle = await this.loadStyleByName_WithLessCache(this.options.siteName + 'CommonStyle') // 单列效果
+        if (+this.curConfig.adsStyleMode >= 3) {
+          this.adsCSSList.twoPageStyle = await this.loadStyleByName_WithLessCache(this.options.siteName + 'TwoPageStyle') // 双列效果
+        }
+        if (+this.curConfig.adsStyleMode >= 4) {
+          this.adsCSSList.multiPageStyle = await this.getMultiPageStyle() // 多列效果
         }
       }
       // 加载百度Lite
@@ -1191,7 +1239,7 @@
     addIntervalTrigger(site = '', waitAt = 'now', callback, interval_time = 0, runTimes = 1) {
       console.mylog('addIntervalTrigger', site, "------------", this.options.siteName)
       if(site !== 'all' && this.options.siteName !== site) return
-
+      
       let count = runTimes
       const intId = MyApi.setIntervalRun(async () => {
         count--
@@ -1251,14 +1299,14 @@
       }
       let useRule = Object.keys(specialRule).find(one => location.host.includes(one))
       if(!useRule) {
-        useRule = location.host.replace(/.*(baidu|google|bing|duckduckgo).*/, '$1')
+        useRule = location.host.replace(/.*(baidu|google|bing|duck).*/, '$1')
       } else {
         return specialRule[useRule]
       }
       return useRule
     }
   }
-
+  
   const CONST = new ACGM()
   await CONST.initACGM()
 
@@ -1277,22 +1325,33 @@
         node.width = "125";
         node.removeAttribute("height");
       });
-      MyApi.safeGetNodeFunc("#main .logo img[alt='Google']", function(node) {
+      MyApi.safeGetNodeFunc("a#logo", function(node) {
+        let faNode = node.parentNode.parentNode;
+        if(faNode.hasAttribute('xchanged')) return
+        faNode.classList.add("baidu");
+        faNode.setAttribute('xchanged', 1)
+        node.querySelector('svg').style.display = 'none'
+        const newImage = document.createElement('img')
+        newImage.src = "https://www.baidu.com/img/flexible/logo/pc/result.png"
+        newImage.width = "125"
+        node.appendChild(newImage)
+      });
+      MyApi.safeGetNodeFunc("img[alt='Google']", function(node) {
         if(node.hasAttribute('xchanged')) return
         node.setAttribute('xchanged', 1)
         node.removeAttribute("srcset");
         node.src = "https://www.baidu.com/img/flexible/logo/pc/result.png";
-        node.style.height = '30px'
-        node.style.marginTop = '-10px'
-      }, 300);
+        node.style.height = '72px'
+        // node.style.marginTop = '-10px'
+      });
       MyApi.safeGetNodeFunc("form[role='search'] .logo img", function(node) {
         if(node.hasAttribute('xchanged')) return
         node.setAttribute('xchanged', 1)
         node.removeAttribute("srcset");
         node.src = "https://www.baidu.com/img/flexible/logo/pc/result.png";
         node.setAttribute("height", "30");
-        node.style.marginTop = '-10px'
-      }, 300);
+        // node.style.marginTop = '-10px'
+      });
       if(!document.title.includes('百度')) {
         document.title = document.title.replace(/^Google/, "百度一下，你就知道")
           .replace(/ - Google 搜索/, "_百度搜索")
@@ -1335,9 +1394,16 @@
         MyApi.safeRemoveAd(".b_ad");
         MyApi.safeRemove_xpath("id('b_results')/li[./div[@class='ad_fls']]");
 
-        // 移除特殊tag，带url标记的广告类
+        // 移除特殊tag，带url标记的广告类 -- 新版的bing似乎比较特殊，无法判定了
         const resList = [...document.querySelectorAll("ol>li")].filter(one => one.querySelector('p')) // 定位到所有包含p标签的li
-        const adList = resList.filter(one => window.getComputedStyle(one.querySelector('p'), '::before').getPropertyValue('content').includes('url')) // 检查每一个p标签，里面存在before伪元素，且伪元素中是链接的，均为广告
+        const removeWith = [
+          'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAALCAYAAAAunZ4gAAAAAXNSR0IArs4c6QAAAl5JREFUSEvlVrtuE0EUPXdW8lqWgA8A8QHJByBBTZDShiiUSMmu3FhRSB9IPgAKd7t2T2SgjAw9rz5AD/kBQLLWtnYOuquZ1cTYMpQGV+ur2fs459wzK/hPfuLnTJJkS0ReBHOfZln2YJVw6HQ6V4uiOAPwLM/zl2Hv1aDtdvu6tfYdyUd6IPjfz/P8ZFWGXTpomqa3RGRAcjvLso/hYDo0ySHJ1wAOAXwHcE/P+cQicsfH4zj+MplMzkheANjRXCTvK4BaB4DmuRbm8cACuAngqzHmtntP634DsK4xkrskj11/teLSNH2utUTknKTWezKXUX0xSZIjEamSkHzsmQyaeK9S1nMANprN5uZ4PM70vIur9J8qCCR7InIx7zzJz5rb1VuL4zh1cnvj45pfRPYUFJKVqnS1ABxoXa3pJarPWleBsNbecO/sLhzUsxiiq0xEUfTBMbqnLDr2e8q+iPSstdU+eOZFZJ/kibXWN75ljDloNBqbRVHcdT5QqyJQzKX8xpiHZVm+8usUEhH6iH9WUJdKd94OesSNMYfW2iGAuhEAPQDbypxffAfQ0BizX5al7nU9qGei2+3+CNVD8q1jbjCbP4qieYOuzRqkk22lqqWDOsft+93zzRhjVBZ9Z1ReQkfGmA1laJF0HdO/MarnSQ5UAVpTmW61Wjuj0eg0UECVn6SXbmWQYY/eBxRMa+2nv5Kul4Yus0hlxtWyBw78U0TW/8SMZnau3q3pdHpFQXOmc0m+Qbw2o/Am8OADOA7707g3IwDnzmMWm9GiK2T26lmVq2a2z/qD4V8f9BciyTQqHtmLjAAAAABJRU5ErkJggg==',
+          // ''
+        ]
+        const adList = resList.filter(one => {
+          const url = window.getComputedStyle(one.querySelector('p'), '::before').getPropertyValue('content')
+          return removeWith.some(remove => url.includes(remove))
+        }) // 检查每一个p标签，里面存在before伪元素，且伪元素中是链接的，均为广告
         adList.forEach(one => one.remove())
       }
       function removeHaosouAd() {
@@ -1358,7 +1424,8 @@
     }
     InsertSettingMenu() {
       if (document.querySelector("#myuser") === null) {
-        MyApi.safeWaitFunc("#u, #gb, #b_header>#id_h, #header_wrapper .js-hl-butto", parent => {
+        MyApi.safeWaitFunc("#u, #gb, #b_header>#id_h, #header_wrapper .js-hl-butto, .header--aside, #header .inner .menu", parent => {
+          
           parent.style = "width: auto;";
           let userAdiv = document.createElement("div");
           userAdiv.id = "myuser";
@@ -1701,9 +1768,11 @@
         MyApi.safeGetNodeFunc('#myuser', node => node.remove())
         return
       }
+      
       console.mylog('即将插入CSS1')
       if (CONST.curConfig.adsStyleEnable) {
         console.mylog('即将插入CSS2')
+        
         if(+CONST.curConfig.adsStyleMode === 1) {
           console.mylog('靠左优化模式')
           CONST.cssAutoInsert.add("expandPageStyle", CONST.adsCSSList.expandPageStyle)
@@ -1728,7 +1797,7 @@
       CONST.cssAutoInsert.add("styleLogo", ".minidiv #logo img{width: 100px;height: unset;margin-top: 0.3rem;} body.purecss-mode:before{display: none;}")
       CONST.cssAutoInsert.add("specialBAIDU", ".opr-recommends-merge-imgtext{display:none!important;}.res_top_banner{display:none!important;}.headBlock, body>div.result-op{display:none;}")
       CONST.cssAutoInsert.add("animationStyle", "@keyframes ani_leftToright{0%{transform:translateX(-32px);opacity:0.2;}20%{opacity:0.5;}30%{opacity:0.8;}100%{opacity:1;}}@keyframes ani_bottomTotop{0%{transform:translateY(32px);opacity:0.2;}20%{opacity:0.5;}30%{opacity:0.8;}100%{opacity:1;}}@-webkit-keyframes ani_topTobuttom{0%{transform:translateY(-32px);opacity:0.2;}20%{opacity:0.5;}30%{opacity:0.8;}100%{opacity:1;}}@-webkit-keyframes ani_hideToShow{0%{display:none;opacity:0.2;}20%{opacity:0.5;}30%{opacity:0.8;}100%{opacity:1;}}@-webkit-keyframes ani_showToHide{0%{display:none;opacity:1;}20%{opacity:0.8;}30%{opacity:0.5;}100%{opacity:0.3;}}.aniDelete{transition:all 0.15s cubic-bezier(0.4,0,1,1);opacity:0.1}")
-      CONST.cssAutoInsert.add("menuBtn", ".achide{display:none;} .newFuncHighLight{color:red;font-weight: 100;background-color: yellow;font-weight: 600;}#sp-ac-container label{display:inline;}#u{width:319px}#u #myuser{display:inline-block;margin: 13px -10px 0 24px;}.site-wrapper #myuser,.sogou-set-box #myuser,#gbw #myuser{margin-right:15px;} #gb #myuser{margin-top:7px;} #myuser,#myuser .myuserconfig{padding:0;margin:0}#myuser{display:inline-block;}#myuser .myuserconfig{display:inline-block;line-height:1.5;background:#4e6ef2;color:#fff;font-weight:700;text-align:center;padding:6px;border:2px solid #E5E5E5;}#myuser .myuserconfig{box-shadow:0 0 10px 3px rgba(0,0,0,.1);border-radius: 6px}#myuser .myuserconfig:hover{background:#4662d9 !important;color:#fff;cursor:pointer;border:2px solid #73A6F8;}")
+      CONST.cssAutoInsert.add("menuBtn", ".achide{display:none;} .newFuncHighLight{color:red;font-weight: 100;background-color: yellow;font-weight: 600;}#sp-ac-container label{display:inline;}#u{width:319px}#u #myuser{display:inline-block;margin: 13px -10px 0 24px;}.site-wrapper #myuser,.sogou-set-box #myuser,#gbw #myuser{margin-right:15px;} #gb #myuser{margin-top:7px;} #myuser,#myuser .myuserconfig{padding:0;margin:0}#myuser{display:inline-block;}#myuser .myuserconfig{display:inline-block;line-height:1.5;background:#4e6ef2;color:#fff;font-weight:700;text-align:center;padding:6px;border:2px solid #E5E5E5;}#myuser .myuserconfig{box-shadow:0 0 10px 3px rgba(0,0,0,.1);border-radius: 6px}#myuser .myuserconfig:hover{background:#4662d9 !important;color:#fff;cursor:pointer;border:2px solid #73A6F8;} body[haosou] #myuser{margin-top:-10px}")
 
       if(CONST.curConfig.baiduLiteEnable) {
         CONST.cssAutoInsert.add("baiduLiteStyle", CONST.adsCSSList.baiduLiteStyle)
@@ -1949,12 +2018,8 @@
                       per.addEventListener("click", PageFunc.ac_spfunc);
                     });
 
-                    // 插入scripts & style - 保证js加载
-                    if (CONST.options.useItem.SiteTypeID === CONST.options.google.SiteTypeID) {
-                      scriptElems.forEach((one) => {
-                        toElement.appendChild(one)
-                      });
-
+                    if(CONST.options.useItem.pager.afertPagerAutoCallFunc) {
+                      CONST.options.useItem.pager.afertPagerAutoCallFunc(pageElems, scriptElems)
                     }
 
                     // 替换待替换元素 - 一般是替换翻页的按钮
@@ -1999,8 +2064,8 @@
             if (document.documentElement.scrollHeight <= document.documentElement.clientHeight + scrollTop + scrollDelta && CONST.lock.pageLoadingLocked === false) {
               console.mylog('开始进行翻页')
               CONST.lock.pageLoadingLocked = true;
-              if (CONST.options.useItem.SiteTypeID === CONST.options.duckduckgo.SiteTypeID) { // 可以用已有的方法来实现了
-                if (!CONST.curConfig.optimizeDuckDuckGo || +CONST.curConfig.adsStyleMode >= 3) { // 如果没有开启，那么手动翻页 || 如果是双列的时候，似乎并不会自动触发翻页效果
+              if (CONST.options.useItem.SiteTypeID === CONST.options.duck.SiteTypeID) { // 可以用已有的方法来实现了
+                if (!CONST.curConfig.optimizeDuck || +CONST.curConfig.adsStyleMode >= 3) { // 如果没有开启，那么手动翻页 || 如果是双列的时候，似乎并不会自动触发翻页效果
                   const node = document.querySelector("#links .result--more a")
                   node && node.click();
                   setTimeout(function() {
@@ -2397,66 +2462,75 @@
   const PageBlockFunc = new PageBlockClass()
 
   !await (async function() {
-    /***Google***/
+    /***Google双列修复***/
     CONST.addIntervalTrigger('google', 'now', (counter) => {
       function findAndMarkP2Line() {
 
         function markFatherChild(child, father) {
+          const child_checkedAttr = child.getAttribute('two-checked') || 0
+          const father_checkedAttr = father.getAttribute('two-checked') || 0
+          
           child.setAttribute('two-child', 1)
-          child.setAttribute('two-checked', 1)
+          child.setAttribute('two-checked', +child_checkedAttr + 1)
           father.setAttribute('two-father', 1)
-          father.setAttribute('two-checked', 1)
+          father.setAttribute('two-checked', +father_checkedAttr + 1)
+          return father
         }
 
+        // 检查的事preNode 和 curNode
+        // 但是需要先判断curNode和fatherNode有没有
         function getTrueFatherChild(preNode, curNode, fatherNode) {
-          if (fatherNode.offsetHeight / curNode.offsetHeight > 1.5) {
-            // 有可能，但是还需要检查所有的子项目
-            const isThisFatherFailed = [...fatherNode.children].findIndex(one => {
-              if (one.offsetHeight / curNode.offsetHeight > 5) {
-                return true
-              }
-            })
-            if (isThisFatherFailed > 0) {
-              markFatherChild(preNode, curNode)
-              return curNode
-            } else {
-              markFatherChild(curNode, fatherNode)
-              return fatherNode
-            }
+          const minItemHeight = 60
+          const father_curPossible = curNode.offsetHeight > minItemHeight && fatherNode.offsetHeight / curNode.offsetHeight > 1.5
+          const father_anotherPossible =  [...fatherNode.children].some(one => {
+            return one !== curNode && one.offsetHeight > minItemHeight && fatherNode.offsetHeight / one.offsetHeight > 5;
+          })
+          
+          // 先检查父节点是否否和要求
+          if (father_curPossible && father_anotherPossible) {
+              return markFatherChild(curNode, fatherNode)
           } else {
+            const now_curPossible = preNode.offsetHeight > minItemHeight && curNode.offsetHeight / preNode.offsetHeight > 1.5
+            const now_anotherPossible =  [...curNode.children].some(one => {
+              return one !== preNode && one.offsetHeight > minItemHeight && curNode.offsetHeight / one.offsetHeight > 5;
+            })
+            // 父节点不行的话，那么检查子节点是否符合要求
+            if(now_curPossible && now_anotherPossible) {
+              return markFatherChild(preNode, curNode)
+            }
             return null
           }
         }
 
+        // 标记自身
         function MarkMine(curItem) {
-          let maxHeight = 6, curHeight = 1
+          let maxHeight = 9, curHeight = 1
           let preNode = curItem
           while (curHeight < maxHeight) {
-            const parentNode = curItem.parentNode
-            if (!curItem.hasAttribute('two-checked')) {
-              const node = getTrueFatherChild(preNode, curItem, parentNode)
-              if (node) return node
+            const fatherNode = curItem.parentNode
+            let attrV = curItem.getAttribute('two-checked') || 0
+            if (!curItem.hasAttribute('two-checked') || +attrV < 8) {
+              const node = getTrueFatherChild(preNode, curItem, fatherNode)
+              if (node) {
+                return node
+              }
             }
-            curItem.setAttribute('two-checked', 1)
+            curItem.setAttribute('two-checked', +attrV + 1)
             preNode = curItem
-            curItem = parentNode
+            curItem = fatherNode
             curHeight++
           }
           return null
         }
 
-        const gList = document.querySelectorAll(".g:not(two-checked)")
+        const gList = document.querySelectorAll(".g:not([two-checked*='8']), .cUnQKe:not([two-checked*='8']), .Ww4FFb:not([two-checked*='8'])")
 
         return [...gList].filter(one => MarkMine(one))
       }
 
       const valid = location.href.search(/(&|\?)(q|kw)=/) >= 0 ||
         document.querySelector(".g, div[two-father]")
-      if (!valid) {
-        CONST.curConfig.enableCSS = false
-        return
-      }
-      findAndMarkP2Line()
+
       if(counter % 4 === 0) {
         if (CONST.curConfig.useBaiduLogo) {
           PageFunc.GoogleInBaiduMode()
@@ -2465,11 +2539,17 @@
           PageFunc.removeAds.removeGoogleAd()
         }
       }
-    }, 50, Infinity)
+      
+      if (!valid) {
+        CONST.curConfig.enableCSS = false
+        return
+      }
+      findAndMarkP2Line()
+      
+    }, 50, 10000000)
     /***Baidu***/
     CONST.addIntervalTrigger('baidu', 'body', () => {
       // 没有(百度搜索结果的标志-[存在]百度的内容) return;
-      
       const valid = location.href.search(/(&|\?)(wd|word)=/) >= 0 ||
         document.querySelector("#content_left") || document.querySelector('.s_form').offsetHeight < 100
       if (!valid) {
@@ -2490,13 +2570,13 @@
       } else {
         document.body.removeAttribute("news");
       }
-    }, 200, Infinity)
+    }, 200, 10000000)
     /***Haosou***/
     CONST.addIntervalTrigger('haosou', 'body', () => {
       if (CONST.curConfig.isAdsEnable) {
         PageFunc.removeAds.removeHaosouAd()
       }
-    }, 200, Infinity)
+    }, 200, 10000000)
     /***Bing***/
     CONST.addIntervalTrigger('bing', 'body', () => {
       if (CONST.curConfig.isAdsEnable) {
@@ -2504,10 +2584,10 @@
       }
       PageFunc.bingAutoScrollFix()
       PageFunc.bingFaviconPagerFix()
-    }, 200, Infinity)
+    }, 200, 10000000)
     /***DuckDuckgo***/
-    CONST.addIntervalTrigger('duckduckgo', 'body', () => {
-      if (CONST.curConfig.optimizeDuckDuckGo) {
+    CONST.addIntervalTrigger('duck', 'body', () => {
+      if (CONST.curConfig.optimizeDuck) {
         setTimeout(function() {
           MyApi.safeFunc(() => {
             DDG.settings.set("kn", 1, { // 新窗口打开页面
@@ -2521,7 +2601,7 @@
           })
         }, 3000);
       }
-    }, 200, Infinity)
+    }, 200, 10000000)
     /***All***/
     CONST.addIntervalTrigger('all', 'body', () => {
       PageFunc.RedirectHandle()
@@ -2557,7 +2637,7 @@
       if (CONST.curConfig.isBlockEnable && CONST.curConfig.isRedirectEnable) {
         PageBlockFunc.start()
       }
-    }, 200, Infinity)
+    }, 200, 10000000)
 
     // CONST.enableCSS = 如果生效，那么插入样式表，否则跳过样式表插入
     // CONST.curConfig = 网站配置，同步过来的，以及动态被修改的

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         自用论坛辅助签到
 // @namespace    bbshelper
-// @version      2.0.1
+// @version      2.0.2
 // @description  常用论坛辅助签到工具，包括远景论坛、天使动漫论坛、52破解、TTG、卡饭等
 // @author       Eva
 // @include      http*://u2.dmhy.org/*
@@ -34,6 +34,8 @@
 // @grant        GM.deleteValue
 // @require      https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js
 // @run-at 		 document-end
+// @downloadURL https://update.greasyfork.org/scripts/38018/%E8%87%AA%E7%94%A8%E8%AE%BA%E5%9D%9B%E8%BE%85%E5%8A%A9%E7%AD%BE%E5%88%B0.user.js
+// @updateURL https://update.greasyfork.org/scripts/38018/%E8%87%AA%E7%94%A8%E8%AE%BA%E5%9D%9B%E8%BE%85%E5%8A%A9%E7%AD%BE%E5%88%B0.meta.js
 // ==/UserScript==
 
 (function () {
@@ -82,7 +84,7 @@
     // 远景
     if (matchURL("bbs.pcbeta.com") || matchURL("i.pcbeta.com")) {
         // 判断是否登录
-        if ($('.vwmy').length > 0) {
+        if ($('#myrepeats').length > 0) {
             const variableName = 'pcbeta'
             checkSignDate(variableName).then(() => {
                 console.log('开始自动签到！')
