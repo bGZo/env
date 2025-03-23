@@ -9,6 +9,7 @@
 // @grant        GM.xmlHttpRequest
 // @license      MIT
 // @icon         https://x.com/favicon.ico
+// @author       bGZo
 // ==/UserScript==
 
 

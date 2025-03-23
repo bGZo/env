@@ -9,6 +9,7 @@
 // @grant        GM.xmlHttpRequest
 // @license      MIT
 // @icon         https://www.xiaohongshu.com/favicon.ico
+// @author       bGZo
 // ==/UserScript==
 
 
