@@ -110,8 +110,7 @@
             const sitemapUrl = `${window.location.origin}/sitemap.xml`;
             const urls = await fetchSitemap(sitemapUrl);
 
-            title.textContent = title.textContent + `（共发现 ${urls.length} 个页面）`
-
+            title.textContent = title.textContent + `（共发现 ${urls.length} 个链接🔗）`
 
             content.innerHTML = `
                <div style="margin-bottom: 10px; color: #666;">
@@ -133,10 +132,47 @@
                     `).join('')}
                 </div>
             `;
+
+            document.getElementById('copy').addEventListener('click', async () => {
+                try {
+                    if (urls.length === 0) {
+                        throw new Error('没有可复制的URL');
+                    }
+
+                    const text = urls.join('\n');
+                    await navigator.clipboard.writeText(text);
+
+                    showFeedback('✅ 已复制到剪贴板', '#28a745');
+                } catch (err) {
+                    showFeedback(`❌ 复制失败: ${err.message}`, '#dc3545');
+                }
+            });
+
         } catch (error) {
             content.innerHTML = `<div style="color: #dc3545; padding: 15px;">错误: ${error.message}</div>`;
         }
     });
+
+
+    // 显示反馈提示
+    function showFeedback(message, color) {
+        const feedback = document.createElement('div');
+        feedback.textContent = message;
+        feedback.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: ${color};
+            color: white;
+            border-radius: 5px;
+            z-index: 10000;
+            animation: fadeOut 2s forwards;
+        `;
+
+        document.body.appendChild(feedback);
+        setTimeout(() => feedback.remove(), 2000);
+    }
 
     // 从URL提取显示标题
     function getDisplayTitle(url) {
@@ -186,7 +222,6 @@
             });
         });
     }
-
 
 
 })();
