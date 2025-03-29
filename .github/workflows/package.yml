@@ -3,7 +3,7 @@ name: Package-then-upload
 on:
   workflow_dispatch:
   push:
-    branches: [ dev_githubaction ]
+    branches: [ main ]
     tags:
       - 'v*'
   registry_package:
