@@ -80,8 +80,10 @@ get-proxy(){
     case $(uname -s) in
         Darwin)
             # macOS
-            host_ip=$(scutil --proxy | grep HTTPProxy | awk '{print $3}')
-            host_port=$(scutil --proxy | grep HTTPPort | awk '{print $3}')
+            # host_ip=$(scutil --proxy | grep HTTPProxy | awk '{print $3}')
+            host_ip=$(scutil --proxy | grep SOCKSProxy | awk '{print $3}')
+            #host_port=$(scutil --proxy | grep HTTPPort | awk '{print $3}')
+            host_port=$(scutil --proxy | grep SOCKSPort | awk '{print $3}')
             ;;
         Linux)
             if [[ $(uname -r) == *Microsoft* || $(uname -r) == *WSL* ]]; then

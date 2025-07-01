@@ -60,7 +60,9 @@ case "${TERM}" in
     bindkey '\e[D'    backward-char             # Left Arrow: 向左移动一个字符
 
     # Word Navigation
+    # bindkey '\ef' forward-word
     bindkey '\e[1;5C' forward-word              # Ctrl + Right Arrow: 向前移动一个单词
+    # bindkey '\eb' backward-word
     bindkey '\e[1;5D' backward-word             # Ctrl + Left Arrow: 向后移动一个单词
 
     # Deletion
