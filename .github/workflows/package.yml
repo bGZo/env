@@ -1,4 +1,4 @@
-name: Package-then-upload
+name: Package tampermonkey
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Zip on shell
         run: |
-          zip -r tampermonkey-backup-github.zip tampermonkey/
+          zip -r tampermonkey-backup-github.zip common/javascript/tampermonkey/
 
       - name: Create a Github release
         uses: actions/create-release@v1

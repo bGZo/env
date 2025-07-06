@@ -1,0 +1,75 @@
+/*Store: DuckDuckGoTwoPageStyle*/
+.js-sidebar-ads,
+#react-layout .results--sidebar,
+#organic-module,
+.pinned-to-bottom {
+  display: none;
+}
+
+.js-result-hidden-el {
+  display: none !important;
+}
+
+.site-wrapper #web_content_wrapper .cw {
+  justify-content: center;
+  display: flex;
+  max-width: unset;
+  margin-left: -150px;
+}
+
+#header_wrapper #header,
+#web_content_wrapper #react-layout .search-filters-wrap,
+#web_content_wrapper #react-layout .results--message {
+  justify-content: center;
+  display: grid;
+}
+
+#header_wrapper #header {
+  max-width: unset;
+}
+
+#header_wrapper #header .header__search-wrap {
+  width: 500px;
+}
+
+#react-layout {
+  display: inline-flex;
+  justify-content: center;
+}
+
+#react-layout .react-results--main {
+  float: unset;
+  max-width: unset;
+}
+
+#react-layout .results--sidebar {
+  min-width: unset;
+  margin: unset;
+}
+
+section[data-area="sidebar"] {
+  display: none;
+}
+
+#react-layout .react-results--main {
+  width: 80vw;
+  /* This may cause Page failed */
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-areas: "xmain xmain";
+}
+
+#react-layout .react-results--main li {
+  width: unset;
+  margin-right: 15px;
+
+  &:only-child {
+    grid-column: 1 / -1;
+  }  
+}
+
+.body--serp .footer {
+  display: flex;
+  justify-content: center;
+  padding-left: unset;
+}
