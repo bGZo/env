@@ -1,0 +1,12 @@
+[Unit]
+Description=🐱 for %i.
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+Restart=on-abort
+ExecStart=/home/bgzo/workspaces/proxies/data/core -d /home/bgzo/workspaces/proxies/data/
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+demo.yml
+.env
+
+# data
+data/cache.db
+data/config.yaml
+data/Country.mmdb
+data/core
+data/core.gz
