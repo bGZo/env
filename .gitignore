@@ -1,3 +1,15 @@
-.idea/
-
 .DS_Store
+.idea/
+dist/
+
+# Windows Proxies
+windows/proxies/demo.yml
+windows/proxies/.env.ps1
+# Data
+windows/proxies/data/cache.db
+windows/proxies/data/config.yaml
+windows/proxies/data/Country.mmdb
+windows/proxies/data/core.zip
+windows/proxies/data/core.exe
+windows/proxies/data/uwp.exe
+windows/proxies/data/mihomo-windows-amd64.exe
