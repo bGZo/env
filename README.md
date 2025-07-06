@@ -70,7 +70,7 @@ rsync -avz --progress --delete ./tampermonkey-temp ./tampermonkey
 rm -rf ./tampermonkey-temp
 ```
 
-#### Package
+### Package
 
 ```shell
 zip -r tampermonkey-backup-github.zip tampermonkey/
