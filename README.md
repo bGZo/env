@@ -1,4 +1,6 @@
-This is a repo to backup my scripts. The released only support tampermonkey scripts.
+This is a repo to backup my scripts. 
+
+The released only package tampermonkey scripts.
 
 ## Quick Start
 
@@ -11,18 +13,14 @@ Then import zip file in tampermonkey.
 They should work well.
 
 
-### Maintenance
+## Maintenance
 
-#### UNIX
-
-```shell
-unzip ~/Downloads/tampermonkey-backup-chrome-XXX.zip -d ~/workspace/userscripts/tampermonkey/
-```
-
-#### WSL 
+### Backup
 
 ```shell
-unzip tampermonkey-backup-firefox-xxxx-xx-xxTxx-xx-xx-xxxZ.zip -d ~/userscripts/tampermonkey/
+unzip ~/Downloads/tampermonkey-backup-chrome-XXX.zip -d ~/workspace/userscripts/tampermonkey-temp/
+rsync -avz --progress --delete ./tampermonkey-temp ./tampermonkey
+rm -rf ./tampermonkey-temp
 ```
 
 #### Package

@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         万能验证码自动输入（升级版）
 // @namespace    https://www.like996.icu:1205/
-// @version      6.3
-// @description  自动识别填写英文、数字、滑动拼图、滑动行为等验证码，对于自动规则无法覆盖的验证码页面请手动配置规则。感谢老六、哈士奇两位大佬提供的帮助！
+// @version      6.6
+// @description  自动识别填写英文、数字、滑动拼图、滑动行为等验证码，对于自动规则无法覆盖的验证码页面请手动配置规则。感谢老六、哈士奇、mhsj等大佬提供的帮助！
 // @author       crab
 // @match        *://*/*
 // @connect      like996.icu
 // @connect      *
 // @require      http://libs.baidu.com/jquery/2.0.0/jquery.min.js
 // @require      http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.0.0.min.js
-// @resource     cktools https://like996.icu:1205/statics/js/CKTools.js
+// @resource     cktools https://like996.icu:1205/statics/js/CKTools.js#sha256=3cb32b591623de502818a4d612be6bb621b3f7e53315d0ef6a3e97964e185b0e
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_listValues
@@ -31,7 +31,7 @@ class CaptchaWrite {
     }
 
     getCaptchaServerUrl() {
-        return "https://like996.icu:1205/";
+      return "https://www.like996.icu:1205/";
     }
 
     constructor() {
@@ -111,7 +111,7 @@ class CaptchaWrite {
                             $(this).off("load");
                         });
                         that.Hint('接下来请点击验证码输入框', 1000 * 50);
-                        $("input").each(function () {
+                        $("input,textarea").each(function () {
                             $(this).click(function () {
                                 var input = that.Aimed($(this));
                                 // console.log('LetterPickUp_input' + input);
@@ -131,7 +131,7 @@ class CaptchaWrite {
                                 that.Query({
                                     "method": "captchaHostAdd", "data": AddRule
                                 }, function (data) {
-                                    writeResultIntervals[writeResultIntervals.length] = { "img": img, "input": input }
+                                    writeResultIntervals[writeResultIntervals.length] = {"img": img, "input": input}
                                 });
                                 that.delCapFoowwLocalStorage(window.location.host);
                             });
@@ -178,7 +178,7 @@ class CaptchaWrite {
         let eleHeight = Number(that.getNumber(that.getElementStyle(el).height)) || 0;
         let eleTop = Number($(el).offset().top) || 0;
         let storagePathCache = that.getCapFoowwLocalStorage("slidePathCache");
-        let ruleCache = (storagePathCache && storagePathCache) || { ocr_type: 4 };
+        let ruleCache = (storagePathCache && storagePathCache) || {ocr_type: 4};
 
         if (tagName === "img") {
             if (eleWidth >= eleHeight && eleWidth > 150) {
@@ -203,7 +203,7 @@ class CaptchaWrite {
                 eleWidth = Number(that.getNumber(that.getElementStyle(curEl).width)) || 0;
                 eleHeight = Number(that.getNumber(that.getElementStyle(curEl).height)) || 0;
 
-                if (position === "absolute" && eleWidth < 100 && eleHeight < 100) {
+                if ((position === "absolute" || that.checkClassName(curEl, "slide") ) && eleWidth < 100 && eleHeight < 100) {
                     //如果是绝对定位，并且宽高小于100，基本上就是滑块了
                     var smallImgRule = null;
                     if (storagePathCache != null && (smallImgRule = storagePathCache['small_image']) != null) {
@@ -235,13 +235,13 @@ class CaptchaWrite {
                 }
                 if (tagName === "canvas") {
                     // 如果是canvas 直接寻找class中特定样式
-                    if ((that.checkClassName(curEl, "canvas_bg") || that.checkClassName(curEl.parentNode, "captcha_basic_bg")) || (position != "absolute" && (eleWidth > 300 && eleWidth >= eleHeight * 1.5 && eleWidth <= eleHeight * 3))) {
+                    if ((that.checkClassName(curEl, "canvas_bg") || that.checkClassName(curEl.parentNode, "captcha_basic_bg")) || (position != "absolute" && (eleWidth >= 300 && eleWidth >= eleHeight * 1.5 && eleWidth <= eleHeight * 3))) {
                         ruleCache['big_image'] = that.Aimed(el);
                         that.Hint('您已成功选择大图片。', 5000);
                         that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
                         that.checkTargetNeedZIndex(ruleCache, curEl);
                         break;
-                    } else if (that.checkClassName(curEl, "slide") || that.checkClassName(curEl, "slice") || that.checkClassName(curEl, "mark")) {
+                    } else if (that.checkClassName(curEl, "slide") || that.checkClassName(curEl, "slice") || that.checkClassName(curEl, "mark") || that.checkClassName(curEl, "block")) {
                         ruleCache['small_image'] = that.Aimed(el);
                         that.Hint('您已成功选择小图片。', 5000);
                         that.setCapFoowwLocalStorage("slidePathCache", ruleCache, new Date().getTime() + 1000 * 60);
@@ -255,7 +255,7 @@ class CaptchaWrite {
 
             curEl = el;
             const firstImg = curEl.querySelector("img");
-            firstImg && that.onSlideTagClick({ target: firstImg });
+            firstImg && that.onSlideTagClick({target: firstImg});
         }
         const finish = Object.keys(ruleCache).filter((item) => item).length == 4;
         if (finish) {
@@ -274,7 +274,7 @@ class CaptchaWrite {
             }
 
             //添加规则
-            that.Query({ "method": "captchaHostAdd", "data": AddRule });
+            that.Query({"method": "captchaHostAdd", "data": AddRule});
 
             that.Hint('规则添加完毕，开始识别中。', 5000);
             ruleCache.ocrType = 4;
@@ -319,7 +319,7 @@ class CaptchaWrite {
     // 检查滑动拼图验证码并识别
     checkSlideCaptcha(slideCache) {
         var that = this;
-        const { big_image, small_image, move_item } = slideCache;
+        const {big_image, small_image, move_item} = slideCache;
 
         document.querySelector(big_image).onload = function () {
             that.checkSlideCaptcha(slideCache);
@@ -417,7 +417,7 @@ class CaptchaWrite {
                 $("canvas,img,div").each(function () {
                     $(this).off("click");
                 });
-                let AddRule = (storagePathCache && storagePathCache) || { ocr_type: 5 };
+                let AddRule = (storagePathCache && storagePathCache) || {ocr_type: 5};
                 AddRule['path'] = window.location.href;
                 AddRule['title'] = document.title;
                 AddRule['host'] = window.location.host;
@@ -425,7 +425,7 @@ class CaptchaWrite {
                 AddRule['idcard'] = that.IdCard();
 
                 //添加规则
-                that.Query({ "method": "captchaHostAdd", "data": AddRule });
+                that.Query({"method": "captchaHostAdd", "data": AddRule});
 
                 that.Hint('规则添加完毕，开始识别中。', 5000);
                 AddRule.ocrType = 5;
@@ -442,7 +442,7 @@ class CaptchaWrite {
     // 检查滑块行为验证码并识别
     checkSlideBehaviorCaptcha(slideCache) {
         var that = this;
-        const { move_item } = slideCache;
+        const {move_item} = slideCache;
 
         //判断验证码是否存在并可见
         if (!move_item || document.querySelector(move_item) == null || !$(move_item).is(":visible")) {
@@ -494,13 +494,15 @@ class CaptchaWrite {
      * @param distance 滑动距离
      */
     moveSideCaptcha(bigImg, smallImg, moveItem, data) {
-        var that = this;
-        var distance = data.data
+        const that = this;
+        let distance = that.getNumber(data.data);
         if (distance === 0) {
             console.log("滑动距离不可为0", distance);
             return;
         }
-        var btn = moveItem;
+        distance = distance + 5;
+
+        const btn = moveItem;
         let target = smallImg;
 
         // 剩余滑动距离
@@ -509,6 +511,7 @@ class CaptchaWrite {
         let oldVarible = null;
         // 获得初始滑块左侧距离
         let targetLeft = that.getNumber(that.getElementStyle(target).left) || 0;
+        let targetWidth = that.getNumber(that.getElementStyle(target).width) || 0;
         let targetMargin = that.getNumber(that.getElementStyle(target).marginLeft) || 0;
         let targetParentLeft = that.getNumber(that.getElementStyle(target.parentNode).left) || 0;
         let targetParentMargin = that.getNumber(that.getElementStyle(target.parentNode).marginLeft) || 0;
@@ -529,6 +532,20 @@ class CaptchaWrite {
         var clientX = screenX + rect.width / 2 - 2;
         var clientY = screenY + rect.height / 2 - 2;
 
+        // 模拟 touchstart/pointerdown 事件
+        const touchStartEvent = new PointerEvent('pointerdown', {
+            bubbles: true,
+            cancelable: true,
+            view: document.defaultView,
+            detail: 0,
+            screenX: screenX,
+            screenY: screenY,
+            clientX: clientX,
+            clientY: clientY,
+            pointerType: 'touch'
+        });
+        btn.dispatchEvent(touchStartEvent);
+
         // 初始化 MouseEvent 对象
         const mousedown = new MouseEvent("mousedown", {
             bubbles: true,
@@ -542,58 +559,48 @@ class CaptchaWrite {
         });
         btn.dispatchEvent(mousedown);
 
-        var dx = 0;
-        var dy = 0;
+        let dx = 0;
+        let dy = 0;
         // 总滑动次数
-        var sideCount = 0;
+        let sideCount = 0;
         // 滑不动了的次数
-        var sideMaxCount = 0;
+        let sideMaxCount = 0;
         // 滑动取值规则
-        var crabRuleId = 0;
+        let crabRuleId = 0;
+        // 滑动速度
+        let runTime = 0;
+        // 突进滑动距离
+        let firstLength = 20;
+        // 是否完成
+        let isFinish = false;
+
+        // 模拟触摸轨迹数组
+        const o = [];
 
         //持续滑动
         function continueSide() {
             setTimeout(function () {
                 var intervalLock = that.getCapFoowwLocalStorage("验证码滑动整体超时锁");
                 if (intervalLock == null) {
-                    that.setCapFoowwLocalStorage("验证码滑动整体超时锁", { time: new Date().getTime() }, new Date().getTime() + (1000 * 10));
+                    that.setCapFoowwLocalStorage("验证码滑动整体超时锁", {time: new Date().getTime()}, new Date().getTime() + (1000 * 10));
                 } else {
                     // 采用自解开锁模式
                     if (intervalLock.time + 1000 * 3 < new Date().getTime()) {
                         that.Hint("本次滑动超时请刷新验证码后重试，若该页面多次出现此问题请联系群内志愿者处理。", 2000);
-                        that.finishSide(btn, distance, 0, distance, 0);
+                        that.finishSide(btn, screenX, screenY, clientX, clientY);
                         return;
                     }
                 }
 
-                //鼠标指针在屏幕上的坐标
-                var _screenX = screenX + dx;
-                var _screenY = screenY + dy;
-                //鼠标指针在浏览器窗口内的坐标
-                var _clientX = clientX + dx;
-                var _clientY = clientY + dy;
-                sideCount += 1;
-
-                const mousemove = new MouseEvent('mousemove', {
-                    bubbles: true,
-                    cancelable: true,
-                    view: document.defaultView,
-                    screenX: _screenX,
-                    screenY: _screenY,
-                    clientX: _clientX,
-                    clientY: _clientY
-                });
-                btn.dispatchEvent(mousemove);
-
-                if (sideCount > 3 && varible == null && btn != null) {
-                    //如果3次循环了已滑动的距离还是null，则使用按钮的距离
+                if (sideCount > 20 && varible == null && btn != null) {
+                    //如果10次循环了已滑动的距离还是null，则使用按钮的距离
                     console.log("使用按钮得距离计算剩余")
                     let targetWidth = that.getNumber(that.getElementStyle(target).width);
                     let btnWidth = that.getNumber(that.getElementStyle(btn).width);
                     //正常来说，小图片应该比滑块的宽度小，此处做*2加权判断
                     if (targetWidth < btnWidth * 2) {
                         // 滑块一般贴近左边，而小图可能稍稍向右，所以总滑动距离-滑块得差
-                        distance = that.getNumber(distance) + eledifference;
+                        distance = distance + eledifference;
                     } else {
                         distance = distance - 2.5;
                     }
@@ -605,6 +612,7 @@ class CaptchaWrite {
                 let newTargetParentMargin = that.getNumber(that.getElementStyle(target.parentNode).marginLeft) || 0;
                 let newTargetTransform = that.getNumber(that.getEleTransform(target)) || 0;
                 let newTargetParentTransform = that.getNumber(that.getEleTransform(target.parentNode)) || 0;
+                let newTargetWidth = that.getNumber(that.getElementStyle(target).width) || 0;
 
                 if (newTargetLeft !== targetLeft || crabRuleId == 1) {
                     varible = newTargetLeft;
@@ -643,56 +651,121 @@ class CaptchaWrite {
                         sideMaxCount = 0;
                     }
                 }
+                oldVarible = varible;
+                //本次需要滑出去得距离
+                let tempDistance = firstLength + Math.random();
+                // 剩余距离（总距离-已滑动距离）
+                const residue = distance - varible;
+                const avg = distance / 10;
+
+                // 判断距离，计算速度
+                if (residue > distance / 2) {//距离有一半时，距离较较远，可以高速
+                    runTime = 0.2 + Math.random() * (0.5 - 0.2);
+                    firstLength = 5;
+                } else if (residue > distance / 4) {//距离有四分之一时，距离较近了，开始减速
+                    runTime = Math.floor(Math.random() * (12 - 8 + 1)) + 8;
+                    firstLength = 3;
+                } else if (residue > avg) {//四分之一到十分之一
+                    runTime = Math.floor(Math.random() * (12 - 8 + 1)) + 8;
+                    firstLength = 2;
+                } else if (residue < avg) {//最后十分之一
+                    runTime = Math.floor(Math.random() * 5) + 18;
+                    firstLength = 0;
+                }
+
+                // 总滑动距离较近，慢点滑动避免超速
+                if (avg <= 10) {
+                    runTime = runTime * 5;
+                } else if (avg <= 13) {
+                    runTime = runTime * 2;
+                }
+
+                //超过了就让他倒着走
+                if (residue <= 0) {
+                    tempDistance = tempDistance * -1;
+                    console.log("超过了，倒着走："+tempDistance);
+                }
+
+                console.log("滑动速度：" + runTime + "，剩余距离：" + residue + "，突进距离：" + firstLength);
+
+                dx += tempDistance;
+                // 随机定义y得偏差
+                let sign = Math.random() > 0.5 ? -1 : 1;
+                dy += -1;
+
+
+                //鼠标指针在屏幕上的坐标
+                let _screenX = screenX + dx;
+                let _screenY = screenY + dy;
+                //鼠标指针在浏览器窗口内的坐标
+                let _clientX = clientX + dx;
+                let _clientY = clientY + dy;
+
+                // 模拟 touchmove/pointermove 事件
+                const touchMoveEvent = new PointerEvent('pointermove', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: document.defaultView,
+                    screenX: _screenX,
+                    screenY: _screenY,
+                    clientX: _clientX,
+                    clientY: _clientY,
+                    pointerType: 'touch'
+                });
+                btn.dispatchEvent(touchMoveEvent);
+
+                const mousemove = new MouseEvent('mousemove', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: document.defaultView,
+                    screenX: _screenX,
+                    screenY: _screenY,
+                    clientX: _clientX,
+                    clientY: _clientY
+                });
+                btn.dispatchEvent(mousemove);
+
+                o.push(Math.round(dy));
+
+
                 // 容错值
-                var fault = 1;
+                const fault = 1;
                 //判断剩余距离是否大于要滑动得距离(1像素误差),或者滑不动了
                 if (varible != null && (sideMaxCount > 5 || (varible == distance || (varible > distance && varible - fault <= distance) || (varible < distance && varible + fault >= distance)))) {
-                    console.log("滑动完毕，等待清除事件");
-                    that.finishSide(btn, _screenX, _screenY, _clientX, _clientY);
-                    that.Hint(data.description, data.showTime)
-                } else {
-                    oldVarible = varible;
-                    //本次需要滑出去得距离
-                    var tempDistance = 0;
-                    // 剩余距离（总距离-已滑动距离）
-                    var residue = distance - varible;
-                    var avg = distance / 10;
+                    if (isFinish) {
+                        console.log("滑动完毕，等待清除事件");
+                        // 模拟 touchend/pointerup 事件
+                        const touchEndEvent = new PointerEvent('pointerup', {
+                            bubbles: true,
+                            cancelable: true,
+                            view: document.defaultView,
+                            screenX: _screenX,
+                            screenY: _screenY,
+                            clientX: _clientX,
+                            clientY: _clientY,
+                            pointerType: 'touch'
+                        });
+                        btn.dispatchEvent(touchEndEvent);
 
-                    // 判断距离，计算速度
-                    if (residue > distance / 2) {//距离有一半时，距离较较远，可以高速
-                        tempDistance = Math.ceil((Math.random() * (6 - 10) + 10) * 2);
-                    } else if (residue > distance / 4) {//距离有四分之一时，距离较近了，开始减速
-                        tempDistance = Math.ceil((Math.random() * (4 - 5) + 5));
-                    } else if (residue > avg) {//四分之一到十分之一
-                        tempDistance = Math.ceil((Math.random() * (1 - 2) + 1));
-                    } else if (residue < avg) {//最后十分之一
-                        tempDistance = 0.5;
+                        that.finishSide(btn, _screenX, _screenY, _clientX, _clientY);
+                        that.Hint(data.description, data.showTime)
+                        return;
                     }
-
-                    // 作者在叨叨：如果这段代码能够帮到你，如果你愿意，可以请我喝杯咖啡么？
-                    // 总滑动距离较近，慢点滑动
-                    if (avg <= 12) {
-                        tempDistance = tempDistance / 1.5;
-                    }
-
-                    //超过了就让他倒着走
-                    if (residue <= 0) {
-                        tempDistance = tempDistance * -1;
-                    }
-
-                    dx += tempDistance;
-                    // 随机定义y得偏差
-                    let sign = Math.random() > 0.5 ? -1 : 1;
-                    dy += Math.ceil(Math.random() * 2 * sign);
-
-                    //再次执行
-                    continueSide();
+                    console.log("故意跳过，使其缓慢回溯");
+                    isFinish = true;
+                    distance -= 5;
                 }
-            }, Math.floor(Math.random() * 15) + 10);
+
+                sideCount += 1;
+
+                //再次执行
+                continueSide();
+            }, runTime);
         }
 
         continueSide();
     }
+
 
     // 完成滑动
     finishSide(btn, _screenX, _screenY, _clientX, _clientY) {
@@ -774,7 +847,7 @@ class CaptchaWrite {
             window.parent.postMessage({
                 sign: "crab",
                 action: "Hint",
-                postData: { Content: Content, Duration: Duration }
+                postData: {Content: Content, Duration: Duration}
             }, "*");
             return;
         }
@@ -833,7 +906,7 @@ class CaptchaWrite {
         GM_xmlhttpRequest({
             url: that.getCaptchaServerUrl() + Json.method,
             method: 'POST',
-            headers: { 'Content-Type': 'application/json; charset=utf-8', 'path': window.location.href },
+            headers: {'Content-Type': 'application/json; charset=utf-8', 'path': window.location.href},
             data: JSON.stringify(Json.data),
             responseType: "json",
             onload: obj => {
@@ -895,7 +968,7 @@ class CaptchaWrite {
                 let autoRulesCheckElems = [];
                 const autoRulesIntervalID = setInterval(function () {
                     var MatchList = that.AutoRules(autoRulesCheckElems);
-                    if (MatchList !=null && MatchList.length > 0) {
+                    if (MatchList != null && MatchList.length > 0) {
                         //改为定时器绑定，解决快捷键失效问题
                         writeResultIntervals.splice(0);
                         console.log('检测到新规则，开始绑定元素');
@@ -919,8 +992,8 @@ class CaptchaWrite {
         window.addEventListener(
             "message",
             (event) => {
-                const { data = {} } = event || {};
-                const { sign, action, postData } = data;
+                const {data = {}} = event || {};
+                const {sign, action, postData} = data;
                 if (sign === "crab") {
                     if (action && actions[action]) {
                         actions[action](postData);
@@ -981,14 +1054,14 @@ class CaptchaWrite {
             }
         }
         postData["idCard"] = that.IdCard();
-        postData["version"] = "6.3";
+        postData["version"] = "6.6";
         that.setCapFoowwLocalStorage("识别结果缓存:" + postDataHash, "识别中..", new Date().getTime() + (9999999 * 9999999));//同一个验证码只识别一次
         var url = that.getCaptchaServerUrl() + "/hello";
         console.log("验证码变动，开始识别");
         GM_xmlhttpRequest({
             url: url,
             method: 'POST',
-            headers: { 'Content-Type': 'application/json; charset=UTF-8', 'path': window.location.href },
+            headers: {'Content-Type': 'application/json; charset=UTF-8', 'path': window.location.href},
             data: JSON.stringify(postData),
             responseType: "json",
             onload: obj => {
@@ -1055,7 +1128,7 @@ class CaptchaWrite {
             return;
         }
 
-        var postData = { img: imgBase64, ocr_type: 1 };
+        var postData = {img: imgBase64, ocr_type: 1};
         that.Identify_Crab(imgElement, postData, callback);
     }
 
@@ -1200,8 +1273,8 @@ class CaptchaWrite {
         var that = this;
         //创建一个触发操作
         let imgObj = img;
-        if(typeof(imgObj) == "string"){
-            imgObj=document.querySelector(img)
+        if (typeof (imgObj) == "string") {
+            imgObj = document.querySelector(img)
         }
         if (imgObj == null) {
             return;
@@ -1221,24 +1294,23 @@ class CaptchaWrite {
     WriteImgCodeResult(ImgCodeResult, WriteInput) {
         var that = this;
         WriteInput = document.querySelector(WriteInput);
-        WriteInput.value = ImgCodeResult;
-        if (typeof (InputEvent) !== 'undefined') {
-            //使用 InputEvent 方法，主流浏览器兼容
+        const setValue = () => {
             WriteInput.value = ImgCodeResult;
+        };
+        setValue();
+        if (typeof (InputEvent) !== 'undefined') {
             let eventReactNames = ["input", "change", "focus", "invalid", "keypress", "keydown", "keyup", "input", "blur", "select", "focus"];
             for (var j = 0; j < eventReactNames.length; j++) {
                 if (that.FireForReact(WriteInput, eventReactNames[j])) {
-                    WriteInput.value = ImgCodeResult;
-                    //return;
+                    setValue();
                 }
             }
             let eventNames = ["keypress", "keydown", "keyup", "input", "blur", "select", "focus"];
             for (var i = 0; i < eventNames.length; i++) {
                 that.Fire(WriteInput, eventNames[i]);
-                WriteInput.value = ImgCodeResult;
+                setValue();
             }
         } else if (KeyboardEvent) {
-            //使用 KeyboardEvent 方法，ES6以下的浏览器方法
             WriteInput.dispatchEvent(new KeyboardEvent("input"));
         }
     }
@@ -1382,17 +1454,24 @@ class CaptchaWrite {
 
             let checkList = [...that.getCaptchaFeature(img), ...that.getCaptchaFeature(img.parentNode),];
             checkList = checkList.filter((item) => item);
-            for (let i = 0; i < checkList.length; i++) {
-                if (checkList[i].toString().toLowerCase().indexOf("logo") != -1) {
-                    //如果元素内包含logo字符串，则直接跳过
-                    return true;
-                }
-            }
             let isInvalid = ["#", "about:blank"].includes(img.getAttribute("src")) || !img.getAttribute("src") || img.getAttribute("src").indexOf("data:") == 0;
             let imgRules = "code,captcha,yzm,check,random,veri,vcodeimg,验证码,看不清,换一张,login,点击,verify,yanzhengma".split(",");
             let isHave = false;
             for (let i = 0; i < checkList.length && !isHave; i++) {
+                // 先判null
+                if (checkList[i] == null || checkList[i] == undefined || typeof(checkList[i])!="string") {
+                    continue;
+                }
+
+
                 let elemAttributeData = checkList[i].toLowerCase();
+
+                //如果元素内包含logo字符串，则直接跳过
+                if (elemAttributeData.toString().toLowerCase().indexOf("logo") != -1) {
+                    return true;
+                }
+
+
                 let imgStyles = that.getElementStyle(img);
                 let imgWidth = that.getNumber(imgStyles["width"]);
                 let imgHeight = that.getNumber(imgStyles["height"]);
@@ -1400,17 +1479,16 @@ class CaptchaWrite {
 
                 // 验证码得相关属性需要满足特定字符串，并且宽高及图片属性不能太过分
                 for (let j = 0; j < imgRules.length; j++) {
-                    if (checkList[i] != undefined) {
-                        if (elemAttributeData.indexOf(imgRules[j]) != -1
-                            && ((imgTagName == "img" && !isInvalid) || imgTagName != "img") && imgWidth > 30 && imgWidth < 150
-                            && ((imgTagName == "div" && imgStyles['backgroundImage'] != 'none') || imgTagName != "div")
-                            && imgHeight < 80 && imgHeight != imgWidth) {
-                            captchaMap.push({ "img": img, "input": null })
-                            isHave = true;
-                            break;
-                        }
+                    if (elemAttributeData.indexOf(imgRules[j]) != -1
+                        && ((imgTagName == "img" && !isInvalid) || imgTagName != "img") && imgWidth > 30 && imgWidth < 150
+                        && ((imgTagName == "div" && imgStyles['backgroundImage'] != 'none') || imgTagName != "div")
+                        && imgHeight < 80 && imgHeight != imgWidth) {
+                        captchaMap.push({"img": img, "input": null})
+                        isHave = true;
+                        break;
                     }
                 }
+
             }
 
         });
@@ -1439,7 +1517,7 @@ class CaptchaWrite {
                         // 给目标元素添加边框，证明自动规则选中得
                         $(imgEle).css("borderStyle", "solid").css("borderColor", "red").css("border-width", "2px").css("box-sizing", "border-box");
                         $(input).css("borderStyle", "solid").css("borderColor", "red").css("border-width", "1px").css("box-sizing", "border-box");
-                        MatchList.push({ "img": that.Aimed(imgEle), "input": that.Aimed(input) })
+                        MatchList.push({"img": that.Aimed(imgEle), "input": that.Aimed(input)})
                         break;
                     }
                     if (type === "password") {
@@ -1683,12 +1761,12 @@ class CaptchaWrite {
                         if (truncateURL.indexOf("http") != 0) {
                             truncateURL = "http:" + truncateURL;
                         }
-                        try{
+                        try {
                             const url = new URL(value);
                             if (url.pathname != "/") {
                                 value = truncateURL;
                             }
-                        }catch(e){
+                        } catch (e) {
                             //非标准url，不需要处理，直接返回即可
                         }
                     }
@@ -1756,7 +1834,7 @@ class CaptchaWrite {
 
     // 操作webStorage 增加缓存，减少对服务端的请求
     setCapFoowwLocalStorage(key, value, ttl_ms) {
-        var data = { value: value, expirse: new Date(ttl_ms).getTime() };
+        var data = {value: value, expirse: new Date(ttl_ms).getTime()};
         sessionStorage.setItem(key, JSON.stringify(data));
     }
 
@@ -2314,7 +2392,7 @@ CanvasRenderingContext2D.prototype.drawImage = function (image, ...args) {
 };
 var crabCaptcha = new CaptchaWrite();
 (function () {
-    const resourceList = [{ name: 'cktools', type: 'js' }]
+    const resourceList = [{name: 'cktools', type: 'js'}]
 
     function applyResource() {
         resloop: for (let res of resourceList) {
