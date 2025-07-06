@@ -5,30 +5,31 @@
 // @name:zh-TW   RSS+ : 顯示當前網站所有的 RSS
 // @name:ja      RSS+ : 現在のサイトのRSSを表示
 // @name:ko      RSS+ : 현재 사이트의 RSS 표시
+// @name:pt-PT   RSS+ : Mostrar todos os RSS do site
+// @name:pt-BR   RSS+ : Mostrar todos os RSS do site
+// @name:fr      RSS+ : Afficher tous les flux RSS du site
 // @description         Show All RSS Of The Site (If Any)
 // @description:zh      显示当前网站的所有 RSS（如果有的话）
 // @description:zh-CN   显示当前网站的所有 RSS（如果有的话）
 // @description:zh-TW   顯示當前網站的所有 RSS（如果有的话）
 // @description:ja      サイトのすべてのRSSを表示します (あれば)
 // @description:ko      웹 사이트의 모든 RSS 를 표시합니다 (있는 경우)
+// @description:pt-PT   Mostra todos os feeds RSS do site (se houver)
+// @description:pt-BR   Mostra todos os feeds RSS do site (se houver)
+// @description:fr      Montre tous les flux RSS du site (s'il y en a)
 // @license      GPL3.0
-// @date         2018.09.16
-// @modified     2021.12.17
-// @version      0.9.2
+// @version      1.1.4
 
-// @icon         https://www.innoreader.com/favicon.ico
+// @icon         data:image/png;base64,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
 // @author       Wizos
 // @namespace    https://blog.wizos.me
 // @supportURL   wizos@qq.com
-// @contributionURL   https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=wizos@qq.com&item_name=Greasy+Fork+donation
-// @contributionAmount 2
 // @match        http://*/*
 // @match        https://*/*
-// @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
-// @require      https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js
-// @require      https://cdn.jsdelivr.net/npm/greensock@1.20.2/dist/TweenMax.min.js
-// @require      https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js
+// @resource     RulerJs  https://fastly.jsdelivr.net/gh/wizos/rssplus/Ruler.js
 // @grant        GM_xmlhttpRequest
+// @grant        GM_getResourceText
 // @grant        GM_setClipboard
 // @grant        GM_notification
 // @grant        GM_addStyle
@@ -36,11 +37,29 @@
 // @grant        GM_setValue
 // @grant        GM_registerMenuCommand
 // @grant        unsafeWindow
-// @connect      rssfinder.vercel.app
+// @connect      rssplus.vercel.app
+// @connect      rssplus.pages.dev
+// @connect      rssfind.val.run
+// @connect      rssplus.deno.dev
+// @connect      rssplus.mdict.workers.dev
 // @noframes
-// @run-at     document-end
+// @run-at     document-idle
+// @downloadURL https://update.greasyfork.org/scripts/373252/RSS%2B%20%3A%20Show%20Site%20All%20RSS.user.js
+// @updateURL https://update.greasyfork.org/scripts/373252/RSS%2B%20%3A%20Show%20Site%20All%20RSS.meta.js
 // ==/UserScript==
 
+// 2025.06.29_1.1.4  1.由于流量过大，增加 rssplus.pages.dev, rssfind.val.run, rssplus.deno.dev, rssplus.mdict.workers.dev 域名。2.修复无法使用自定义 RSSHub 域名。3.增加 Folo 订阅。
+// 2025.04.05_1.1.3  1.修复火狐136版本无法查看 RSS 问题。2. 支持 NewsBlur 和 The Old Reader。3. 全屏时隐藏图标。4. 保持订阅源 URL 大小写。
+// 2025.01.16_1.1.2  1.使用 TTP 给元素增加 innerHTML。2、增加识别 feed.json。
+// 2024.10.20_1.1.1  1.修复未开启远程规则的问题。2.增加更多的网站适配。
+// 2024.10.08_1.0.9  1.增加支持葡萄牙语和法语（感谢Filipe Mota (BlackSpirits)提供的翻译）。2.支持 RSSHub 访问密钥。3.重构代码。
+// 2022.10.18_1.0.8  1.修复 TinyTinyRSS 订阅地址错误问题。2.修复 Bug。
+// 2022.07.04_1.0.7  支持用Miniflux订阅（感谢Sevichecc提供的代码https://gist.github.com/Sevichecc/f5608c4ad52e71d98f6fcf74110369df）
+// 2022.07.04_1.0.6  修复火狐上因为GSAP库导致无法使用问题
+// 2022.05.20_1.0.5  1.解决 jsdelivr 在中国被墙的问题。2.修复bilibili video页面获取feed标题异常问题。
+// 2022.04.18_1.0.4  修复导致网页加载卡顿的问题。
+// 2022.04.05_1.0.2  1.受unsafe-eval影响，无法本地执行规则时使用远程规则，改用 rssplus.vercel.app 接口。2.调整 UI，每次获取到新 RSS 都同步到 UI 中。3.精简设置项。4.监听 URL 变化，同步获取新的 RSS。
+// 2022.04.02_1.0.0  1.将远程规则放到 GitHub。2.修复订阅 RSS 网址的转义问题。
 // 2021.12.17_0.9.2  1.支持设置 FreshRSS 一键订阅。2.支持设置带端口的网址。
 // 2021.02.24_0.9.1  1.支持开启/关闭二维码。
 // 2021.02.19_0.9.0  1.支持鼠标悬停在订阅链接上时展示其二维码，方便扫码订阅。
@@ -64,731 +83,1115 @@
 // 2018.10.14_0.2    第一版 RSS+ 成型；
 // 2018.09.16_0.1    在 RSS+Atom Feed Subscribe Button Generator 脚本基础上增加连接后端获取feed的方式；
 
+(function() {
+    'use strict';
 
-// 过滤掉明确不包含 RSS 源的URL
-if (location.href.match(/(api\.wizos\.me)|(feedly\.com\/i\/subscription)|(inoreader\.com\/feed\/http)/i)) {
-	return;
-}
+    // 过滤掉明确不包含 RSS 源的URL
+    if (location.href.match(/(api\.wizos\.me)|(feedly\.com\/i\/subscription)|(inoreader\.com\/feed\/http)/i)) {
+        return;
+    }
+    // 修复火狐上不支持 trustedTypes 问题
+    if (typeof window.trustedTypes === 'undefined') {
+        window.trustedTypes = {
+            createPolicy: function(name, rules) {
+                return rules;
+            }
+        };
+    }
 
-var feeds = [];
-var feedsMap = {};
-var isRender = false;
-const zhcn = {
-	"no_title": "无名称",
-	"copied": "已复制",
-	"copy": "复制",
-	"copy_succeeded": "复制成功",
-	"follow": "订阅",
-	"found": "发现 ",
-	"feed": " 个订阅源",
-	"click_the_number_to_view": "点击右下角的数字查看",
-	"use_feedly": "使用 Feedly 订阅",
-	"use_inoreader": "使用 InoReader 订阅",
-	"use_tinytinyrss": "使用 TinyTinyRSS 订阅",
-	"use_freshrss": "使用 FreshRSS 订阅",
-	"setting_rsshub_domain": "设置 RSSHub 服务的域名",
-	"setting_inoreader_domain": "设置 InoReader 服务的域名",
-	"setting_tinytinyrss_domain": "设置 TinyTinyRSS 服务的域名",
-	"setting_freshrss_domain": "设置 FreshRSS 服务的域名",
-	"domain_is_wrong": "服务器地址格式有问题，请检查",
-    "enable_qr_code": "启用/禁用二维码",
-    "enabled": "已启用",
-    "disabled": "已禁用",
-	"close": "关闭"
-};
-const zh = zhcn;
-const zhtw = {
-	"no_title": "無名稱",
-	"copied": "已複製",
-	"copy": "複製",
-	"copy_succeeded": "複製成功",
-	"follow": "訂閱",
-	"found": "發現 ",
-	"feed": " 個訂閱源",
-	"click_the_number_to_view": "點擊右下角的數位查看",
-	"use_feedly": "使用 Feedly 訂閱",
-	"use_inoreader": "使用 InoReader 訂閱",
-	"use_tinytinyrss": "使用 TinyTinyRSS 訂閱",
-	"use_freshrss": "使用 FreshRSS 訂閱",
-	"setting_rsshub_domain": "設定 RSSHub 服務的網域名稱",
-	"setting_inoreader_domain": "設定 InoReader 服務的網域名稱",
-	"setting_tinytinyrss_domain": "設定 TinyTinyRSS 服務的網域名稱",
-	"setting_freshrss_domain": "設定 FreshRSS 服務的網域名稱",
-	"domain_is_wrong": "伺服器位址格式有問題，請檢查",
-    "enable_qr_code": "啟用/禁用二維碼",
-    "enabled": "已啟用",
-    "disabled": "已禁用",
-	"close": "關閉"
-};
-const en = {
-	"no_title": "NO TITILE",
-	"copied": "copied",
-	"copy": "copy",
-	"copy_succeeded": "copy succeeded",
-	"follow": "follow",
-	"found": "found ",
-	"feed": " feed",
-	"click_the_number_to_view": "click on the number in the lower right corner to view it",
-	"setting": "setting",
-	"use_feedly": "Use Feedly Subscription",
-	"use_inoreader": "Use InoReader Subscription",
-	"use_tinytinyrss": "Use TinyTinyRSS Subscription",
-	"use_freshrss": "Use FreshRSS Subscription",
-	"setting_rsshub_domain": "Setting RSSHub Domain",
-	"setting_inoreader_domain": "Setting InoReader Domain",
-	"setting_tinytinyrss_domain": "Setting TinyTinyRSS Domain",
-	"setting_freshrss_domain": "Setting FreshRSS Domain",
-	"domain_is_wrong": "Error in domain name format, please check",
-    "enable_qr_code": "Enable/disable QR code",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-	"close": "close"
-};
+    // 国际化文本
+    const i18n = {
+        zh: {
+            noTitle: "无标题",
+            copied: "已复制",
+            copy: "复制",
+            copySucceeded: "复制成功",
+            follow: "订阅",
+            found: "发现 ",
+            feed: "订阅源数量：",
+            clickToView: "点击右下角的数字查看",
+            useFeedly: "使用 Feedly 订阅",
+            useInoreader: "使用 Inoreader 订阅",
+            useTinytinyrss: "使用 Tiny Tiny RSS 订阅",
+            useFreshrss: "使用 FreshRSS 订阅",
+            useMiniflux: "使用 Miniflux 订阅",
+            useFoloReader: "使用 Folo 订阅",
+            useNewsBlur: "使用 NewsBlur 订阅",
+            useTheOldReader: "使用 The Old Reader 订阅",
+            settingRSShubDomain: "设置 RSSHub 的域名",
+            settingRSShubAccessKey: "设置 RSSHub 的访问密钥",
+            settingInoreaderDomain: "设置 Inoreader 的域名",
+            settingTinytinyrssDomain: "设置 Tiny Tiny RSS 的域名",
+            settingFreshrssDomain: "设置 FreshRSS 的域名",
+            settingMinifluxDomain: "设置 Miniflux 的域名",
+            domainIsWrong: "服务器地址格式有误，请检查",
+            enableQRCode: "启用/禁用二维码",
+            enabled: "已启用",
+            disabled: "已禁用",
+            close: "关闭"
+        },
+        zhtw: {
+            noTitle: "無標題",
+            copied: "已複製",
+            copy: "複製",
+            copySucceeded: "複製成功",
+            follow: "訂閱",
+            found: "發現 ",
+            feed: "訂閱源數量：",
+            clickToView: "點擊右下角的數字查看",
+            useFeedly: "使用 Feedly 訂閱",
+            useInoreader: "使用 Inoreader 訂閱",
+            useTinytinyrss: "使用 Tiny Tiny RSS 訂閱",
+            useFreshrss: "使用 FreshRSS 訂閱",
+            useMiniflux: "使用 Miniflux 訂閱",
+            useFoloReader: "使用 Folo 訂閱",
+            useNewsBlur: "使用 NewsBlur 訂閱",
+            useTheOldReader: "使用 The Old Reader 訂閱",
+            settingRSShubDomain: "設定 RSSHub 的網域",
+            settingRSShubAccessKey: "設定 RSSHub 的存取密鑰",
+            settingInoreaderDomain: "設定 Inoreader 的網域",
+            settingTinytinyrssDomain: "設定 Tiny Tiny RSS 的網域",
+            settingFreshrssDomain: "設定 FreshRSS 的網域",
+            settingMinifluxDomain: "設定 Miniflux 的網域",
+            domainIsWrong: "伺服器位址格式有誤，請檢查",
+            enableQRCode: "啟用/停用 QR 碼",
+            enabled: "已啟用",
+            disabled: "已停用",
+            close: "關閉"
+        },
+        en: {
+            noTitle: "Untitled",
+            copied: "Copied",
+            copy: "Copy",
+            copySucceeded: "Copy succeeded",
+            follow: "Subscribe",
+            found: "Found ",
+            feed: "Number of feeds: ",
+            clickToView: "Click the number in the bottom right to view",
+            useFeedly: "Use Feedly subscription",
+            useInoreader: "Use Inoreader subscription",
+            useTinytinyrss: "Use Tiny Tiny RSS subscription",
+            useFreshrss: "Use FreshRSS subscription",
+            useMiniflux: "Use Miniflux subscription",
+            useFoloReader: "Use Folo subscription",
+            useNewsBlur: "Use NewsBlur subscription",
+            useTheOldReader: "Use The Old Reader subscription",
+            settingRSShubDomain: "Set RSSHub domain",
+            settingRSShubAccessKey: "Set RSSHub access key",
+            settingInoreaderDomain: "Set Inoreader domain",
+            settingTinytinyrssDomain: "Set Tiny Tiny RSS domain",
+            settingFreshrssDomain: "Set FreshRSS domain",
+            settingMinifluxDomain: "Set Miniflux domain",
+            domainIsWrong: "Error in domain name format. Please check",
+            enableQRCode: "Enable/disable QR code",
+            enabled: "Enabled",
+            disabled: "Disabled",
+            close: "Close"
+        },
+        ja: {
+            noTitle: "無題",
+            copied: "コピーしました",
+            copy: "コピー",
+            copySucceeded: "コピーに成功しました",
+            follow: "購読",
+            found: "見つかりました ",
+            feed: "フィード数：",
+            clickToView: "右下の数字をクリックして表示",
+            useFeedly: "Feedly で購読",
+            useInoreader: "Inoreader で購読",
+            useTinytinyrss: "Tiny Tiny RSS で購読",
+            useFreshrss: "FreshRSS で購読",
+            useMiniflux: "Miniflux で購読",
+            useFoloReader: "Folo で購読",
+            useNewsBlur: "NewsBlur で購読",
+            useTheOldReader: "The Old Reader で購読",
+            settingRSShubDomain: "RSSHub のドメインを設定",
+            settingRSShubAccessKey: "RSSHub のアクセスキーを設定",
+            settingInoreaderDomain: "Inoreader のドメインを設定",
+            settingTinytinyrssDomain: "Tiny Tiny RSS のドメインを設定",
+            settingFreshrssDomain: "FreshRSS のドメインを設定",
+            settingMinifluxDomain: "Miniflux のドメインを設定",
+            domainIsWrong: "サーバーアドレスの形式に問題があります。確認してください",
+            enableQRCode: "QRコードの有効/無効を切り替え",
+            enabled: "有効",
+            disabled: "無効",
+            close: "閉じる"
+        },
+        ko: {
+            noTitle: "제목 없음",
+            copied: "복사됨",
+            copy: "복사",
+            copySucceeded: "복사 성공",
+            follow: "구독",
+            found: "발견 ",
+            feed: "피드 수: ",
+            clickToView: "오른쪽 하단의 숫자를 클릭하여 보기",
+            useFeedly: "Feedly로 구독",
+            useInoreader: "Inoreader로 구독",
+            useTinytinyrss: "Tiny Tiny RSS로 구독",
+            useFreshrss: "FreshRSS로 구독",
+            useMiniflux: "Miniflux로 구독",
+            useFoloReader: "Folo로 구독",
+            useNewsBlur: "NewsBlur로 구독",
+            useTheOldReader: "The Old Reader로 구독",
+            settingRSShubDomain: "RSSHub 도메인 설정",
+            settingRSShubAccessKey: "RSSHub 액세스 키 설정",
+            settingInoreaderDomain: "Inoreader 도메인 설정",
+            settingTinytinyrssDomain: "Tiny Tiny RSS 도메인 설정",
+            settingFreshrssDomain: "FreshRSS 도메인 설정",
+            settingMinifluxDomain: "Miniflux 도메인 설정",
+            domainIsWrong: "서버 주소 형식에 문제가 있습니다. 확인해 주세요",
+            enableQRCode: "QR 코드 활성화/비활성화",
+            enabled: "활성화됨",
+            disabled: "비활성화됨",
+            close: "닫기"
+        },
+        ptpt: {
+            noTitle: "Sem título",
+            copied: "Copiado",
+            copy: "Copiar",
+            copySucceeded: "Cópia bem-sucedida",
+            follow: "Seguir",
+            found: "Encontrado ",
+            feed: "Número de feeds: ",
+            clickToView: "Clique no número no canto inferior direito para visualizar",
+            useFeedly: "Utilizar a subscrição do Feedly",
+            useInoreader: "Utilizar a subscrição do InoReader",
+            useTinytinyrss: "Utilizar a subscrição do TinyTinyRSS",
+            useFreshrss: "Utilizar a subscrição do FreshRSS",
+            useMiniflux: "Utilizar a subscrição do Miniflux",
+            useFoloReader: "Utilizar a subscrição do Folo",
+            useNewsBlur: "Utilizar a subscrição do NewsBlur",
+            useTheOldReader: "Utilizar a subscrição do The Old Reader",
+            settingRSShubDomain: "Definir o domínio do RSSHub",
+            settingRSShubAccessKey: "Definir a chave de acesso do RSSHub",
+            settingInoreaderDomain: "Definir o domínio do InoReader",
+            settingTinytinyrssDomain: "Definir o domínio do TinyTinyRSS",
+            settingFreshrssDomain: "Definir o domínio do FreshRSS",
+            settingMinifluxDomain: "Definir o domínio do Miniflux",
+            domainIsWrong: "Erro no formato do nome do domínio. Por favor, verifica-o",
+            enableQRCode: "Ativar/desativar o código QR",
+            enabled: "Ativado",
+            disabled: "Desativado",
+            close: "Fechar"
+        },
+        ptbr: {
+            noTitle: "Sem título",
+            copied: "Copiado",
+            copy: "Copiar",
+            copySucceeded: "Copiado com sucesso",
+            follow: "Seguir",
+            found: "Encontrado ",
+            feed: "Número de feeds: ",
+            clickToView: "Clique no número no canto inferior direito para visualizá-lo",
+            useFeedly: "Usar assinatura do Feedly",
+            useInoreader: "Usar assinatura do Inoreader",
+            useTinytinyrss: "Usar assinatura do Tiny Tiny RSS",
+            useFreshrss: "Usar assinatura do FreshRSS",
+            useMiniflux: "Usar assinatura do Miniflux",
+            useFoloReader: "Usar assinatura do Folo",
+            useNewsBlur: "Usar assinatura do NewsBlur",
+            useTheOldReader: "Usar assinatura do The Old Reader",
+            settingRSShubDomain: "Configurar domínio do RSSHub",
+            settingRSShubAccessKey: "Configurar chave de acesso do RSSHub",
+            settingInoreaderDomain: "Configurar domínio do Inoreader",
+            settingTinytinyrssDomain: "Configurar domínio do Tiny Tiny RSS",
+            settingFreshrssDomain: "Configurar domínio do FreshRSS",
+            settingMinifluxDomain: "Configurar domínio do Miniflux",
+            domainIsWrong: "Erro no formato do nome de domínio. Por favor, verifique",
+            enableQRCode: "Ativar/desativar código QR",
+            enabled: "Ativado",
+            disabled: "Desativado",
+            close: "Fechar"
+        },
+        fr: {
+            noTitle: "Sans titre",
+            copied: "Copié",
+            copy: "Copier",
+            copySucceeded: "Copie réussie",
+            follow: "S'abonner",
+            found: "Trouvé ",
+            feed: "Nombre de flux : ",
+            clickToView: "Cliquer sur le numéro en bas à droite pour le visualiser",
+            useFeedly: "Utiliser l'abonnement Feedly",
+            useInoreader: "Utiliser l'abonnement Inoreader",
+            useTinytinyrss: "Utiliser l'abonnement Tiny Tiny RSS",
+            useFreshrss: "Utiliser l'abonnement FreshRSS",
+            useMiniflux: "Utiliser l'abonnement Miniflux",
+            useFoloReader: "Utiliser l'abonnement Folo",
+            useNewsBlur: "Utiliser l'abonnement NewsBlur",
+            useTheOldReader: "Utiliser l'abonnement The Old Reader",
+            settingRSShubDomain: "Configuration du domaine RSSHub",
+            settingRSShubAccessKey: "Configuration la clé d'accès de RSSHub",
+            settingInoreaderDomain: "Configuration du domaine Inoreader",
+            settingTinytinyrssDomain: "Configuration du domaine TinyTinyRSS",
+            settingFreshrssDomain: "Configuration du domaine FreshRSS",
+            settingMinifluxDomain: "Configuration du domaine Miniflux",
+            domainIsWrong: "Erreur dans le format du nom de domaine. Veuillez vérifier",
+            enableQRCode: "Activer/désactiver le code QR",
+            enabled: "Activé",
+            disabled: "Désactivé",
+            close: "Fermer"
+        }
+    };
 
-const ja = {
-	"no_title": "名前なし",
-	"copied": "コピーされました",
-	"copy": "コピー",
-	"copy_succeeded": "コピー成功",
-	"follow": "購読",
-	"found": "発見 ",
-	"feed": " フィード",
-	"click_the_number_to_view": "右下の数字をクリックして表示",
-	"use_feedly": "Feedly で購読",
-	"use_inoreader": "InoReader で購読",
-	"use_tinytinyrss": "TinyTinyRSS で購読",
-	"use_freshrss": "FreshRSS で購読",
-	"setting_rsshub_domain": "RSSHub サービスのドメイン名を設定する",
-	"setting_inoreader_domain": "InoReader サービスのドメイン名を設定する",
-	"setting_freshrss_domain": "FreshRSS サービスのドメイン名を設定する",
-	"domain_is_wrong": "サーバーのアドレス形式に問題があります。確認してください",
-    "enable_qr_code": "QRコードを有効/無効にする",
-    "enabled": "有効にした",
-    "disabled": "無効にしました",
-	"close": "閉じる"
-};
-const ko = {
-	"no_title": "이름 없음",
-	"copied": "복사",
-	"copy": "복사",
-	"copy_succeeded": "복사 성공",
-	"follow": "구독",
-	"found": "발견 ",
-	"feed": "피드",
-	"click_the_number_to_view": "오른쪽 하단에있는 숫자를 클릭하면 볼 수 있습니다",
-	"use_feedly": "Feedly 로 구독",
-	"use_inoreader": "InoReader 로 구독",
-	"use_tinytinyrss": "TinyTinyRSS 로 구독",
-	"use_freshrss": "FreshRSS 로 구독",
-	"setting_rsshub_domain": "RSSub 서비스의 도메인 이름 설정",
-	"setting_inoreader_domain": "InoReader 서비스의 도메인 이름 설정",
-	"setting_tinytinyrss_domain": "TinyTinyRSS 서비스의 도메인 이름 설정",
-	"setting_freshrss_domain": "FreshRSS 서비스의 도메인 이름 설정",
-	"domain_is_wrong": "서버 주소 형식에 문제가 있습니다. 확인하십시오",
-    "enable_qr_code": "큐알（QR）코드 사용/사용 안 함",
-    "enabled": "활성화됨",
-    "disabled": "사용 안 함",
-	"close": "닫기"
-};
-var languages = {
-    "zh": zh,
-    "zhcn": zhcn,
-    "zhtw": zhtw,
-    "ja": ja,
-    "ko": ko,
-    "en": en
-};
+    const ICON_CLOSE = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>'
+    i18n.zhcn = i18n.zh;
+    // 获取当前语言
+    const lang = (navigator.language || 'en').replace('-', "").toLowerCase();
+    const t = i18n[lang] || i18n.en;
 
-var lang = navigator.language.replace('-', "").toLowerCase();
-lang = languages[lang];
-if (!lang) {
-	lang = languages.en;
-}
-const feed_suffix = ['/feed', '/rss', '/rss.xml', '/atom.xml', '/feed.xml', '/?feed=rss2', '/?feed=rss'];
+    const proxyList = [
+        "https://rssplus.vercel.app/",
+        "https://rssplus.pages.dev/",
+        "https://rssfind.val.run/",
+        "https://rssplus.deno.dev/",
+        "https://rssplus.mdict.workers.dev/"
+    ];
 
-setTimeout(function() {
-    GM_registerMenuCommand(lang.use_feedly, function () {
+    GM_registerMenuCommand(t.useFeedly, function() {
         GM_setValue("rss_service", "feedly");
     });
-    GM_registerMenuCommand(lang.use_inoreader, function () {
-        GM_setValue("rss_service", "inoreader");
+    GM_registerMenuCommand(t.useInoreader, function() {
+        const input = window.prompt(t.settingInoreaderDomain, GM_getValue("inoreader_domain", "https://www.inoreader.com"));
+        if (input !== null) {
+            if (isValidUrl(input)) {
+                GM_setValue("inoreader_domain", input);
+                GM_setValue("rss_service", "inoreader");
+            } else {
+                alert(t.domainIsWrong);
+            }
+        }
     });
-    GM_registerMenuCommand(lang.use_tinytinyrss, function () {
-        GM_setValue("rss_service", "tinytinyrss");
+    GM_registerMenuCommand(t.useTinytinyrss, function() {
+        const input = window.prompt(t.settingTinytinyrssDomain, GM_getValue("tinytinyrss_domain", "https://www.example.com"));
+        if (input !== null) {
+            if (isValidUrl(input)) {
+                GM_setValue("tinytinyrss_domain", input);
+                GM_setValue("rss_service", "tinytinyrss");
+            } else {
+                alert(t.domainIsWrong);
+            }
+        }
     });
-    GM_registerMenuCommand(lang.use_freshrss, function () {
-        GM_setValue("rss_service", "freshrss");
+    GM_registerMenuCommand(t.useFreshrss, function() {
+        const input = window.prompt(t.settingFreshrssDomain, GM_getValue("freshrss_domain", "https://www.example.com"));
+        if (input !== null) {
+            if (isValidUrl(input)) {
+                GM_setValue("freshrss_domain", input);
+                GM_setValue("rss_service", "freshrss");
+            } else {
+                alert(t.domainIsWrong);
+            }
+        }
     });
-
-    GM_registerMenuCommand(lang.enable_qr_code, function () {
-        if(!GM_getValue("enable_qr_code")){
+    GM_registerMenuCommand(t.useMiniflux, function() {
+        const input = window.prompt(t.settingMinifluxDomain, GM_getValue("miniflux_domain", "https://www.example.com"));
+        if (input !== null) {
+            if (isValidUrl(input)) {
+                GM_setValue("miniflux_domain", input);
+                GM_setValue("rss_service", "miniflux");
+            } else {
+                alert(t.domainIsWrong);
+            }
+        }
+    });
+    GM_registerMenuCommand(t.useFoloReader, function() {
+        GM_setValue("rss_service", "folo");
+    });
+    GM_registerMenuCommand(t.useNewsBlur, function() {
+        GM_setValue("rss_service", "newsblur");
+    });
+    GM_registerMenuCommand(t.useTheOldReader, function() {
+        GM_setValue("rss_service", "theoldreader");
+    });
+    GM_registerMenuCommand(t.enableQRCode, function() {
+        if (!GM_getValue("enable_qr_code", true)) {
             GM_setValue("enable_qr_code", true);
-            GM_notification({text: lang.enabled, title: lang.enable_qr_code, timeout: 2000 });
-        }else{
-            GM_setValue("enable_qr_code", false);
-            GM_notification({text: lang.disabled, title: lang.enable_qr_code, timeout: 2000 });
-        }
-    });
-
-    GM_registerMenuCommand(lang.setting_inoreader_domain, function () {
-        var domain = GM_getValue("inoreader_domain");
-        if(domain == null || domain == ""){
-            domain = "https://www.inoreader.com";
-        }
-        domain = window.prompt(lang.setting_inoreader_domain, domain);
-        if(isValidUrl(domain)){
-            GM_setValue("inoreader_domain", domain);
-        }else{
-            alert(lang.domain_is_wrong);
-        }
-    });
-
-    GM_registerMenuCommand(lang.setting_tinytinyrss_domain, function () {
-        var domain = GM_getValue("tinytinyrss_domain");
-        if(domain == null || domain == ""){
-            domain = "https://www.example.com";
-        }
-        domain = window.prompt(lang.setting_tinytinyrss_domain, domain);
-        if(isValidUrl(domain)){
-            GM_setValue("tinytinyrss_domain", domain);
-        }else{
-            alert(lang.domain_is_wrong);
-        }
-    });
-
-    GM_registerMenuCommand(lang.setting_freshrss_domain, function () {
-        var domain = GM_getValue("freshrss_domain");
-        if(domain == null || domain == ""){
-            domain = "https://www.example.com";
-        }
-        domain = window.prompt(lang.setting_freshrss_domain, domain);
-        if(isValidUrl(domain)){
-            GM_setValue("freshrss_domain", domain);
-        }else{
-            alert(lang.domain_is_wrong);
-        }
-    });
-
-    GM_registerMenuCommand(lang.setting_rsshub_domain, function () {
-        var domain = GM_getValue("rsshub_domain");
-        if(domain == null || domain == ""){
-            domain = "https://rsshub.app";
-        }
-        domain = window.prompt(lang.setting_rsshub_domain, domain);
-        if(isValidUrl(domain)){
-            GM_setValue("rsshub_domain", domain);
-        }else{
-            alert(lang.domain_is_wrong);
-        }
-    });
-
-    showWithCloudFeeds(location.href);
-	getKnowFeeds();
-	getUnknownFeeds();
-	setTimeout(render, 5000);
-}, 0);
-
-
-function showWithCloudFeeds(url) {
-    GM_xmlhttpRequest({
-        method: "post",
-        data: "url=" + convertLink(url),
-        headers:    {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: "https://rssfinder.vercel.app/find.php",
-        onload: response => {
-            if (response.status != 200) {
-                return;
-            }
-            var obj = JSON.parse(response.responseText);
-            if (obj.feeds == null) {
-                return;
-            }
-            console.log("云端有feeds");
-            console.log(obj.feeds);
-            obj.feeds.forEach(element => {
-                addRSS(element.title, element.link);
+            GM_notification({
+                text: t.enabled,
+                title: t.enableQRCode,
+                timeout: 2000
             });
-            render();
+        } else {
+            GM_setValue("enable_qr_code", false);
+            GM_notification({
+                text: t.disabled,
+                title: t.enableQRCode,
+                timeout: 2000
+            });
         }
     });
-}
 
-function convertLink(link){
-    if(link.match(/douban\.com\/people/i)){
-        var src = document.querySelector("#profile > div > div.bd > div.basic-info > div.uhead-wrap > img.userface").src;
-        var m = src.match(/ul(\d+)-/i);
-        return "https://www.douban.com/people/" + m[1];
-    }
-    return Base64.encode(link);
-}
-
-function addRSS(title, link) {
-	var feed = {};
-	feed.title = title;
-	feed.link = link.replace(/(\/$)/g, "");
-	if (feed.link.match(/(api\.wizos\.me)|(feedly\.com\/i\/subscription)|(inoreader\.com\/feed\/http)/i)) {
-		return;
-	}
-	// 防止重复
-	if (!feedsMap[feed.link.toLowerCase()]) {
-		//如果能查找到，证明数组元素重复了
-		feedsMap[feed.link.toLowerCase()] = 1;
-		feeds.push(feed);
-	}
-}
-
-
-
-// 获取在<head>的<link>元素中，已经声明为RSS的链接
-function getKnowFeeds() {
-	var links = document.getElementsByTagName("link");
-	var link, linkHref, linkType, linkTitle;
-	for (var i = 0, l = links.length; i < l; i++) {
-		link = links[i];
-		if (!link) continue;
-		linkHref = link.href;
-		linkType = link.type;
-		linkTitle = link.title;
-		if (!linkTitle) {
-			linkTitle = document.title;
-		}
-		if (linkType && linkType.match(/.+\/(rss|rdf|atom)/i)) {
-			addRSS(linkTitle, linkHref);
-		} else if (linkType && linkType.match(/^text\/xml$/i)) {
-			addRSS(linkTitle, linkHref);
-		}
-	}
-}
-
-// 寻找未明确标示的RSS源
-function getUnknownFeeds() {
-	//var link, linkHref, linkType, linkTitle;
-	var links,link,linkhref,linktitle;
-	// links 属性返回一个文档中所有具有 href 属性值的 <area> 元素与 <a> 元素的集合
-	if (!document.links) { //console.log("页面内没有发现具有 href 属性值的 <area> 元素或 <a> 元素");
-        links = document.getElementsByTagName("a");
-	}else{
-        links = document.links;
-    }
-	for (var a = 0, len = links.length; a < len; a++) {
-		link = links[a];
-		linkhref = link.href;
-		linktitle = link.title;
-		if (!linktitle) {
-			linktitle = document.title;
-		} else if (link.innerText) {
-			linktitle = link.innerText;
-		}
-		if (linkhref.match(/^(https|http|ftp|feed).*([\.\/]rss([\.\/]xml|\.aspx|\.jsp|\/)?$|\/node\/feed$|\/feed(\.xml|\/$|$)|\/rss\/[a-z0-9]+$|[?&;](rss|xml)=|[?&;]feed=rss[0-9.]*$|[?&;]action=rss_rc$|feeds\.feedburner\.com\/[\w\W]+$)/i)) {
-			addRSS(linktitle, linkhref);
-		} else if (linkhref.match(/^(https|http|ftp|feed).*\/atom(\.xml|\.aspx|\.jsp|\/)?$|[?&;]feed=atom[0-9.]*$/i)) {
-			addRSS(linktitle, linkhref);
-		} else if (linkhref.match(/^(https|http|ftp|feed).*(\/feeds?\/[^.\/]*\.xml$|.*\/index\.xml$|feed\/msgs\.xml(\?num=\d+)?$)/i)) {
-			addRSS(linktitle, linkhref);
-		} else if (linkhref.match(/^(https|http|ftp|feed).*\.rdf$/i)) {
-			addRSS(linktitle, linkhref);
-		} else if (linkhref.match(/^(rss|feed):\/\//i)) {
-			addRSS(linktitle, linkhref);
-		} else if (linkhref.match(/^(https|http):\/\/feed\./i)) {
-			addRSS(linktitle, linkhref);
-		}
-	}
-
-	// 如果有发现新的 rss 源则不再继续寻找
-	if (feeds.length != 0) {return;}
-	links = document.querySelectorAll("html > head > link");
-	for (var i = 0, size = links.length; i < size; i++) {
-		link = links[i];
-		if (link.href.match(/(wp-content)/i)) {
-			checkFeedForSuffixs(document.location.protocol + '//' + document.domain, feed_suffix);
-			break;
-		}
-	}
-
-    if (feeds.length != 0) {return;}
-	links = document.querySelectorAll("html > body footer a");
-	for (i = 0, size = links.length; i < size; i++) {
-		link = links[i];
-		if (link.href.match(/(bitcron\.com|typecho\.org|hexo\.io)/i)) {
-			checkFeedForSuffixs(document.location.protocol + '//' + document.domain, feed_suffix);
-			break;
-		}
-	}
-}
-
-function checkFeedForSuffixs(href, suffixs) {
-	var i = 0;
-	for (i in suffixs) {
-		checkFeed4Suffix(href, suffixs[i]);
-	}
-}
-
-
-function checkFeed4Suffix(href, flag) {
-    //console.log("尝试获取：" + href + flag);
-	if (!flag) {return;}
-    GM_xmlhttpRequest({
-        method: "HEAD",
-        url: href + flag,
-        onload: response => {
-            //console.log("请求api返回状态：" + response.status + " => " + href + flag);
-            if (response.status == 200) {
-                addRSS(document.title, href + flag);
+    GM_registerMenuCommand(t.settingRSShubDomain, function() {
+        const input = window.prompt(t.settingRSShubDomain, GM_getValue("rsshub_domain", "https://rsshub.app"));
+        if (input !== null) {
+            if (isValidUrl(input)) {
+                GM_setValue("rsshub_domain", input);
+            } else {
+                alert(t.domainIsWrong);
             }
         }
     });
-}
 
+    GM_registerMenuCommand(t.settingRSShubAccessKey, function() {
+        const input = window.prompt(t.settingRSShubAccessKey, GM_getValue("rsshub_access_key"));
+        if (input !== null) {
+            GM_setValue("rsshub_access_key", input);
+        }
+    });
 
-function render() {
-    if(isRender){
-        console.log("已经渲染过了");
-		return;
+    // 使用 forceInner 可能会报错 forceInner 被禁用
+    // 使用 default ，这将禁用 TrustedHTML 分配（CSP）保护
+    // window.trustedTypes.createPolicy('default', {createHTML: (string, sink) => string});
+    // WORKAROUND: TypeError: Failed to set the 'innerHTML' property on 'Element': This document requires 'TrustedHTML' assignment.
+    const TTP = window.trustedTypes.createPolicy("forceInner", {
+        createHTML: (x) => x
+    });
+
+    // 主要功能类
+    const feedsSet = new Set();
+    const suffixes = [
+        '/feed', '/rss', '/rss.xml', '/atom.xml', '/feed.xml', '/rss.json', '/atom.json', '/feed.json', //'/index.xml',
+        '/?feed=rss', '/?feed=rss2', '/blog/feed', '/blog/rss', '/latest/rss',
+        '/news/atom', '/feed/index.xml'
+    ];
+    let rpDiv;
+    let rpStyle;
+    let rpIframe;
+    let rpDocument;
+    let rpBadge;
+    let rpDialog;
+    let rpDialogTitle;
+    let rpDialogFeeds;
+
+    // 检测Feed
+    function findFeeds() {
+        const rpDiv = document.getElementById('rss-plus');
+        if(rpDiv){
+            return;
+        }
+        findKnownFeeds();
+        findUnknownFeeds();
+        findCloudFeeds();
     }
-    isRender = true;
-	if (!feeds || feeds.length <= 0) {
-		console.log("该页没有发现feed");
-		return;
-	}
-	var rss_plus_html = "";
-	var element, tips, desc;
-	for (var i = 0; i < feeds.length; i++) {
-		element = feeds[i];
-		tips = "";
-		desc = "";
-        if(element.link.match(/^https*:\/\/rsshub.app/)){
-            var rsshub_domain = GM_getValue("rsshub_domain");
-            if(rsshub_domain != null && rsshub_domain != ""){
-                element.link = element.link.replace(/^https*:\/\/rsshub.app/,rsshub_domain);
+
+    // 检测已知的Feed
+    // 获取在<head>的<link>元素中，已经声明为RSS的链接
+    function findKnownFeeds() {
+        const links = document.getElementsByTagName("link");
+        for (const link of links) {
+            const { href, type, title = document.title } = link;
+            if (type && (type.match(/.+\/(rss|rdf|atom|feed\+json)/i) || type.match(/^text\/xml$/i))) {
+                addFeed(title, href);
             }
         }
-		if (!element.title) {
-			element.title = lang.no_title;
-		}
-		if (element.follows) {
-			tips = " - " + element.follows + "人订阅";
-		}
-		if (element.update) {
-			tips += " - " + element.update + "更新";
-		}
-		if (element.desc) {
-			desc = ' title="' + element.desc + '"';
-		}
-		rss_plus_html +=
-			'<tr><td><div class="rp-table-cell"><div class="feed-title"' + desc + ">" + element.title + '</div><div class="feed-tips"><a href="' + element.link + '" target="_blank">' + element.link + '</a>' + tips +
-			'</div></div></td><td class="rp-table-column-end">';
-		rss_plus_html +=
-			'<button type="button" index="' +
-			i +
-			'" class="rp-btn rp-btn-primary rp-btn-small rp-copy-feed-link" data-clipboard-action="copy" data-clipboard-target=".feed-title"><span>' + lang.copy + '</span></button>';
-		rss_plus_html +=
-			'<button type="button" index="' +
-			i +
-			'" class="rp-btn rp-btn-primary rp-btn-small rp-follow-feed-link"><span>' + lang.follow + '</span></button></td></tr>';
-	}
-
-	var rss_count_badge_html =
-		'<div id="rp-feed-badge" class="rp-card rp-card-bordered"><span class="rp-badge-count" place="count">' +
-		feeds.length +
-		"</span></div>";
-
-    var title_html = '<tr><th><div id="rp-card-head" class="rp-card-head"><div class="card-title">' + icon_logo + lang.found + '<span class="rp-mark-count" place="count">' +
-		feeds.length +
-		'</span>' + lang.feed + ' -【RSS+】</div></div></th><th class="rp-table-column-end"><button type="button" id="rp-close-btn" class="rp-btn rp-btn-small endrp-btn-dashed" title="' + lang.close + '"><span>' + icon_close + '</span></button></th></tr>';
-
-	var rss_feed_list_html =
-		'<div id="rp-feed-list" class="rp-card rp-card-bordered"><div class="rp-table"><table cellspacing="0" cellpadding="0" border="0"><colgroup><col width="70%"><col width="30%"></colgroup><tbody class="rp-table-tbody">' +
-		title_html +
-        rss_plus_html +
-		"</tbody></table></div></div>";
-
-	var styleEl = document.createElement("style");
-	styleEl.innerHTML = styleHtml;
-
-	// 安装 RSS Plus Box 和 RSS Plus Frame
-	var rssPlusDiv = document.createElement("div");
-	rssPlusDiv.setAttribute("id", "rss-plus");
-
-	var rssPlusWrapDiv = document.createElement("div");
-	rssPlusWrapDiv.setAttribute("id", "rss-plus-wrap");
-    var forFireFoxBugflag = "";
-    if(navigator.userAgent.indexOf("Firefox") !== -1){
-        forFireFoxBugflag = ' src="javascript:"';
     }
 
-	rssPlusWrapDiv.innerHTML = '<iframe name="rpJSFrame" '+ forFireFoxBugflag + ' style="width:100%;height:100%;min-height:0px;border:0px;display: block!important;" allowTransparency="true"></iframe>';
-
-	var rssPlusWrapStyle = document.createElement("style");
-	rssPlusWrapStyle.innerHTML = '@media print {#rss-plus {display: none;}}#rss-plus-wrap{position:fixed;bottom:60px;right:5px;z-index:9999;width:30px;height:auto;} #rss-plus-wrap > iframe{max-width: 100%!important;margin:0px !important;}';
-
-	rssPlusDiv.insertBefore(rssPlusWrapDiv, rssPlusDiv.firstChild);
-	rssPlusDiv.insertBefore(rssPlusWrapStyle, rssPlusWrapDiv);
-
-	var body = document.getElementsByTagName("body");
-	if (body && body[0]) body = body[0];
-	insertAfter(rssPlusDiv, body.lastChild);
-
-	var rssPlusBoxDiv = document.createElement("div");
-	rssPlusBoxDiv.setAttribute("id", "RSSPlusBox");
-	rssPlusBoxDiv.innerHTML = rss_count_badge_html + rss_feed_list_html;
-
-	var frameBody = rpJSFrame.window.document.getElementsByTagName("body");
-	if (frameBody && frameBody[0]) frameBody = frameBody[0];
-	frameBody.insertBefore(rssPlusBoxDiv, frameBody.firstChild);
-	frameBody.insertBefore(styleEl, frameBody.firstChild);
-
-	var rpFeedBadgeDiv = rpJSFrame.window.document.getElementById("rp-feed-badge");
-	var rpCloseDiv = rpJSFrame.window.document.getElementById("rp-close-btn");
-
-	addEventHandler(rpCloseDiv, "click", function() {
-		rpJSFrame.window.document.getElementById("rp-feed-list").style.display = "none";
-		rpJSFrame.window.document.getElementById("rp-feed-badge").style.display = "block";
-		rssPlusWrapDiv.style.width = rpJSFrame.window.document.getElementById("rp-feed-badge").offsetWidth + "px";
-		rssPlusWrapDiv.style.height = rpJSFrame.window.document.getElementById("rp-feed-badge").offsetHeight + "px";
-	});
-	addEventHandler(rpFeedBadgeDiv, "click", function() {
-		rpJSFrame.window.document.getElementById("rp-feed-list").style.display = "block";
-		rpJSFrame.window.document.getElementById("rp-feed-badge").style.display = "none";
-
-        if(document.body.clientWidth < 600){
-            rpJSFrame.window.document.getElementById("rp-feed-list").style.width = "100%";
-            rssPlusWrapDiv.style.width = "100%";
-        }else{
-            rssPlusWrapDiv.style.width = "604px";
-        }
-        //rssPlusWrapDiv.style.width = rpJSFrame.window.document.getElementById("RSSPlusBox").offsetWidth + "px";
-		//rssPlusWrapDiv.style.width = "100%";
-		rssPlusWrapDiv.style.height = rpJSFrame.window.document.getElementById("RSSPlusBox").offsetHeight + "px";
-	});
-
-	var copyFeedLinkButtons = rpJSFrame.window.document.getElementsByClassName("rp-copy-feed-link");
-	for (i = 0; i < copyFeedLinkButtons.length; i++) {
-		addEventHandler(copyFeedLinkButtons[i], "click", function() {
-			copyFeedLink(this.getAttribute("index"));
-		});
-	}
-
-	var followFeedLinkButtons = rpJSFrame.window.document.getElementsByClassName("rp-follow-feed-link");
-	for (i = 0; i < followFeedLinkButtons.length; i++) {
-		addEventHandler(followFeedLinkButtons[i], "click", function() {
-			followFeedLink(this.getAttribute("index"));
-		});
-	}
-
-    Array.from(rpJSFrame.window.document.querySelectorAll('.feed-tips > a')).forEach(link => new HoverImgFx1(link));
-}
-
-function notification(size) {
-	GM_notification({
-		title: lang.found + " " + size + " " + lang.feed,
-		text: lang.click_the_number_to_view,
-		timeout: 3000
-	});
-}
-
-function copyFeedLink(index) {
-	GM_setClipboard(feeds[index].link);
-	GM_notification({
-		text: lang.copied + ": " + feeds[index].link,
-		title: lang.copy_succeeded,
-		timeout: 2000
-	});
-}
-
-function isValidUrl(url) {
-    if(url && (url.match(/^https*:\/\/.*?\.\w+(:\d+)?(\/|$)/) || url.match(/^https*:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(\:\d+)*(:\d+)?(\/|$)/)) ){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function followFeedLink(index) {
-    const rssService = GM_getValue("rss_service", "feedly");
-    if( rssService === "feedly" ){
-        window.open("https://feedly.com/i/subscription/feed/" + feeds[index].link, "_blank");
-    }else if( rssService === "inoreader" ){
-        window.open(GM_getValue("inoreader_domain", "https://www.inoreader.com") + "/?add_feed=" + feeds[index].link, "_blank"); // https://www.inoreader.com
-    }else if( rssService === "tinytinyrss" ){
-        var baseUrl = GM_getValue("tinytinyrss_domain");
-        if( typeof(baseUrl) == "undefined" ){
-            baseUrl = window.prompt(lang.setting_tinytinyrss_domain, "https://");
-            if(isValidUrl(baseUrl)){
-                GM_setValue("tinytinyrss_domain", baseUrl);
-            }else{
-                alert(lang.domain_is_wrong);
+    // 寻找未明确标示的RSS源
+    function findUnknownFeeds() {
+        // links 属性返回一个文档中所有具有 href 属性值的 <area> 元素与 <a> 元素的集合
+        const links = document.links || document.getElementsByTagName("a");
+        for (const link of links) {
+            const href = link.href;
+            if (
+                href.match(/^(https|http|ftp|feed).*([.\/]rss([.\/]xml|\.aspx|\.jsp|\/)?$|\/node\/feed$|\/feed(\.xml|\/$|$)|\/rss\/[a-z0-9]+$|[?&;](rss|xml)=|[?&;]feed=rss[0-9.]*$|[?&;]action=rss_rc$|feeds\.feedburner\.com\/[\w\W]+$)/i)
+                || href.match(/^(https|http|ftp|feed).*\/atom(\.xml|\.aspx|\.jsp|\/)?$|[?&;]feed=atom[0-9.]*$/i)
+                || href.match(/^(https|http|ftp|feed).*(\/feeds?\/[^.\/]*\.xml$|.*\/index\.xml$|feed\/msgs\.xml(\?num=\d+)?$)/i)
+                || href.match(/^(https|http|ftp|feed).*\.rdf$/i)
+                || href.match(/^(rss|feed):\/\//i)
+                || href.match(/^(https|http):\/\/feed\./i)
+            ) {
+                addFeed(link.title || link.textContent || link.innerText || document.title, href);
             }
-        }else{
-            window.open(baseUrl + "/public.php?op=subscribe&feed_url=" + feeds[index].link, "_blank");
         }
-    }else if( rssService === "freshrss" ){
-        var baseUrl = GM_getValue("freshrss_domain");
-        if( !baseUrl ){
-            baseUrl = window.prompt(lang.setting_freshrss_domain, "https://");
-            if(isValidUrl(baseUrl)){
-                GM_setValue("freshrss_domain", baseUrl);
-            }else{
-                alert(lang.domain_is_wrong);
+
+        checkFeedForPlatform("html > head > link", /(wp-content)/i); // WordPress
+        checkFeedForPlatform("html > body footer a", /(bitcron\.com|typecho\.org|hexo\.io)/i); // Blog platforms
+    }
+
+    function findCloudFeeds() {
+        const url = optimizeLink(location.href);
+        const res = document.documentElement.outerHTML;
+        try {
+            findCloudFeedsByEval(url, res);
+        } catch (e) {
+            console.error("无法通过 Eval 执行：", e);
+            findCloudFeedsByAPI(url);
+        }
+    }
+    function findCloudFeedsByEval(url, res) {
+        return function(jsStr, url, res) {
+            if (isEmpty(jsStr)) {
+                throw new Error("未获取到可执行脚本");
             }
-        }else{
-            window.open(GM_getValue("freshrss_domain") + "/i/?c=feed&a=add&url_rss=" + feeds[index].link, "_blank");
+            const Ruler = Function(`"use strict";return (${jsStr})`)();
+
+            const list = Ruler.find(url, res);
+            if (!list) {
+                return;
+            }
+            list.forEach(element => {
+                addFeed(element.title || document.title, element.link);
+            });
+        }.call(window, GM_getResourceText('RulerJs'), url, res);
+    }
+
+    function findCloudFeedsByAPI(url) {
+        console.log("请求远程：" + url);
+        try {
+            fetch(`${proxyList[Math.floor(Math.random() * proxyList.length)]}api/find?url=${encodeURIComponent(url)}`, {method: 'get', timeout: 5000}) // 设置超时
+                .then(async response => {
+                    if (response.status === 200) {
+                        const obj = JSON.parse(await response.text());
+                        if (!obj) {
+                            return;
+                        }
+                        obj.forEach(element => {
+                            addFeed(element.title || document.title, element.link);
+                        });
+                    }
+                })
+                .catch(err => console.error('检测 feed 异常：', err))
+        } catch (error) {
+            console.error('检测 feed 异常：', error);
         }
-    }else if( rssService === "NewsBlur" ){
-        window.open("http://www.newsblur.com/?url=" + feeds[index].link, "_blank");
     }
-    // [tinytinyrss]https://example.com/public.php?op=subscribe&feed_url=https://rsshub.wizos.me/weibo/user/5261556444
-	// [feedly]https://feedly.com/i/subscription/feed%2Fhttp%3A%2F%2Ffeeds.howtogeek.com%2FHowToGeek
-	// [inoreader]http://www.inoreader.com/?add_feed=https%3A%2F%2Fwww.howtogeek.com%2Ffeed%2F
-	// [NewsBlur]http://www.newsblur.com/?url=https%3A%2F%2Ffeeds.howtogeek.com%2FHowToGeek
-	// [theoldreader]https://theoldreader.com/feeds/subscribe?url=https://api.izgq.net/weibo/rss/1197161814
-	// [freshrss]https://rss.iridium.cyou/i/?c=feed&a=add&url_rss=https://rsshub.wizos.me/zhihu/question/20180238
-}
-
-function addEventHandler(target, eventName, eventHandler, scope) {
-	var f = scope ? function() {
-		eventHandler.apply(scope, arguments);
-	} : eventHandler;
-	if (target.addEventListener) {
-		target.addEventListener(eventName, f, true);
-	} else if (target.attachEvent) {
-		target.attachEvent("on" + eventName, f);
-	}
-	return f;
-}
-
-
-// source: https://blog.csdn.net/liuyingshuai_blog/article/details/54580633?utm_source=copy
-function insertAfter(newElement, targetElement) {
-	var parent = targetElement.parentNode;
-	if (parent.lastChild == targetElement) {
-		parent.appendChild(newElement);
-	} else {
-		parent.insertBefore(newElement, targetElement.nextSibling);
-	}
-}
-
-    const getMousePos = (e) => {
-        let posx = 0;
-        let posy = 0;
-		if (!e) e = window.event;
-		if (e.pageX || e.pageY) {
-			posx = e.pageX;
-			posy = e.pageY;
-		}else if (e.clientX || e.clientY) 	{
-			posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-			posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-		}
-        return { x : posx, y : posy }
+    function checkFeedForPlatform(selector, regex) {
+        const links = document.querySelectorAll(selector);
+        for (const link of links) {
+            if (link.href.match(regex)) {
+                checkFeed(`${document.location.protocol}//${document.domain}`);
+                break; // 找到匹配项后立即退出
+            }
+        }
     }
-    // Generate a random float.
-    const getRandomFloat = (min, max) => (Math.random() * (max - min) + min).toFixed(2);
+    async function checkFeed(url) {
+        try {
+            const requests = suffixes.map(suffix =>
+                fetch(url + suffix, {method: 'HEAD', timeout: 5000}) // 设置超时
+                    .then(response => {
+                        if (response.status === 200) {
+                            addFeed(document.title, url + suffix);
+                        }
+                    })
+                    .catch(err => console.error('检测 feed 异常：', err))
+            );
+            await Promise.all(requests); // 并行处理所有请求
+        } catch (error) {
+            console.error('检测 feed 异常：', error);
+        }
+    }
 
-    // Effect 1
-    class HoverImgFx1 {
+    // 添加Feed
+    function addFeed(title, url) {
+        console.log("添加RSS：" + title + " => " + url);
+        if (url.match(/(api\.wizos\.me)|(feedly\.com\/i\/subscription)|(inoreader\.com\/feed\/http)/i)) {
+            return;
+        }
+
+        if (feedsSet.size === 0){
+            initUI();
+        }
+        let absoluteUrl = new URL(url, document.location.href).href;
+        let lookupValue = absoluteUrl.toLowerCase();
+
+        if (!feedsSet.has(lookupValue)) {
+            feedsSet.add(lookupValue);
+            if(url.match(/^https*:\/\/rsshub.app/i)){
+                const rsshubDomain = GM_getValue("rsshub_domain");
+                if(rsshubDomain != null && rsshubDomain !== ""){
+                    absoluteUrl = absoluteUrl.replace(/^https*:\/\/rsshub.app/i, rsshubDomain);
+                }
+
+                const rsshubAccessKey = GM_getValue("rsshub_access_key");
+                if(rsshubAccessKey != null && rsshubAccessKey !== ""){
+                    const uri = new URL(absoluteUrl);
+                    uri.searchParams.set('key', rsshubAccessKey);
+                    absoluteUrl = uri.href;
+                }
+            }
+
+            updateBadge();
+            updateDialog(title || t.noTitle, absoluteUrl);
+        }
+    }
+
+    function observeUrlChange() {
+        const _historyWrap = function(type) {
+            const orig = history[type];
+            const e = new Event(type);
+            return function() {
+                const rv = orig.apply(this, arguments);
+                e.arguments = arguments;
+                window.dispatchEvent(e);
+                return rv;
+            };
+        };
+        history.pushState = _historyWrap('pushState');
+        history.replaceState = _historyWrap('replaceState');
+
+        window.addEventListener('pushState', () => {
+            window.dispatchEvent(new Event('locationchange'));
+        });
+        window.addEventListener('replaceState', () => {
+            window.dispatchEvent(new Event('locationchange'));
+        });
+        window.addEventListener('popstate', () => {
+            window.dispatchEvent(new Event('locationchange'));
+        });
+        window.addEventListener('hashchange', function() {
+            window.dispatchEvent(new Event('locationchange'));
+        }, false);
+        window.addEventListener('locationchange', ()=> {
+            reset();
+            findFeeds();
+        });
+    }
+
+    // 初始化UI
+    function initUI() {
+        rpStyle = document.createElement('style');
+        rpStyle.innerHTML = TTP.createHTML(
+            `
+@media print {
+    #rss-plus {
+        display: none;
+    }
+}
+
+#rss-plus {
+    position: fixed;
+    bottom: 60px;
+    right: 5px;
+    z-index: 9999;
+}
+
+#rss-plus > iframe {
+    display: block !important;
+    max-width: 100% !important;
+    border: 0px !important;
+}
+            `
+        );
+        document.head.appendChild(rpStyle);
+
+        rpDiv = document.createElement('div');
+        rpDiv.id = 'rss-plus';
+        document.body.appendChild(rpDiv);
+
+        rpIframe = document.createElement("iframe");
+        rpIframe.id = "rss-plus-iframe";
+        rpIframe.allowTransparency = "true";
+        if (navigator.userAgent.indexOf("Firefox") !== -1) {
+            rpIframe.src = "javascript:";
+        }
+        rpDiv.appendChild(rpIframe);
+        rpDocument = rpIframe.contentDocument || rpIframe.contentWindow.document;// || rssPlusEnvironment.window.document;
+
+        const rpBoxStyle = rpDocument.createElement("style");
+
+        rpBoxStyle.textContent = TTP.createHTML(`
+.hover-reveal {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0
+}
+
+.hover-reveal__inner,.hover-reveal__img {
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+
+.hover-reveal__deco {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #181314
+}
+
+.hover-reveal__img {
+    background-size: cover;
+    background-position: 50% 50%
+}
+
+body {
+    margin: 0px;
+}
+
+#rp-box, #rp-badge, #rp-dialog {
+    width: 100%;
+    position: fixed;
+    z-index: 99999;
+    bottom: 0px;
+    right: 0px;
+}
+
+#rp-badge {
+    background: #4b5979;
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    float: right;
+    min-width: 20px;
+    border: 1px solid #fff;
+    white-space: nowrap;
+}
+
+#rp-badge:hover {
+    border-color: #e9eaec;
+}
+
+#rp-dialog {
+    display: none;
+    height: 100%;
+}
+
+#rp-dialog-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    background: white;
+    border-radius: 5px;
+    border: 2px dashed rgb(209, 217, 224);
+}
+
+#rp-dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 10px 5px 10px;
+    background-color: #f8f8f9;
+}
+
+#rp-dialog-feeds-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    padding: 0px;
+    overflow-y: auto;
+}
+
+#rp-dialog-feeds {
+    list-style-type: none;
+    padding: 0px 10px 5px 10px;
+    margin: 0;
+}
+
+.rss-title {
+    font-weight: bold;
+    margin: 5px 0 5px 0;
+}
+
+.rss-link {
+    color: #666;
+    font-size: 0.9em;
+    word-break: break-all;
+    margin: 5 0 5 0;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70vw;
+}
+
+.rss-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rss-btn {
+    background: #4b5979;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.rp-dialog-count {
+    font-weight: bold;
+    color: #ed3f14;
+}
+
+.rp-badge-count {
+    position: relative;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+.rp-badge-count a,.rp-badge-count a:hover {
+    color: #fff
+}
+
+.rp-btn {
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid transparent;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    font-weight: 400;
+}
+
+.rp-btn>.rp-icon {
+    line-height: 1
+}
+
+.rp-btn:hover {
+    color: #6d7380;
+    background-color: #f9f9f9;
+    border-color: #e4e5e7
+}
+
+.rp-btn>.rp-icon+span,.rp-btn>span+.rp-icon {
+    margin-left: 4px
+}
+
+.rp-btn-primary {
+    color: #fff;
+    background-color: #2d8cf0;
+    border-color: #2d8cf0;
+}
+
+.rp-btn-primary:hover {
+    color: #fff;
+    background-color: #57a3f3;
+    border-color: #57a3f3
+}
+
+.rp-btn-small {
+    padding: 2px 7px;
+    font-size: 12px;
+    border-radius: 3px;
+    margin: 5px;
+    color: #495060;
+    background-color: #f7f7f7;
+}
+
+.rss-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+        `);
+        rpDocument.head.appendChild(rpBoxStyle);
+
+        const rpBadgeDiv = rpDocument.createElement("div");
+        rpBadgeDiv.id = "rp-badge";
+        // 方法 1
+        //const span = rpDocument.createElement("span");
+        //span.classList.add("rp-badge-count", "rp-count");
+        //rpBadgeDiv.appendChild(span);
+        // 方法 2
+        rpBadgeDiv.innerHTML = TTP.createHTML(`<span class="rp-badge-count rp-count"></span>`);
+        rpDocument.body.appendChild(rpBadgeDiv);
+
+        rpDialog = rpDocument.createElement("div");
+        rpDialog.id = "rp-dialog";
+        rpDialog.innerHTML = TTP.createHTML( `
+<div id="rp-dialog-container">
+<div id="rp-dialog-title">
+<div>${t.feed}<span class="rp-dialog-count rp-count"></span></div>
+<button type="button" id="rp-close-btn" class="rp-btn rp-btn-small" title="${t.close}"><span>${ICON_CLOSE}</span></button>
+</div>
+<div id="rp-dialog-feeds-container">
+<ul id="rp-dialog-feeds"></ul>
+</div>
+</div>
+`);
+        rpDocument.body.appendChild(rpDialog);
+
+        rpBadge = rpDocument.getElementById("rp-badge");
+        rpDialog = rpDocument.getElementById("rp-dialog");
+        rpDialogTitle = rpDocument.getElementById("rp-dialog-title");
+        rpDialogFeeds = rpDocument.getElementById("rp-dialog-feeds");
+
+        rpIframe.style.width = rpBadge.getBoundingClientRect().width + "px";
+        rpIframe.style.height = rpBadge.getBoundingClientRect().height + "px";
+
+        addEventHandler(rpDocument.getElementById("rp-close-btn"), "click", function () {
+            rpDialog.style.display = "none";
+            rpBadge.style.display = "block";
+            rpIframe.style.width = rpBadge.getBoundingClientRect().width + "px";
+            rpIframe.style.height = rpBadge.getBoundingClientRect().height + "px";
+        });
+
+        rpDocument.getElementById("rp-badge").addEventListener("click", () => {
+            if (feedsSet.size === 0) {
+                return
+            }
+            rpDialog.style.display = "block";
+            rpBadge.style.display = "none";
+
+            resizeIframe();
+        });
+
+        window.addEventListener('resize', resizeIframe);
+        window.addEventListener('load', resizeIframe);
+    }
+
+    function resizeIframe() {
+        if (rpDialog.style.display === "block"){
+            if (window.innerWidth < 400){
+                rpIframe.style.width = `${window.innerWidth}px`;
+            } else {
+                rpIframe.style.width = "400px";
+            }
+            const dialogHeight = rpDialogFeeds.getBoundingClientRect().height + rpDialogTitle.getBoundingClientRect().height;
+            const availableHeight = rpIframe.getBoundingClientRect().bottom;
+            if (dialogHeight < availableHeight) {
+                rpIframe.style.height = `${dialogHeight}px`;
+            } else {
+                rpIframe.style.height = `${availableHeight}px`;
+            }
+        }
+    }
+
+    // 更新徽章
+    function updateBadge() {
+        Array.from(rpDocument.getElementsByClassName("rp-count")).forEach(el => {el.textContent = feedsSet.size});
+    }
+
+    // 更新对话框内容
+    function updateDialog(title, url) {
+        const li = rpDocument.createElement('li');
+        li.className = 'rss-item';
+        li.innerHTML = TTP.createHTML(`
+                    <div class="rss-info">
+                        <h5 class="rss-title">${title}</h5>
+                        <a class="rss-link" href="${url}" target="_blank">${url}</a>
+                    </div>
+                    <div class="rss-actions">
+                        <button class="rss-btn rss-copy rp-btn-primary">${t.copy}</button>
+                        <button class="rss-btn rss-follow rp-btn-primary">${t.follow}</button>
+                    </div>
+                `);
+        li.querySelector('.rss-copy').addEventListener('click', () => copyToClipboard(url));
+        li.querySelector('.rss-follow').addEventListener('click', () => followFeed(url));
+        rpDialogFeeds.appendChild(li);
+        new HoverImgQR(li.querySelector('.rss-link'));
+    }
+
+    // 复制到剪贴板
+    function copyToClipboard(url) {
+        GM_setClipboard(url);
+        GM_notification({
+            text: t.copied,
+            title: t.copySucceeded,
+            timeout: 2000
+        });
+    }
+
+    // 关注Feed
+    function followFeed(url) {
+        // 这里可以根据用户设置的RSS阅读器来打开相应的订阅链接
+        const rssService = GM_getValue("rss_service", "feedly");
+        if (rssService === "feedly") {
+            window.open(`https://feedly.com/i/subscription/feed/${encodeURIComponent(url)}`, '_blank');
+        } else if (rssService === "inoreader") {
+            window.open(GM_getValue("inoreader_domain", "https://www.inoreader.com") + `/?add_feed=${encodeURIComponent(url)}`, "_blank");
+        } else if (rssService === "tinytinyrss") {
+            window.open(GM_getValue("tinytinyrss_domain") + `/public.php?op=bookmarklets--subscribe&feed_url=${url}`, "_blank");
+        } else if (rssService === "freshrss") {
+            window.open(GM_getValue("freshrss_domain") + `/i/?c=feed&a=add&url_rss=${encodeURIComponent(url)}`, "_blank");
+        } else if (rssService === "miniflux") {
+            window.open(GM_getValue("miniflux_domain") + `/bookmarklet?uri=${encodeURIComponent(url)}`, "_blank");
+        } else if (rssService === "folo") {
+            window.open(`follow://add?url=${encodeURIComponent(url)}`, "_blank");
+        } else if (rssService === "newsblur") {
+            window.open(`http://www.newsblur.com/?url=${encodeURIComponent(url)}`, "_blank");
+        } else if (rssService === "theoldreader") {
+            window.open(`https://theoldreader.com/feeds/subscribe?url=${encodeURIComponent(url)}`, "_blank");
+        }
+    }
+
+    function reset() {
+        if (rpDiv){
+            rpDiv.remove();
+        }
+        if (rpStyle){
+            rpStyle.remove();
+        }
+        feedsSet.clear();
+    }
+
+
+    function addEventHandler(target, eventName, eventHandler, scope) {
+        let f = scope ? function() {
+            eventHandler.apply(scope, arguments);
+        } : eventHandler;
+        if (target.addEventListener) {
+            target.addEventListener(eventName, f, true);
+        } else if (target.attachEvent) {
+            target.attachEvent("on" + eventName, f);
+        }
+        return f;
+    }
+
+    function optimizeLink(link) {
+        if (link.match(/douban\.com\/people/i)) {
+            const src = document.querySelector("#profile > div > div.bd > div.basic-info > div.uhead-wrap > img.userface").src;
+            const m = src.match(/ul(\d+)-/i);
+            link = "https://www.douban.com/people/" + m[1];
+        }
+        return link;
+    }
+    function isEmpty(str) {
+        return str.trim().length === 0;
+    }
+    function isValidUrl(url) {
+        return url && (url.match(/^https*:\/\/.*?\.\w+(:\d+)?(\/|$)/i) || url.match(/^https*:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(:\d+)*(:\d+)?(\/|$)/i));
+    }
+    function fetch(url, options = {}) {
+        return new Promise((resolve, reject) => {
+            GM_xmlhttpRequest({
+                url: url,
+                method: options.method || 'GET',
+                headers: options.headers,
+                data: options.body,
+                responseType: options.responseType || 'json',
+                onload: function(response) {
+                    resolve({
+                        ok: response.status >= 200 && response.status < 300,
+                        status: response.status,
+                        statusText: response.statusText,
+                        json: () => {
+                            if (options.responseType === 'json') {
+                                return Promise.resolve(response.response); // 直接返回解析后的 JSON
+                            } else {
+                                try {
+                                    return Promise.resolve(JSON.parse(response.responseText)); // 手动解析 JSON
+                                } catch (e) {
+                                    return Promise.reject(new Error('Failed to parse JSON'));
+                                }
+                            }
+                        },
+                        text: () => Promise.resolve(response.responseText),
+                        blob: () => Promise.resolve(new Blob([response.response])),
+                        headers: response.responseHeaders,
+                    });
+                },
+                onerror: function(error) {
+                    reject(error);
+                },
+                ontimeout: function() {
+                    reject(new Error('Request timed out'));
+                },
+                timeout: options.timeout || 0,
+            });
+        });
+    }
+
+    class HoverImgQR {
         constructor(el) {
             this.DOM = {el: el};
             this.DOM.reveal = document.createElement('div');
             this.DOM.reveal.className = 'hover-reveal';
-            //this.DOM.reveal.innerHTML = `<div class="hover-reveal__inner"><div class="hover-reveal__img" style="background-image:url(${this.DOM.el.dataset.img})"></div></div>`;
 
-            let thisDOM = this.DOM;
-            QRCode.toDataURL(this.DOM.el.href, function (error, url) {
-            	if (error) {
-            		console.log(error);
-            	}else{
-            		// console.log("属性：" + url);
-            		 thisDOM.reveal.innerHTML = `<div class="hover-reveal__inner"><div class="hover-reveal__img" style="background-image:url(${url})"></div></div>`
-            		 thisDOM.revealInner = thisDOM.reveal.querySelector('.hover-reveal__inner');
-            		 thisDOM.revealInner.style.overflow = 'hidden';
-            		 thisDOM.revealImg = thisDOM.revealInner.querySelector('.hover-reveal__img');
-            		 thisDOM.el.appendChild(thisDOM.reveal);
-            	}
-            });
-            /*
-            this.DOM.reveal.innerHTML = `<div class="hover-reveal__inner"><div class="hover-reveal__img" style="background-image:url(${this.DOM.el.dataset.img})"></div></div>`;
-            this.DOM.revealInner = this.DOM.reveal.querySelector('.hover-reveal__inner');
-            this.DOM.revealInner.style.overflow = 'hidden';
-            this.DOM.revealImg = this.DOM.revealInner.querySelector('.hover-reveal__img');
-            this.DOM.el.appendChild(this.DOM.reveal);
-            */
-            this.initEvents();
+            try {
+                const qr = qrcode(0, 'L');
+                qr.addData(this.DOM.el.href);
+                qr.make();
+                const url = qr.createDataURL();
+
+                const thisDOM = this.DOM;
+                thisDOM.reveal.innerHTML = TTP.createHTML(`<div class="hover-reveal__inner"><div class="hover-reveal__img" style="background-image:url(${url})"></div></div>`);
+                thisDOM.revealInner = thisDOM.reveal.querySelector('.hover-reveal__inner');
+                thisDOM.revealInner.style.overflow = 'hidden';
+                thisDOM.revealImg = thisDOM.revealInner.querySelector('.hover-reveal__img');
+                thisDOM.el.appendChild(thisDOM.reveal);
+
+                this.initEvents();
+            } catch (e) {
+                console.error("报错：", e);
+            }
+        }
+        getMousePos (e) {
+            let posX = 0;
+            let posY = 0;
+            if (!e) e = window.event;
+            if (e.pageX || e.pageY) {
+                posX = e.pageX;
+                posY = e.pageY;
+            } else if (e.clientX || e.clientY) {
+                posX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+                posY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+            }
+            return {
+                x: posX,
+                y: posY
+            }
         }
         initEvents() {
             this.positionElement = (ev) => {
-                const mousePos = getMousePos(ev);
+                const mousePos = this.getMousePos(ev);
                 const docScrolls = {
-                    left : rpJSFrame.window.document.body.scrollLeft + rpJSFrame.window.document.documentElement.scrollLeft,
-                    top : rpJSFrame.window.document.body.scrollTop + rpJSFrame.window.document.documentElement.scrollTop
+                    left: rpDocument.body.scrollLeft + rpDocument.documentElement.scrollLeft,
+                    top: rpDocument.body.scrollTop + rpDocument.documentElement.scrollTop
                 };
                 this.DOM.reveal.style.top = `${mousePos.y-70-docScrolls.top}px`;
                 this.DOM.reveal.style.left = `${mousePos.x+10-docScrolls.left}px`;
             };
             this.mouseenterFn = (ev) => {
-                if(!GM_getValue("enable_qr_code")) return;
+                if (!GM_getValue("enable_qr_code", true)) return;
                 this.positionElement(ev);
-                this.showImage();
+                this.DOM.revealInner.style.overflow = 'visible';
+                this.DOM.reveal.style.opacity = '1';
             };
             this.mousemoveFn = ev => requestAnimationFrame(() => {
-                if(!GM_getValue("enable_qr_code")) return;
+                if (!GM_getValue("enable_qr_code", true)) return;
                 this.positionElement(ev);
             });
             this.mouseleaveFn = () => {
-                if(!GM_getValue("enable_qr_code")) return;
-                this.hideImage();
+                if (!GM_getValue("enable_qr_code", true)) return;
+                this.DOM.revealInner.style.overflow = 'hidden';
+                this.DOM.reveal.style.opacity = '0';
             };
             this.DOM.el.addEventListener('mouseenter', this.mouseenterFn);
             this.DOM.el.addEventListener('mousemove', this.mousemoveFn);
             this.DOM.el.addEventListener('mouseleave', this.mouseleaveFn);
         }
-        showImage() {
-            TweenMax.killTweensOf(this.DOM.revealInner);
-            TweenMax.killTweensOf(this.DOM.revealImg);
-
-            this.tl = new TimelineMax({
-                onStart: () => {
-                    this.DOM.reveal.style.opacity = 1;
-                    TweenMax.set(this.DOM.el, {zIndex: 1000});
-                }
-            })
-            .add('begin')
-            .add(new TweenMax(this.DOM.revealInner, 0.2, {
-                ease: Sine.easeOut,
-                startAt: {x: '-100%'},
-                x: '0%'
-            }), 'begin')
-            .add(new TweenMax(this.DOM.revealImg, 0.2, {
-                ease: Sine.easeOut,
-                startAt: {x: '100%'},
-                x: '0%'
-            }), 'begin');
-        }
-        hideImage() {
-            TweenMax.killTweensOf(this.DOM.revealInner);
-            TweenMax.killTweensOf(this.DOM.revealImg);
-
-            this.tl = new TimelineMax({
-                onStart: () => {
-                    TweenMax.set(this.DOM.el, {zIndex: 999});
-                },
-                onComplete: () => {
-                    TweenMax.set(this.DOM.el, {zIndex: ''});
-                    TweenMax.set(this.DOM.reveal, {opacity: 0});
-                }
-            })
-            .add('begin')
-            .add(new TweenMax(this.DOM.revealInner, 0.2, {
-                ease: Sine.easeOut,
-                x: '100%'
-            }), 'begin')
-            .add(new TweenMax(this.DOM.revealImg, 0.2, {
-                ease: Sine.easeOut,
-                x: '-100%'
-            }), 'begin');
-        }
     }
 
-var icon_logo = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 1024 1024"><<defs><style type="text/css"></style></defs><path d="M129.832 884.872a381.336 81.488 0 1 0 762.672 0 381.336 81.488 0 1 0-762.672 0Z" fill="#B8CBCD" p-id="1377"></path><path d="M208.52 243.224c-22.608-66.672 13.44-102.72 80.112-80.112l38.12 12.92L459.2 220.944c6.176 2.096 15.192 0.856 20.024-2.744l111.376-83.112 33.68-25.136c56.424-42.104 101.848-18.96 100.952 51.432l-0.512 40.024-1.784 139.96c-0.088 6.584 2.824 14.072 6.456 16.648 3.64 2.568 52.992 38.84 109.672 80.592l41.896 30.864c56.68 41.76 47.664 91.728-20.032 111.056l-41.832 11.936c-67.696 19.32-127.032 36.36-131.848 37.856-4.832 1.504-10.48 8.2-12.56 14.896-2.08 6.696-20.872 67.176-41.776 134.4l-11.424 36.736c-20.896 67.224-71.248 75.2-111.896 17.72l-28.4-40.144-78.176-110.544c-2.344-3.32-9.384-5.976-15.632-5.896l-139.36 1.784-41.216 0.528c-70.4 0.896-93.536-44.528-51.44-100.944l26.032-34.888L264.064 433.2c3.368-4.504 4.312-13.512 2.112-20.016l-45.12-133.04-12.536-36.92z" fill="#F6E89A" p-id="1378"></path><path d="M566.6 896.488c-27.272 0-54.488-17.24-76.616-48.544l-28.4-40.144-75.072-106.16-181.768 2.176c-57.552 0-79.488-26.6-87.44-42.456-8.024-16.008-16.256-49.872 18.808-96.856l107.224-143.688a1.632 1.632 0 0 0-0.032-0.312l-57.528-169.584c-15.696-46.272-5.656-74.584 5.528-90.184 19.992-27.872 59.288-35.856 105.024-20.36l169.752 57.56 0.168-0.016 143.664-107.2c22.928-17.112 45.304-25.792 66.488-25.792 18.512 0 34.968 6.768 47.608 19.576 16.912 17.128 25.624 43.816 25.2 77.192l-0.832 64.472c-0.752 58.376-1.368 107.024-1.464 114.936 13.904 10.144 62.248 45.696 106.352 78.184l41.896 30.864c47.464 34.968 49.192 69.84 46.008 87.52-3.184 17.68-17 49.752-73.688 65.936l-41.832 11.936a35027.144 35027.144 0 0 0-128.04 36.728 0.856 0.856 0 0 0-0.072 0.152l-53.168 171.064c-14.392 46.384-42.744 72.992-77.768 73zM387.088 653.504c11.472 0 27.16 4.208 35.52 16.056l78.168 110.528 28.4 40.144c12.512 17.696 26.504 28.264 37.432 28.256 12.184 0 24.432-15.04 31.952-39.248l53.2-171.128c3.768-12.08 13.984-26.24 28.368-30.704 5.528-1.72 71.656-20.688 132.384-38.024l41.832-11.936c22.792-6.504 37.6-17.08 39.624-28.296 2.024-11.216-8.168-26.304-27.24-40.352l-41.896-30.864c-61.624-45.4-106.256-78.176-109.28-80.312-11.704-8.296-16.768-24.336-16.608-36.568l1.472-115.496 0.832-64.472c0.248-19.664-3.888-35.288-11.36-42.856-3.56-3.616-7.84-5.296-13.456-5.296-10.312 0-23.736 5.776-37.792 16.264L493.552 237.44c-10.912 8.136-28.664 10.784-42.08 6.232L280.92 185.84c-24.128-8.184-43.456-7.104-50.592 2.864-6.36 8.872-6.016 26.368 0.912 46.808l57.648 169.984c4.744 14 2.432 31.304-5.616 42.08L174.584 593.216c-14.136 18.944-19.504 36.376-14.368 46.632 5.016 10 21.664 15.976 44.528 15.976l42.952-0.536 139.368-1.784h0.024z" fill="#8D4520" p-id="1379"></path><path d="M407.296 713.44a23.976 23.976 0 0 1-19.928-10.592l-20.152-29.944H149.624c-10.704 0-20.208-5.672-24.832-14.8-4.864-9.632-3.544-21.144 3.536-30.776l73.568-100.024c34.4-46.768 65.376-88.84 72.896-99.016a1.816 1.816 0 0 0-0.032-0.328c-1.736-5.064-21.912-58.88-49.016-130.296l-4.776-12.592c-22.096-58.224-4.672-87.296 7.688-99.448 11.44-11.248 38.048-27.168 87.744-7.344 57.136 22.792 103.344 40.96 116.336 45.872 1.712-0.664 4.232-1.984 6.384-3.872l15.472-13.584a24 24 0 1 1 31.656 36.08l-15.456 13.56c-12.872 11.304-33.4 20.168-50.24 14.456-7.664-2.6-68.536-26.64-121.928-47.936-19.36-7.728-32.184-7.072-36.312-3.016-5.168 5.088-6.272 22.336 3.536 48.192l4.776 12.592c22.424 59.08 47.152 124.728 49.72 132.304 4.744 14 2.432 31.312-5.624 42.08-3.328 4.472-36.712 49.8-74.152 100.704l-50.872 69.168h181.808c12.728 0 25.84 6.784 32.632 16.88l23.048 34.24a24 24 0 0 1-6.504 33.32 23.744 23.744 0 0 1-13.384 4.12z" fill="#FFFFFF" p-id="1380"></path><path d="M599.296 895.168l-46.592-11.544 33.2-133.96c15.208-61.36 32.44-129.664 34.952-137.752 3.768-12.08 13.984-26.24 28.368-30.704 7.048-2.192 84.76-20.24 135.272-31.832l29.376-6.744c28.376-6.512 37.296-16.584 38.056-20.992 0.76-4.408-4.312-16.872-28.912-32.448l-23.728-15.032c-41.984-26.584-110.544-70.144-115.776-73.84-11.688-8.272-16.752-24.312-16.592-36.552 0.088-7.08 1.384-73.52 2.616-135.488l2.472-123.352 47.984 0.96-2.472 123.344c-1.384 69.672-2.456 125.056-2.592 134.32 12.888 8.352 56.024 35.848 110.048 70.056l23.728 15.032c50.568 32.024 53.368 64.552 50.536 81.096-2.824 16.544-16.288 46.296-74.632 59.68l-29.376 6.744c-64.416 14.784-114.64 26.584-128.552 30.056l-0.008 0.008c-1.712 5.552-16.184 62.416-34.168 134.984l-33.208 133.96z" fill="#8D4520" p-id="1381"></path><path d="M566.6 896.488c-27.272 0-54.488-17.24-76.616-48.544l-28.4-40.144-75.072-106.16-181.768 2.176c-57.552 0-79.488-26.6-87.44-42.456-8.024-16.008-16.256-49.872 18.808-96.856l107.224-143.688a1.632 1.632 0 0 0-0.032-0.312l-57.528-169.584c-15.696-46.272-5.656-74.584 5.528-90.184 19.992-27.872 59.288-35.856 105.024-20.36l169.752 57.56 0.168-0.016 143.664-107.2c22.928-17.112 45.304-25.792 66.488-25.792 18.512 0 34.968 6.768 47.608 19.576 16.912 17.128 25.624 43.816 25.2 77.192l-0.832 64.472c-0.752 58.376-1.368 107.024-1.464 114.936 13.904 10.144 62.248 45.696 106.352 78.184l41.896 30.864c47.464 34.968 49.192 69.84 46.008 87.52-3.184 17.68-17 49.752-73.688 65.936l-41.832 11.936a35027.144 35027.144 0 0 0-128.04 36.728 0.856 0.856 0 0 0-0.072 0.152l-53.168 171.064c-14.392 46.384-42.744 72.992-77.768 73zM387.088 653.504c11.472 0 27.16 4.208 35.52 16.056l78.168 110.528 28.4 40.144c12.512 17.696 26.504 28.264 37.432 28.256 12.184 0 24.432-15.04 31.952-39.248l53.2-171.128c3.768-12.08 13.984-26.24 28.368-30.704 5.528-1.72 71.656-20.688 132.384-38.024l41.832-11.936c22.792-6.504 37.6-17.08 39.624-28.296 2.024-11.216-8.168-26.304-27.24-40.352l-41.896-30.864c-61.624-45.4-106.256-78.176-109.28-80.312-11.704-8.296-16.768-24.336-16.608-36.568l1.472-115.496 0.832-64.472c0.248-19.664-3.888-35.288-11.36-42.856-3.56-3.616-7.84-5.296-13.456-5.296-10.312 0-23.736 5.776-37.792 16.264L493.552 237.44c-10.912 8.136-28.664 10.784-42.08 6.232L280.92 185.84c-24.128-8.184-43.456-7.104-50.592 2.864-6.36 8.872-6.016 26.368 0.912 46.808l57.648 169.984c4.744 14 2.432 31.304-5.616 42.08L174.584 593.216c-14.136 18.944-19.504 36.376-14.368 46.632 5.016 10 21.664 15.976 44.528 15.976l42.952-0.536 139.368-1.784h0.024z" fill="#8D4520" p-id="1382"></path></svg>';
-var icon_close = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 1024 1024"><defs><style type="text/css"></style></defs><path d="M583.168 523.776L958.464 148.48c18.944-18.944 18.944-50.176 0-69.12l-2.048-2.048c-18.944-18.944-50.176-18.944-69.12 0L512 453.12 136.704 77.312c-18.944-18.944-50.176-18.944-69.12 0l-2.048 2.048c-19.456 18.944-19.456 50.176 0 69.12l375.296 375.296L65.536 899.072c-18.944 18.944-18.944 50.176 0 69.12l2.048 2.048c18.944 18.944 50.176 18.944 69.12 0L512 594.944 887.296 970.24c18.944 18.944 50.176 18.944 69.12 0l2.048-2.048c18.944-18.944 18.944-50.176 0-69.12L583.168 523.776z" p-id="3440"></path></svg>';
-var styleHtml = '.hover-reveal{position:fixed;width:80px;height:80px;top:0;left:0;pointer-events:none;opacity:0}.hover-reveal__inner,.hover-reveal__img{width:100%;height:100%;position:relative}.hover-reveal__deco{width:100%;height:100%;position:absolute;top:0;left:0;background-color:#181314}.hover-reveal__img{background-size:cover;background-position:50% 50%}; body {margin: 0px;}#RSSPlusBox { position:fixed;z-index:99999;bottom:0px; right:0px; }div.feed-title { font-weight: bold;font-size:0.8rem; cursor: pointer;}div.feed-tips,div.feed-tips a { font-size: 0.75rem; color: rgb(158, 158, 158);}.card-title {}.rp-table-body { max-height: 400px; height: auto; overflow-x: hidden;}.table-footer { position: fixed; bottom: 0 ; padding-left: 10px; width: 100%; background-color: #fff;}.table-footer a { color: #ed3f14;}.support-box { height: 28px; line-height: 28px;}#rp-feed-list{display:none;z-index:23333;box-shadow: 1px 1px 2px 2px #4242426b; width:600px;} #rp-feed-badge{width: 28px; height: 28px; line-height: 28px; border-radius: 14px; float: right;cursor: pointer;z-index:23333;}#rp-feed-badge:hover{border-color:#e9eaec}.badge{ top:-17px; left: -6%; width: 26px; height: 26px; line-height: 26px; border-radius: 13px;}.rp-card:hover{-webkit-box-shadow:0 1px 6px rgba(0,0,0,.2);box-shadow:0 1px 6px rgba(0,0,0,.2);border-color:#eee}.rp-card{background:#fff;border-radius:4px;font-size:14px;position:relative;-webkit-transition:all .2s ease-in-out;transition:all .2s ease-in-out}.rp-card-bordered:hover{border-color:#e9eaec}.rp-card-bordered{border:1px solid #dddee1;border-color:#e9eaec}.rp-mark-count{font-weight:bold;color: #ed3f14;}.rp-badge-count{position:relative;display:inline-block;width: 26px;height: 26px;line-height: 26px;border-radius: 15px;min-width: 20px;background:#4b5979;border: 1px solid transparent;color: #fff;text-align: center;font-size: 12px;white-space: nowrap;-webkit-transform-origin: -10% center;-ms-transform-origin: -10% center;transform-origin: -10% center;z-index: 10;-webkit-box-shadow: 0 0 0 1px #fff;box-shadow: 0 0 0 1px #fff;}.rp-badge-count a,.rp-badge-count a:hover{color:#fff}.rp-card-head{font-size: 14px;padding:10px 16px;line-height:1}.rp-tooltip{display:inline-block}.rp-tooltip-rel{display:inline-block;position:relative}.rp-btn{display:inline-block;margin-bottom:0;font-weight:400;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid transparent;white-space:nowrap;line-height:1.5;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:6px 15px;font-size:12px;border-radius:4px;-webkit-transition:color .2s linear,background-color .2s linear,border .2s linear,-webkit-box-shadow .2s linear;transition:color .2s linear,background-color .2s linear,border .2s linear,-webkit-box-shadow .2s linear;transition:color .2s linear,background-color .2s linear,border .2s linear,box-shadow .2s linear;transition:color .2s linear,background-color .2s linear,border .2s linear,box-shadow .2s linear,-webkit-box-shadow .2s linear;color:#495060;background-color:#f7f7f7;border-color:#dddee1}.rp-btn>.rp-icon{line-height:1}.rp-btn,.rp-btn:active,.rp-btn:focus{outline:0}.rp-btn:not([disabled]):hover{text-decoration:none}.rp-btn:not([disabled]):active{outline:0}.rp-btn.disabled,.rp-btn[disabled]{cursor:not-allowed}.rp-btn.disabled>*,.rp-btn[disabled]>*{pointer-events:none}.rp-btn>a:only-child{color:currentColor}.rp-btn>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn:hover{color:#6d7380;background-color:#f9f9f9;border-color:#e4e5e7}.rp-btn:hover>a:only-child{color:currentColor}.rp-btn:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn.active,.rp-btn:active{color:#454c5b;background-color:#ebebeb;border-color:#ebebeb}.rp-btn.active>a:only-child,.rp-btn:active>a:only-child{color:currentColor}.rp-btn.active>a:only-child:after,.rp-btn:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn.disabled,.rp-btn.disabled.active,.rp-btn.disabled:active,.rp-btn.disabled:focus,.rp-btn.disabled:hover,.rp-btn[disabled],.rp-btn[disabled].active,.rp-btn[disabled]:active,.rp-btn[disabled]:focus,.rp-btn[disabled]:hover,fieldset[disabled] .rp-btn,fieldset[disabled] .rp-btn.active,fieldset[disabled] .rp-btn:active,fieldset[disabled] .rp-btn:focus,fieldset[disabled] .rp-btn:hover{color:#bbbec4;background-color:#f7f7f7;border-color:#dddee1}.rp-btn.disabled.active>a:only-child,.rp-btn.disabled:active>a:only-child,.rp-btn.disabled:focus>a:only-child,.rp-btn.disabled:hover>a:only-child,.rp-btn.disabled>a:only-child,.rp-btn[disabled].active>a:only-child,.rp-btn[disabled]:active>a:only-child,.rp-btn[disabled]:focus>a:only-child,.rp-btn[disabled]:hover>a:only-child,.rp-btn[disabled]>a:only-child,fieldset[disabled] .rp-btn.active>a:only-child,fieldset[disabled] .rp-btn:active>a:only-child,fieldset[disabled] .rp-btn:focus>a:only-child,fieldset[disabled] .rp-btn:hover>a:only-child,fieldset[disabled] .rp-btn>a:only-child{color:currentColor}.rp-btn.disabled.active>a:only-child:after,.rp-btn.disabled:active>a:only-child:after,.rp-btn.disabled:focus>a:only-child:after,.rp-btn.disabled:hover>a:only-child:after,.rp-btn.disabled>a:only-child:after,.rp-btn[disabled].active>a:only-child:after,.rp-btn[disabled]:active>a:only-child:after,.rp-btn[disabled]:focus>a:only-child:after,.rp-btn[disabled]:hover>a:only-child:after,.rp-btn[disabled]>a:only-child:after,fieldset[disabled] .rp-btn.active>a:only-child:after,fieldset[disabled] .rp-btn:active>a:only-child:after,fieldset[disabled] .rp-btn:focus>a:only-child:after,fieldset[disabled] .rp-btn:hover>a:only-child:after,fieldset[disabled] .rp-btn>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn:hover{color:#57a3f3;background-color:#fff;border-color:#57a3f3}.rp-btn:hover>a:only-child{color:currentColor}.rp-btn:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn.active,.rp-btn:active{color:#2b85e4;background-color:#fff;border-color:#2b85e4}.rp-btn.active>a:only-child,.rp-btn:active>a:only-child{color:currentColor}.rp-btn.active>a:only-child:after,.rp-btn:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn:focus{-webkit-box-shadow:0 0 0 2px rgba(45,140,240,.2);box-shadow:0 0 0 2px rgba(45,140,240,.2)}.rp-btn-long{width:100%}.rp-btn>.rp-icon+span,.rp-btn>span+.rp-icon{margin-left:4px}.rp-table{width:inherit;max-height:280px;max-width:100%;overflow:auto;color:#495060;font-size:12px;background-color:#fff;-webkit-box-sizing:border-box;box-sizing:border-box}.rp-table:before{content:"";width:100%;height:1px;position:absolute;left:0;bottom:0;background-color:#dddee1;z-index:1}.rp-table:after{content:"";width:1px;height:100%;position:absolute;top:0;right:0;background-color:#dddee1;z-index:3}.rp-table-body{overflow:auto}.rp-table td,.rp-table th{min-width:0;height:48px;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:left;text-overflow:ellipsis;vertical-align:middle;border-bottom:1px solid #e9eaec}.rp-table th{height:40px;white-space:nowrap;overflow:hidden;background-color:#f8f8f9}.rp-table td{background-color:#fff;-webkit-transition:background-color .2s ease-in-out;transition:background-color .2s ease-in-out}//.rp-table-cell span{display:none}.rp-table-cell{display:inline-block;word-wrap:normal;vertical-align:middle}.rp-table-cell{padding-top:5px; padding-bottom:5px; padding-left:18px;padding-right:18px;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-break:break-all;-webkit-box-sizing:border-box;box-sizing:border-box}td.rp-table-column-end,th.rp-table-column-end{text-align: end;padding-right: 10px;}td.rp-table-column-right,th.rp-table-column-right{text-align:right}.rp-table table{table-layout:fixed;width: 100%;}.rp-btn-primary{color:#fff;background-color:#2d8cf0;border-color:#2d8cf0;}.rp-btn-primary>a:only-child{color:currentColor}.rp-btn-primary>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn-primary:hover{color:#fff;background-color:#57a3f3;border-color:#57a3f3}.rp-btn-primary:hover>a:only-child{color:currentColor}.rp-btn-primary:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn-primary.active,.rp-btn-primary:active{color:#f2f2f2;background-color:#2b85e4;border-color:#2b85e4}.rp-btn-primary.active>a:only-child,.rp-btn-primary:active>a:only-child{color:currentColor}.rp-btn-primary.active>a:only-child:after,.rp-btn-primary:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn-primary.disabled,.rp-btn-primary.disabled.active,.rp-btn-primary.disabled:active,.rp-btn-primary.disabled:focus,.rp-btn-primary.disabled:hover,.rp-btn-primary[disabled],.rp-btn-primary[disabled].active,.rp-btn-primary[disabled]:active,.rp-btn-primary[disabled]:focus,.rp-btn-primary[disabled]:hover,fieldset[disabled] .rp-btn-primary,fieldset[disabled] .rp-btn-primary.active,fieldset[disabled] .rp-btn-primary:active,fieldset[disabled] .rp-btn-primary:focus,fieldset[disabled] .rp-btn-primary:hover{color:#bbbec4;background-color:#f7f7f7;border-color:#dddee1}.rp-btn-primary.disabled.active>a:only-child,.rp-btn-primary.disabled:active>a:only-child,.rp-btn-primary.disabled:focus>a:only-child,.rp-btn-primary.disabled:hover>a:only-child,.rp-btn-primary.disabled>a:only-child,.rp-btn-primary[disabled].active>a:only-child,.rp-btn-primary[disabled]:active>a:only-child,.rp-btn-primary[disabled]:focus>a:only-child,.rp-btn-primary[disabled]:hover>a:only-child,.rp-btn-primary[disabled]>a:only-child,fieldset[disabled] .rp-btn-primary.active>a:only-child,fieldset[disabled] .rp-btn-primary:active>a:only-child,fieldset[disabled] .rp-btn-primary:focus>a:only-child,fieldset[disabled] .rp-btn-primary:hover>a:only-child,fieldset[disabled] .rp-btn-primary>a:only-child{color:currentColor}.rp-btn-primary.disabled.active>a:only-child:after,.rp-btn-primary.disabled:active>a:only-child:after,.rp-btn-primary.disabled:focus>a:only-child:after,.rp-btn-primary.disabled:hover>a:only-child:after,.rp-btn-primary.disabled>a:only-child:after,.rp-btn-primary[disabled].active>a:only-child:after,.rp-btn-primary[disabled]:active>a:only-child:after,.rp-btn-primary[disabled]:focus>a:only-child:after,.rp-btn-primary[disabled]:hover>a:only-child:after,.rp-btn-primary[disabled]>a:only-child:after,fieldset[disabled] .rp-btn-primary.active>a:only-child:after,fieldset[disabled] .rp-btn-primary:active>a:only-child:after,fieldset[disabled] .rp-btn-primary:focus>a:only-child:after,fieldset[disabled] .rp-btn-primary:hover>a:only-child:after,fieldset[disabled] .rp-btn-primary>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:0 0}.rp-btn-primary.active,.rp-btn-primary:active,.rp-btn-primary:hover{color:#fff}.rp-btn-primary:focus{-webkit-box-shadow:0 0 0 2px rgba(45,140,240,.2);box-shadow:0 0 0 2px rgba(45,140,240,.2)}.rp-btn-group:not(.rp-btn-group-vertical) .rp-btn-primary:not(:first-child):not(:last-child){border-right-color:#2b85e4;border-left-color:#2b85e4}.rp-btn-group:not(.rp-btn-group-vertical) .rp-btn-primary:first-child:not(:last-child){border-right-color:#2b85e4}.rp-btn-group:not(.rp-btn-group-vertical) .rp-btn-primary:first-child:not(:last-child)[disabled]{border-right-color:#dddee1}.rp-btn-group:not(.rp-btn-group-vertical) .rp-btn-primary+.rp-btn,.rp-btn-group:not(.rp-btn-group-vertical) .rp-btn-primary:last-child:not(:first-child){border-left-color:#2b85e4}.rp-btn-group:not(.rp-btn-group-vertical) .rp-btn-primary+.rp-btn[disabled],.rp-btn-group:not(.rp-btn-group-vertical) .rp-btn-primary:last-child:not(:first-child)[disabled]{border-left-color:#dddee1}.rp-btn-group-vertical .rp-btn-primary:not(:first-child):not(:last-child){border-top-color:#2b85e4;border-bottom-color:#2b85e4}.rp-btn-group-vertical .rp-btn-primary:first-child:not(:last-child){border-bottom-color:#2b85e4}.rp-btn-group-vertical .rp-btn-primary:first-child:not(:last-child)[disabled]{border-top-color:#dddee1}.rp-btn-group-vertical .rp-btn-primary+.rp-btn,.rp-btn-group-vertical .rp-btn-primary:last-child:not(:first-child){border-top-color:#2b85e4}.rp-btn-group-vertical .rp-btn-primary+.rp-btn[disabled],.rp-btn-group-vertical .rp-btn-primary:last-child:not(:first-child)[disabled]{border-bottom-color:#dddee1}#card-tips{margin-top: 5px;}.rp-btn-small {padding: 2px 7px;font-size: 12px;border-radius: 3px;margin:5px;}';
+    // 监听全屏变化
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    function handleFullscreenChange() {
+        const isFullscreen = document.fullscreenElement ||
+                        document.webkitFullscreenElement ||
+                        document.mozFullScreenElement;
+        rpDiv.style.display = isFullscreen ? 'none' : 'block';
+    }
+
+
+    // 检查环境
+    if (window.top !== window.self || !window.location.protocol.startsWith('http')) {
+        return;
+    }
+    // 当页面加载完成后初始化
+    observeUrlChange();
+    findFeeds();
+})();
