@@ -3,10 +3,7 @@ This is a repo for hosting my userscripts, dotfiles[^DOTFILES_INTRO], configurat
 [^DOTFILES_INTRO]: https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/
 
 
-## Dotfiles
-
-### Quick Start 
-
+## Quick Start 
 
 > [!NOTE]
 > Those software shouold be required:
@@ -33,7 +30,7 @@ $ vim ~/.zshrc
 $ chsh -s /usr/bin/zsh
 ```
 
-### Zsh
+## Zsh
 
 The construct of zsh is like this:
 
@@ -89,8 +86,6 @@ zip -r tampermonkey-backup-github.zip tampermonkey/
 
 [![Yacd-meta](https://github-readme-stats.vercel.app/api/pin/?username=MetaCubeX&repo=Yacd-meta&bg_color=00000000)](https://github.com/MetaCubeX/Yacd-meta)
 
-[![clash-dashboard](https://github-readme-stats.vercel.app/api/pin/?username=bGZo&repo=clash-dashboard)](https://github.com/bGZo/clash-dashboard)
-
 
 ## Samba
 
@@ -110,7 +105,7 @@ sudo steamos-readonly disable
 
 Then I recommend you to use brew, because it would not be removed by system update, and it has a lot of pre-compiled packages.
 
-```shel
+```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/bgzo/.zshrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -158,7 +153,10 @@ sudo /home/linuxbrew/.linuxbrew/bin/smbpasswd -L -c /home/deck/env/linux/samba/d
 Launch samba server:
 
 ```shell
-/home/linuxbrew/.linuxbrew/sbin/smbd -i -d 3 -s /home/deck/env/linux/samba/deck.conf 
+/home/linuxbrew/.linuxbrew/sbin/smbd -i -d 3 -s /home/deck/env/linux/samba/deck.conf
+# -i 让 smbd 以前台模式运行（不 daemonize），日志和错误会直接输出到终端，适合调试
+# -d 3 设置日志等级为 3，输出较详细的调试信息（等级越高，信息越多）。
+# -s 指定使用自定义的配置文件路径，而不是默认的 /etc/samba/smb.conf
 ```
 
 > [!NOTE]
@@ -208,4 +206,19 @@ ln -s /home/deck/.local/share/Steam/userdata/1140098148/760/remote /home/deck/Pi
 # TR:1420650290
 ln -s /home/deck/.local/share/Steam/userdata/1420650290/760/remote /home/deck/Pictures/bgzotr
 ```
+
+## Troubleshooting
+
+### Found port process:
+
+```shell
+sudo lsof -i :445
+```
+
+### Found system run log:
+
+```shell
+journalctl --user -u smb.service -e --no-pager
+```
+
 
