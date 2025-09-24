@@ -3,18 +3,14 @@ This is a repo for hosting my userscripts, dotfiles[^DOTFILES_INTRO], configurat
 [^DOTFILES_INTRO]: https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/
 
 
-## Quick Start 
+## Quick Start
 
 > [!NOTE]
-> Those software shouold be required:
-
-```bash
-$ sudo pacman -S zsh git
-```
+> `git`/ `zsh` are required, install them first if not exist.
 
 Git should be config like:
 
-```bash
+```shell
 git config --global user.name 'HX'
 git config --global user.email ''
 ssh-keygen -t rsa -C ""
@@ -22,7 +18,7 @@ ssh-keygen -t rsa -C ""
 
 Clone repo, then:
 
-```bash
+```shell
 $ git submodule update --init --recursive
 $ git submodule update --remote --recursive 
 $ cp zsh/.zshrcBackup ~/.zshrc
@@ -30,11 +26,20 @@ $ vim ~/.zshrc
 $ chsh -s /usr/bin/zsh
 ```
 
+If you connect with ssh, you could add your client public key to `~/.ssh/authorized_keys` on server:
+
+```shell
+cat ~/.ssh/id_rsa.pub | ssh user@server 'cat >> ~/.ssh/authorized_keys'
+```
+
+Then you can login without password.  
+
+
 ## Zsh
 
 The construct of zsh is like this:
 
-```bash
+```shell
 ./zsh
 |-- aliases
 |-- bindkeys.zsh
