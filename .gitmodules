@@ -8,4 +8,4 @@
 
 [submodule "life-progress"]
 	path = linux/zsh/life-progress
-    url = git@github.com:bGZo/life-progress
+    url = https://github.com/bGZo/life-progress
