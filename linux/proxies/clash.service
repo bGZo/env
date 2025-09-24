@@ -1,0 +1,11 @@
+[Unit]
+Description=A rule based proxy in Go for %i.
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/home/deck/proxy/clash-linux-amd64 -d /home/deck/proxy/
+
+[Install]
+WantedBy=default.target
