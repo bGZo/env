@@ -19,11 +19,11 @@ ssh-keygen -t rsa -C ""
 Clone repo, then:
 
 ```shell
-$ git submodule update --init --recursive
-$ git submodule update --remote --recursive 
-$ cp zsh/.zshrcBackup ~/.zshrc
-$ vim ~/.zshrc
-$ chsh -s /usr/bin/zsh
+git submodule update --init --recursive
+git submodule update --remote --recursive 
+cp zsh/.zshrcBackup ~/.zshrc
+vim ~/.zshrc
+chsh -s /usr/bin/zsh
 ```
 
 If you connect with ssh, you could add your client public key to `~/.ssh/authorized_keys` on server:

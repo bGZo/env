@@ -1,0 +1,14 @@
+# frpc.toml
+# 云主机IP
+serverPort = 7000
+serverAddr = "" 
+# 认证token
+auth.token = ""
+
+[[proxies]]
+name = "ssh"
+type = "tcp"
+localPort = 22
+remotePort = 6000
+transport.useEncryption = true
+transport.useCompression = true

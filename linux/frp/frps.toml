@@ -1,0 +1,18 @@
+# frps.toml
+bindPort = 7000
+
+# 认证
+auth.method = "token"
+auth.token = ""
+
+# 传输安全
+# transport.tls.disableCustomTLSFirstByte = false
+# transport.heartbeatTimeout = 30
+# transport.heartbeatInterval = 10
+# transport.maxRetriesAnHour = 5
+
+# 连接限制配置
+transport.maxPoolCount = 1  # 最大连接池数量
+# transport.heartbeatTimeout = 90  # 心跳超时时间（秒）
+
+vhostHTTPPort = 8080
