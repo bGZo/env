@@ -9,21 +9,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
-
 
 # Pip3
 export PATH=$PATH:$HOME/.local/bin
 
 
-# [Depareted]: Java Env use Apt alright okey.
+# Deparete: Java Env use Apt alright okey.
 # export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 # export PATH=${JAVA_HOME}/bin:$PATH
 # export JRE_HOME
 # export JRE_HOME=${JAVA_HOME}/jre
 # export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+
+# Ruby
+export GEM_HOME=$HOME/.gem
 
 # Android
 export CATALINA_HOME=/opt/tomcat

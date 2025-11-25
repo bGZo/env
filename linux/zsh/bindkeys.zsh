@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # [keymap] use emacs keybindings even if our EDITOR is set to vi.
-# bindkey -e
+bindkey -e
 
 # +-----------------------------------------------------------+
 # |https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html|

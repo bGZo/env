@@ -1,0 +1,17 @@
+[Unit]
+Description=Frp Server Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/frp/frp_0.65.0_linux_amd64
+ExecStart=/opt/frp/frp_0.65.0_linux_amd64/frps -c /opt/frp/frp_0.65.0_linux_amd64/frps.toml
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=1048576
+
+[Install]
+WantedBy=multi-user.target
